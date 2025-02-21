@@ -29,6 +29,34 @@ const Index = () => {
     }
   ];
 
+  const productCategories = [
+    {
+      title: "Urology",
+      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80",
+      description: "Advanced urological instruments and diagnostic equipment"
+    },
+    {
+      title: "Gastroenterology",
+      image: "https://images.unsplash.com/photo-1631217862233-15baa5c35708?auto=format&fit=crop&q=80",
+      description: "Comprehensive range of gastroenterology devices and tools"
+    },
+    {
+      title: "Dressings",
+      image: "https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&q=80",
+      description: "High-quality wound care and surgical dressing solutions"
+    },
+    {
+      title: "Anaesthesia",
+      image: "https://images.unsplash.com/photo-1631217862240-542e751564fb?auto=format&fit=crop&q=80",
+      description: "State-of-the-art anaesthesia delivery systems and monitoring equipment"
+    },
+    {
+      title: "Blood Management",
+      image: "https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&q=80",
+      description: "Advanced blood collection and management solutions"
+    }
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -67,6 +95,55 @@ const Index = () => {
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                   <p className="text-gray-600">{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Product Categories Section */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Our Product Categories
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Discover our comprehensive range of high-quality medical equipment and supplies, designed to meet the diverse needs of healthcare professionals worldwide
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {productCategories.map((category, index) => (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                >
+                  <div className="aspect-w-16 aspect-h-12 relative">
+                    <img
+                      src={category.image}
+                      alt={category.title}
+                      className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/0" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 className="text-2xl font-semibold mb-2">{category.title}</h3>
+                    <p className="text-gray-200 text-sm opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                      {category.description}
+                    </p>
+                  </div>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                 </motion.div>
               ))}
             </div>
