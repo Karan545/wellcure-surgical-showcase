@@ -1,6 +1,7 @@
 
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { motion } from "framer-motion";
 import { Stethoscope, ShieldCheck, Globe, Award } from "lucide-react";
 
@@ -30,6 +31,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Header />
       <main className="flex-grow">
         <Hero />
         
