@@ -32,28 +32,33 @@ const Index = () => {
   const productCategories = [
     {
       title: "Urology",
-      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&q=80",
       description: "Advanced urological instruments and diagnostic equipment"
     },
     {
       title: "Gastroenterology",
-      image: "https://images.unsplash.com/photo-1631217862233-15baa5c35708?auto=format&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1578496781379-7dcfb995293d?auto=format&fit=crop&q=80",
       description: "Comprehensive range of gastroenterology devices and tools"
     },
     {
       title: "Dressings",
-      image: "https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1583912267550-d42ddb4518f4?auto=format&fit=crop&q=80",
       description: "High-quality wound care and surgical dressing solutions"
     },
     {
       title: "Anaesthesia",
-      image: "https://images.unsplash.com/photo-1631217862240-542e751564fb?auto=format&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80",
       description: "State-of-the-art anaesthesia delivery systems and monitoring equipment"
     },
     {
       title: "Blood Management",
-      image: "https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80",
       description: "Advanced blood collection and management solutions"
+    },
+    {
+      title: "Gloves Division",
+      image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80",
+      description: "Premium quality medical gloves including surgical, examination, and specialized protective gloves, ensuring optimal safety and comfort for healthcare professionals"
     }
   ];
 
