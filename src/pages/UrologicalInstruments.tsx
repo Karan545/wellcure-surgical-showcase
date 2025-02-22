@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const UrineCollectionBags = [
   {
@@ -43,8 +43,66 @@ const UrineCollectionBags = [
   }
 ];
 
+const UrineDrainageCatheters = [
+  {
+    title: "Female Catheter",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80",
+    description: "Specially designed catheter for female patients, featuring gentle insertion tip and optimal drainage capabilities for enhanced comfort and effectiveness."
+  },
+  {
+    title: "Rectal Catheter",
+    image: "https://images.unsplash.com/photo-1583912267550-d42ddb4518f4?auto=format&fit=crop&q=80",
+    description: "High-quality rectal catheter with smooth surface finish and atraumatic tip, designed for safe and comfortable bowel management procedures."
+  },
+  {
+    title: "Nelaton Catheter",
+    image: "https://images.unsplash.com/photo-1581093458791-9d09008b0d02?auto=format&fit=crop&q=80",
+    description: "Premium straight-tip urinary catheter with multiple eyes for efficient drainage, made from medical-grade materials for optimal patient safety."
+  }
+];
+
 const UrologicalInstruments = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("urine-bags");
+
+  useEffect(() => {
+    // Set default category when component mounts
+    setSelectedCategory("urine-bags");
+  }, []);
+
+  const renderProducts = (category: string) => {
+    const products = category === "urine-bags" ? UrineCollectionBags : UrineDrainageCatheters;
+
+    return (
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product, index) => (
+              <motion.div
+                key={product.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+              >
+                <div className="aspect-w-16 aspect-h-12">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-3">{product.title}</h3>
+                  <p className="text-gray-600 mb-4">{product.description}</p>
+                  <Button className="w-full">Learn More</Button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -93,36 +151,7 @@ const UrologicalInstruments = () => {
         </section>
 
         {/* Products Section */}
-        {selectedCategory === "urine-bags" && (
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {UrineCollectionBags.map((product, index) => (
-                  <motion.div
-                    key={product.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-                  >
-                    <div className="aspect-w-16 aspect-h-12">
-                      <img
-                        src={product.image}
-                        alt={product.title}
-                        className="w-full h-48 object-cover"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold mb-3">{product.title}</h3>
-                      <p className="text-gray-600 mb-4">{product.description}</p>
-                      <Button className="w-full">Learn More</Button>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+        {renderProducts(selectedCategory)}
       </main>
       <Footer />
     </div>
