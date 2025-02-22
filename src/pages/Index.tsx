@@ -43,29 +43,38 @@ const Index = () => {
     {
       title: "Gastroenterology Equipment",
       image: "https://images.unsplash.com/photo-1631217862332-090e298eff2b?auto=format&fit=crop&q=80",
-      description: "Advanced endoscopic systems and specialized tools for precise gastrointestinal procedures and diagnostics."
+      description: "Advanced endoscopic systems and specialized tools for precise gastrointestinal procedures and diagnostics.",
+      link: "/gastroenterology"
     },
     {
       title: "Surgical Dressings",
       image: "https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&q=80",
-      description: "Premium wound care solutions, including advanced dressings, bandages, and post-operative care products."
+      description: "Premium wound care solutions, including advanced dressings, bandages, and post-operative care products.",
+      link: "/surgical-dressings"
     },
     {
       title: "Anaesthesia Systems",
       image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80",
-      description: "Modern anaesthesia delivery units, patient monitoring systems, and critical care equipment for surgical procedures."
+      description: "Modern anaesthesia delivery units, patient monitoring systems, and critical care equipment for surgical procedures.",
+      link: "/anaesthesia-systems"
     },
     {
       title: "Blood Management Solutions",
       image: "https://images.unsplash.com/photo-1579154341184-22069e4614d2?auto=format&fit=crop&q=80",
-      description: "Comprehensive blood collection systems, storage solutions, and transfusion management equipment."
+      description: "Comprehensive blood collection systems, storage solutions, and transfusion management equipment.",
+      link: "/blood-management"
     },
     {
       title: "Medical Gloves Division",
       image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80",
-      description: "High-quality surgical, examination, and specialized protective gloves designed for optimal safety and comfort in medical procedures."
+      description: "High-quality surgical, examination, and specialized protective gloves designed for optimal safety and comfort in medical procedures.",
+      link: "/medical-gloves"
     }
   ];
+
+  const handleCategoryClick = (link: string) => {
+    navigate(link);
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -137,7 +146,8 @@ const Index = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                  onClick={() => handleCategoryClick(category.link)}
                 >
                   <div className="aspect-w-16 aspect-h-12 relative">
                     <img
@@ -152,15 +162,16 @@ const Index = () => {
                     <p className="text-gray-200 text-sm mb-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                       {category.description}
                     </p>
-                    {category.link && (
-                      <Button 
-                        variant="outline" 
-                        className="bg-white/10 border-white text-white hover:bg-white hover:text-gray-900 transition-colors opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300"
-                        onClick={() => navigate(category.link)}
-                      >
-                        View Products
-                      </Button>
-                    )}
+                    <Button 
+                      variant="outline" 
+                      className="bg-white/10 border-white text-white hover:bg-white hover:text-gray-900 transition-colors opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCategoryClick(category.link);
+                      }}
+                    >
+                      View Products
+                    </Button>
                   </div>
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                 </motion.div>
