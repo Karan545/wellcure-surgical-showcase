@@ -1,4 +1,3 @@
-
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -34,29 +33,35 @@ const Index = () => {
     {
       title: "Urological Instruments",
       image: "https://plus.unsplash.com/premium_photo-1661766752153-9f0c3fcc0946?auto=format&fit=crop&q=80",
-      description: "State-of-the-art urological surgical instruments, diagnostic equipment, and treatment solutions for comprehensive urological care."
+      description: "State-of-the-art urological surgical instruments, diagnostic equipment, and treatment solutions for comprehensive urological care.",
+      link: "/urological-instruments"
     },
     {
+      icon: <Globe className="w-8 h-8" />,
       title: "Gastroenterology Equipment",
       image: "https://images.unsplash.com/photo-1631217862332-090e298eff2b?auto=format&fit=crop&q=80",
       description: "Advanced endoscopic systems and specialized tools for precise gastrointestinal procedures and diagnostics."
     },
     {
+      icon: <Globe className="w-8 h-8" />,
       title: "Surgical Dressings",
       image: "https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&q=80",
       description: "Premium wound care solutions, including advanced dressings, bandages, and post-operative care products."
     },
     {
+      icon: <Globe className="w-8 h-8" />,
       title: "Anaesthesia Systems",
       image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80",
       description: "Modern anaesthesia delivery units, patient monitoring systems, and critical care equipment for surgical procedures."
     },
     {
+      icon: <Globe className="w-8 h-8" />,
       title: "Blood Management Solutions",
       image: "https://images.unsplash.com/photo-1579154341184-22069e4614d2?auto=format&fit=crop&q=80",
       description: "Comprehensive blood collection systems, storage solutions, and transfusion management equipment."
     },
     {
+      icon: <Globe className="w-8 h-8" />,
       title: "Medical Gloves Division",
       image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80",
       description: "High-quality surgical, examination, and specialized protective gloves designed for optimal safety and comfort in medical procedures."
@@ -151,6 +156,7 @@ const Index = () => {
                     <Button 
                       variant="outline" 
                       className="bg-white/10 border-white text-white hover:bg-white hover:text-gray-900 transition-colors opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300"
+                      onClick={() => window.location.href = category.link}
                     >
                       View Products
                     </Button>
