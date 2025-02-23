@@ -12,7 +12,7 @@ const Hero = () => {
 
   return (
     <section className="relative h-[100vh] w-full bg-gradient-to-r from-medical-50 to-medical-100 overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 hover:opacity-15 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579154204914-d5c87da7fd4c?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 hover:opacity-25 transition-opacity duration-500" />
       <div className="container relative h-full flex flex-col items-center justify-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
