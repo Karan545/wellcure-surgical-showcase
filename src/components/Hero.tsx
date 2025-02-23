@@ -10,6 +10,20 @@ const Hero = () => {
     });
   };
 
+  const scrollToProducts = () => {
+    const productsSection = document.getElementById('products');
+    if (productsSection) {
+      productsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative h-[100vh] w-full bg-gradient-to-r from-medical-50 to-medical-100 overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579154204914-d5c87da7fd4c?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 hover:opacity-25 transition-opacity duration-500" />
@@ -46,6 +60,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-medical-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-medical-600 transition-colors"
+              onClick={scrollToProducts}
             >
               Explore Products
             </motion.button>
@@ -53,6 +68,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="border-2 border-medical-500 text-medical-500 px-8 py-3 rounded-full font-semibold hover:bg-medical-50 transition-colors"
+              onClick={scrollToContact}
             >
               Contact Us
             </motion.button>
