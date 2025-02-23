@@ -69,7 +69,8 @@ const Hero = () => {
             }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-medical-50/80 to-medical-100/80" />
+            {/* Reduced opacity of the gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-medical-50/40 to-medical-100/40" />
             <img
               src={image.url}
               alt={image.alt}
@@ -87,14 +88,14 @@ const Hero = () => {
           className="space-y-6"
         >
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-white"
+            className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             Wellcure Surgicals
           </motion.h1>
           <motion.p 
-            className="text-xl md:text-2xl text-white max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-white max-w-2xl mx-auto drop-shadow-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -111,7 +112,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-medical-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-medical-600 transition-colors"
+              className="bg-medical-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-medical-600 transition-colors shadow-lg"
               onClick={scrollToProducts}
             >
               Explore Products
@@ -119,7 +120,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors"
+              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors shadow-lg"
               onClick={scrollToContact}
             >
               Contact Us
@@ -133,7 +134,7 @@ const Hero = () => {
           transition={{ repeat: Infinity, duration: 2 }}
           onClick={scrollToContent}
         >
-          <ArrowDownCircle size={40} className="text-white" />
+          <ArrowDownCircle size={40} className="text-white drop-shadow-lg" />
         </motion.div>
       </div>
     </section>
