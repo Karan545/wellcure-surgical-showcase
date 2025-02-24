@@ -12,28 +12,30 @@ const Hero = () => {
       alt: "Surgical procedure in progress"
     },
     {
-      url: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144",
+      url: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&q=80",
       alt: "Medical professional wearing surgical gloves"
     },
     {
-      url: "https://images.unsplash.com/photo-1609188944224-a81b9bbce4db",
+      url: "https://images.unsplash.com/photo-1609188944224-a81b9bbce4db?auto=format&q=80",
       alt: "Surgical gloves manufacturing facility"
     },
     {
-      url: "https://images.unsplash.com/photo-1603398938378-e54eab446dde",
+      url: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&q=80",
       alt: "Doctor examining patient with medical gauges"
     },
     {
-      url: "https://images.unsplash.com/photo-1579154204601-01588f351e67",
-      alt: "Surgical instruments on sterile tray"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1612277795421-9bc7706a4a31",
+      url: "https://images.unsplash.com/photo-1612277795421-9bc7706a4a31?auto=format&q=80",
       alt: "Surgical procedure with gloved hands"
     }
   ];
 
   useEffect(() => {
+    // Preload images to prevent lag during transitions
+    images.forEach(image => {
+      const img = new Image();
+      img.src = image.url;
+    });
+
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 2000);
@@ -76,6 +78,7 @@ const Hero = () => {
                  index === ((currentImage - 1 + images.length) % images.length) ? "-100%" : "100%"
             }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
+            style={{ willChange: 'transform' }}
           >
             {/* Reduced opacity of the gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-medical-50/20 to-medical-100/20" />
@@ -83,6 +86,7 @@ const Hero = () => {
               src={image.url}
               alt={image.alt}
               className="w-full h-full object-cover"
+              loading="eager"
             />
           </motion.div>
         ))}
