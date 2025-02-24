@@ -8,6 +8,10 @@ const Hero = () => {
 
   const images = [
     {
+      url: "https://cdn.pixabay.com/photo/2016/11/08/05/29/surgery-1807541_1280.jpg",
+      alt: "Surgical procedure in progress"
+    },
+    {
       url: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144",
       alt: "Medical professional wearing surgical gloves"
     },
@@ -26,10 +30,6 @@ const Hero = () => {
     {
       url: "https://images.unsplash.com/photo-1612277795421-9bc7706a4a31",
       alt: "Surgical procedure with gloved hands"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e",
-      alt: "Advanced medical equipment in operating room"
     }
   ];
 
