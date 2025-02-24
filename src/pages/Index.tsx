@@ -1,14 +1,30 @@
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import LoadingScreen from "@/components/LoadingScreen";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Stethoscope, ShieldCheck, Globe, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
   
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   const features = [
     {
       icon: <Stethoscope className="w-8 h-8" />,

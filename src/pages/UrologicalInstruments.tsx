@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import LoadingScreen from "@/components/LoadingScreen";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Syringe, Bandage, Stethoscope, Thermometer } from "lucide-react";
@@ -90,10 +91,17 @@ const FloatingIcon = ({ children, delay, duration, x, y }: {
 
 const UrologicalInstruments = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("urine-bags");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     setSelectedCategory("urine-bags");
+    
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const renderProducts = (category: string) => {
@@ -130,6 +138,10 @@ const UrologicalInstruments = () => {
       </section>
     );
   };
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
