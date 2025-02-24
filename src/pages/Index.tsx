@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LoadingScreen from "@/components/LoadingScreen";
+import SocialMedia from "@/components/SocialMedia";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Stethoscope, ShieldCheck, Globe, Award } from "lucide-react";
@@ -135,7 +136,8 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Product Categories Section */}
+        <SocialMedia />
+
         <section id="products" className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <motion.div
@@ -195,7 +197,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Contact Form Section */}
         <section id="contact" className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <motion.div
