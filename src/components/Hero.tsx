@@ -8,20 +8,28 @@ const Hero = () => {
 
   const images = [
     {
-      url: "https://images.unsplash.com/photo-1612277795421-9bc7706a4a31?auto=format&fit=crop&q=80",
-      alt: "Doctor treating patient with medical equipment"
+      url: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144",
+      alt: "Medical professional wearing surgical gloves"
     },
     {
-      url: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&q=80",
-      alt: "Surgical procedure in progress"
+      url: "https://images.unsplash.com/photo-1609188944224-a81b9bbce4db",
+      alt: "Surgical gloves manufacturing facility"
     },
     {
-      url: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&q=80",
-      alt: "Medical professional with surgical equipment"
+      url: "https://images.unsplash.com/photo-1603398938378-e54eab446dde",
+      alt: "Doctor examining patient with medical gauges"
     },
     {
-      url: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80",
-      alt: "Doctor examining patient with medical tools"
+      url: "https://images.unsplash.com/photo-1579154204601-01588f351e67",
+      alt: "Surgical instruments on sterile tray"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1612277795421-9bc7706a4a31",
+      alt: "Surgical procedure with gloved hands"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e",
+      alt: "Advanced medical equipment in operating room"
     }
   ];
 
@@ -70,7 +78,7 @@ const Hero = () => {
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
             {/* Reduced opacity of the gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-medical-50/40 to-medical-100/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-medical-50/20 to-medical-100/20" />
             <img
               src={image.url}
               alt={image.alt}
