@@ -8,20 +8,20 @@ const Hero = () => {
 
   const images = [
     {
-      url: "https://images.unsplash.com/photo-1631217862332-090e298eff2b?auto=format&fit=crop&w=1280&q=80",
-      alt: "Advanced medical equipment in a modern hospital setting"
+      url: "https://images.unsplash.com/photo-1583912267550-d980e45f9b58?auto=format&fit=crop&w=1280&q=80",
+      alt: "Dark-toned surgical equipment arrangement"
     },
     {
-      url: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1280&q=80",
-      alt: "Medical professionals in surgical environment"
+      url: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&w=1280&q=80",
+      alt: "Dark surgical room with equipment"
     },
     {
-      url: "https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&w=1280&q=80",
-      alt: "State-of-the-art medical technology"
+      url: "https://images.unsplash.com/photo-1578576154794-9c9fc2d4c341?auto=format&fit=crop&w=1280&q=80",
+      alt: "Moody medical laboratory setting"
     },
     {
-      url: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1280&q=80",
-      alt: "Modern medical laboratory equipment"
+      url: "https://images.unsplash.com/photo-1587854680352-936b22b91030?auto=format&fit=crop&w=1280&q=80",
+      alt: "Dark-toned medical technology"
     }
   ];
 
@@ -32,7 +32,10 @@ const Hero = () => {
         return new Promise((resolve, reject) => {
           const img = new Image();
           img.onload = () => resolve(img);
-          img.onerror = reject;
+          img.onerror = (e) => {
+            console.error(`Failed to load image: ${url}`, e);
+            reject(e);
+          };
           img.src = url;
         });
       };
@@ -49,7 +52,7 @@ const Hero = () => {
 
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 4000); // Increased to 4 seconds for better viewing
+    }, 4000);
 
     return () => clearInterval(timer);
   }, []);
@@ -91,14 +94,17 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: "easeInOut" }}
             style={{ willChange: 'transform' }}
           >
-            {/* Enhanced gradient overlay for better text visibility */}
-            <div className="absolute inset-0 bg-gradient-to-r from-medical-50/60 to-medical-100/60 md:from-medical-50/40 md:to-medical-100/40" />
+            {/* Darker gradient overlay for better text contrast */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
             <img
               src={image.url}
               alt={image.alt}
               className="w-full h-full object-cover"
               loading="eager"
-              onError={(e) => console.error('Image failed to load:', e)}
+              onError={(e) => {
+                console.error('Image failed to load:', image.url);
+                e.currentTarget.src = 'https://images.unsplash.com/photo-1583912267550-d980e45f9b58?auto=format&fit=crop&w=1280&q=80';
+              }}
             />
           </motion.div>
         ))}
@@ -112,7 +118,7 @@ const Hero = () => {
           className="space-y-4 md:space-y-6"
         >
           <motion.h1 
-            className="text-3xl sm:text-4xl md:text-6xl font-bold text-white drop-shadow-lg"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold text-white drop-shadow-xl"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
