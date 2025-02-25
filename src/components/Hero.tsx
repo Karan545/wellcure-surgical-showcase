@@ -8,23 +8,19 @@ const Hero = () => {
 
   const images = [
     {
-      url: "https://cdn.pixabay.com/photo/2016/11/08/05/29/surgery-1807541_1280.jpg",
-      alt: "Surgical procedure in progress"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&q=80",
+      url: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=1280&q=80",
       alt: "Medical professional wearing surgical gloves"
     },
     {
-      url: "https://images.unsplash.com/photo-1609188944224-a81b9bbce4db?auto=format&q=80",
+      url: "https://images.unsplash.com/photo-1609188944224-a81b9bbce4db?auto=format&fit=crop&w=1280&q=80",
       alt: "Surgical gloves manufacturing facility"
     },
     {
-      url: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&q=80",
+      url: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=1280&q=80",
       alt: "Doctor examining patient with medical gauges"
     },
     {
-      url: "https://images.unsplash.com/photo-1612277795421-9bc7706a4a31?auto=format&q=80",
+      url: "https://images.unsplash.com/photo-1612277795421-9bc7706a4a31?auto=format&fit=crop&w=1280&q=80",
       alt: "Surgical procedure with gloved hands"
     }
   ];
@@ -38,7 +34,7 @@ const Hero = () => {
 
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 2000);
+    }, 3000); // Increased transition time for better UX
 
     return () => clearInterval(timer);
   }, []);
@@ -65,7 +61,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-[70vh] mt-16 w-full bg-gradient-to-r from-medical-50 to-medical-100 overflow-hidden">
+    <section className="relative h-[60vh] md:h-[70vh] mt-12 md:mt-16 w-full bg-gradient-to-r from-medical-50 to-medical-100 overflow-hidden">
       {/* Image Carousel */}
       <div className="absolute inset-0 overflow-hidden">
         {images.map((image, index) => (
@@ -80,8 +76,8 @@ const Hero = () => {
             transition={{ duration: 0.5, ease: "easeInOut" }}
             style={{ willChange: 'transform' }}
           >
-            {/* Reduced opacity of the gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-medical-50/20 to-medical-100/20" />
+            {/* Gradient overlay adjusted for better text visibility on mobile */}
+            <div className="absolute inset-0 bg-gradient-to-r from-medical-50/40 to-medical-100/40 md:from-medical-50/20 md:to-medical-100/20" />
             <img
               src={image.url}
               alt={image.alt}
@@ -92,22 +88,22 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="container relative h-full flex flex-col items-center justify-center text-center">
+      <div className="container relative h-full flex flex-col items-center justify-center text-center px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-6"
+          className="space-y-4 md:space-y-6"
         >
           <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold text-white drop-shadow-lg"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             Wellcure Surgicals
           </motion.h1>
           <motion.p 
-            className="text-xl md:text-2xl text-white max-w-2xl mx-auto drop-shadow-lg"
+            className="text-lg sm:text-xl md:text-2xl text-white max-w-2xl mx-auto drop-shadow-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -116,7 +112,7 @@ const Hero = () => {
           </motion.p>
           
           <motion.div 
-            className="flex flex-wrap gap-4 justify-center mt-8"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-6 md:mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
@@ -124,7 +120,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-medical-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-medical-600 transition-colors shadow-lg"
+              className="w-full sm:w-auto bg-medical-500 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold hover:bg-medical-600 transition-colors shadow-lg"
               onClick={scrollToProducts}
             >
               Explore Products
@@ -132,7 +128,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors shadow-lg"
+              className="w-full sm:w-auto border-2 border-white text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold hover:bg-white/10 transition-colors shadow-lg"
               onClick={scrollToContact}
             >
               Contact Us
@@ -141,12 +137,12 @@ const Hero = () => {
         </motion.div>
 
         <motion.div 
-          className="absolute bottom-8 cursor-pointer"
+          className="absolute bottom-4 md:bottom-8 cursor-pointer"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
           onClick={scrollToContent}
         >
-          <ArrowDownCircle size={40} className="text-white drop-shadow-lg" />
+          <ArrowDownCircle size={32} className="text-white drop-shadow-lg" />
         </motion.div>
       </div>
     </section>
