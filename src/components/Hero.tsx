@@ -8,33 +8,48 @@ const Hero = () => {
 
   const images = [
     {
-      url: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=1280&q=80",
-      alt: "Medical professional wearing surgical gloves"
+      url: "https://images.unsplash.com/photo-1631217862332-090e298eff2b?auto=format&fit=crop&w=1280&q=80",
+      alt: "Advanced medical equipment in a modern hospital setting"
     },
     {
-      url: "https://images.unsplash.com/photo-1609188944224-a81b9bbce4db?auto=format&fit=crop&w=1280&q=80",
-      alt: "Surgical gloves manufacturing facility"
+      url: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1280&q=80",
+      alt: "Medical professionals in surgical environment"
     },
     {
-      url: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=1280&q=80",
-      alt: "Doctor examining patient with medical gauges"
+      url: "https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&w=1280&q=80",
+      alt: "State-of-the-art medical technology"
     },
     {
-      url: "https://images.unsplash.com/photo-1612277795421-9bc7706a4a31?auto=format&fit=crop&w=1280&q=80",
-      alt: "Surgical procedure with gloved hands"
+      url: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1280&q=80",
+      alt: "Modern medical laboratory equipment"
     }
   ];
 
   useEffect(() => {
-    // Preload images to prevent lag during transitions
-    images.forEach(image => {
-      const img = new Image();
-      img.src = image.url;
-    });
+    // Enhanced image preloading with load confirmation
+    const preloadImages = async () => {
+      const loadImage = (url: string) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = url;
+        });
+      };
+
+      try {
+        await Promise.all(images.map(image => loadImage(image.url)));
+        console.log('All images preloaded successfully');
+      } catch (error) {
+        console.error('Error preloading images:', error);
+      }
+    };
+
+    preloadImages();
 
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 3000); // Increased transition time for better UX
+    }, 4000); // Increased to 4 seconds for better viewing
 
     return () => clearInterval(timer);
   }, []);
@@ -62,7 +77,7 @@ const Hero = () => {
 
   return (
     <section className="relative h-[60vh] md:h-[70vh] mt-12 md:mt-16 w-full bg-gradient-to-r from-medical-50 to-medical-100 overflow-hidden">
-      {/* Image Carousel */}
+      {/* Image Carousel with enhanced overlay */}
       <div className="absolute inset-0 overflow-hidden">
         {images.map((image, index) => (
           <motion.div
@@ -73,16 +88,17 @@ const Hero = () => {
               x: index === currentImage ? "0%" : 
                  index === ((currentImage - 1 + images.length) % images.length) ? "-100%" : "100%"
             }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
             style={{ willChange: 'transform' }}
           >
-            {/* Gradient overlay adjusted for better text visibility on mobile */}
-            <div className="absolute inset-0 bg-gradient-to-r from-medical-50/40 to-medical-100/40 md:from-medical-50/20 md:to-medical-100/20" />
+            {/* Enhanced gradient overlay for better text visibility */}
+            <div className="absolute inset-0 bg-gradient-to-r from-medical-50/60 to-medical-100/60 md:from-medical-50/40 md:to-medical-100/40" />
             <img
               src={image.url}
               alt={image.alt}
               className="w-full h-full object-cover"
               loading="eager"
+              onError={(e) => console.error('Image failed to load:', e)}
             />
           </motion.div>
         ))}
@@ -100,19 +116,19 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            Wellcure Surgicals
+            Revolutionizing Healthcare Excellence
           </motion.h1>
           <motion.p 
-            className="text-lg sm:text-xl md:text-2xl text-white max-w-2xl mx-auto drop-shadow-lg"
+            className="text-lg sm:text-xl md:text-2xl text-white max-w-2xl mx-auto drop-shadow-lg font-medium"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Leading Medical & Surgical Equipment Exporters
+            Empowering Medical Professionals with Premium Surgical Equipment & Innovative Healthcare Solutions
           </motion.p>
           
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-6 md:mt-8"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 md:mt-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
@@ -120,7 +136,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto bg-medical-500 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold hover:bg-medical-600 transition-colors shadow-lg"
+              className="w-full sm:w-auto bg-medical-500 text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold hover:bg-medical-600 transition-colors shadow-lg text-lg"
               onClick={scrollToProducts}
             >
               Explore Products
@@ -128,7 +144,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto border-2 border-white text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold hover:bg-white/10 transition-colors shadow-lg"
+              className="w-full sm:w-auto border-2 border-white text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold hover:bg-white/10 transition-colors shadow-lg text-lg"
               onClick={scrollToContact}
             >
               Contact Us
