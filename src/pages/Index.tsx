@@ -136,8 +136,6 @@ const Index = () => {
           </div>
         </section>
 
-        <SocialMedia />
-
         <section id="products" className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <motion.div
@@ -305,6 +303,9 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        {/* Moved SocialMedia component here - after contact form, before footer */}
+        <SocialMedia />
       </main>
       <Footer />
     </div>
