@@ -1,10 +1,11 @@
 
 import { motion } from "framer-motion";
 import { ArrowDownCircle } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Hero = () => {
   const [currentVideo, setCurrentVideo] = useState(0);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const videos = [
     {
@@ -38,6 +39,27 @@ const Hero = () => {
 
     return () => clearInterval(timer);
   }, []);
+
+  // Update videoRefs when currentVideo changes
+  useEffect(() => {
+    // Attempt to play the current video
+    if (videoRefs.current[currentVideo]) {
+      const videoElement = videoRefs.current[currentVideo];
+      if (videoElement) {
+        const playPromise = videoElement.play();
+        // Handle the play promise to avoid uncaught promise errors
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              console.log(`Successfully playing video ${currentVideo}`);
+            })
+            .catch(error => {
+              console.error(`Error playing video ${currentVideo}:`, error);
+            });
+        }
+      }
+    }
+  }, [currentVideo]);
 
   const scrollToContent = () => {
     window.scrollTo({
@@ -79,13 +101,13 @@ const Hero = () => {
             {/* Darker gradient overlay for better text contrast */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 z-10" />
             <video
-              autoPlay
+              ref={el => videoRefs.current[index] = el}
               muted
               playsInline
               loop
               className="w-full h-full object-cover"
-              onLoadedData={() => console.log(`Video loaded: ${video.url}`)}
-              onError={(e) => console.error(`Video failed to load: ${video.url}`, e)}
+              onLoadedData={() => console.log(`Video ${index} loaded: ${video.url}`)}
+              onError={(e) => console.error(`Video ${index} failed to load: ${video.url}`, e)}
             >
               <source src={video.url} type="video/mp4" />
               Your browser does not support the video tag.
