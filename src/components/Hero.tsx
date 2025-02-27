@@ -10,15 +10,15 @@ const Hero = () => {
   const videos = [
     {
       url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-      alt: "Business handshake deal"
+      alt: "Medical professionals in discussion"
     },
     {
       url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-      alt: "Factory workers manufacturing"
+      alt: "Surgical equipment manufacturing"
     },
     {
       url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-      alt: "Surgery in progress"
+      alt: "Modern healthcare facility"
     }
   ];
 
