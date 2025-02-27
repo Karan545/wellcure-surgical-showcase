@@ -1,65 +1,44 @@
 
 import { motion } from "framer-motion";
 import { ArrowDownCircle } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
-  const [currentVideo, setCurrentVideo] = useState(0);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [currentImage, setCurrentImage] = useState(0);
 
-  const videos = [
+  const images = [
     {
-      url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-      alt: "Medical professionals in discussion"
+      url: "https://images.unsplash.com/photo-1516549655055-e40a7ca0989f?auto=format&fit=crop&q=80",
+      alt: "Medical surgical tools and equipment"
     },
     {
-      url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-      alt: "Surgical equipment manufacturing"
+      url: "https://images.unsplash.com/photo-1581093196277-9f608bb2c016?auto=format&fit=crop&q=80",
+      alt: "Modern surgical operating room"
     },
     {
-      url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-      alt: "Modern healthcare facility"
+      url: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80",
+      alt: "Medical professional with surgical mask"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1582560475093-ba66accbc7f0?auto=format&fit=crop&q=80",
+      alt: "Advanced medical diagnostic equipment"
     }
   ];
 
   useEffect(() => {
-    // Preload videos
-    videos.forEach(video => {
-      const preloadVideo = document.createElement('video');
-      preloadVideo.src = video.url;
-      preloadVideo.muted = true;
-      preloadVideo.preload = 'auto';
-      preloadVideo.load();
-      console.log(`Preloading video: ${video.url}`);
+    // Preload images
+    images.forEach(image => {
+      const preloadImage = new Image();
+      preloadImage.src = image.url;
+      console.log(`Preloading image: ${image.url}`);
     });
 
     const timer = setInterval(() => {
-      setCurrentVideo((prev) => (prev + 1) % videos.length);
-    }, 5000); // 5 seconds for each video
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 5000); // 5 seconds for each image
 
     return () => clearInterval(timer);
   }, []);
-
-  // Update videoRefs when currentVideo changes
-  useEffect(() => {
-    // Attempt to play the current video
-    if (videoRefs.current[currentVideo]) {
-      const videoElement = videoRefs.current[currentVideo];
-      if (videoElement) {
-        const playPromise = videoElement.play();
-        // Handle the play promise to avoid uncaught promise errors
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              console.log(`Successfully playing video ${currentVideo}`);
-            })
-            .catch(error => {
-              console.error(`Error playing video ${currentVideo}:`, error);
-            });
-        }
-      }
-    }
-  }, [currentVideo]);
 
   const scrollToContent = () => {
     window.scrollTo({
@@ -84,34 +63,29 @@ const Hero = () => {
 
   return (
     <section className="relative h-[60vh] md:h-[70vh] mt-12 md:mt-16 w-full bg-gradient-to-r from-medical-50 to-medical-100 overflow-hidden">
-      {/* Video Carousel */}
+      {/* Image Carousel */}
       <div className="absolute inset-0 overflow-hidden">
-        {videos.map((video, index) => (
+        {images.map((image, index) => (
           <motion.div
             key={index}
             className="absolute inset-0"
             initial={{ x: "100%" }}
             animate={{ 
-              x: index === currentVideo ? "0%" : 
-                 index === ((currentVideo - 1 + videos.length) % videos.length) ? "-100%" : "100%"
+              x: index === currentImage ? "0%" : 
+                 index === ((currentImage - 1 + images.length) % images.length) ? "-100%" : "100%"
             }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
             style={{ willChange: 'transform' }}
           >
             {/* Darker gradient overlay for better text contrast */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 z-10" />
-            <video
-              ref={el => videoRefs.current[index] = el}
-              muted
-              playsInline
-              loop
+            <img
+              src={image.url}
+              alt={image.alt}
               className="w-full h-full object-cover"
-              onLoadedData={() => console.log(`Video ${index} loaded: ${video.url}`)}
-              onError={(e) => console.error(`Video ${index} failed to load: ${video.url}`, e)}
-            >
-              <source src={video.url} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+              onLoad={() => console.log(`Image ${index} loaded: ${image.url}`)}
+              onError={(e) => console.error(`Image ${index} failed to load: ${image.url}`, e)}
+            />
           </motion.div>
         ))}
       </div>
