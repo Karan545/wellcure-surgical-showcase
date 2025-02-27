@@ -4,55 +4,27 @@ import { ArrowDownCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
-  const [currentImage, setCurrentImage] = useState(0);
+  const [currentVideo, setCurrentVideo] = useState(0);
 
-  const images = [
+  const videos = [
     {
-      url: "https://images.unsplash.com/photo-1583912267550-d980e45f9b58?auto=format&fit=crop&w=1280&q=80",
-      alt: "Dark-toned surgical equipment arrangement"
+      url: "https://cdn.pixabay.com/vimeo/545841291/business-83880.mp4?width=1280&hash=31dbe18c825ea25a0bebe4c32311f23e2ff7a74a",
+      alt: "Business handshake deal"
     },
     {
-      url: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&w=1280&q=80",
-      alt: "Dark surgical room with equipment"
+      url: "https://cdn.pixabay.com/vimeo/909519301/manufacturing-176963.mp4?width=1280&hash=8c6b77677e4ce84dd4f92c00dea276e8dbf6a3e5",
+      alt: "Factory workers manufacturing"
     },
     {
-      url: "https://images.unsplash.com/photo-1578576154794-9c9fc2d4c341?auto=format&fit=crop&w=1280&q=80",
-      alt: "Moody medical laboratory setting"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1587854680352-936b22b91030?auto=format&fit=crop&w=1280&q=80",
-      alt: "Dark-toned medical technology"
+      url: "https://cdn.pixabay.com/vimeo/535429543/surgery-79712.mp4?width=1280&hash=a1c11591265aa0a1e20dbae10e3d8bb8b31e81c9",
+      alt: "Surgery in progress"
     }
   ];
 
   useEffect(() => {
-    // Enhanced image preloading with load confirmation
-    const preloadImages = async () => {
-      const loadImage = (url: string) => {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.onload = () => resolve(img);
-          img.onerror = (e) => {
-            console.error(`Failed to load image: ${url}`, e);
-            reject(e);
-          };
-          img.src = url;
-        });
-      };
-
-      try {
-        await Promise.all(images.map(image => loadImage(image.url)));
-        console.log('All images preloaded successfully');
-      } catch (error) {
-        console.error('Error preloading images:', error);
-      }
-    };
-
-    preloadImages();
-
     const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 4000);
+      setCurrentVideo((prev) => (prev + 1) % videos.length);
+    }, 5000); // 5 seconds for each video
 
     return () => clearInterval(timer);
   }, []);
@@ -80,37 +52,41 @@ const Hero = () => {
 
   return (
     <section className="relative h-[60vh] md:h-[70vh] mt-12 md:mt-16 w-full bg-gradient-to-r from-medical-50 to-medical-100 overflow-hidden">
-      {/* Image Carousel with enhanced overlay */}
+      {/* Video Carousel */}
       <div className="absolute inset-0 overflow-hidden">
-        {images.map((image, index) => (
+        {videos.map((video, index) => (
           <motion.div
             key={index}
             className="absolute inset-0"
             initial={{ x: "100%" }}
             animate={{ 
-              x: index === currentImage ? "0%" : 
-                 index === ((currentImage - 1 + images.length) % images.length) ? "-100%" : "100%"
+              x: index === currentVideo ? "0%" : 
+                 index === ((currentVideo - 1 + videos.length) % videos.length) ? "-100%" : "100%"
             }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
             style={{ willChange: 'transform' }}
           >
             {/* Darker gradient overlay for better text contrast */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
-            <img
-              src={image.url}
-              alt={image.alt}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 z-10" />
+            <video
+              src={video.url}
+              autoPlay
+              muted
+              playsInline
+              loop
               className="w-full h-full object-cover"
-              loading="eager"
               onError={(e) => {
-                console.error('Image failed to load:', image.url);
-                e.currentTarget.src = 'https://images.unsplash.com/photo-1583912267550-d980e45f9b58?auto=format&fit=crop&w=1280&q=80';
+                console.error('Video failed to load:', video.url);
               }}
-            />
+            >
+              <source src={video.url} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </motion.div>
         ))}
       </div>
 
-      <div className="container relative h-full flex flex-col items-center justify-center text-center px-4 md:px-8">
+      <div className="container relative h-full flex flex-col items-center justify-center text-center px-4 md:px-8 z-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
