@@ -8,20 +8,30 @@ const Hero = () => {
 
   const videos = [
     {
-      url: "https://cdn.pixabay.com/vimeo/545841291/business-83880.mp4?width=1280&hash=31dbe18c825ea25a0bebe4c32311f23e2ff7a74a",
+      url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
       alt: "Business handshake deal"
     },
     {
-      url: "https://cdn.pixabay.com/vimeo/909519301/manufacturing-176963.mp4?width=1280&hash=8c6b77677e4ce84dd4f92c00dea276e8dbf6a3e5",
+      url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
       alt: "Factory workers manufacturing"
     },
     {
-      url: "https://cdn.pixabay.com/vimeo/535429543/surgery-79712.mp4?width=1280&hash=a1c11591265aa0a1e20dbae10e3d8bb8b31e81c9",
+      url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
       alt: "Surgery in progress"
     }
   ];
 
   useEffect(() => {
+    // Preload videos
+    videos.forEach(video => {
+      const preloadVideo = document.createElement('video');
+      preloadVideo.src = video.url;
+      preloadVideo.muted = true;
+      preloadVideo.preload = 'auto';
+      preloadVideo.load();
+      console.log(`Preloading video: ${video.url}`);
+    });
+
     const timer = setInterval(() => {
       setCurrentVideo((prev) => (prev + 1) % videos.length);
     }, 5000); // 5 seconds for each video
@@ -69,15 +79,13 @@ const Hero = () => {
             {/* Darker gradient overlay for better text contrast */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 z-10" />
             <video
-              src={video.url}
               autoPlay
               muted
               playsInline
               loop
               className="w-full h-full object-cover"
-              onError={(e) => {
-                console.error('Video failed to load:', video.url);
-              }}
+              onLoadedData={() => console.log(`Video loaded: ${video.url}`)}
+              onError={(e) => console.error(`Video failed to load: ${video.url}`, e)}
             >
               <source src={video.url} type="video/mp4" />
               Your browser does not support the video tag.
