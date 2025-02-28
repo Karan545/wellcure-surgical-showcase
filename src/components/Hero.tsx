@@ -8,7 +8,7 @@ const Hero = () => {
 
   const images = [
     {
-      url: "https://images.unsplash.com/photo-1516549655055-e40a7ca0989f?auto=format&fit=crop&q=80",
+      url: "https://unsplash.com/photos/a-person-in-a-hospital-bed-with-an-iv-zQEmEAb-WpY?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash?auto=format&fit=crop&q=80",
       alt: "Medical surgical tools and equipment"
     },
     {
