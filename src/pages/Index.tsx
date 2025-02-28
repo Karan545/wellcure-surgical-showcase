@@ -1,3 +1,4 @@
+
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -63,6 +64,18 @@ const Index = () => {
       link: "/gastroenterology"
     },
     {
+      title: "Infusion Therapy",
+      image: "https://images.unsplash.com/photo-1579154204661-305a1ff49faa?auto=format&fit=crop&q=80",
+      description: "Complete range of infusion systems, IV cannulas, and administration sets designed for safe and accurate fluid delivery and medication administration.",
+      link: "/infusion-therapy"
+    },
+    {
+      title: "Surgery & Wound Drainage",
+      image: "https://images.unsplash.com/photo-1579154204476-5c9941a59d77?auto=format&fit=crop&q=80",
+      description: "Comprehensive selection of surgical drains, collection systems, and management solutions for effective post-operative wound care.",
+      link: "/surgery-wound-drainage"
+    },
+    {
       title: "Surgical Dressings",
       image: "https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&q=80",
       description: "Premium wound care solutions, including advanced dressings, bandages, and post-operative care products.",
@@ -73,6 +86,18 @@ const Index = () => {
       image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80",
       description: "Modern anaesthesia delivery units, patient monitoring systems, and critical care equipment for surgical procedures.",
       link: "/anaesthesia-systems"
+    },
+    {
+      title: "Wound Care",
+      image: "https://images.unsplash.com/photo-1612776572997-76cc42e058c3?auto=format&fit=crop&q=80",
+      description: "Advanced wound management solutions including antimicrobial dressings, debridement agents, and specialized products for chronic and acute wounds.",
+      link: "/wound-care"
+    },
+    {
+      title: "Ortho Range",
+      image: "https://images.unsplash.com/photo-1588774069410-a944888230b1?auto=format&fit=crop&q=80",
+      description: "Comprehensive orthopedic product line featuring braces, supports, immobilizers, and rehabilitation equipment for joint and musculoskeletal conditions.",
+      link: "/ortho-range"
     },
     {
       title: "Blood Management Solutions",
