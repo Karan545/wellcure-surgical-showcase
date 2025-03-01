@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Droplets, Syringe, Flask, Thermometer } from "lucide-react";
+import { Droplets, Syringe, Stethoscope, Thermometer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -172,7 +172,7 @@ const InfusionTherapy = () => {
             <Syringe size={64} />
           </FloatingIcon>
           <FloatingIcon delay={4} duration={18} x={200} y={400}>
-            <Flask size={56} />
+            <Stethoscope size={56} />
           </FloatingIcon>
           <FloatingIcon delay={6} duration={16} x={700} y={300}>
             <Thermometer size={48} />
