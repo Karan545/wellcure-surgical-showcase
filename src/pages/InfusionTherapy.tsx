@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import { useState, useEffect } from "react";
-import FloatingBackground from "@/components/infusion-therapy/FloatingBackground";
 import Banner from "@/components/infusion-therapy/Banner";
 import ProductTabs from "@/components/infusion-therapy/ProductTabs";
 
@@ -28,10 +27,9 @@ const InfusionTherapy = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow relative overflow-hidden">
-        <FloatingBackground />
         <Banner />
 
-        <section className="py-16 bg-white/80 backdrop-blur-sm relative">
+        <section className="py-16 bg-white relative">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-800">Our Infusion Therapy Products</h2>

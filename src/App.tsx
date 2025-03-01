@@ -1,6 +1,5 @@
 
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Index from '@/pages/Index';
 import NotFound from '@/pages/NotFound';
 import UrologicalInstruments from '@/pages/UrologicalInstruments';
@@ -10,13 +9,6 @@ import WoundCareOrtho from '@/pages/WoundCareOrtho';
 import './App.css';
 
 function App() {
-  const location = useLocation();
-
-  useEffect(() => {
-    // Scroll to top on route change
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
   return (
     <Routes>
       <Route path="/" element={<Index />} />
