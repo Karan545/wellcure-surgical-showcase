@@ -1,45 +1,8 @@
 
-import { motion } from "framer-motion";
 import { ArrowDownCircle } from "lucide-react";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const Hero = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  const images = [
-    {
-      url: "https://unsplash.com/photos/a-person-in-a-hospital-bed-with-an-iv-zQEmEAb-WpY?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash?auto=format&fit=crop&q=80",
-      alt: "Medical surgical tools and equipment"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1581093196277-9f608bb2c016?auto=format&fit=crop&q=80",
-      alt: "Modern surgical operating room"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80",
-      alt: "Medical professional with surgical mask"
-    },
-    {
-      url: "https://images.unsplash.com/photo-1582560475093-ba66accbc7f0?auto=format&fit=crop&q=80",
-      alt: "Advanced medical diagnostic equipment"
-    }
-  ];
-
-  useEffect(() => {
-    // Preload images
-    images.forEach(image => {
-      const preloadImage = new Image();
-      preloadImage.src = image.url;
-      console.log(`Preloading image: ${image.url}`);
-    });
-
-    const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 5000); // 5 seconds for each image
-
-    return () => clearInterval(timer);
-  }, []);
-
   const scrollToContent = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -62,32 +25,15 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-[60vh] md:h-[70vh] mt-12 md:mt-16 w-full bg-gradient-to-r from-medical-50 to-medical-100 overflow-hidden">
-      {/* Image Carousel */}
-      <div className="absolute inset-0 overflow-hidden">
-        {images.map((image, index) => (
-          <motion.div
-            key={index}
-            className="absolute inset-0"
-            initial={{ x: "100%" }}
-            animate={{ 
-              x: index === currentImage ? "0%" : 
-                 index === ((currentImage - 1 + images.length) % images.length) ? "-100%" : "100%"
-            }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            style={{ willChange: 'transform' }}
-          >
-            {/* Darker gradient overlay for better text contrast */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 z-10" />
-            <img
-              src={image.url}
-              alt={image.alt}
-              className="w-full h-full object-cover"
-              onLoad={() => console.log(`Image ${index} loaded: ${image.url}`)}
-              onError={(e) => console.error(`Image ${index} failed to load: ${image.url}`, e)}
-            />
-          </motion.div>
-        ))}
+    <section className="relative h-[60vh] md:h-[70vh] mt-12 md:mt-16 w-full overflow-hidden">
+      {/* Single Hero Image with Rounded Corners */}
+      <div className="absolute inset-0 overflow-hidden rounded-2xl mx-4">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60 z-10" />
+        <img
+          src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80"
+          alt="Medical surgical operating room"
+          className="w-full h-full object-cover"
+        />
       </div>
 
       <div className="container relative h-full flex flex-col items-center justify-center text-center px-4 md:px-8 z-20">
