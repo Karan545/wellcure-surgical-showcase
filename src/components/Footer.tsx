@@ -44,9 +44,9 @@ const Footer = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Company Info */}
-          <motion.div className="space-y-6" variants={itemVariants}>
-            <h3 className="text-xl font-semibold border-b border-medical-200/20 pb-2 mb-4">
-              <span className="text-medical-100">Wellcure</span> Surgicals
+          <motion.div className="space-y-4" variants={itemVariants}>
+            <h3 className="text-2xl font-semibold pb-2 mb-4 text-medical-100">
+              Wellcure Surgicals
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
               A premier exporter of high-quality medical and surgical equipment, committed to providing 
@@ -79,8 +79,8 @@ const Footer = () => {
           </motion.div>
           
           {/* Contact Info */}
-          <motion.div className="space-y-6" variants={itemVariants}>
-            <h3 className="text-xl font-semibold border-b border-medical-200/20 pb-2 mb-4">Contact Us</h3>
+          <motion.div className="space-y-4" variants={itemVariants}>
+            <h3 className="text-2xl font-semibold pb-2 mb-4 text-medical-100">Contact Us</h3>
             <div className="space-y-4">
               <motion.a 
                 href="tel:+918619327540" 
@@ -114,7 +114,7 @@ const Footer = () => {
               </motion.a>
             </div>
             <motion.div 
-              className="flex gap-3 group mt-6"
+              className="flex gap-3 group mt-4"
               whileHover={{ x: 5 }}
             >
               <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0 group-hover:bg-medical-900/30">
@@ -130,8 +130,8 @@ const Footer = () => {
           </motion.div>
 
           {/* Products */}
-          <motion.div className="space-y-6 col-span-1 md:col-span-2 lg:col-span-1" variants={itemVariants}>
-            <h3 className="text-xl font-semibold border-b border-medical-200/20 pb-2 mb-4">Products</h3>
+          <motion.div className="space-y-4" variants={itemVariants}>
+            <h3 className="text-2xl font-semibold pb-2 mb-4 text-medical-100">Products</h3>
             <ul className="grid grid-cols-1 gap-2">
               {productCategories.map((category, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
@@ -148,8 +148,8 @@ const Footer = () => {
           </motion.div>
 
           {/* Quick Links */}
-          <motion.div className="space-y-6" variants={itemVariants}>
-            <h3 className="text-xl font-semibold border-b border-medical-200/20 pb-2 mb-4">Quick Links</h3>
+          <motion.div className="space-y-4" variants={itemVariants}>
+            <h3 className="text-2xl font-semibold pb-2 mb-4 text-medical-100">Quick Links</h3>
             <ul className="space-y-2">
               <motion.li whileHover={{ x: 5 }}>
                 <Link to="/" className="text-gray-300 hover:text-medical-100 transition-colors">Home</Link>
