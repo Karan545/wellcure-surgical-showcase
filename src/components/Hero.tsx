@@ -27,7 +27,7 @@ const Hero = () => {
   return (
     <section className="relative h-[60vh] md:h-[70vh] mt-12 md:mt-16 w-full overflow-hidden">
       {/* Single Hero Image with Rounded Corners */}
-      <div className="absolute inset-0 overflow-hidden rounded-2xl mx-4">
+      <div className="absolute inset-0 overflow-hidden rounded-2xl mx-2">
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60 z-10" />
         <img
           src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80"

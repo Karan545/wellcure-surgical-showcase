@@ -1,5 +1,5 @@
 
-import { Mail, Phone, MapPin, ExternalLink, Heart, ShieldCheck, Clock, Stethoscope } from "lucide-react";
+import { Mail, Phone, MapPin, Heart, ShieldCheck, Clock, Stethoscope } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -43,6 +43,7 @@ const Footer = () => {
         viewport={{ once: true }}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Company Info */}
           <motion.div className="space-y-6" variants={itemVariants}>
             <h3 className="text-xl font-semibold border-b border-medical-200/20 pb-2 mb-4">
               <span className="text-medical-100">Wellcure</span> Surgicals
@@ -55,8 +56,29 @@ const Footer = () => {
               <Clock size={14} className="text-medical-100" />
               <span>Mon - Fri: 9:00 AM - 6:00 PM IST</span>
             </div>
+            <div className="pt-4">
+              <h4 className="text-sm font-medium mb-3 flex items-center gap-2">
+                <ShieldCheck size={14} className="text-medical-100" />
+                Our Commitments
+              </h4>
+              <div className="flex flex-wrap gap-3">
+                <div className="px-3 py-1 bg-gray-800 rounded-full text-xs text-gray-300 flex items-center gap-1">
+                  <Heart size={10} className="text-medical-100" />
+                  Quality
+                </div>
+                <div className="px-3 py-1 bg-gray-800 rounded-full text-xs text-gray-300 flex items-center gap-1">
+                  <Clock size={10} className="text-medical-100" />
+                  Timely Delivery
+                </div>
+                <div className="px-3 py-1 bg-gray-800 rounded-full text-xs text-gray-300 flex items-center gap-1">
+                  <ShieldCheck size={10} className="text-medical-100" />
+                  Compliance
+                </div>
+              </div>
+            </div>
           </motion.div>
           
+          {/* Contact Info */}
           <motion.div className="space-y-6" variants={itemVariants}>
             <h3 className="text-xl font-semibold border-b border-medical-200/20 pb-2 mb-4">Contact Us</h3>
             <div className="space-y-4">
@@ -91,11 +113,26 @@ const Footer = () => {
                 <span>wellcuresurgicals@gmail.com</span>
               </motion.a>
             </div>
+            <motion.div 
+              className="flex gap-3 group mt-6"
+              whileHover={{ x: 5 }}
+            >
+              <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0 group-hover:bg-medical-900/30">
+                <MapPin size={14} className="group-hover:text-medical-100" />
+              </div>
+              <div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Gehloto ka bas, Magra Punjhla,<br />
+                  Jodhpur, Rajasthan, India
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
 
-          <motion.div className="space-y-6" variants={itemVariants}>
+          {/* Products */}
+          <motion.div className="space-y-6 col-span-1 md:col-span-2 lg:col-span-1" variants={itemVariants}>
             <h3 className="text-xl font-semibold border-b border-medical-200/20 pb-2 mb-4">Products</h3>
-            <ul className="space-y-2">
+            <ul className="grid grid-cols-1 gap-2">
               {productCategories.map((category, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
                   <Link 
@@ -110,43 +147,29 @@ const Footer = () => {
             </ul>
           </motion.div>
 
+          {/* Quick Links */}
           <motion.div className="space-y-6" variants={itemVariants}>
-            <h3 className="text-xl font-semibold border-b border-medical-200/20 pb-2 mb-4">Location</h3>
-            <motion.div 
-              className="flex gap-3 group"
-              whileHover={{ x: 5 }}
-            >
-              <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0 group-hover:bg-medical-900/30">
-                <MapPin size={14} className="group-hover:text-medical-100" />
-              </div>
-              <div>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  Gehloto ka bas, Magra Punjhla,<br />
-                  Jodhpur, Rajasthan, India
-                </p>
-              </div>
-            </motion.div>
-            
-            <div className="pt-4">
-              <h4 className="text-sm font-medium mb-3 flex items-center gap-2">
-                <ShieldCheck size={14} className="text-medical-100" />
-                Our Commitments
-              </h4>
-              <div className="flex flex-wrap gap-3">
-                <div className="px-3 py-1 bg-gray-800 rounded-full text-xs text-gray-300 flex items-center gap-1">
-                  <Heart size={10} className="text-medical-100" />
-                  Quality
-                </div>
-                <div className="px-3 py-1 bg-gray-800 rounded-full text-xs text-gray-300 flex items-center gap-1">
-                  <Clock size={10} className="text-medical-100" />
-                  Timely Delivery
-                </div>
-                <div className="px-3 py-1 bg-gray-800 rounded-full text-xs text-gray-300 flex items-center gap-1">
-                  <ShieldCheck size={10} className="text-medical-100" />
-                  Compliance
-                </div>
-              </div>
-            </div>
+            <h3 className="text-xl font-semibold border-b border-medical-200/20 pb-2 mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              <motion.li whileHover={{ x: 5 }}>
+                <Link to="/" className="text-gray-300 hover:text-medical-100 transition-colors">Home</Link>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }}>
+                <Link to="/#about" className="text-gray-300 hover:text-medical-100 transition-colors">About Us</Link>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }}>
+                <Link to="/#products" className="text-gray-300 hover:text-medical-100 transition-colors">Products</Link>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }}>
+                <Link to="/#contact" className="text-gray-300 hover:text-medical-100 transition-colors">Contact</Link>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }}>
+                <Link to="/privacy-policy" className="text-gray-300 hover:text-medical-100 transition-colors">Privacy Policy</Link>
+              </motion.li>
+              <motion.li whileHover={{ x: 5 }}>
+                <Link to="/terms-of-service" className="text-gray-300 hover:text-medical-100 transition-colors">Terms of Service</Link>
+              </motion.li>
+            </ul>
           </motion.div>
         </div>
         
@@ -156,14 +179,6 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm">&copy; {currentYear} Wellcure Surgicals. All rights reserved.</p>
-            <div className="flex gap-6">
-              <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-medical-100 transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="/terms-of-service" className="text-sm text-gray-400 hover:text-medical-100 transition-colors">
-                Terms of Service
-              </Link>
-            </div>
           </div>
         </motion.div>
       </motion.div>

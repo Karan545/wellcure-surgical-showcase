@@ -6,10 +6,25 @@ import { extensionTubes, ivCannulas, ivInfusionSets } from "@/data/infusion-ther
 const ProductTabs = () => {
   return (
     <Tabs defaultValue="extension-tubes" className="w-full">
-      <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 mb-8">
-        <TabsTrigger value="extension-tubes">Extension Tubes</TabsTrigger>
-        <TabsTrigger value="infusion-sets">I.V Infusion Sets</TabsTrigger>
-        <TabsTrigger value="cannulas">I.V. Cannula</TabsTrigger>
+      <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 mb-8 bg-gray-100">
+        <TabsTrigger 
+          value="extension-tubes" 
+          className="data-[state=active]:bg-medical-500 data-[state=active]:text-white"
+        >
+          Extension Tubes
+        </TabsTrigger>
+        <TabsTrigger 
+          value="infusion-sets" 
+          className="data-[state=active]:bg-medical-500 data-[state=active]:text-white"
+        >
+          I.V Infusion Sets
+        </TabsTrigger>
+        <TabsTrigger 
+          value="cannulas" 
+          className="data-[state=active]:bg-medical-500 data-[state=active]:text-white"
+        >
+          I.V. Cannula
+        </TabsTrigger>
       </TabsList>
       
       <CategorySection 
