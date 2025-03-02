@@ -1,7 +1,7 @@
 
 const Banner = () => {
   return (
-    <section className="relative h-[300px] flex items-center justify-center">
+    <section className="relative h-[300px] flex items-center justify-center w-full">
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1579154204661-305a1ff49faa?auto=format&fit=crop&q=80"

@@ -34,7 +34,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white py-16">
+    <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white py-16 w-full">
       <motion.div 
         className="container mx-auto px-4"
         variants={containerVariants}
