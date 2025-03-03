@@ -93,7 +93,7 @@ const Index = () => {
     },
     {
       title: "Medical Gloves Division",
-      image: "https://unsplash.com/photos/person-in-blue-pants-lying-on-white-surface-8q-U8X1zkvI?auto=format&fit=crop&q=80",
+      image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&q=80",
       description: "High-quality surgical, examination, and specialized protective gloves designed for optimal safety and comfort in medical procedures.",
       link: "/medical-gloves"
     }
