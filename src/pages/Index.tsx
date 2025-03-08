@@ -75,13 +75,13 @@ const Index = () => {
     },
     {
       title: "Wound Care & Ortho Range",
-      image: "https://images.unsplash.com/photo-1588774069410-a944888230b1?auto=format&fit=crop&q=80",
+      image: "https://cdn.pixabay.com/photo/2018/07/12/01/18/injury-3532338_1280.jpg?auto=format&fit=crop&q=80",
       description: "Comprehensive solutions for wound management and orthopedic support, including advanced dressings, braces, supports, and rehabilitation equipment.",
       link: "/wound-care-ortho"
     },
     {
       title: "Anaesthesia Systems",
-      image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&q=80",
+      image: "https://cdn.pixabay.com/photo/2023/08/30/15/42/ai-generated-8223597_1280.jpg?auto=format&fit=crop&q=80",
       description: "Modern anaesthesia delivery units, patient monitoring systems, and critical care equipment for surgical procedures.",
       link: "/anaesthesia-systems"
     },
