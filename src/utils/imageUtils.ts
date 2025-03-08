@@ -1,23 +1,18 @@
-
 /**
- * Utility to help manage product images and make future migration to local images easier
+ * Utility to manage product images using local assets
  */
 
-// This function will help transition to local images in the future
+// Function to retrieve local product images
 export const getProductImage = (imagePath: string): string => {
-  // In the future, this could be changed to:
-  // return `/images/products/${imagePath}`
-  
-  // For now, return the placeholder URL
-  return imagePath;
+  return `/images/${imagePath}`;
 };
 
-// Sample local image paths for common categories (use these as a reference later)
+// Updated local image paths for common categories
 export const IMAGE_PATHS = {
   INFUSION: {
-    EXTENSION_TUBES: 'extension-tubes/',
-    IV_INFUSION_SETS: 'iv-infusion-sets/',
-    IV_CANNULAS: 'iv-cannulas/'
+    EXTENSION_TUBES: 'infusion/extension-tubes/',
+    IV_INFUSION_SETS: 'infusion/iv-infusion-sets/',
+    IV_CANNULAS: 'infusion/iv-cannulas/'
   },
   BLOOD_MANAGEMENT: 'blood-management/',
   MEDICAL_GLOVES: 'medical-gloves/',
@@ -34,8 +29,7 @@ export const IMAGE_PATHS = {
   }
 };
 
-// For consistent image paths across the application
+// Function to generate local image paths dynamically
 export const createImagePath = (category: string, filename: string): string => {
-  return `/placeholder-images/${category}/${filename}`;
+  return `/images/${category}/${filename}`;
 };
-
