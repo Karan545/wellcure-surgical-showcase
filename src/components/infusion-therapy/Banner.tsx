@@ -6,7 +6,8 @@ const Banner = () => {
     <CategoryBanner
       title="Infusion Therapy"
       description="Complete range of infusion systems, IV cannulas, and administration sets designed for safe and accurate fluid delivery"
-      imageUrl="https://images.unsplash.com/photo-1579154204661-305a1ff49faa?auto=format&fit=crop&q=80"
+      imageUrl="/placeholder-images/infusion-therapy-banner.jpg" // Local path placeholder
+      altText="Advanced medical infusion therapy equipment and supplies"
     />
   );
 };

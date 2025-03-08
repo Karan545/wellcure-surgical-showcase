@@ -1,22 +1,30 @@
 
 import React from "react";
+import { getProductImage } from "@/utils/imageUtils";
 
 interface CategoryBannerProps {
   title: string;
   description: string;
   imageUrl: string;
+  altText?: string;
 }
 
-const CategoryBanner = ({ title, description, imageUrl }: CategoryBannerProps) => {
+const CategoryBanner = ({ 
+  title, 
+  description, 
+  imageUrl, 
+  altText 
+}: CategoryBannerProps) => {
   return (
     <section className="px-4 py-8 mt-6">
       <div className="container mx-auto">
         <div className="relative h-[375px] rounded-2xl overflow-hidden">
           <div className="absolute inset-0">
             <img
-              src={imageUrl}
-              alt={`${title} Banner`}
+              src={getProductImage(imageUrl)}
+              alt={altText || `${title} Banner`}
               className="w-full h-full object-cover"
+              loading="eager" // For better performance as this is above the fold
             />
             <div className="absolute inset-0 bg-black/50" />
           </div>

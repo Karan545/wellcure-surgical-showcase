@@ -1,20 +1,26 @@
 
 import { Product } from "@/components/infusion-therapy/ProductCard";
 
+// Placeholder paths for local images - you can replace these with your actual paths later
+const IMAGE_BASE = "/placeholder-images/infusion-therapy";
+
 export const extensionTubes: Product[] = [
   {
     title: "High Pressure Extension Line",
-    image: "https://images.unsplash.com/photo-1579154204661-305a1ff49faa?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/extension-tubes/high-pressure.jpg`,
+    imageAlt: "Medical high pressure extension line for infusion therapy",
     description: "Durable extension line designed for high-pressure applications, with reinforced walls and secure connectors."
   },
   {
     title: "Low Pressure Extension Line",
-    image: "https://images.unsplash.com/photo-1583912267550-d42ddb4518f4?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/extension-tubes/low-pressure.jpg`,
+    imageAlt: "Medical low pressure extension line for standard infusions",
     description: "Flexible extension line for standard pressure infusions, featuring clear markings and smooth fluid flow."
   },
   {
     title: "PVC Free High Pressure Extension Line",
-    image: "https://images.unsplash.com/photo-1581093458791-9d09008b0d02?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/extension-tubes/pvc-free.jpg`,
+    imageAlt: "PVC-free high pressure medical extension line",
     description: "Environmentally-friendly, PVC-free extension line with high-pressure resistance and biocompatible materials."
   }
 ];
@@ -22,22 +28,26 @@ export const extensionTubes: Product[] = [
 export const ivInfusionSets: Product[] = [
   {
     title: "I.V. Infusion Set with Airvent",
-    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/iv-sets/with-airvent.jpg`,
+    imageAlt: "IV infusion set with integrated air vent system",
     description: "Complete infusion set featuring an integrated air vent for consistent flow and prevention of air locks."
   },
   {
     title: "I.V. Infusion Set with Flow Regulator",
-    image: "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/iv-sets/with-flow-regulator.jpg`,
+    imageAlt: "IV infusion set with precision flow regulation mechanism",
     description: "Precision infusion set with adjustable flow regulator for accurate control of fluid administration rates."
   },
   {
     title: "I.V. Infusion Set with Micro Drip",
-    image: "https://images.unsplash.com/photo-1579154204661-305a1ff49faa?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/iv-sets/micro-drip.jpg`,
+    imageAlt: "IV infusion set with micro-drip chamber for precise delivery",
     description: "Specialized infusion set with micro-drip chamber for precise delivery of small volume infusions."
   },
   {
     title: "I.V. Infusion Set without Airvent",
-    image: "https://images.unsplash.com/photo-1583912267550-d42ddb4518f4?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/iv-sets/without-airvent.jpg`,
+    imageAlt: "Standard IV infusion set without air vent",
     description: "Standard infusion set without air vent, ideal for gravity-fed infusions and general application."
   }
 ];
@@ -45,37 +55,44 @@ export const ivInfusionSets: Product[] = [
 export const ivCannulas: Product[] = [
   {
     title: "I.V. Cannula-AZcan",
-    image: "https://images.unsplash.com/photo-1581093458791-9d09008b0d02?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/cannulas/azcan.jpg`,
+    imageAlt: "AZcan standard intravenous cannula with smooth insertion point",
     description: "Standard intravenous cannula with smooth insertion point and comfortable hub design."
   },
   {
     title: "I.V. Cannula-AZcath",
-    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/cannulas/azcath.jpg`,
+    imageAlt: "AZcath premium catheter-style IV cannula",
     description: "Premium catheter-style IV cannula with flexible tubing and enhanced stability."
   },
   {
     title: "I.V. Cannula-AZflon",
-    image: "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/cannulas/azflon.jpg`,
+    imageAlt: "AZflon advanced fluorinated polymer IV cannula",
     description: "Advanced fluorinated polymer IV cannula for reduced friction and longer indwelling times."
   },
   {
     title: "I.V. Cannula-AZneo",
-    image: "https://images.unsplash.com/photo-1579154204661-305a1ff49faa?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/cannulas/azneo.jpg`,
+    imageAlt: "AZneo specially designed neonatal IV cannula",
     description: "Specially designed neonatal IV cannula with extra-small gauge and gentle insertion mechanism."
   },
   {
     title: "I.V. Cannula-AZpen",
-    image: "https://images.unsplash.com/photo-1583912267550-d42ddb4518f4?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/cannulas/azpen.jpg`,
+    imageAlt: "AZpen pen-grip style IV cannula",
     description: "Pen-grip style IV cannula providing enhanced control during insertion procedures."
   },
   {
     title: "I.V. Cannula-AZwin",
-    image: "https://images.unsplash.com/photo-1581093458791-9d09008b0d02?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/cannulas/azwin.jpg`,
+    imageAlt: "AZwin wingless design IV cannula",
     description: "Wingless design IV cannula for specialized applications requiring minimal surface profile."
   },
   {
     title: "Safety I.V. Cannula – AZSafe",
-    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/cannulas/azsafe.jpg`,
+    imageAlt: "AZSafe advanced safety IV cannula with needle protection",
     description: "Advanced safety IV cannula with needle protection mechanism to prevent needlestick injuries."
   }
 ];

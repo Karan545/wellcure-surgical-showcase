@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -6,26 +7,34 @@ import { useState, useEffect } from "react";
 import { Microscope, Stethoscope, HeartPulse, Thermometer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CategoryBanner from "@/components/shared/CategoryBanner";
+import { getProductImage } from "@/utils/imageUtils";
+
+// Define products with local image path structure
+const IMAGE_BASE = "/placeholder-images/gastroenterology";
 
 const gastroenterologyProducts = [
   {
     title: "Infant Feeding Tube",
-    image: "https://images.unsplash.com/photo-1581093458791-9d09008b0d02?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/infant-feeding-tube.jpg`,
+    imageAlt: "Specialized infant feeding tube for gentle nutrition delivery",
     description: "Specially designed feeding tubes for infants, providing gentle and safe delivery of nutrition with optimal comfort."
   },
   {
     title: "Levin's Tube",
-    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/levins-tube.jpg`,
+    imageAlt: "Levin's single-lumen nasogastric tube for medical applications",
     description: "Single-lumen nasogastric tube designed for gastric decompression, feeding, and administration of medications."
   },
   {
     title: "Ryle's Tube",
-    image: "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/ryles-tube.jpg`,
+    imageAlt: "Fine-bore Ryle's feeding tube with radio-opaque line",
     description: "Fine-bore feeding tube with radio-opaque line for accurate placement confirmation and optimal patient comfort."
   },
   {
     title: "Umbilical Catheter",
-    image: "https://images.unsplash.com/photo-1583912267550-d42ddb4518f4?auto=format&fit=crop&q=80",
+    image: `${IMAGE_BASE}/umbilical-catheter.jpg`,
+    imageAlt: "Specialized catheter for umbilical vessel cannulation in neonates",
     description: "Specialized catheter for umbilical vessel cannulation in neonates, featuring smooth tapered tip and precise length markings."
   }
 ];
@@ -96,7 +105,8 @@ const GastroenterologyEquipment = () => {
         <CategoryBanner
           title="Gastroenterology Equipment"
           description="Advanced endoscopic systems and specialized tools for precise gastrointestinal procedures and diagnostics"
-          imageUrl="https://images.unsplash.com/photo-1631217862332-090e298eff2b?auto=format&fit=crop&q=80"
+          imageUrl={`${IMAGE_BASE}/banner.jpg`}
+          altText="Advanced gastroenterology medical equipment and diagnostic tools"
         />
 
         <section className="py-16 bg-white/80 backdrop-blur-sm relative">
@@ -118,9 +128,10 @@ const GastroenterologyEquipment = () => {
                 >
                   <div className="aspect-w-16 aspect-h-12">
                     <img
-                      src={product.image}
-                      alt={product.title}
+                      src={getProductImage(product.image)}
+                      alt={product.imageAlt || product.title}
                       className="w-full h-48 object-cover"
+                      loading="lazy"
                     />
                   </div>
                   <div className="p-6">

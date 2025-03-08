@@ -1,11 +1,13 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { getProductImage } from "@/utils/imageUtils";
 
 export interface Product {
   title: string;
   image: string;
   description: string;
+  imageAlt?: string; // Added alt text for improved SEO
 }
 
 interface ProductCardProps {
@@ -24,9 +26,10 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
     >
       <div className="aspect-w-16 aspect-h-12">
         <img
-          src={product.image}
-          alt={product.title}
+          src={getProductImage(product.image)}
+          alt={product.imageAlt || product.title}
           className="w-full h-48 object-cover"
+          loading="lazy" // Optimize loading performance
         />
       </div>
       <div className="p-6">
