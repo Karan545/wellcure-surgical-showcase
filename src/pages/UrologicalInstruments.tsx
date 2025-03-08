@@ -39,7 +39,7 @@ const UrineCollectionBags = [
   },
   {
     title: "Urine Collection Bag with Bottom Outlet",
-    image:  getProductImage(`/images/urological/Urine-Collection-Bag-with-Bottom-Outlet-600x600.jpg`),
+    image:  getProductImage(`public/images/urological/Urine-Collection-Bag-with-Bottom-Outlet-600x600.jpg`),
     imageAlt: "Standard urine collection bag with bottom outlet",
     description: "Standard bottom outlet design for efficient drainage and ease of use."
   },
