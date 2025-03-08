@@ -51,25 +51,25 @@ const Index = () => {
   const productCategories = [
     {
       title: "Urological Instruments",
-      image: "https://plus.unsplash.com/premium_photo-1661766752153-9f0c3fcc0946?auto=format&fit=crop&q=80",
+      image: "https://live.staticflickr.com/3873/14377885496_070d90627c_z.jpg?auto=format&fit=crop&q=80",
       description: "State-of-the-art urological surgical instruments, diagnostic equipment, and treatment solutions for comprehensive urological care.",
       link: "/urological-instruments"
     },
     {
       title: "Gastroenterology Equipment",
-      image: "https://images.unsplash.com/photo-1631217862332-090e298eff2b?auto=format&fit=crop&q=80",
+      image: "https://cdn.pixabay.com/photo/2015/05/17/01/12/hands-770461_1280.jpg?auto=format&fit=crop&q=80",
       description: "Advanced endoscopic systems and specialized tools for precise gastrointestinal procedures and diagnostics.",
       link: "/gastroenterology"
     },
     {
       title: "Infusion Therapy",
-      image: "https://images.unsplash.com/photo-1579154204661-305a1ff49faa?auto=format&fit=crop&q=80",
+      image: "https://cdn.pixabay.com/photo/2015/07/07/09/52/hospital-834152_1280.jpg?auto=format&fit=crop&q=80",
       description: "Complete range of infusion systems, IV cannulas, and administration sets designed for safe and accurate fluid delivery and medication administration.",
       link: "/infusion-therapy"
     },
     {
       title: "Surgery & Wound Drainage",
-      image: "https://images.unsplash.com/photo-1579154204476-5c9941a59d77?auto=format&fit=crop&q=80",
+      image: "https://cdn.pixabay.com/photo/2017/12/21/10/52/surgery-3031541_1280.jpg?auto=format&fit=crop&q=80",
       description: "Comprehensive selection of surgical drains, collection systems, and management solutions for effective post-operative wound care.",
       link: "/surgery-wound-drainage"
     },
