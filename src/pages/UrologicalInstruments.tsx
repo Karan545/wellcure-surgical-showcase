@@ -5,6 +5,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Syringe, Bandage, Stethoscope, Thermometer } from "lucide-react";
+import CategoryBanner from "@/components/shared/CategoryBanner";
 
 const UrineCollectionBags = [
   {
@@ -168,22 +169,11 @@ const UrologicalInstruments = () => {
           </FloatingIcon>
         </div>
 
-        <section className="relative h-[300px] flex items-center justify-center">
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80"
-              alt="Urological Instruments Banner"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-          <div className="relative z-10 text-center text-white px-4">
-            <h1 className="text-4xl font-bold mb-4">Urological Instruments</h1>
-            <p className="max-w-2xl mx-auto text-lg">
-              Advanced urological solutions designed for precision, comfort, and optimal patient care
-            </p>
-          </div>
-        </section>
+        <CategoryBanner
+          title="Urological Instruments"
+          description="Advanced urological solutions designed for precision, comfort, and optimal patient care"
+          imageUrl="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80"
+        />
 
         <section className="py-12 bg-gray-50/80 backdrop-blur-sm">
           <div className="container mx-auto px-4">

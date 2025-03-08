@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -6,6 +5,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Microscope, Stethoscope, HeartPulse, Thermometer } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CategoryBanner from "@/components/shared/CategoryBanner";
 
 const gastroenterologyProducts = [
   {
@@ -93,22 +93,11 @@ const GastroenterologyEquipment = () => {
           </FloatingIcon>
         </div>
 
-        <section className="relative h-[300px] flex items-center justify-center">
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1631217862332-090e298eff2b?auto=format&fit=crop&q=80"
-              alt="Gastroenterology Equipment Banner"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-          <div className="relative z-10 text-center text-white px-4">
-            <h1 className="text-4xl font-bold mb-4">Gastroenterology Equipment</h1>
-            <p className="max-w-2xl mx-auto text-lg">
-              Advanced endoscopic systems and specialized tools for precise gastrointestinal procedures and diagnostics
-            </p>
-          </div>
-        </section>
+        <CategoryBanner
+          title="Gastroenterology Equipment"
+          description="Advanced endoscopic systems and specialized tools for precise gastrointestinal procedures and diagnostics"
+          imageUrl="https://images.unsplash.com/photo-1631217862332-090e298eff2b?auto=format&fit=crop&q=80"
+        />
 
         <section className="py-16 bg-white/80 backdrop-blur-sm relative">
           <div className="container mx-auto px-4">

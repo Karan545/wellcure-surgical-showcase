@@ -1,10 +1,10 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import CategoryBanner from "@/components/shared/CategoryBanner";
 
 const productData = [
   {
@@ -40,22 +40,11 @@ const BloodManagementSolutions = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow relative overflow-hidden">
-        <section className="relative h-[300px] flex items-center justify-center">
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1615461066841-6116e61857c6?auto=format&fit=crop&q=80"
-              alt="Blood Management Banner"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/60" />
-          </div>
-          <div className="relative z-10 text-center text-white px-4">
-            <h1 className="text-4xl font-bold mb-4">Blood Management Solutions</h1>
-            <p className="max-w-2xl mx-auto text-lg">
-              Advanced blood administration equipment designed for efficient and safe transfusions in critical care settings
-            </p>
-          </div>
-        </section>
+        <CategoryBanner
+          title="Blood Management Solutions"
+          description="Advanced blood administration equipment designed for efficient and safe transfusions in critical care settings"
+          imageUrl="https://images.unsplash.com/photo-1615461066841-6116e61857c6?auto=format&fit=crop&q=80"
+        />
 
         <section className="py-16 bg-white relative">
           <div className="container mx-auto px-4">

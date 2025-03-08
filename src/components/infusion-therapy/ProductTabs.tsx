@@ -9,19 +9,19 @@ const ProductTabs = () => {
       <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 mb-8 bg-gray-100">
         <TabsTrigger 
           value="extension-tubes" 
-          className="data-[state=active]:bg-medical-500 data-[state=active]:text-white"
+          className="data-[state=active]:bg-blue-600 data-[state=active]:text-white"
         >
           Extension Tubes
         </TabsTrigger>
         <TabsTrigger 
           value="infusion-sets" 
-          className="data-[state=active]:bg-medical-500 data-[state=active]:text-white"
+          className="data-[state=active]:bg-blue-600 data-[state=active]:text-white"
         >
           I.V Infusion Sets
         </TabsTrigger>
         <TabsTrigger 
           value="cannulas" 
-          className="data-[state=active]:bg-medical-500 data-[state=active]:text-white"
+          className="data-[state=active]:bg-blue-600 data-[state=active]:text-white"
         >
           I.V. Cannula
         </TabsTrigger>

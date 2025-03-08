@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -179,8 +178,18 @@ const WoundCareOrtho = () => {
             
             <Tabs defaultValue="wound-care" className="w-full">
               <TabsList className="grid w-full grid-cols-1 md:grid-cols-2 mb-8">
-                <TabsTrigger value="wound-care">Wound Care</TabsTrigger>
-                <TabsTrigger value="ortho-range">Ortho Range</TabsTrigger>
+                <TabsTrigger 
+                  value="wound-care" 
+                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+                >
+                  Wound Care
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="ortho-range" 
+                  className="data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+                >
+                  Ortho Range
+                </TabsTrigger>
               </TabsList>
               
               <TabsContent value="wound-care" className="mt-6">
