@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -5,26 +6,34 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import CategoryBanner from "@/components/shared/CategoryBanner";
+import { getProductImage, createImagePath } from "@/utils/imageUtils";
+
+// Define products with local image path structure
+const CATEGORY_PATH = "medical-gloves";
 
 const productData = [
   {
     title: "Latex Sterile Examination Gloves Powdered",
-    image: "https://images.unsplash.com/photo-1584483766114-2cea6facdf57?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "latex-exam-gloves-powdered.jpg"),
+    imageAlt: "High-quality powdered latex examination gloves for medical procedures",
     description: "High-quality powdered latex examination gloves designed for superior protection and comfort during medical procedures."
   },
   {
     title: "Latex Sterile Examination Gloves Powder Free",
-    image: "https://images.unsplash.com/photo-1603816129814-fd2dfd941e4c?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "latex-exam-gloves-powder-free.jpg"),
+    imageAlt: "Premium powder-free latex examination gloves for healthcare professionals",
     description: "Premium powder-free latex examination gloves for healthcare professionals with sensitive skin or in powder-sensitive environments."
   },
   {
     title: "Latex Sterile Powdered Surgical Gloves",
-    image: "https://images.unsplash.com/photo-1585169695893-ded5baaf7d5e?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "latex-surgical-gloves-powdered.jpg"),
+    imageAlt: "Precision-designed powdered surgical gloves with excellent tactile sensitivity",
     description: "Precision-designed powdered surgical gloves offering excellent tactile sensitivity and grip for surgical procedures."
   },
   {
     title: "Latex Sterile Surgical Gloves Powder Free",
-    image: "https://images.unsplash.com/photo-1605692254117-21bd4ccd9716?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "latex-surgical-gloves-powder-free.jpg"),
+    imageAlt: "Advanced powder-free surgical gloves for optimal barrier protection",
     description: "Advanced powder-free surgical gloves providing optimal barrier protection while reducing the risk of allergic reactions."
   }
 ];
@@ -53,7 +62,8 @@ const MedicalGlovesDivision = () => {
         <CategoryBanner
           title="Medical Gloves Division"
           description="Premium quality sterile gloves offering superior protection, comfort, and precision for healthcare professionals"
-          imageUrl="https://images.unsplash.com/photo-1587977521622-ef6f7be117d4?auto=format&fit=crop&q=80"
+          imageUrl={createImagePath(CATEGORY_PATH, "banner.jpg")}
+          altText="Premium medical gloves for healthcare procedures and operations"
         />
 
         <section className="py-16 bg-white relative">
@@ -76,9 +86,10 @@ const MedicalGlovesDivision = () => {
                 >
                   <div className="aspect-w-16 aspect-h-12">
                     <img
-                      src={product.image}
-                      alt={product.title}
+                      src={getProductImage(product.image)}
+                      alt={product.imageAlt || product.title}
                       className="w-full h-48 object-cover"
+                      loading="lazy"
                     />
                   </div>
                   <div className="p-6">

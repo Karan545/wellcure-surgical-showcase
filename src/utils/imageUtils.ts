@@ -24,5 +24,18 @@ export const IMAGE_PATHS = {
   ANAESTHESIA: 'anaesthesia/',
   GASTROENTEROLOGY: 'gastroenterology/',
   UROLOGICAL: 'urological/',
-  WOUND_CARE: 'wound-care/'
+  WOUND_CARE: {
+    DRESSINGS: 'wound-care/dressings/',
+    CLEANSERS: 'wound-care/cleansers/',
+  },
+  ORTHO: {
+    BRACES: 'ortho/braces/',
+    SUPPORTS: 'ortho/supports/',
+  }
 };
+
+// For consistent image paths across the application
+export const createImagePath = (category: string, filename: string): string => {
+  return `/placeholder-images/${category}/${filename}`;
+};
+

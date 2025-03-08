@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -5,31 +6,40 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import CategoryBanner from "@/components/shared/CategoryBanner";
+import { getProductImage, createImagePath } from "@/utils/imageUtils";
+
+// Define products with local image path structure
+const CATEGORY_PATH = "anaesthesia";
 
 const productData = [
   {
     title: "Nebulizer Mask",
-    image: "https://images.unsplash.com/photo-1583912267220-99c4c0999fc2?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "nebulizer-mask.jpg"),
+    imageAlt: "High-quality nebulizer mask for effective medication delivery",
     description: "High-quality nebulizer mask for effective medication delivery through aerosol inhalation."
   },
   {
     title: "Oxygen Catheter",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "oxygen-catheter.jpg"),
+    imageAlt: "Precision-designed oxygen catheter for targeted oxygen delivery",
     description: "Precision-designed oxygen catheter for targeted oxygen delivery in various clinical settings."
   },
   {
     title: "Oxygen Mask",
-    image: "https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "oxygen-mask.jpg"),
+    imageAlt: "Comfortable and efficient oxygen mask for reliable oxygen therapy",
     description: "Comfortable and efficient oxygen mask for reliable oxygen therapy administration."
   },
   {
     title: "Suction Catheters",
-    image: "https://images.unsplash.com/photo-1579154204449-5387c5197804?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "suction-catheters.jpg"),
+    imageAlt: "High-performance suction catheters for effective airway management",
     description: "High-performance suction catheters for effective airway management and secretion removal."
   },
   {
     title: "Twin Bore Nasal Oxygen Cannula",
-    image: "https://images.unsplash.com/photo-1583912268183-f03c4972e8e8?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "twin-bore-nasal-cannula.jpg"),
+    imageAlt: "Dual-channel nasal oxygen cannula for comfortable oxygen delivery",
     description: "Dual-channel nasal oxygen cannula for comfortable and efficient oxygen delivery."
   }
 ];
@@ -58,7 +68,8 @@ const AnaesthesiaSystems = () => {
         <CategoryBanner
           title="Anaesthesia Systems"
           description="Advanced respiratory and oxygen delivery solutions for optimal patient comfort and effective treatment"
-          imageUrl="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&q=80"
+          imageUrl={createImagePath(CATEGORY_PATH, "banner.jpg")}
+          altText="Advanced anaesthesia and respiratory equipment for medical professionals"
         />
 
         <section className="py-16 bg-white relative">
@@ -81,9 +92,10 @@ const AnaesthesiaSystems = () => {
                 >
                   <div className="aspect-w-16 aspect-h-12">
                     <img
-                      src={product.image}
-                      alt={product.title}
+                      src={getProductImage(product.image)}
+                      alt={product.imageAlt || product.title}
                       className="w-full h-48 object-cover"
+                      loading="lazy"
                     />
                   </div>
                   <div className="p-6">

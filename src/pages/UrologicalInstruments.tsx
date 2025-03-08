@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -6,41 +7,52 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Syringe, Bandage, Stethoscope, Thermometer } from "lucide-react";
 import CategoryBanner from "@/components/shared/CategoryBanner";
+import { getProductImage, IMAGE_PATHS, createImagePath } from "@/utils/imageUtils";
+
+// Define products with local image path structure
+const CATEGORY_PATH = "urological";
 
 const UrineCollectionBags = [
   {
     title: "Pediatric Urine Collection Bag",
-    image: "https://images.unsplash.com/photo-1583912267550-d42ddb4518f4?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "pediatric-urine-collection-bag.jpg"),
+    imageAlt: "Specially designed urine collection bags for pediatric patients",
     description: "Specially designed collection bags for pediatric patients with gentle adhesive and comfortable fit."
   },
   {
     title: "Urine Collection Bag with Measured Volume Meter",
-    image: "https://images.unsplash.com/photo-1581093458791-9d09008b0d02?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "urine-collection-bag-volume-meter.jpg"),
+    imageAlt: "Urine collection bag with precise volume measurement markings",
     description: "Precise volume measurement markings with clear visibility for accurate monitoring."
   },
   {
     title: "Urine Collection Bag with Top Outlet",
-    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "urine-collection-bag-top-outlet.jpg"),
+    imageAlt: "Urine collection bag with convenient top outlet design",
     description: "Convenient top outlet design for easy drainage and handling."
   },
   {
     title: "Urine Collection Bag with T-type Bottom Outlet & Sampling Port",
-    image: "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "urine-collection-bag-t-bottom-outlet.jpg"),
+    imageAlt: "Advanced urine collection bag with T-type outlet and sampling port",
     description: "Advanced design with T-type outlet and dedicated sampling port for sterile collection."
   },
   {
     title: "Urine Collection Bag with Bottom Outlet",
-    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "urine-collection-bag-bottom-outlet.jpg"),
+    imageAlt: "Standard urine collection bag with bottom outlet",
     description: "Standard bottom outlet design for efficient drainage and ease of use."
   },
   {
     title: "Urine Collection Bag with Handle and Top Outlet",
-    image: "https://images.unsplash.com/photo-1581093458791-9d09008b0d02?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "urine-collection-bag-handle.jpg"),
+    imageAlt: "Ergonomic urine collection bag with handle for improved mobility",
     description: "Ergonomic handle design with top outlet for improved mobility and handling."
   },
   {
     title: "Urine Collection Bag with NRV",
-    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "urine-collection-bag-nrv.jpg"),
+    imageAlt: "Urine collection bag with non-return valve for backflow prevention",
     description: "Built-in Non-Return Valve (NRV) for preventing backflow and maintaining sterility."
   }
 ];
@@ -48,17 +60,20 @@ const UrineCollectionBags = [
 const UrineDrainageCatheters = [
   {
     title: "Female Catheter",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "female-catheter.jpg"),
+    imageAlt: "Specially designed catheter for female patients with gentle insertion tip",
     description: "Specially designed catheter for female patients, featuring gentle insertion tip and optimal drainage capabilities for enhanced comfort and effectiveness."
   },
   {
     title: "Rectal Catheter",
-    image: "https://images.unsplash.com/photo-1583912267550-d42ddb4518f4?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "rectal-catheter.jpg"),
+    imageAlt: "High-quality rectal catheter with smooth surface finish and atraumatic tip",
     description: "High-quality rectal catheter with smooth surface finish and atraumatic tip, designed for safe and comfortable bowel management procedures."
   },
   {
     title: "Nelaton Catheter",
-    image: "https://images.unsplash.com/photo-1581093458791-9d09008b0d02?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "nelaton-catheter.jpg"),
+    imageAlt: "Premium straight-tip urinary catheter with multiple eyes for efficient drainage",
     description: "Premium straight-tip urinary catheter with multiple eyes for efficient drainage, made from medical-grade materials for optimal patient safety."
   }
 ];
@@ -122,9 +137,10 @@ const UrologicalInstruments = () => {
               >
                 <div className="aspect-w-16 aspect-h-12">
                   <img
-                    src={product.image}
-                    alt={product.title}
+                    src={getProductImage(product.image)}
+                    alt={product.imageAlt || product.title}
                     className="w-full h-48 object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">
@@ -172,7 +188,8 @@ const UrologicalInstruments = () => {
         <CategoryBanner
           title="Urological Instruments"
           description="Advanced urological solutions designed for precision, comfort, and optimal patient care"
-          imageUrl="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80"
+          imageUrl={createImagePath(CATEGORY_PATH, "banner.jpg")}
+          altText="Advanced urological instruments and medical supplies for healthcare professionals"
         />
 
         <section className="py-12 bg-gray-50/80 backdrop-blur-sm">

@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -5,16 +6,22 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import CategoryBanner from "@/components/shared/CategoryBanner";
+import { getProductImage, createImagePath } from "@/utils/imageUtils";
+
+// Define products with local image path structure
+const CATEGORY_PATH = "blood-management";
 
 const productData = [
   {
     title: "Blood Administration Set without Air Vent",
-    image: "https://images.unsplash.com/photo-1581093450021-a7c13b91246e?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "blood-admin-set-no-air-vent.jpg"),
+    imageAlt: "High-quality blood administration set for safe transfusions",
     description: "High-quality blood administration set without air vent for safe and efficient blood transfusions."
   },
   {
     title: "Blood Administration Set with Air Vent",
-    image: "https://images.unsplash.com/photo-1576671414121-aa2d45ebb3b2?auto=format&fit=crop&q=80",
+    image: createImagePath(CATEGORY_PATH, "blood-admin-set-with-air-vent.jpg"),
+    imageAlt: "Premium blood administration set with integrated air vent",
     description: "Premium blood administration set with integrated air vent for controlled and precise blood transfusions."
   }
 ];
@@ -43,7 +50,8 @@ const BloodManagementSolutions = () => {
         <CategoryBanner
           title="Blood Management Solutions"
           description="Advanced blood administration equipment designed for efficient and safe transfusions in critical care settings"
-          imageUrl="https://images.unsplash.com/photo-1615461066841-6116e61857c6?auto=format&fit=crop&q=80"
+          imageUrl={createImagePath(CATEGORY_PATH, "banner.jpg")}
+          altText="Advanced blood administration and transfusion equipment for medical professionals"
         />
 
         <section className="py-16 bg-white relative">
@@ -66,9 +74,10 @@ const BloodManagementSolutions = () => {
                 >
                   <div className="aspect-w-16 aspect-h-12">
                     <img
-                      src={product.image}
-                      alt={product.title}
+                      src={getProductImage(product.image)}
+                      alt={product.imageAlt || product.title}
                       className="w-full h-48 object-cover"
+                      loading="lazy"
                     />
                   </div>
                   <div className="p-6">

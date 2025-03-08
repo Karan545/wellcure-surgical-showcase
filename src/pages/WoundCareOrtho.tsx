@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -6,26 +7,36 @@ import { useState, useEffect } from "react";
 import { Bandage, Bone, Scissors, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import CategoryBanner from "@/components/shared/CategoryBanner";
+import { getProductImage, createImagePath } from "@/utils/imageUtils";
+
+// Define products with local image path structure
+const WOUND_CARE_PATH = "wound-care";
+const ORTHO_PATH = "ortho";
 
 const woundCareProducts = [
   {
     title: "Advanced Wound Dressing",
-    image: "https://images.unsplash.com/photo-1612776572997-76cc42e058c3?auto=format&fit=crop&q=80",
+    image: createImagePath(WOUND_CARE_PATH, "advanced-wound-dressing.jpg"),
+    imageAlt: "Innovative wound dressing with moisture control technology",
     description: "Innovative wound dressing with moisture control technology for optimal healing environment."
   },
   {
     title: "Antimicrobial Wound Gel",
-    image: "https://images.unsplash.com/photo-1583912267550-d42ddb4518f4?auto=format&fit=crop&q=80",
+    image: createImagePath(WOUND_CARE_PATH, "antimicrobial-wound-gel.jpg"),
+    imageAlt: "Specialized antimicrobial gel formula for wound healing",
     description: "Specialized gel formula with antimicrobial properties to prevent infection while promoting healing."
   },
   {
     title: "Hydrocolloid Dressings",
-    image: "https://images.unsplash.com/photo-1581093458791-9d09008b0d02?auto=format&fit=crop&q=80",
+    image: createImagePath(WOUND_CARE_PATH, "hydrocolloid-dressings.jpg"),
+    imageAlt: "Self-adhesive waterproof dressings for wound care",
     description: "Self-adhesive, waterproof dressings that form a gel when in contact with wound exudate."
   },
   {
     title: "Wound Cleansing Solution",
-    image: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80",
+    image: createImagePath(WOUND_CARE_PATH, "wound-cleansing-solution.jpg"),
+    imageAlt: "Gentle yet effective solution for cleansing wounds",
     description: "Gentle yet effective solution for cleansing wounds and preparing the area for dressing application."
   }
 ];
@@ -33,27 +44,32 @@ const woundCareProducts = [
 const orthoProducts = [
   {
     title: "Knee Support Brace",
-    image: "https://images.unsplash.com/photo-1588774069410-a944888230b1?auto=format&fit=crop&q=80",
+    image: createImagePath(ORTHO_PATH, "knee-support-brace.jpg"),
+    imageAlt: "Anatomically designed knee brace for support and stability",
     description: "Anatomically designed knee brace providing optimal support and stability during rehabilitation."
   },
   {
     title: "Ankle Stabilizer",
-    image: "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?auto=format&fit=crop&q=80",
+    image: createImagePath(ORTHO_PATH, "ankle-stabilizer.jpg"),
+    imageAlt: "Compression ankle support with adjustable straps",
     description: "Compression ankle support with adjustable straps for custom fit and enhanced stability."
   },
   {
     title: "Wrist Splint",
-    image: "https://images.unsplash.com/photo-1579154204661-305a1ff49faa?auto=format&fit=crop&q=80",
+    image: createImagePath(ORTHO_PATH, "wrist-splint.jpg"),
+    imageAlt: "Ergonomic wrist support with removable stay",
     description: "Ergonomic wrist support with removable stay for immobilization and pain relief."
   },
   {
     title: "Cervical Collar",
-    image: "https://images.unsplash.com/photo-1583912267550-d42ddb4518f4?auto=format&fit=crop&q=80",
+    image: createImagePath(ORTHO_PATH, "cervical-collar.jpg"),
+    imageAlt: "Foam cervical collar for neck support and alignment",
     description: "Foam cervical collar providing gentle support and alignment for neck injuries."
   },
   {
     title: "Back Support Belt",
-    image: "https://images.unsplash.com/photo-1581093458791-9d09008b0d02?auto=format&fit=crop&q=80",
+    image: createImagePath(ORTHO_PATH, "back-support-belt.jpg"),
+    imageAlt: "Lumbar support belt with adjustable compression",
     description: "Lumbar support belt with adjustable compression for lower back pain and injury prevention."
   }
 ];
@@ -115,9 +131,10 @@ const WoundCareOrtho = () => {
           >
             <div className="aspect-w-16 aspect-h-12">
               <img
-                src={product.image}
-                alt={product.title}
+                src={getProductImage(product.image)}
+                alt={product.imageAlt || product.title}
                 className="w-full h-48 object-cover"
+                loading="lazy"
               />
             </div>
             <div className="p-6">
@@ -150,22 +167,12 @@ const WoundCareOrtho = () => {
           </FloatingIcon>
         </div>
 
-        <section className="relative h-[300px] flex items-center justify-center">
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1588774069410-a944888230b1?auto=format&fit=crop&q=80"
-              alt="Wound Care & Ortho Range Banner"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-          <div className="relative z-10 text-center text-white px-4">
-            <h1 className="text-4xl font-bold mb-4">Wound Care & Ortho Range</h1>
-            <p className="max-w-2xl mx-auto text-lg">
-              Comprehensive solutions for wound management and orthopedic support for enhanced patient recovery
-            </p>
-          </div>
-        </section>
+        <CategoryBanner
+          title="Wound Care & Ortho Range"
+          description="Comprehensive solutions for wound management and orthopedic support for enhanced patient recovery"
+          imageUrl={createImagePath("combined", "wound-care-ortho-banner.jpg")}
+          altText="Advanced wound care products and orthopedic supports for patient recovery"
+        />
 
         <section className="py-16 bg-white/80 backdrop-blur-sm relative">
           <div className="container mx-auto px-4">
