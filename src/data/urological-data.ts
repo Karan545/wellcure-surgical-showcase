@@ -51,19 +51,19 @@ export const UrineCollectionBags = [
 export const UrineDrainageCatheters = [
   {
     title: "Female Catheter",
-    image: createImagePath(CATEGORY_PATH, "female-catheter.jpg"),
+    image: createImagePath(CATEGORY_PATH, "catheters/female-catheter.jpg"),
     imageAlt: "Specially designed catheter for female patients with gentle insertion tip",
     description: "Specially designed catheter for female patients, featuring gentle insertion tip and optimal drainage capabilities for enhanced comfort and effectiveness."
   },
   {
     title: "Rectal Catheter",
-    image: createImagePath(CATEGORY_PATH, "rectal-catheter.jpg"),
+    image: createImagePath(CATEGORY_PATH, "catheters/rectal-catheter.jpg"),
     imageAlt: "High-quality rectal catheter with smooth surface finish and atraumatic tip",
     description: "High-quality rectal catheter with smooth surface finish and atraumatic tip, designed for safe and comfortable bowel management procedures."
   },
   {
     title: "Nelaton Catheter",
-    image: createImagePath(CATEGORY_PATH, "nelaton-catheter.jpg"),
+    image: createImagePath(CATEGORY_PATH, "catheters/nelaton-catheter.jpg"),
     imageAlt: "Premium straight-tip urinary catheter with multiple eyes for efficient drainage",
     description: "Premium straight-tip urinary catheter with multiple eyes for efficient drainage, made from medical-grade materials for optimal patient safety."
   }
