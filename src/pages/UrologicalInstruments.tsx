@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,51 +6,52 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Syringe, Bandage, Stethoscope, Thermometer } from "lucide-react";
 import CategoryBanner from "@/components/shared/CategoryBanner";
-import { getProductImage, IMAGE_PATHS, createImagePath } from "@/utils/imageUtils";
+import { getProductImage, getUrologicalImagePath, createImagePath } from "@/utils/imageUtils";
+import ProductCard from "@/components/infusion-therapy/ProductCard";
+import ProductGrid from "@/components/infusion-therapy/ProductGrid";
 
-// Define products with local image path structure
 const CATEGORY_PATH = "urological";
 
 const UrineCollectionBags = [
   {
     title: "Pediatric Urine Collection Bag",
-    image: createImagePath(CATEGORY_PATH, "pediatric-urine-collection-bag.jpg"),
+    image: getUrologicalImagePath('urine-bags', 'Paediatric-Urine-Collection-Bag.jpg'),
     imageAlt: "Specially designed urine collection bags for pediatric patients",
     description: "Specially designed collection bags for pediatric patients with gentle adhesive and comfortable fit."
   },
   {
     title: "Urine Collection Bag with Measured Volume Meter",
-    image: createImagePath(CATEGORY_PATH, "urine-collection-bag-volume-meter.jpg"),
+    image: getUrologicalImagePath('urine-bags', 'Urine-collection-Bag-with-Measured-volume-chamber-1_.jpg'),
     imageAlt: "Urine collection bag with precise volume measurement markings",
     description: "Precise volume measurement markings with clear visibility for accurate monitoring."
   },
   {
     title: "Urine Collection Bag with Top Outlet",
-    image: createImagePath(CATEGORY_PATH, "urine-collection-bag-top-outlet.jpg"),
+    image: getUrologicalImagePath('urine-bags', 'Urine-collection-bag-with-top-outlet1.jpg'),
     imageAlt: "Urine collection bag with convenient top outlet design",
     description: "Convenient top outlet design for easy drainage and handling."
   },
   {
     title: "Urine Collection Bag with T-type Bottom Outlet & Sampling Port",
-    image: createImagePath(CATEGORY_PATH, "urine-collection-bag-t-bottom-outlet.jpg"),
+    image: getUrologicalImagePath('urine-bags', 'Urine-Collection-Bag-with-T-type-Bottom-Outlet-and-Sampling-port.jpg'),
     imageAlt: "Advanced urine collection bag with T-type outlet and sampling port",
     description: "Advanced design with T-type outlet and dedicated sampling port for sterile collection."
   },
   {
     title: "Urine Collection Bag with Bottom Outlet",
-    image:  getProductImage(`public/images/urological/Urine-Collection-Bag-with-Bottom-Outlet-600x600.jpg`),
+    image: getUrologicalImagePath('urine-bags', 'Urine-Collection-Bag-with-Bottom-Outlet.jpg'),
     imageAlt: "Standard urine collection bag with bottom outlet",
     description: "Standard bottom outlet design for efficient drainage and ease of use."
   },
   {
     title: "Urine Collection Bag with Handle and Top Outlet",
-    image: createImagePath(CATEGORY_PATH, "urine-collection-bag-handle.jpg"),
+    image: getUrologicalImagePath('urine-bags', 'urine-collection-bag-with-handle-and-top-outlet3.jpg'),
     imageAlt: "Ergonomic urine collection bag with handle for improved mobility",
     description: "Ergonomic handle design with top outlet for improved mobility and handling."
   },
   {
     title: "Urine Collection Bag with NRV",
-    image: createImagePath(CATEGORY_PATH, "urine-collection-bag-nrv.jpg"),
+    image: getUrologicalImagePath('urine-bags', 'Urine-Collection-Bag-with-NRV1_.jpg'),
     imageAlt: "Urine collection bag with non-return valve for backflow prevention",
     description: "Built-in Non-Return Valve (NRV) for preventing backflow and maintaining sterility."
   }
@@ -126,31 +126,7 @@ const UrologicalInstruments = () => {
     return (
       <section className="py-16 bg-white/80 backdrop-blur-sm relative">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product, index) => (
-              <motion.div
-                key={product.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-              >
-                <div className="aspect-w-16 aspect-h-12">
-                  <img
-                    src={getProductImage(product.image)}
-                    alt={product.imageAlt || product.title}
-                    className="w-full h-48 object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-3">{product.title}</h3>
-                  <p className="text-gray-600 mb-4">{product.description}</p>
-                  <Button className="w-full">Learn More</Button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <ProductGrid products={products} />
         </div>
       </section>
     );
