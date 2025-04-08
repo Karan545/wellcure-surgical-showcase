@@ -31,7 +31,7 @@ export const IMAGE_PATHS = {
   ANAESTHESIA: 'anaesthesia/',
   GASTROENTEROLOGY: 'gastroenterology/',
   UROLOGICAL: {
-    URINE_BAGS: 'urological/urine collection bags/',
+    URINE_BAGS: 'urological/urnine collection bags/',
     CATHETERS: 'urological/catheters/'
   },
   WOUND_CARE: {
@@ -53,7 +53,7 @@ export const createImagePath = (category: string, filename: string): string => {
 export const getUrologicalImagePath = (productType: 'urine-bags' | 'catheters', filename: string): string => {
   // Fix the path to match the actual folder structure
   const basePath = productType === 'urine-bags' 
-    ? 'images/urological/urine collection bags/' 
+    ? 'images/urological/urnine collection bags/' 
     : 'images/urological/catheters/';
   
   console.log(`Creating urological image path: ${basePath}${filename}`);

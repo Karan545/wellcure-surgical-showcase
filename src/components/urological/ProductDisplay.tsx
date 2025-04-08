@@ -33,6 +33,8 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     console.error(`Failed to load image: ${product.image}`);
+                    // Log the current URL for debugging
+                    console.log("Current window location:", window.location.href);
                     e.currentTarget.src = "/placeholder.svg"; // Fallback
                   }}
                 />
