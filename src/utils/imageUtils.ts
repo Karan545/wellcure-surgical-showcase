@@ -1,14 +1,20 @@
-
 /**
  * Utility to manage product images using local assets
  */
 
 // Function to retrieve local product images
 export const getProductImage = (imagePath: string): string => {
+  // If the path already includes 'images/', we assume it's a full path
+  if (imagePath.startsWith('images/')) {
+    return `/${imagePath}`;
+  }
+  
+  // If path starts with public/, remove it as it's not needed in the URL
   if (imagePath.startsWith('public/')) {
-    // Remove 'public/' from the path as it's not needed in the final URL
     return `/${imagePath.substring(7)}`;
   }
+  
+  // Otherwise, just prepend with slash for root-relative path
   return `/${imagePath}`;
 };
 

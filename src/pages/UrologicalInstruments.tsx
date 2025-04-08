@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -122,6 +123,10 @@ const UrologicalInstruments = () => {
 
   const renderProducts = (category: string) => {
     const products = category === "urine-bags" ? UrineCollectionBags : UrineDrainageCatheters;
+
+    // Add console logs to help debug image paths
+    console.log("Products being rendered:", products);
+    console.log("Sample image path:", products[0].image);
 
     return (
       <section className="py-16 bg-white/80 backdrop-blur-sm relative">

@@ -16,6 +16,9 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, index }: ProductCardProps) => {
+  // Log the image path to debug
+  console.log(`ProductCard rendering image: ${product.image}`);
+  
   return (
     <motion.div
       key={product.title}
@@ -26,10 +29,14 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
     >
       <div className="aspect-w-16 aspect-h-12">
         <img
-          src={getProductImage(product.image)}
+          src={product.image}
           alt={product.imageAlt || product.title}
           className="w-full h-48 object-cover"
           loading="lazy" // Optimize loading performance
+          onError={(e) => {
+            console.error(`Failed to load image: ${product.image}`);
+            e.currentTarget.src = "/placeholder.svg"; // Fallback to placeholder if image fails to load
+          }}
         />
       </div>
       <div className="p-6">
