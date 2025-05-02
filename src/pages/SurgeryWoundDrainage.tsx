@@ -62,8 +62,8 @@ const SurgeryWoundDrainage = () => {
         <CategoryBanner
           title="Surgery & Wound Drainage"
           description="Advanced drainage solutions for effective post-surgical recovery and wound management"
-          imageUrl={createImagePath(CATEGORY_PATH, "banner.jpg")}
-          altText="Advanced surgical and wound drainage systems for medical facilities"
+          imageUrl="/lovable-uploads/02cf3074-41e4-47b4-bd6c-068aa0514366.png"
+          altText="Medical professionals testing wound drainage equipment in a sterile environment"
         />
 
         <section className="py-16 bg-white relative">

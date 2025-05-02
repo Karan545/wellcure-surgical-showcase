@@ -170,8 +170,8 @@ const WoundCareOrtho = () => {
         <CategoryBanner
           title="Wound Care & Ortho Range"
           description="Comprehensive solutions for wound management and orthopedic support for enhanced patient recovery"
-          imageUrl={createImagePath("combined", "wound-care-ortho-banner.jpg")}
-          altText="Advanced wound care products and orthopedic supports for patient recovery"
+          imageUrl="/lovable-uploads/2bab3cd1-259b-412f-a6cb-a8fa62b5e6a0.png"
+          altText="Doctor examining patient's wrist with orthopedic brace"
         />
 
         <section className="py-16 bg-white/80 backdrop-blur-sm relative">

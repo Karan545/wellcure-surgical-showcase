@@ -50,8 +50,8 @@ const BloodManagementSolutions = () => {
         <CategoryBanner
           title="Blood Management Solutions"
           description="Advanced blood administration equipment designed for efficient and safe transfusions in critical care settings"
-          imageUrl={createImagePath(CATEGORY_PATH, "banner.jpg")}
-          altText="Advanced blood administration and transfusion equipment for medical professionals"
+          imageUrl="/lovable-uploads/9763c16d-111e-4536-847a-4d0fcee171aa.png"
+          altText="Medical professionals working with blood administration equipment in a sterile environment"
         />
 
         <section className="py-16 bg-white relative">

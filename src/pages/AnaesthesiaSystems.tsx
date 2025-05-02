@@ -68,8 +68,8 @@ const AnaesthesiaSystems = () => {
         <CategoryBanner
           title="Anaesthesia Systems"
           description="Advanced respiratory and oxygen delivery solutions for optimal patient comfort and effective treatment"
-          imageUrl={createImagePath(CATEGORY_PATH, "banner.jpg")}
-          altText="Advanced anaesthesia and respiratory equipment for medical professionals"
+          imageUrl="/lovable-uploads/906551ae-6937-499f-ae9b-c81a405bc014.png"
+          altText="Nurse assisting patient with oxygen mask and nebulizer treatment in clinical setting"
         />
 
         <section className="py-16 bg-white relative">

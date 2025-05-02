@@ -62,8 +62,8 @@ const MedicalGlovesDivision = () => {
         <CategoryBanner
           title="Medical Gloves Division"
           description="Premium quality sterile gloves offering superior protection, comfort, and precision for healthcare professionals"
-          imageUrl={createImagePath(CATEGORY_PATH, "banner.jpg")}
-          altText="Premium medical gloves for healthcare procedures and operations"
+          imageUrl="/lovable-uploads/c536be25-6a30-4a2e-8ded-9c049088ae64.png"
+          altText="Medical professional inspecting quality blue surgical gloves in a controlled manufacturing environment"
         />
 
         <section className="py-16 bg-white relative">
