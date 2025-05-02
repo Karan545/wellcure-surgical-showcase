@@ -7,9 +7,6 @@ import CategoryBanner from "@/components/shared/CategoryBanner";
 import FloatingIcons from "@/components/urological/FloatingIcons";
 import CategoryTabs from "@/components/urological/CategoryTabs";
 import ProductDisplay from "@/components/urological/ProductDisplay";
-import { createImagePath } from "@/utils/imageUtils";
-
-const CATEGORY_PATH = "urological";
 
 const UrologicalInstruments = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("urine-bags");
@@ -39,8 +36,8 @@ const UrologicalInstruments = () => {
         <CategoryBanner
           title="Urological Instruments"
           description="Advanced urological solutions designed for precision, comfort, and optimal patient care"
-          imageUrl={createImagePath(CATEGORY_PATH, "banner.jpg")}
-          altText="Advanced urological instruments and medical supplies for healthcare professionals"
+          imageUrl="/lovable-uploads/cb5eb3c7-5163-4003-b5cb-6aad8ace1bdf.png"
+          altText="Medical professionals in clean room environment manufacturing urological collection bags"
         />
 
         <CategoryTabs 

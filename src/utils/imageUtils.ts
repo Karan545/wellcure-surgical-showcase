@@ -1,10 +1,14 @@
-
 /**
  * Utility to manage product images using local assets
  */
 
 // Function to retrieve local product images
 export const getProductImage = (imagePath: string): string => {
+  // Handle lovable uploads directory
+  if (imagePath.startsWith('lovable-uploads/')) {
+    return `/${imagePath}`;
+  }
+  
   // If the path already includes 'images/', we assume it's a full path
   if (imagePath.startsWith('images/')) {
     return `/${imagePath}`;
@@ -13,6 +17,11 @@ export const getProductImage = (imagePath: string): string => {
   // If path starts with public/, remove it as it's not needed in the URL
   if (imagePath.startsWith('public/')) {
     return `/${imagePath.substring(7)}`;
+  }
+  
+  // For absolute paths starting with slash, return as is
+  if (imagePath.startsWith('/')) {
+    return imagePath;
   }
   
   // Otherwise, just prepend with slash for root-relative path
