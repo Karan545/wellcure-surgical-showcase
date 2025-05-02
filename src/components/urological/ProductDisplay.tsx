@@ -4,6 +4,7 @@ import ProductGrid from "@/components/infusion-therapy/ProductGrid";
 import { UrineCollectionBags, UrineDrainageCatheters } from "@/data/urological-data";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface ProductDisplayProps {
   category: string;
@@ -16,6 +17,19 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
   console.log("Category selected:", category);
   console.log("Products being rendered:", products);
   console.log("Sample image path:", products[0]?.image);
+
+  // Fallback images from Unsplash in case product images don't load
+  const fallbackImages = [
+    "/placeholder.svg",
+    "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9",
+    "https://images.unsplash.com/photo-1524230572899-a752b3835840",
+    "https://images.unsplash.com/photo-1487252665478-49b61b47f302"
+  ];
+
+  // Get a random fallback image
+  const getRandomFallback = () => {
+    return fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
+  };
 
   return (
     <section className="py-16 bg-white/80 backdrop-blur-sm relative">
@@ -35,7 +49,13 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                     console.error(`Failed to load image: ${product.image}`);
                     // Log the current URL for debugging
                     console.log("Current window location:", window.location.href);
-                    e.currentTarget.src = "/placeholder.svg"; // Fallback
+                    // Use a random fallback image
+                    e.currentTarget.src = getRandomFallback();
+                    // Show a toast notification
+                    toast.error(`Couldn't load image for ${product.title}`, {
+                      description: "Using fallback image instead",
+                      duration: 3000
+                    });
                   }}
                 />
               </div>

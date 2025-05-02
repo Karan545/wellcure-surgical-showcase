@@ -6,43 +6,43 @@ const CATEGORY_PATH = "urological";
 export const UrineCollectionBags = [
   {
     title: "Pediatric Urine Collection Bag",
-    image: getUrologicalImagePath('urine-bags', 'Paediatric-Urine-Collection-Bag.jpg'),
+    image: "/images/urological/urnine collection bags/Paediatric-Urine-Collection-Bag.jpg",
     imageAlt: "Specially designed urine collection bags for pediatric patients",
     description: "Specially designed collection bags for pediatric patients with gentle adhesive and comfortable fit."
   },
   {
     title: "Urine Collection Bag with Measured Volume Meter",
-    image: getUrologicalImagePath('urine-bags', 'Urine-collection-Bag-with-Measured-volume-chamber-1_.jpg'),
+    image: "/images/urological/urnine collection bags/Urine-collection-Bag-with-Measured-volume-chamber-1_.jpg",
     imageAlt: "Urine collection bag with precise volume measurement markings",
     description: "Precise volume measurement markings with clear visibility for accurate monitoring."
   },
   {
     title: "Urine Collection Bag with Top Outlet",
-    image: getUrologicalImagePath('urine-bags', 'Urine-collection-bag-with-top-outlet1.jpg'),
+    image: "/images/urological/urnine collection bags/Urine-collection-bag-with-top-outlet1.jpg",
     imageAlt: "Urine collection bag with convenient top outlet design",
     description: "Convenient top outlet design for easy drainage and handling."
   },
   {
     title: "Urine Collection Bag with T-type Bottom Outlet & Sampling Port",
-    image: getUrologicalImagePath('urine-bags', 'Urine-Collection-Bag-with-T-type-Bottom-Outlet-and-Sampling-port.jpg'),
+    image: "/images/urological/urnine collection bags/Urine-Collection-Bag-with-T-type-Bottom-Outlet-and-Sampling-port.jpg",
     imageAlt: "Advanced urine collection bag with T-type outlet and sampling port",
     description: "Advanced design with T-type outlet and dedicated sampling port for sterile collection."
   },
   {
     title: "Urine Collection Bag with Bottom Outlet",
-    image: getUrologicalImagePath('urine-bags', 'Urine-Collection-Bag-with-Bottom-Outlet.jpg'),
+    image: "/images/urological/urnine collection bags/Urine-Collection-Bag-with-Bottom-Outlet.jpg",
     imageAlt: "Standard urine collection bag with bottom outlet",
     description: "Standard bottom outlet design for efficient drainage and ease of use."
   },
   {
     title: "Urine Collection Bag with Handle and Top Outlet",
-    image: getUrologicalImagePath('urine-bags', 'urine-collection-bag-with-handle-and-top-outlet3.jpg'),
+    image: "/images/urological/urnine collection bags/urine-collection-bag-with-handle-and-top-outlet3.jpg",
     imageAlt: "Ergonomic urine collection bag with handle for improved mobility",
     description: "Ergonomic handle design with top outlet for improved mobility and handling."
   },
   {
     title: "Urine Collection Bag with NRV",
-    image: getUrologicalImagePath('urine-bags', 'Urine-Collection-Bag-with-NRV1_.jpg'),
+    image: "/images/urological/urnine collection bags/Urine-Collection-Bag-with-NRV1_.jpg",
     imageAlt: "Urine collection bag with non-return valve for backflow prevention",
     description: "Built-in Non-Return Valve (NRV) for preventing backflow and maintaining sterility."
   }

@@ -53,8 +53,8 @@ export const createImagePath = (category: string, filename: string): string => {
 export const getUrologicalImagePath = (productType: 'urine-bags' | 'catheters', filename: string): string => {
   // Fix the path to match the actual folder structure
   const basePath = productType === 'urine-bags' 
-    ? 'images/urological/urnine collection bags/' 
-    : 'images/urological/catheters/';
+    ? '/images/urological/urnine collection bags/' 
+    : '/images/urological/catheters/';
   
   console.log(`Creating urological image path: ${basePath}${filename}`);
   return basePath + filename;
