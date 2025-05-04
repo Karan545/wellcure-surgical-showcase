@@ -105,8 +105,8 @@ const GastroenterologyEquipment = () => {
         <CategoryBanner
           title="Gastroenterology Equipment"
           description="Advanced endoscopic systems and specialized tools for precise gastrointestinal procedures and diagnostics"
-          imageUrl="/lovable-uploads/e444b2ea-89e8-416f-8ef5-c17e62d4167c.png"
-          altText="Medical professional inspecting gastroenterology tubes in a clean room facility"
+          imageUrl="/lovable-uploads/c2d6db4f-7f83-4be1-9b8f-fbeb5bae0885.png"
+          altText="Medical professional inspecting medical tubing in clean room environment"
         />
 
         <section className="py-16 bg-white/80 backdrop-blur-sm relative">

@@ -68,8 +68,8 @@ const AnaesthesiaSystems = () => {
         <CategoryBanner
           title="Anaesthesia Systems"
           description="Advanced respiratory and oxygen delivery solutions for optimal patient comfort and effective treatment"
-          imageUrl="/lovable-uploads/906551ae-6937-499f-ae9b-c81a405bc014.png"
-          altText="Nurse assisting patient with oxygen mask and nebulizer treatment in clinical setting"
+          imageUrl="/lovable-uploads/09a97209-15e1-4bca-9938-b67922a11d93.png"
+          altText="Healthcare professional assisting patient with oxygen therapy"
         />
 
         <section className="py-16 bg-white relative">

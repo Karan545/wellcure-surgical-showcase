@@ -25,7 +25,8 @@ const CategoryBanner = ({
             <img
               src={imageUrl}
               alt={altText || `${title} Banner`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center" 
+              // Added object-center to prevent image from zooming out
               loading="eager" // For better performance as this is above the fold
               onError={(e) => {
                 console.error(`Failed to load banner image: ${imageUrl}`);
