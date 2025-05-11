@@ -1,9 +1,29 @@
 
-import { Mail, Phone, MapPin, Heart, ShieldCheck, Stethoscope } from "lucide-react";
+import { Mail, Phone, MapPin, Heart, ShieldCheck, Stethoscope, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  // Handle scroll event to show/hide the "go up" button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollButton(window.scrollY > 300);
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -34,7 +54,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white py-16 w-full">
+    <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white py-16 w-full relative">
       <motion.div 
         className="container mx-auto px-4"
         variants={containerVariants}
@@ -42,7 +62,7 @@ const Footer = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-16 gap-y-14">
           {/* Company Info */}
           <motion.div className="space-y-4" variants={itemVariants}>
             <h3 className="text-2xl font-semibold pb-2 mb-4 text-medical-100">
@@ -174,6 +194,22 @@ const Footer = () => {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* Go Up Button */}
+      {showScrollButton && (
+        <motion.button
+          className="fixed bottom-6 right-6 bg-medical-500 text-white p-3 rounded-full shadow-lg hover:bg-medical-600 transition-colors z-50"
+          onClick={scrollToTop}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.5 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label="Scroll to top"
+        >
+          <ArrowUp size={20} />
+        </motion.button>
+      )}
     </footer>
   );
 };
