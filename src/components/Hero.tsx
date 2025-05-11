@@ -25,7 +25,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-[60vh] md:h-[70vh] mt-12 md:mt-16 w-full overflow-hidden">
+    <section className="relative h-[60vh] md:h-[70vh] mt-20 w-full overflow-hidden">
       {/* Full Width Hero Image */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60 z-10" />
