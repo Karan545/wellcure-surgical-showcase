@@ -1,5 +1,5 @@
 
-import { Mail, Phone, MapPin, Heart, ShieldCheck, Clock, Stethoscope } from "lucide-react";
+import { Mail, Phone, MapPin, Heart, ShieldCheck, Stethoscope } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -50,12 +50,8 @@ const Footer = () => {
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
               A premier exporter of high-quality medical and surgical equipment, committed to providing 
-              excellence in healthcare solutions worldwide since 2005.
+              excellence in healthcare solutions worldwide.
             </p>
-            <div className="flex items-center gap-2 text-gray-300 text-sm">
-              <Clock size={14} className="text-medical-100" />
-              <span>Mon - Fri: 9:00 AM - 6:00 PM IST</span>
-            </div>
             <div className="pt-4">
               <h4 className="text-sm font-medium mb-3 flex items-center gap-2">
                 <ShieldCheck size={14} className="text-medical-100" />
@@ -65,10 +61,6 @@ const Footer = () => {
                 <div className="px-3 py-1 bg-gray-800 rounded-full text-xs text-gray-300 flex items-center gap-1">
                   <Heart size={10} className="text-medical-100" />
                   Quality
-                </div>
-                <div className="px-3 py-1 bg-gray-800 rounded-full text-xs text-gray-300 flex items-center gap-1">
-                  <Clock size={10} className="text-medical-100" />
-                  Timely Delivery
                 </div>
                 <div className="px-3 py-1 bg-gray-800 rounded-full text-xs text-gray-300 flex items-center gap-1">
                   <ShieldCheck size={10} className="text-medical-100" />
