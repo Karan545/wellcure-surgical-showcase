@@ -6,96 +6,96 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 196 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 196 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 196 20% 15%;
 
-    --primary: 180 84% 25%;
-    --primary-foreground: 180 25% 95%;
+    --primary: 192 85% 40%;
+    --primary-foreground: 150 25% 95%;
 
-    --secondary: 180 25% 95%;
-    --secondary-foreground: 180 84% 15%;
+    --secondary: 150 30% 92%;
+    --secondary-foreground: 192 85% 15%;
 
-    --muted: 180 25% 95%;
-    --muted-foreground: 180 15% 45%;
+    --muted: 150 25% 95%;
+    --muted-foreground: 192 20% 45%;
 
-    --accent: 180 25% 90%;
-    --accent-foreground: 180 84% 15%;
+    --accent: 150 25% 90%;
+    --accent-foreground: 192 85% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 180 25% 88%;
-    --input: 180 25% 88%;
-    --ring: 180 84% 25%;
+    --border: 150 25% 88%;
+    --input: 150 25% 88%;
+    --ring: 192 85% 40%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 180 25% 98%;
-    --sidebar-foreground: 180 15% 25%;
-    --sidebar-primary: 180 84% 15%;
-    --sidebar-primary-foreground: 180 25% 98%;
-    --sidebar-accent: 180 25% 92%;
-    --sidebar-accent-foreground: 180 84% 15%;
-    --sidebar-border: 180 20% 88%;
-    --sidebar-ring: 180 84% 45%;
+    --sidebar-background: 150 25% 98%;
+    --sidebar-foreground: 192 20% 25%;
+    --sidebar-primary: 192 85% 15%;
+    --sidebar-primary-foreground: 150 25% 98%;
+    --sidebar-accent: 150 25% 92%;
+    --sidebar-accent-foreground: 192 85% 15%;
+    --sidebar-border: 150 20% 88%;
+    --sidebar-ring: 192 85% 45%;
 
-    /* Medical theme specific variables */
-    --medical-primary: 180 84% 25%;
-    --medical-secondary: 180 65% 35%;
-    --medical-accent: 180 45% 55%;
-    --medical-background: 180 25% 98%;
-    --medical-surface: 0 0% 100%;
+    /* Earth-inspired theme variables */
+    --earth-primary: 192 85% 40%;
+    --earth-secondary: 150 70% 45%;
+    --earth-accent: 192 60% 55%;
+    --earth-background: 150 25% 98%;
+    --earth-surface: 0 0% 100%;
   }
 
   .dark {
-    --background: 180 84% 4%;
-    --foreground: 180 25% 95%;
+    --background: 196 85% 6%;
+    --foreground: 150 25% 95%;
 
-    --card: 180 84% 6%;
-    --card-foreground: 180 25% 95%;
+    --card: 196 85% 8%;
+    --card-foreground: 150 25% 95%;
 
-    --popover: 180 84% 6%;
-    --popover-foreground: 180 25% 95%;
+    --popover: 196 85% 8%;
+    --popover-foreground: 150 25% 95%;
 
-    --primary: 180 25% 95%;
-    --primary-foreground: 180 84% 15%;
+    --primary: 150 25% 95%;
+    --primary-foreground: 196 85% 15%;
 
-    --secondary: 180 84% 15%;
-    --secondary-foreground: 180 25% 95%;
+    --secondary: 196 85% 15%;
+    --secondary-foreground: 150 25% 95%;
 
-    --muted: 180 84% 15%;
-    --muted-foreground: 180 25% 65%;
+    --muted: 196 85% 15%;
+    --muted-foreground: 150 25% 65%;
 
-    --accent: 180 84% 15%;
-    --accent-foreground: 180 25% 95%;
+    --accent: 196 85% 15%;
+    --accent-foreground: 150 25% 95%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 180 84% 15%;
-    --input: 180 84% 15%;
-    --ring: 180 25% 75%;
+    --border: 196 85% 15%;
+    --input: 196 85% 15%;
+    --ring: 150 25% 75%;
     
-    --sidebar-background: 180 84% 8%;
-    --sidebar-foreground: 180 25% 92%;
-    --sidebar-primary: 180 45% 48%;
+    --sidebar-background: 196 85% 10%;
+    --sidebar-foreground: 150 25% 92%;
+    --sidebar-primary: 192 60% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 180 84% 12%;
-    --sidebar-accent-foreground: 180 25% 92%;
-    --sidebar-border: 180 84% 12%;
-    --sidebar-ring: 180 45% 65%;
+    --sidebar-accent: 196 85% 12%;
+    --sidebar-accent-foreground: 150 25% 92%;
+    --sidebar-border: 196 85% 12%;
+    --sidebar-ring: 192 60% 65%;
 
-    /* Dark mode medical theme variables */
-    --medical-primary: 180 45% 65%;
-    --medical-secondary: 180 35% 45%;
-    --medical-accent: 180 25% 75%;
-    --medical-background: 180 84% 6%;
-    --medical-surface: 180 84% 8%;
+    /* Dark mode earth theme variables */
+    --earth-primary: 192 60% 65%;
+    --earth-secondary: 150 50% 45%;
+    --earth-accent: 150 25% 75%;
+    --earth-background: 196 85% 8%;
+    --earth-surface: 196 85% 10%;
   }
 }
 
@@ -109,49 +109,85 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Custom medical theme utilities */
-  .medical-gradient {
-    background: linear-gradient(135deg, #0f766e 0%, #14b8a6 50%, #2dd4bf 100%);
+  /* Earth-inspired gradient utilities */
+  .earth-gradient {
+    background: linear-gradient(135deg, #0d4f5c 0%, #0d8580 25%, #14c9c1 50%, #22c995 75%, #16a34a 100%);
   }
   
-  .medical-gradient-subtle {
-    background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 50%, #99f6e4 100%);
+  .earth-gradient-subtle {
+    background: linear-gradient(135deg, #f0fdf9 0%, #dcfcf0 25%, #bbf7e1 50%, #86efca 75%, #dcfce7 100%);
   }
 
-  .teal-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.4), transparent);
+  .ocean-to-forest {
+    background: linear-gradient(135deg, #042f2e 0%, #0d4f5c 20%, #0d8580 40%, #14c9c1 60%, #22c995 80%, #16a34a 100%);
+  }
+
+  .earth-space {
+    background: linear-gradient(135deg, #073227 0%, #0d4f5c 15%, #0d8580 30%, #14c9c1 45%, #22c995 60%, #4ade80 75%, #16a34a 90%, #14532d 100%);
+    background-size: 200% 200%;
+    animation: earth-flow 6s ease-in-out infinite;
+  }
+
+  .earth-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(34, 201, 149, 0.4), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s linear infinite;
   }
 
-  /* Enhanced scrollbar styling for medical theme */
+  /* Enhanced scrollbar styling for earth theme */
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-medical-50;
+    @apply bg-earth-50;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-medical-400 rounded-full;
+    @apply bg-earth-400 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-medical-500;
+    @apply bg-earth-500;
   }
 }
 
 @layer components {
+  .earth-card {
+    @apply bg-white/80 backdrop-blur-sm border border-earth-200 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+
+  .earth-button {
+    @apply bg-gradient-to-r from-ocean-700 to-forest-600 hover:from-ocean-800 hover:to-forest-700 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .earth-button-outline {
+    @apply border-2 border-transparent bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-border text-transparent bg-clip-text hover:bg-gradient-to-r hover:from-ocean-600 hover:to-forest-600 hover:text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 relative overflow-hidden;
+  }
+
+  .earth-button-outline::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-ocean-600 to-forest-600 opacity-0 transition-opacity duration-300 rounded-lg;
+  }
+
+  .earth-button-outline:hover::before {
+    @apply opacity-100;
+  }
+
+  .earth-button-outline:hover {
+    @apply text-white;
+  }
+
+  /* Medical theme compatibility */
   .medical-card {
-    @apply bg-white/80 backdrop-blur-sm border border-medical-200 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply earth-card;
   }
 
   .medical-button {
-    @apply bg-medical-600 hover:bg-medical-700 text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+    @apply earth-button;
   }
 
   .medical-button-outline {
-    @apply border-2 border-medical-600 text-medical-600 hover:bg-medical-600 hover:text-white font-medium px-6 py-3 rounded-lg transition-all duration-200;
+    @apply earth-button-outline;
   }
 }
