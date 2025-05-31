@@ -14,88 +14,86 @@
     --popover: 0 0% 100%;
     --popover-foreground: 196 20% 15%;
 
-    --primary: 192 85% 40%;
-    --primary-foreground: 150 25% 95%;
+    --primary: 210 100% 20%;
+    --primary-foreground: 120 60% 95%;
 
-    --secondary: 150 30% 92%;
-    --secondary-foreground: 192 85% 15%;
+    --secondary: 120 60% 92%;
+    --secondary-foreground: 210 100% 15%;
 
-    --muted: 150 25% 95%;
-    --muted-foreground: 192 20% 45%;
+    --muted: 120 25% 95%;
+    --muted-foreground: 210 20% 45%;
 
-    --accent: 150 25% 90%;
-    --accent-foreground: 192 85% 15%;
+    --accent: 120 25% 90%;
+    --accent-foreground: 210 100% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 150 25% 88%;
-    --input: 150 25% 88%;
-    --ring: 192 85% 40%;
+    --border: 120 25% 88%;
+    --input: 120 25% 88%;
+    --ring: 210 100% 20%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 150 25% 98%;
-    --sidebar-foreground: 192 20% 25%;
-    --sidebar-primary: 192 85% 15%;
-    --sidebar-primary-foreground: 150 25% 98%;
-    --sidebar-accent: 150 25% 92%;
-    --sidebar-accent-foreground: 192 85% 15%;
-    --sidebar-border: 150 20% 88%;
-    --sidebar-ring: 192 85% 45%;
+    --sidebar-background: 120 25% 98%;
+    --sidebar-foreground: 210 20% 25%;
+    --sidebar-primary: 210 100% 15%;
+    --sidebar-primary-foreground: 120 25% 98%;
+    --sidebar-accent: 120 25% 92%;
+    --sidebar-accent-foreground: 210 100% 15%;
+    --sidebar-border: 120 20% 88%;
+    --sidebar-ring: 210 100% 45%;
 
-    /* Earth-inspired theme variables */
-    --earth-primary: 192 85% 40%;
-    --earth-secondary: 150 70% 45%;
-    --earth-accent: 192 60% 55%;
-    --earth-background: 150 25% 98%;
-    --earth-surface: 0 0% 100%;
+    /* Pure gradient theme variables */
+    --ocean-blue: 210 100% 20%;
+    --forest-green: 120 60% 25%;
+    --gradient-background: 120 25% 98%;
+    --gradient-surface: 0 0% 100%;
   }
 
   .dark {
-    --background: 196 85% 6%;
-    --foreground: 150 25% 95%;
+    --background: 210 100% 6%;
+    --foreground: 120 25% 95%;
 
-    --card: 196 85% 8%;
-    --card-foreground: 150 25% 95%;
+    --card: 210 100% 8%;
+    --card-foreground: 120 25% 95%;
 
-    --popover: 196 85% 8%;
-    --popover-foreground: 150 25% 95%;
+    --popover: 210 100% 8%;
+    --popover-foreground: 120 25% 95%;
 
-    --primary: 150 25% 95%;
-    --primary-foreground: 196 85% 15%;
+    --primary: 120 25% 95%;
+    --primary-foreground: 210 100% 15%;
 
-    --secondary: 196 85% 15%;
-    --secondary-foreground: 150 25% 95%;
+    --secondary: 210 100% 15%;
+    --secondary-foreground: 120 25% 95%;
 
-    --muted: 196 85% 15%;
-    --muted-foreground: 150 25% 65%;
+    --muted: 210 100% 15%;
+    --muted-foreground: 120 25% 65%;
 
-    --accent: 196 85% 15%;
-    --accent-foreground: 150 25% 95%;
+    --accent: 210 100% 15%;
+    --accent-foreground: 120 25% 95%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 196 85% 15%;
-    --input: 196 85% 15%;
-    --ring: 150 25% 75%;
+    --border: 210 100% 15%;
+    --input: 210 100% 15%;
+    --ring: 120 25% 75%;
     
-    --sidebar-background: 196 85% 10%;
-    --sidebar-foreground: 150 25% 92%;
-    --sidebar-primary: 192 60% 48%;
+    --sidebar-background: 210 100% 10%;
+    --sidebar-foreground: 120 25% 92%;
+    --sidebar-primary: 120 60% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 196 85% 12%;
-    --sidebar-accent-foreground: 150 25% 92%;
-    --sidebar-border: 196 85% 12%;
-    --sidebar-ring: 192 60% 65%;
+    --sidebar-accent: 210 100% 12%;
+    --sidebar-accent-foreground: 120 25% 92%;
+    --sidebar-border: 210 100% 12%;
+    --sidebar-ring: 120 60% 65%;
 
-    /* Dark mode earth theme variables */
-    --earth-primary: 192 60% 65%;
-    --earth-secondary: 150 50% 45%;
-    --earth-accent: 150 25% 75%;
-    --earth-background: 196 85% 8%;
-    --earth-surface: 196 85% 10%;
+    /* Dark mode gradient theme variables */
+    --ocean-blue: 210 60% 65%;
+    --forest-green: 120 50% 45%;
+    --gradient-background: 210 100% 8%;
+    --gradient-surface: 210 100% 10%;
   }
 }
 
@@ -109,85 +107,136 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Earth-inspired gradient utilities */
-  .earth-gradient {
-    background: linear-gradient(135deg, #0d4f5c 0%, #0d8580 25%, #14c9c1 50%, #22c995 75%, #16a34a 100%);
+  /* Pure Ocean to Forest Gradient Utilities */
+  .ocean-to-forest-gradient {
+    background: linear-gradient(135deg, #003366 0%, #004080 20%, #005299 40%, #006bb3 60%, #228B22 80%, #006400 100%);
   }
   
-  .earth-gradient-subtle {
-    background: linear-gradient(135deg, #f0fdf9 0%, #dcfcf0 25%, #bbf7e1 50%, #86efca 75%, #dcfce7 100%);
+  .ocean-to-forest-subtle {
+    background: linear-gradient(135deg, #e6f3ff 0%, #cce6ff 25%, #b3d9ff 50%, #e6ffe6 75%, #ccffcc 100%);
   }
 
-  .ocean-to-forest {
-    background: linear-gradient(135deg, #042f2e 0%, #0d4f5c 20%, #0d8580 40%, #14c9c1 60%, #22c995 80%, #16a34a 100%);
+  .ocean-to-forest-reverse {
+    background: linear-gradient(135deg, #006400 0%, #228B22 20%, #006bb3 40%, #005299 60%, #004080 80%, #003366 100%);
   }
 
-  .earth-space {
-    background: linear-gradient(135deg, #073227 0%, #0d4f5c 15%, #0d8580 30%, #14c9c1 45%, #22c995 60%, #4ade80 75%, #16a34a 90%, #14532d 100%);
-    background-size: 200% 200%;
-    animation: earth-flow 6s ease-in-out infinite;
+  .ocean-to-forest-horizontal {
+    background: linear-gradient(90deg, #003366 0%, #004080 25%, #005299 50%, #228B22 75%, #006400 100%);
   }
 
-  .earth-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(34, 201, 149, 0.4), transparent);
+  .ocean-to-forest-vertical {
+    background: linear-gradient(180deg, #003366 0%, #004080 25%, #005299 50%, #228B22 75%, #006400 100%);
+  }
+
+  .ocean-to-forest-radial {
+    background: radial-gradient(circle, #003366 0%, #004080 25%, #005299 50%, #228B22 75%, #006400 100%);
+  }
+
+  .ocean-to-forest-animated {
+    background: linear-gradient(135deg, #003366 0%, #004080 20%, #005299 40%, #006bb3 60%, #228B22 80%, #006400 100%);
+    background-size: 300% 300%;
+    animation: gradient-flow 8s ease-in-out infinite;
+  }
+
+  .ocean-to-forest-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(0, 107, 179, 0.4), transparent);
     background-size: 200% 100%;
-    animation: shimmer 2s linear infinite;
+    animation: shimmer 3s linear infinite;
   }
 
-  /* Enhanced scrollbar styling for earth theme */
+  /* Enhanced scrollbar styling for gradient theme */
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-earth-50;
+    background: linear-gradient(180deg, #e6f3ff 0%, #e6ffe6 100%);
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-earth-400 rounded-full;
+    background: linear-gradient(180deg, #004080 0%, #228B22 100%);
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-earth-500;
+    background: linear-gradient(180deg, #003366 0%, #006400 100%);
   }
 }
 
 @layer components {
-  .earth-card {
-    @apply bg-white/80 backdrop-blur-sm border border-earth-200 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  .gradient-card {
+    @apply bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(230,255,230,0.9) 100%);
   }
 
-  .earth-button {
-    @apply bg-gradient-to-r from-ocean-700 to-forest-600 hover:from-ocean-800 hover:to-forest-700 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
+  .gradient-button {
+    background: linear-gradient(135deg, #003366 0%, #004080 25%, #005299 50%, #228B22 75%, #006400 100%);
+    @apply text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
   }
 
-  .earth-button-outline {
-    @apply border-2 border-transparent bg-gradient-to-r from-ocean-600 to-forest-600 bg-clip-border text-transparent bg-clip-text hover:bg-gradient-to-r hover:from-ocean-600 hover:to-forest-600 hover:text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 relative overflow-hidden;
+  .gradient-button:hover {
+    background: linear-gradient(135deg, #002244 0%, #003366 25%, #004080 50%, #1a6b1a 75%, #004d00 100%);
   }
 
-  .earth-button-outline::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-ocean-600 to-forest-600 opacity-0 transition-opacity duration-300 rounded-lg;
+  .gradient-button-outline {
+    @apply border-2 bg-transparent text-transparent font-medium px-6 py-3 rounded-lg transition-all duration-300 relative overflow-hidden;
+    border-image: linear-gradient(135deg, #003366 0%, #228B22 100%) 1;
+    background: linear-gradient(135deg, #003366 0%, #228B22 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
   }
 
-  .earth-button-outline:hover::before {
-    @apply opacity-100;
-  }
-
-  .earth-button-outline:hover {
+  .gradient-button-outline:hover {
+    background: linear-gradient(135deg, #003366 0%, #228B22 100%);
     @apply text-white;
+    background-clip: padding-box;
+    -webkit-background-clip: padding-box;
   }
 
   /* Medical theme compatibility */
   .medical-card {
-    @apply earth-card;
+    @apply gradient-card;
   }
 
   .medical-button {
-    @apply earth-button;
+    @apply gradient-button;
   }
 
   .medical-button-outline {
-    @apply earth-button-outline;
+    @apply gradient-button-outline;
+  }
+
+  /* Earth theme compatibility */
+  .earth-card {
+    @apply gradient-card;
+  }
+
+  .earth-button {
+    @apply gradient-button;
+  }
+
+  .earth-button-outline {
+    @apply gradient-button-outline;
+  }
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }
