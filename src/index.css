@@ -14,86 +14,86 @@
     --popover: 0 0% 100%;
     --popover-foreground: 196 20% 15%;
 
-    --primary: 210 100% 20%;
-    --primary-foreground: 120 60% 95%;
+    --primary: 200 100% 18%;
+    --primary-foreground: 180 25% 95%;
 
-    --secondary: 120 60% 92%;
-    --secondary-foreground: 210 100% 15%;
+    --secondary: 180 25% 92%;
+    --secondary-foreground: 200 100% 15%;
 
-    --muted: 120 25% 95%;
-    --muted-foreground: 210 20% 45%;
+    --muted: 180 15% 95%;
+    --muted-foreground: 200 20% 45%;
 
-    --accent: 120 25% 90%;
-    --accent-foreground: 210 100% 15%;
+    --accent: 180 15% 90%;
+    --accent-foreground: 200 100% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 120 25% 88%;
-    --input: 120 25% 88%;
-    --ring: 210 100% 20%;
+    --border: 180 15% 88%;
+    --input: 180 15% 88%;
+    --ring: 200 100% 18%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 120 25% 98%;
-    --sidebar-foreground: 210 20% 25%;
-    --sidebar-primary: 210 100% 15%;
-    --sidebar-primary-foreground: 120 25% 98%;
-    --sidebar-accent: 120 25% 92%;
-    --sidebar-accent-foreground: 210 100% 15%;
-    --sidebar-border: 120 20% 88%;
-    --sidebar-ring: 210 100% 45%;
+    --sidebar-background: 180 15% 98%;
+    --sidebar-foreground: 200 20% 25%;
+    --sidebar-primary: 200 100% 15%;
+    --sidebar-primary-foreground: 180 15% 98%;
+    --sidebar-accent: 180 15% 92%;
+    --sidebar-accent-foreground: 200 100% 15%;
+    --sidebar-border: 180 15% 88%;
+    --sidebar-ring: 200 100% 45%;
 
-    /* Pure gradient theme variables */
-    --ocean-blue: 210 100% 20%;
-    --forest-green: 120 60% 25%;
-    --gradient-background: 120 25% 98%;
+    /* Ocean to forest gradient theme variables */
+    --ocean-blue: 200 100% 18%;
+    --forest-green: 180 50% 25%;
+    --gradient-background: 180 15% 98%;
     --gradient-surface: 0 0% 100%;
   }
 
   .dark {
-    --background: 210 100% 6%;
-    --foreground: 120 25% 95%;
+    --background: 200 100% 6%;
+    --foreground: 180 15% 95%;
 
-    --card: 210 100% 8%;
-    --card-foreground: 120 25% 95%;
+    --card: 200 100% 8%;
+    --card-foreground: 180 15% 95%;
 
-    --popover: 210 100% 8%;
-    --popover-foreground: 120 25% 95%;
+    --popover: 200 100% 8%;
+    --popover-foreground: 180 15% 95%;
 
-    --primary: 120 25% 95%;
-    --primary-foreground: 210 100% 15%;
+    --primary: 180 15% 95%;
+    --primary-foreground: 200 100% 15%;
 
-    --secondary: 210 100% 15%;
-    --secondary-foreground: 120 25% 95%;
+    --secondary: 200 100% 15%;
+    --secondary-foreground: 180 15% 95%;
 
-    --muted: 210 100% 15%;
-    --muted-foreground: 120 25% 65%;
+    --muted: 200 100% 15%;
+    --muted-foreground: 180 15% 65%;
 
-    --accent: 210 100% 15%;
-    --accent-foreground: 120 25% 95%;
+    --accent: 200 100% 15%;
+    --accent-foreground: 180 15% 95%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 210 100% 15%;
-    --input: 210 100% 15%;
-    --ring: 120 25% 75%;
+    --border: 200 100% 15%;
+    --input: 200 100% 15%;
+    --ring: 180 15% 75%;
     
-    --sidebar-background: 210 100% 10%;
-    --sidebar-foreground: 120 25% 92%;
-    --sidebar-primary: 120 60% 48%;
+    --sidebar-background: 200 100% 10%;
+    --sidebar-foreground: 180 15% 92%;
+    --sidebar-primary: 180 50% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 100% 12%;
-    --sidebar-accent-foreground: 120 25% 92%;
-    --sidebar-border: 210 100% 12%;
-    --sidebar-ring: 120 60% 65%;
+    --sidebar-accent: 200 100% 12%;
+    --sidebar-accent-foreground: 180 15% 92%;
+    --sidebar-border: 200 100% 12%;
+    --sidebar-ring: 180 50% 65%;
 
     /* Dark mode gradient theme variables */
-    --ocean-blue: 210 60% 65%;
-    --forest-green: 120 50% 45%;
-    --gradient-background: 210 100% 8%;
-    --gradient-surface: 210 100% 10%;
+    --ocean-blue: 200 60% 65%;
+    --forest-green: 180 40% 45%;
+    --gradient-background: 200 100% 8%;
+    --gradient-surface: 200 100% 10%;
   }
 }
 
@@ -107,39 +107,39 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Pure Ocean to Forest Gradient Utilities */
+  /* Ocean to Forest Gradient Utilities using your specific gradient */
   .ocean-to-forest-gradient {
-    background: linear-gradient(135deg, #003366 0%, #004080 20%, #005299 40%, #006bb3 60%, #228B22 80%, #006400 100%);
+    background: linear-gradient(to right, #003b5c, #1f5f5b);
   }
   
   .ocean-to-forest-subtle {
-    background: linear-gradient(135deg, #e6f3ff 0%, #cce6ff 25%, #b3d9ff 50%, #e6ffe6 75%, #ccffcc 100%);
+    background: linear-gradient(to right, rgba(0, 59, 92, 0.1), rgba(31, 95, 91, 0.1));
   }
 
   .ocean-to-forest-reverse {
-    background: linear-gradient(135deg, #006400 0%, #228B22 20%, #006bb3 40%, #005299 60%, #004080 80%, #003366 100%);
-  }
-
-  .ocean-to-forest-horizontal {
-    background: linear-gradient(90deg, #003366 0%, #004080 25%, #005299 50%, #228B22 75%, #006400 100%);
+    background: linear-gradient(to right, #1f5f5b, #003b5c);
   }
 
   .ocean-to-forest-vertical {
-    background: linear-gradient(180deg, #003366 0%, #004080 25%, #005299 50%, #228B22 75%, #006400 100%);
+    background: linear-gradient(to bottom, #003b5c, #1f5f5b);
+  }
+
+  .ocean-to-forest-diagonal {
+    background: linear-gradient(135deg, #003b5c, #1f5f5b);
   }
 
   .ocean-to-forest-radial {
-    background: radial-gradient(circle, #003366 0%, #004080 25%, #005299 50%, #228B22 75%, #006400 100%);
+    background: radial-gradient(circle, #003b5c 0%, #1f5f5b 100%);
   }
 
   .ocean-to-forest-animated {
-    background: linear-gradient(135deg, #003366 0%, #004080 20%, #005299 40%, #006bb3 60%, #228B22 80%, #006400 100%);
+    background: linear-gradient(to right, #003b5c, #1f5f5b);
     background-size: 300% 300%;
     animation: gradient-flow 8s ease-in-out infinite;
   }
 
   .ocean-to-forest-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(0, 107, 179, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(0, 59, 92, 0.4), transparent);
     background-size: 200% 100%;
     animation: shimmer 3s linear infinite;
   }
@@ -150,44 +150,44 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: linear-gradient(180deg, #e6f3ff 0%, #e6ffe6 100%);
+    background: linear-gradient(to bottom, rgba(0, 59, 92, 0.1), rgba(31, 95, 91, 0.1));
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #004080 0%, #228B22 100%);
+    background: linear-gradient(to bottom, #003b5c, #1f5f5b);
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #003366 0%, #006400 100%);
+    background: linear-gradient(to bottom, #002f4a, #194c49);
   }
 }
 
 @layer components {
   .gradient-card {
     @apply bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
-    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(230,255,230,0.9) 100%);
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(0, 59, 92, 0.05) 100%);
   }
 
   .gradient-button {
-    background: linear-gradient(135deg, #003366 0%, #004080 25%, #005299 50%, #228B22 75%, #006400 100%);
+    background: linear-gradient(to right, #003b5c, #1f5f5b);
     @apply text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
   }
 
   .gradient-button:hover {
-    background: linear-gradient(135deg, #002244 0%, #003366 25%, #004080 50%, #1a6b1a 75%, #004d00 100%);
+    background: linear-gradient(to right, #002f4a, #194c49);
   }
 
   .gradient-button-outline {
     @apply border-2 bg-transparent text-transparent font-medium px-6 py-3 rounded-lg transition-all duration-300 relative overflow-hidden;
-    border-image: linear-gradient(135deg, #003366 0%, #228B22 100%) 1;
-    background: linear-gradient(135deg, #003366 0%, #228B22 100%);
+    border-image: linear-gradient(to right, #003b5c, #1f5f5b) 1;
+    background: linear-gradient(to right, #003b5c, #1f5f5b);
     background-clip: text;
     -webkit-background-clip: text;
   }
 
   .gradient-button-outline:hover {
-    background: linear-gradient(135deg, #003366 0%, #228B22 100%);
+    background: linear-gradient(to right, #003b5c, #1f5f5b);
     @apply text-white;
     background-clip: padding-box;
     -webkit-background-clip: padding-box;
@@ -203,19 +203,6 @@
   }
 
   .medical-button-outline {
-    @apply gradient-button-outline;
-  }
-
-  /* Earth theme compatibility */
-  .earth-card {
-    @apply gradient-card;
-  }
-
-  .earth-button {
-    @apply gradient-button;
-  }
-
-  .earth-button-outline {
     @apply gradient-button-outline;
   }
 }

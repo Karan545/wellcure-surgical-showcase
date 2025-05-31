@@ -54,7 +54,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-b from-teal-900 to-teal-950 text-white py-16 w-full relative">
+    <footer className="ocean-to-forest-gradient text-white py-16 w-full relative">
       <motion.div 
         className="container mx-auto px-4"
         variants={containerVariants}
@@ -65,25 +65,25 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-16 gap-y-14">
           {/* Company Info */}
           <motion.div className="space-y-4" variants={itemVariants}>
-            <h3 className="text-2xl font-semibold pb-2 mb-4 text-teal-100">
+            <h3 className="text-2xl font-semibold pb-2 mb-4 text-white/90">
               Wellcure Surgicals
             </h3>
-            <p className="text-teal-200 text-sm leading-relaxed">
+            <p className="text-white/80 text-sm leading-relaxed">
               A premier exporter of high-quality medical and surgical equipment, committed to providing 
               excellence in healthcare solutions worldwide.
             </p>
             <div className="pt-4">
               <h4 className="text-sm font-medium mb-3 flex items-center gap-2">
-                <ShieldCheck size={14} className="text-teal-300" />
+                <ShieldCheck size={14} className="text-white/70" />
                 Our Commitments
               </h4>
               <div className="flex flex-wrap gap-3">
-                <div className="px-3 py-1 bg-teal-800/50 backdrop-blur-sm rounded-full text-xs text-teal-200 flex items-center gap-1 border border-teal-700/50">
-                  <Heart size={10} className="text-teal-300" />
+                <div className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs text-white/80 flex items-center gap-1 border border-white/20">
+                  <Heart size={10} className="text-white/70" />
                   Quality
                 </div>
-                <div className="px-3 py-1 bg-teal-800/50 backdrop-blur-sm rounded-full text-xs text-teal-200 flex items-center gap-1 border border-teal-700/50">
-                  <ShieldCheck size={10} className="text-teal-300" />
+                <div className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs text-white/80 flex items-center gap-1 border border-white/20">
+                  <ShieldCheck size={10} className="text-white/70" />
                   Compliance
                 </div>
               </div>
@@ -92,35 +92,35 @@ const Footer = () => {
           
           {/* Contact Info */}
           <motion.div className="space-y-4" variants={itemVariants}>
-            <h3 className="text-2xl font-semibold pb-2 mb-4 text-teal-100">Contact Us</h3>
+            <h3 className="text-2xl font-semibold pb-2 mb-4 text-white/90">Contact Us</h3>
             <div className="space-y-4">
               <motion.a 
                 href="tel:+918619327540" 
-                className="flex items-center gap-3 text-teal-200 hover:text-teal-100 transition-colors group"
+                className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group"
                 whileHover={{ x: 5 }}
               >
-                <div className="w-8 h-8 rounded-full bg-teal-800/50 backdrop-blur-sm flex items-center justify-center group-hover:bg-teal-700/50 border border-teal-700/50">
-                  <Phone size={14} className="group-hover:text-teal-200" />
+                <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 border border-white/20">
+                  <Phone size={14} className="group-hover:text-white" />
                 </div>
                 <span>+91 8619327540</span>
               </motion.a>
               <motion.a 
                 href="tel:+918619409956" 
-                className="flex items-center gap-3 text-teal-200 hover:text-teal-100 transition-colors group"
+                className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group"
                 whileHover={{ x: 5 }}
               >
-                <div className="w-8 h-8 rounded-full bg-teal-800/50 backdrop-blur-sm flex items-center justify-center group-hover:bg-teal-700/50 border border-teal-700/50">
-                  <Phone size={14} className="group-hover:text-teal-200" />
+                <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 border border-white/20">
+                  <Phone size={14} className="group-hover:text-white" />
                 </div>
                 <span>+91 8619409956</span>
               </motion.a>
               <motion.a 
                 href="mailto:wellcuresurgicals@gmail.com" 
-                className="flex items-center gap-3 text-teal-200 hover:text-teal-100 transition-colors group"
+                className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group"
                 whileHover={{ x: 5 }}
               >
-                <div className="w-8 h-8 rounded-full bg-teal-800/50 backdrop-blur-sm flex items-center justify-center group-hover:bg-teal-700/50 border border-teal-700/50">
-                  <Mail size={14} className="group-hover:text-teal-200" />
+                <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 border border-white/20">
+                  <Mail size={14} className="group-hover:text-white" />
                 </div>
                 <span>wellcuresurgicals@gmail.com</span>
               </motion.a>
@@ -129,11 +129,11 @@ const Footer = () => {
               className="flex gap-3 group mt-4"
               whileHover={{ x: 5 }}
             >
-              <div className="w-8 h-8 rounded-full bg-teal-800/50 backdrop-blur-sm flex items-center justify-center flex-shrink-0 group-hover:bg-teal-700/50 border border-teal-700/50">
-                <MapPin size={14} className="group-hover:text-teal-200" />
+              <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 border border-white/20">
+                <MapPin size={14} className="group-hover:text-white" />
               </div>
               <div>
-                <p className="text-teal-200 text-sm leading-relaxed">
+                <p className="text-white/80 text-sm leading-relaxed">
                   Gehloto ka bas, Magra Punjhla,<br />
                   Jodhpur, Rajasthan, India
                 </p>
@@ -143,15 +143,15 @@ const Footer = () => {
 
           {/* Products */}
           <motion.div className="space-y-4" variants={itemVariants}>
-            <h3 className="text-2xl font-semibold pb-2 mb-4 text-teal-100">Products</h3>
+            <h3 className="text-2xl font-semibold pb-2 mb-4 text-white/90">Products</h3>
             <ul className="grid grid-cols-1 gap-2">
               {productCategories.map((category, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
                   <Link 
                     to={category.path} 
-                    className="text-teal-200 hover:text-teal-100 transition-colors flex items-center gap-2"
+                    className="text-white/80 hover:text-white transition-colors flex items-center gap-2"
                   >
-                    <Stethoscope size={12} className="text-teal-400" />
+                    <Stethoscope size={12} className="text-white/60" />
                     <span>{category.name}</span>
                   </Link>
                 </motion.li>
@@ -161,32 +161,32 @@ const Footer = () => {
 
           {/* Quick Links */}
           <motion.div className="space-y-4" variants={itemVariants}>
-            <h3 className="text-2xl font-semibold pb-2 mb-4 text-teal-100">Quick Links</h3>
+            <h3 className="text-2xl font-semibold pb-2 mb-4 text-white/90">Quick Links</h3>
             <ul className="space-y-2">
               <motion.li whileHover={{ x: 5 }}>
-                <Link to="/" className="text-teal-200 hover:text-teal-100 transition-colors">Home</Link>
+                <Link to="/" className="text-white/80 hover:text-white transition-colors">Home</Link>
               </motion.li>
               <motion.li whileHover={{ x: 5 }}>
-                <Link to="/#about" className="text-teal-200 hover:text-teal-100 transition-colors">About Us</Link>
+                <Link to="/#about" className="text-white/80 hover:text-white transition-colors">About Us</Link>
               </motion.li>
               <motion.li whileHover={{ x: 5 }}>
-                <Link to="/#products" className="text-teal-200 hover:text-teal-100 transition-colors">Products</Link>
+                <Link to="/#products" className="text-white/80 hover:text-white transition-colors">Products</Link>
               </motion.li>
               <motion.li whileHover={{ x: 5 }}>
-                <Link to="/#contact" className="text-teal-200 hover:text-teal-100 transition-colors">Contact</Link>
+                <Link to="/#contact" className="text-white/80 hover:text-white transition-colors">Contact</Link>
               </motion.li>
               <motion.li whileHover={{ x: 5 }}>
-                <Link to="/privacy-policy" className="text-teal-200 hover:text-teal-100 transition-colors">Privacy Policy</Link>
+                <Link to="/privacy-policy" className="text-white/80 hover:text-white transition-colors">Privacy Policy</Link>
               </motion.li>
               <motion.li whileHover={{ x: 5 }}>
-                <Link to="/terms-of-service" className="text-teal-200 hover:text-teal-100 transition-colors">Terms of Service</Link>
+                <Link to="/terms-of-service" className="text-white/80 hover:text-white transition-colors">Terms of Service</Link>
               </motion.li>
             </ul>
           </motion.div>
         </div>
         
         <motion.div 
-          className="mt-12 pt-6 border-t border-teal-800/50 text-center text-teal-300"
+          className="mt-12 pt-6 border-t border-white/20 text-center text-white/70"
           variants={itemVariants}
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
@@ -198,7 +198,7 @@ const Footer = () => {
       {/* Go Up Button */}
       {showScrollButton && (
         <motion.button
-          className="fixed bottom-6 right-6 bg-teal-600 text-white p-3 rounded-full shadow-lg hover:bg-teal-700 transition-colors z-50 backdrop-blur-sm border border-teal-500/30"
+          className="fixed bottom-6 right-6 gradient-button p-3 rounded-full shadow-lg z-50 backdrop-blur-sm border border-white/20"
           onClick={scrollToTop}
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
