@@ -14,34 +14,37 @@
     --popover: 0 0% 100%;
     --popover-foreground: 196 20% 15%;
 
+    /* Updated to use ocean blue from the gradient */
     --primary: 200 100% 18%;
     --primary-foreground: 180 25% 95%;
 
-    --secondary: 180 25% 92%;
-    --secondary-foreground: 200 100% 15%;
+    /* Updated to use forest green tones */
+    --secondary: 180 50% 92%;
+    --secondary-foreground: 180 50% 15%;
 
     --muted: 180 15% 95%;
-    --muted-foreground: 200 20% 45%;
+    --muted-foreground: 180 30% 45%;
 
-    --accent: 180 15% 90%;
-    --accent-foreground: 200 100% 15%;
+    --accent: 180 30% 90%;
+    --accent-foreground: 180 50% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 180 15% 88%;
-    --input: 180 15% 88%;
+    --border: 180 25% 88%;
+    --input: 180 25% 88%;
     --ring: 200 100% 18%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 180 15% 98%;
-    --sidebar-foreground: 200 20% 25%;
-    --sidebar-primary: 200 100% 15%;
-    --sidebar-primary-foreground: 180 15% 98%;
-    --sidebar-accent: 180 15% 92%;
+    /* Updated sidebar colors to match gradient theme */
+    --sidebar-background: 180 25% 98%;
+    --sidebar-foreground: 180 50% 25%;
+    --sidebar-primary: 200 100% 18%;
+    --sidebar-primary-foreground: 180 25% 98%;
+    --sidebar-accent: 180 30% 92%;
     --sidebar-accent-foreground: 200 100% 15%;
-    --sidebar-border: 180 15% 88%;
+    --sidebar-border: 180 25% 88%;
     --sidebar-ring: 200 100% 45%;
 
     /* Ocean to forest gradient theme variables */
@@ -61,32 +64,34 @@
     --popover: 200 100% 8%;
     --popover-foreground: 180 15% 95%;
 
-    --primary: 180 15% 95%;
+    /* Updated dark mode to use gradient colors */
+    --primary: 180 50% 75%;
     --primary-foreground: 200 100% 15%;
 
-    --secondary: 200 100% 15%;
+    --secondary: 180 50% 15%;
     --secondary-foreground: 180 15% 95%;
 
-    --muted: 200 100% 15%;
+    --muted: 180 50% 15%;
     --muted-foreground: 180 15% 65%;
 
-    --accent: 200 100% 15%;
+    --accent: 180 50% 15%;
     --accent-foreground: 180 15% 95%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 200 100% 15%;
-    --input: 200 100% 15%;
-    --ring: 180 15% 75%;
+    --border: 180 50% 15%;
+    --input: 180 50% 15%;
+    --ring: 180 50% 75%;
     
+    /* Updated dark sidebar colors */
     --sidebar-background: 200 100% 10%;
     --sidebar-foreground: 180 15% 92%;
     --sidebar-primary: 180 50% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 200 100% 12%;
+    --sidebar-accent: 180 50% 12%;
     --sidebar-accent-foreground: 180 15% 92%;
-    --sidebar-border: 200 100% 12%;
+    --sidebar-border: 180 50% 12%;
     --sidebar-ring: 180 50% 65%;
 
     /* Dark mode gradient theme variables */
