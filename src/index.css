@@ -14,26 +14,26 @@
     --popover: 0 0% 100%;
     --popover-foreground: 196 20% 15%;
 
-    /* Updated to use ocean blue from the gradient */
-    --primary: 200 100% 18%;
+    /* Primary colors now use the ocean blue from gradient */
+    --primary: 200 100% 18%; /* #003b5c - ocean blue */
     --primary-foreground: 180 25% 95%;
 
-    /* Updated to use forest green tones */
-    --secondary: 180 50% 92%;
-    --secondary-foreground: 180 50% 15%;
+    /* Secondary colors use forest green tones */
+    --secondary: 158 60% 18%; /* #1f5f5b - forest green */
+    --secondary-foreground: 180 25% 95%;
 
     --muted: 180 15% 95%;
     --muted-foreground: 180 30% 45%;
 
-    --accent: 180 30% 90%;
-    --accent-foreground: 180 50% 15%;
+    --accent: 200 100% 18%; /* Using ocean blue for accents */
+    --accent-foreground: 180 25% 95%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 180 25% 88%;
     --input: 180 25% 88%;
-    --ring: 200 100% 18%;
+    --ring: 200 100% 18%; /* Ocean blue for focus rings */
 
     --radius: 0.5rem;
 
@@ -49,7 +49,7 @@
 
     /* Ocean to forest gradient theme variables */
     --ocean-blue: 200 100% 18%;
-    --forest-green: 180 50% 25%;
+    --forest-green: 158 60% 18%;
     --gradient-background: 180 15% 98%;
     --gradient-surface: 0 0% 100%;
   }
@@ -65,16 +65,16 @@
     --popover-foreground: 180 15% 95%;
 
     /* Updated dark mode to use gradient colors */
-    --primary: 180 50% 75%;
+    --primary: 200 60% 65%; /* Lighter ocean blue for dark mode */
     --primary-foreground: 200 100% 15%;
 
-    --secondary: 180 50% 15%;
+    --secondary: 158 40% 45%; /* Lighter forest green for dark mode */
     --secondary-foreground: 180 15% 95%;
 
     --muted: 180 50% 15%;
     --muted-foreground: 180 15% 65%;
 
-    --accent: 180 50% 15%;
+    --accent: 200 60% 65%;
     --accent-foreground: 180 15% 95%;
 
     --destructive: 0 62.8% 30.6%;
@@ -96,7 +96,7 @@
 
     /* Dark mode gradient theme variables */
     --ocean-blue: 200 60% 65%;
-    --forest-green: 180 40% 45%;
+    --forest-green: 158 40% 45%;
     --gradient-background: 200 100% 8%;
     --gradient-surface: 200 100% 10%;
   }
@@ -198,7 +198,7 @@
     -webkit-background-clip: padding-box;
   }
 
-  /* Medical theme compatibility */
+  /* Medical theme compatibility classes that use the gradient colors */
   .medical-card {
     @apply gradient-card;
   }
@@ -209,6 +209,39 @@
 
   .medical-button-outline {
     @apply gradient-button-outline;
+  }
+
+  /* Theme-consistent text colors */
+  .text-medical-500 {
+    color: #003b5c;
+  }
+
+  .text-medical-600 {
+    color: #002f4a;
+  }
+
+  .bg-medical-500 {
+    background-color: #003b5c;
+  }
+
+  .bg-medical-600 {
+    background-color: #002f4a;
+  }
+
+  .hover\:bg-medical-500:hover {
+    background-color: #003b5c;
+  }
+
+  .hover\:bg-medical-600:hover {
+    background-color: #002f4a;
+  }
+
+  .hover\:text-medical-500:hover {
+    color: #003b5c;
+  }
+
+  .border-medical-500 {
+    border-color: #003b5c;
   }
 }
 

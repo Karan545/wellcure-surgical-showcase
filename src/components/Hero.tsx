@@ -26,9 +26,9 @@ const Hero = () => {
 
   return (
     <section className="relative h-[60vh] md:h-[70vh] mt-20 w-full overflow-hidden">
-      {/* Full Width Hero Image */}
+      {/* Full Width Hero Image with Gradient Overlay */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#003b5c]/90 to-[#1f5f5b]/80 z-10" />
         <img
           src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80"
           alt="Medical surgical operating room"
@@ -68,7 +68,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto bg-medical-500 text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold hover:bg-medical-600 transition-colors shadow-lg text-lg"
+              className="w-full sm:w-auto bg-white text-[#003b5c] px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg text-lg"
               onClick={scrollToProducts}
             >
               Explore Products
@@ -76,7 +76,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto border-2 border-white text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold hover:bg-white/10 transition-colors shadow-lg text-lg"
+              className="w-full sm:w-auto border-2 border-white text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-semibold hover:bg-white hover:text-[#003b5c] transition-colors shadow-lg text-lg"
               onClick={scrollToContact}
             >
               Contact Us
