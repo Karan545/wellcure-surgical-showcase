@@ -21,10 +21,17 @@ const Header = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center"
+            className="flex items-center gap-3"
           >
-            <a href="/" className="text-xl md:text-2xl font-bold bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] bg-clip-text text-transparent hover:opacity-80 transition-opacity">
-              Wellcure Surgicals
+            <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+              <img 
+                src="/lovable-uploads/0b5d674d-912b-485f-8d72-b5340093fb12.png" 
+                alt="Wellcure Surgicals Logo" 
+                className="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover"
+              />
+              <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] bg-clip-text text-transparent">
+                Wellcure Surgicals
+              </span>
             </a>
           </motion.div>
 
