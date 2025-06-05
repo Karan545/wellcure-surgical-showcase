@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -35,6 +34,24 @@ const oxygenDeliveryProducts = [
     image: createImagePath(CATEGORY_PATH, "twin-bore-nasal-cannula.jpg"),
     imageAlt: "Dual-channel nasal oxygen cannula for comfortable oxygen therapy",
     description: "Advanced dual-channel nasal oxygen cannula designed for comfortable and efficient oxygen delivery with enhanced patient mobility."
+  },
+  {
+    title: "Lung Exerciser",
+    image: createImagePath(CATEGORY_PATH, "lung-exerciser.jpg"),
+    imageAlt: "Post-operative breathing device for improving lung capacity",
+    description: "Post-operative breathing device that helps improve lung capacity and prevent respiratory complications in surgical recovery environments."
+  },
+  {
+    title: "Respiratory Circuits",
+    image: createImagePath(CATEGORY_PATH, "respiratory-circuits.jpg"),
+    imageAlt: "Ventilator-compatible breathing circuits for anaesthesia and critical care",
+    description: "Ventilator-compatible breathing circuits used in anaesthesia and critical care environments for reliable respiratory support and patient safety."
+  },
+  {
+    title: "Heat Moisture Exchanger with Bacterial Viral Filter (HME-BVF)",
+    image: createImagePath(CATEGORY_PATH, "hme-bvf.jpg"),
+    imageAlt: "Heat moisture exchanger with bacterial viral filter for mechanical ventilation",
+    description: "Maintains humidity and prevents cross-contamination during mechanical ventilation or anaesthesia procedures, ensuring optimal patient safety."
   }
 ];
 
@@ -45,6 +62,12 @@ const suctionAirwayProducts = [
     image: createImagePath(CATEGORY_PATH, "suction-catheters.jpg"),
     imageAlt: "High-performance suction catheters for airway management",
     description: "High-performance suction catheters essential for effective airway management and secretion removal during anaesthesia and post-operative care."
+  },
+  {
+    title: "Yankauer Suction Set",
+    image: createImagePath(CATEGORY_PATH, "yankauer-suction-set.jpg"),
+    imageAlt: "Yankauer suction set for oropharyngeal suctioning during surgery",
+    description: "Used for oropharyngeal suctioning during surgery or intensive care; ensures a clear airway for optimal patient respiratory function."
   }
 ];
 
@@ -109,6 +132,12 @@ const cardiopulmonaryProducts = [
     image: createImagePath(CATEGORY_PATH, "mister-blower.jpg"),
     imageAlt: "Surgical mister and blower for operative field management",
     description: "Professional surgical mister and blower system for maintaining clear operative fields and effective irrigation during cardiac procedures."
+  },
+  {
+    title: "Vessel Loops",
+    image: createImagePath(CATEGORY_PATH, "vessel-loops.jpg"),
+    imageAlt: "Soft silicone vessel loops for cardio-thoracic surgery",
+    description: "Soft silicone loops used in cardio-thoracic surgery to isolate and retract vessels during surgical procedures with precision and safety."
   }
 ];
 
