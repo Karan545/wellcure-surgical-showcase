@@ -21,9 +21,9 @@ const SubcategoryNavigation = () => {
   };
 
   return (
-    <section className="py-8 bg-gray-50/80 backdrop-blur-sm">
+    <section className="py-12 bg-gray-50/80 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
           {subcategories.map((subcategory, index) => (
             <motion.div
               key={subcategory.id}
@@ -34,7 +34,7 @@ const SubcategoryNavigation = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full text-center px-4 py-6 h-auto whitespace-normal"
+                className="text-lg px-8 py-6 whitespace-nowrap"
                 onClick={() => scrollToSection(subcategory.id)}
               >
                 {subcategory.label}
