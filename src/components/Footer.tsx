@@ -1,4 +1,3 @@
-
 import { Mail, Phone, MapPin, Heart, ShieldCheck, Stethoscope, ArrowUp, Search } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -255,7 +254,7 @@ const Footer = () => {
           aria-label="Scroll to top"
         >
           <ArrowUp size={20} />
-        </ArrowUp>
+        </motion.button>
       )}
     </footer>
   );
