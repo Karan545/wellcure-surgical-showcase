@@ -5,7 +5,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import { useState, useEffect } from "react";
 import Banner from "@/components/infusion-therapy/Banner";
 import SubcategoryNavigation from "@/components/infusion-therapy/SubcategoryNavigation";
-import SubcategorySection from "@/components/urological/SubcategorySection";
+import SubcategorySection from "@/components/infusion-therapy/SubcategorySection";
 import { extensionTubes, ivInfusionSets, ivCannulas } from "@/data/infusion-therapy-data";
 import { pressureMonitoringProducts, flowControlProducts, pediatricProducts } from "@/data/infusion-therapy-extended-data";
 
