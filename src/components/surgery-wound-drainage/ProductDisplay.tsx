@@ -4,8 +4,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { getProductImage } from "@/utils/imageUtils";
-import { UrineCollectionBags, UrineDrainageCatheters } from "@/data/urological-data";
-import { CentralVenousDevices, DialysisCatheters } from "@/data/urological-extended-data";
+import { 
+  surgicalDrainageProducts, 
+  surgicalSuctionProducts, 
+  surgicalRetractionProducts 
+} from "@/data/surgery-wound-drainage-data";
 
 interface ProductDisplayProps {
   category: string;
@@ -14,44 +17,38 @@ interface ProductDisplayProps {
 const ProductDisplay = ({ category }: ProductDisplayProps) => {
   const getProducts = () => {
     switch (category) {
-      case "urine-bags":
-        return UrineCollectionBags;
-      case "urine-drainage":
-        return UrineDrainageCatheters;
-      case "central-venous":
-        return CentralVenousDevices;
-      case "dialysis":
-        return DialysisCatheters;
+      case "surgical-drainage":
+        return surgicalDrainageProducts;
+      case "surgical-suction":
+        return surgicalSuctionProducts;
+      case "surgical-retraction":
+        return surgicalRetractionProducts;
       default:
-        return UrineCollectionBags;
+        return surgicalDrainageProducts;
     }
   };
 
   const getCategoryTitle = () => {
     switch (category) {
-      case "urine-bags":
-        return "Urine Collection Bags";
-      case "urine-drainage":
-        return "Urine Drainage Catheters";
-      case "central-venous":
-        return "Central Venous Access Devices";
-      case "dialysis":
-        return "Dialysis Catheters";
+      case "surgical-drainage":
+        return "Surgical Drainage & Collection Systems";
+      case "surgical-suction":
+        return "Surgical Suction Instruments";
+      case "surgical-retraction":
+        return "Surgical Retraction & Isolation Tools";
       default:
-        return "Urine Collection Bags";
+        return "Surgical Drainage & Collection Systems";
     }
   };
 
   const getCategoryDescription = () => {
     switch (category) {
-      case "urine-bags":
-        return "Comprehensive range of urine collection bags designed for various patient demographics and clinical requirements. Our collection includes pediatric-specific designs, measured volume chambers, and specialized outlet configurations to meet diverse healthcare facility needs.";
-      case "urine-drainage":
-        return "High-quality urinary catheters engineered for patient comfort and clinical efficiency. Our catheter range includes specialized designs for different patient populations and clinical scenarios, ensuring optimal drainage and minimal discomfort.";
-      case "central-venous":
-        return "Advanced central venous catheter systems for critical care and intensive care unit applications. These devices provide reliable vascular access for complex medical procedures, medication administration, and continuous monitoring in urological and critical care settings.";
-      case "dialysis":
-        return "Specialized hemodialysis catheters designed for renal replacement therapy and dialysis applications. Our dialysis catheter range includes both temporary and long-term access solutions for chronic kidney disease management and acute renal failure treatment.";
+      case "surgical-drainage":
+        return "Comprehensive drainage systems designed for post-operative fluid management and infection prevention. Our collection includes wound drainage systems, thoracic catheters, and specialized drainage devices for various surgical applications.";
+      case "surgical-suction":
+        return "High-performance suction instruments essential for maintaining clear surgical fields and effective airway management. Our suction sets provide reliable vacuum pressure for various operating room procedures and critical care scenarios.";
+      case "surgical-retraction":
+        return "Precision surgical tools designed for vessel isolation and tissue retraction during complex surgical procedures. These instruments provide surgeons with the control and visibility needed for safe and effective vascular and cardiac surgery.";
       default:
         return "";
     }

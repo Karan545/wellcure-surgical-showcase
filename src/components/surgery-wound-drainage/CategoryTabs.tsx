@@ -14,35 +14,27 @@ const CategoryTabs = ({ selectedCategory, setSelectedCategory }: CategoryTabsPro
         <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
           <Button
             size="lg"
-            variant={selectedCategory === "urine-bags" ? "default" : "outline"}
+            variant={selectedCategory === "surgical-drainage" ? "default" : "outline"}
             className="text-lg px-8 py-6 whitespace-nowrap"
-            onClick={() => setSelectedCategory("urine-bags")}
+            onClick={() => setSelectedCategory("surgical-drainage")}
           >
-            Urine Collection Bags
+            Drainage & Collection Systems
           </Button>
           <Button
             size="lg"
-            variant={selectedCategory === "urine-drainage" ? "default" : "outline"}
+            variant={selectedCategory === "surgical-suction" ? "default" : "outline"}
             className="text-lg px-8 py-6 whitespace-nowrap"
-            onClick={() => setSelectedCategory("urine-drainage")}
+            onClick={() => setSelectedCategory("surgical-suction")}
           >
-            Urine Drainage Catheters
+            Surgical Suction Instruments
           </Button>
           <Button
             size="lg"
-            variant={selectedCategory === "central-venous" ? "default" : "outline"}
+            variant={selectedCategory === "surgical-retraction" ? "default" : "outline"}
             className="text-lg px-8 py-6 whitespace-nowrap"
-            onClick={() => setSelectedCategory("central-venous")}
+            onClick={() => setSelectedCategory("surgical-retraction")}
           >
-            Central Venous Access Devices
-          </Button>
-          <Button
-            size="lg"
-            variant={selectedCategory === "dialysis" ? "default" : "outline"}
-            className="text-lg px-8 py-6 whitespace-nowrap"
-            onClick={() => setSelectedCategory("dialysis")}
-          >
-            Dialysis Catheters
+            Retraction & Isolation Tools
           </Button>
         </div>
       </div>

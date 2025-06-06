@@ -5,13 +5,12 @@ import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import CategoryBanner from "@/components/shared/CategoryBanner";
 import FloatingIcons from "@/components/urological/FloatingIcons";
-import SubcategoryNavigation from "@/components/urological/SubcategoryNavigation";
-import SubcategorySection from "@/components/urological/SubcategorySection";
-import { UrineCollectionBags, UrineDrainageCatheters } from "@/data/urological-data";
-import { CentralVenousDevices, DialysisCatheters } from "@/data/urological-extended-data";
+import CategoryTabs from "@/components/urological/CategoryTabs";
+import ProductDisplay from "@/components/urological/ProductDisplay";
 
 const UrologicalInstruments = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState("urine-bags");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,35 +39,12 @@ const UrologicalInstruments = () => {
           altText="Medical professionals in clean room environment manufacturing urological collection bags"
         />
 
-        <SubcategoryNavigation />
-
-        <SubcategorySection
-          id="urine-bags"
-          title="Urine Collection Bags"
-          description="Comprehensive range of urine collection bags designed for various patient demographics and clinical requirements. Our collection includes pediatric-specific designs, measured volume chambers, and specialized outlet configurations to meet diverse healthcare facility needs."
-          products={UrineCollectionBags}
+        <CategoryTabs 
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
         />
 
-        <SubcategorySection
-          id="urine-drainage"
-          title="Urine Drainage Catheters"
-          description="High-quality urinary catheters engineered for patient comfort and clinical efficiency. Our catheter range includes specialized designs for different patient populations and clinical scenarios, ensuring optimal drainage and minimal discomfort."
-          products={UrineDrainageCatheters}
-        />
-
-        <SubcategorySection
-          id="central-venous"
-          title="Central Venous Access Devices"
-          description="Advanced central venous catheter systems for critical care and intensive care unit applications. These devices provide reliable vascular access for complex medical procedures, medication administration, and continuous monitoring in urological and critical care settings."
-          products={CentralVenousDevices}
-        />
-
-        <SubcategorySection
-          id="dialysis"
-          title="Dialysis Catheters"
-          description="Specialized hemodialysis catheters designed for renal replacement therapy and dialysis applications. Our dialysis catheter range includes both temporary and long-term access solutions for chronic kidney disease management and acute renal failure treatment."
-          products={DialysisCatheters}
-        />
+        <ProductDisplay category={selectedCategory} />
       </main>
       <Footer />
     </div>
