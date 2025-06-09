@@ -83,6 +83,11 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
     setSelectedProduct(null);
   };
 
+  const hasProductDetails = (productTitle: string) => {
+    return productTitle === "I.V. Flow Regulator Extension Set" || 
+           productTitle === "I.V. Infusion Set with Flow Regulator";
+  };
+
   const products = getProducts();
 
   return (
@@ -121,7 +126,7 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                   <CardDescription className="text-base">{product.description}</CardDescription>
                 </CardContent>
                 <CardFooter>
-                  {product.title === "I.V. Flow Regulator Extension Set" ? (
+                  {hasProductDetails(product.title) ? (
                     <Button 
                       className="w-full" 
                       onClick={() => handleProductClick(product)}

@@ -18,10 +18,42 @@ interface ProductDetailsDialogProps {
 }
 
 const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialogProps) => {
-  // Only show details for the I.V. Flow Regulator Extension Set
-  if (product.title !== "I.V. Flow Regulator Extension Set") {
+  // Only show details for specific products
+  if (product.title !== "I.V. Flow Regulator Extension Set" && product.title !== "I.V. Infusion Set with Flow Regulator") {
     return null;
   }
+
+  const getProductContent = () => {
+    if (product.title === "I.V. Flow Regulator Extension Set") {
+      return {
+        name: "I.V. FLOW REGULATOR EXTENSION SET",
+        features: [
+          "Precise flow rate control of IV fluids with range of 5 to 250 ml/hr",
+          "With \"Y\" Injection Port (Latex or Latex Free) for intermittent medication",
+          "Also available with Thumb Support \"Y\" Injection Port and Needle Free \"Y\" Site",
+          "Soft & kink-resistant PVC tubing",
+          "Male Luer Connector at one end and Female Luer Connector at the other",
+          "Standard Tube Length: 20 cm without \"Y\" site & 40 cm with \"Y\" site",
+          "Tube Diameter: I Ø 3.0 mm, O Ø 4.1 mm"
+        ]
+      };
+    } else {
+      return {
+        name: "I.V. INFUSION SET WITH FLOW REGULATOR",
+        features: [
+          "Precise flow rate control of IV fluids with range of 5 to 250 ml/hr",
+          "With \"Y\" Injection Port (Latex or Latex Free) for intermittent medication",
+          "Also available with Thumb Support \"Y\" Injection Port and Needle Free \"Y\" Site",
+          "Soft & kink-resistant PVC tubing",
+          "Male Luer Connector at one end and Female Luer Connector at the other",
+          "Standard Tube Length: 20 cm without \"Y\" site & 40 cm with \"Y\" site",
+          "Tube Diameter: I Ø 3.0 mm, O Ø 4.1 mm"
+        ]
+      };
+    }
+  };
+
+  const productContent = getProductContent();
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -43,7 +75,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
               <span className="text-lg">🩺</span>
               <h3 className="text-lg font-semibold text-gray-800">Product Name:</h3>
             </div>
-            <p className="text-base text-gray-700 ml-6">I.V. FLOW REGULATOR EXTENSION SET</p>
+            <p className="text-base text-gray-700 ml-6">{productContent.name}</p>
           </div>
 
           {/* Common Features Section */}
@@ -54,40 +86,12 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
             </div>
             
             <div className="ml-6 space-y-3">
-              <div className="flex items-start gap-2">
-                <span className="text-sm text-gray-400 mt-1">•</span>
-                <p className="text-base text-gray-700">Precise flow rate control of IV fluids with range of 5 to 250 ml/hr</p>
-              </div>
-              
-              <div className="flex items-start gap-2">
-                <span className="text-sm text-gray-400 mt-1">•</span>
-                <p className="text-base text-gray-700">With "Y" Injection Port (Latex or Latex Free) for intermittent medication</p>
-              </div>
-              
-              <div className="flex items-start gap-2">
-                <span className="text-sm text-gray-400 mt-1">•</span>
-                <p className="text-base text-gray-700">Also available with Thumb Support "Y" Injection Port and Needle Free "Y" Site</p>
-              </div>
-              
-              <div className="flex items-start gap-2">
-                <span className="text-sm text-gray-400 mt-1">•</span>
-                <p className="text-base text-gray-700">Soft & kink-resistant PVC tubing</p>
-              </div>
-              
-              <div className="flex items-start gap-2">
-                <span className="text-sm text-gray-400 mt-1">•</span>
-                <p className="text-base text-gray-700">Male Luer Connector at one end and Female Luer Connector at the other</p>
-              </div>
-              
-              <div className="flex items-start gap-2">
-                <span className="text-sm text-gray-400 mt-1">•</span>
-                <p className="text-base text-gray-700">Standard Tube Length: 20 cm without "Y" site & 40 cm with "Y" site</p>
-              </div>
-              
-              <div className="flex items-start gap-2">
-                <span className="text-sm text-gray-400 mt-1">•</span>
-                <p className="text-base text-gray-700">Tube Diameter: I Ø 3.0 mm, O Ø 4.1 mm</p>
-              </div>
+              {productContent.features.map((feature, index) => (
+                <div key={index} className="flex items-start gap-2">
+                  <span className="text-sm text-gray-400 mt-1">•</span>
+                  <p className="text-base text-gray-700">{feature}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
