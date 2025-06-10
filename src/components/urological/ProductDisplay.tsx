@@ -1,17 +1,21 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { getProductImage } from "@/utils/imageUtils";
 import { UrineCollectionBags, UrineDrainageCatheters } from "@/data/urological-data";
 import { CentralVenousDevices, DialysisCatheters } from "@/data/urological-extended-data";
+import ProductDetailsDialog from "./ProductDetailsDialog";
 
 interface ProductDisplayProps {
   category: string;
 }
 
 const ProductDisplay = ({ category }: ProductDisplayProps) => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<{ title: string } | null>(null);
+
   const getProducts = () => {
     switch (category) {
       case "urine-bags":
@@ -57,6 +61,16 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
     }
   };
 
+  const handleGetDetails = (product: { title: string }) => {
+    setSelectedProduct(product);
+    setIsDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+    setSelectedProduct(null);
+  };
+
   const products = getProducts();
 
   return (
@@ -95,13 +109,30 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                   <CardDescription className="text-base">{product.description}</CardDescription>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full">Request Quote</Button>
+                  {category === "urine-bags" ? (
+                    <Button 
+                      className="w-full"
+                      onClick={() => handleGetDetails(product)}
+                    >
+                      Get Details
+                    </Button>
+                  ) : (
+                    <Button className="w-full">Request Quote</Button>
+                  )}
                 </CardFooter>
               </Card>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {selectedProduct && (
+        <ProductDetailsDialog
+          isOpen={isDialogOpen}
+          onClose={handleCloseDialog}
+          product={selectedProduct}
+        />
+      )}
     </section>
   );
 };
