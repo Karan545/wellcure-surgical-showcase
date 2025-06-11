@@ -20,6 +20,7 @@ interface ProductDetailsDialogProps {
 const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialogProps) => {
   const getProductContent = () => {
     switch (product.title) {
+      // Urine Collection Bags
       case "Pediatric Urine Collection Bag":
         return {
           name: "PEDIATRIC URINE COLLECTION BAG",
@@ -86,6 +87,48 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
             "Soft kink-resistant tubing, wall-mount hanger, CE/ISO certified"
           ]
         };
+      
+      // Urine Drainage Catheters
+      case "Female Catheter":
+        return {
+          name: "FEMALE CATHETER",
+          features: [
+            "Specially designed length (180-200mm) for female anatomy",
+            "Medical-grade PVC construction, latex-free",
+            "Available sizes: 6-24 Fr with color-coded connectors",
+            "Smooth rounded tip for gentle insertion",
+            "Radio-opaque line for X-ray visibility",
+            "Individually sterile packed, CE/ISO certified",
+            "Export-ready with international quality standards"
+          ]
+        };
+      case "Rectal Catheter":
+        return {
+          name: "RECTAL CATHETER",
+          features: [
+            "Smooth surface finish with atraumatic rounded tip",
+            "Medical-grade PVC material, latex-free construction",
+            "Length: 300-400mm for optimal reach",
+            "Available sizes: 6-30 Fr with funnel connector",
+            "Flexible design for patient comfort",
+            "Sterile, single-use, individually packed",
+            "CE/ISO certified for international export"
+          ]
+        };
+      case "Nelaton Catheter":
+        return {
+          name: "NELATON CATHETER",
+          features: [
+            "Straight-tip design with multiple drainage eyes",
+            "Premium medical-grade PVC, latex-free",
+            "Radio-opaque line for accurate positioning",
+            "Color-coded funnel connector for size identification",
+            "Smooth surface for easy insertion",
+            "Individually sterile packed with peel-open packaging",
+            "CE/ISO certified, export-ready quality"
+          ],
+          showTable: true
+        };
       default:
         return null;
     }
@@ -136,6 +179,57 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
               ))}
             </div>
           </div>
+
+          {/* Nelaton Catheter Size Table */}
+          {productContent.showTable && (
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-lg">📊</span>
+                <h3 className="text-lg font-semibold text-gray-800">Available Sizes (Nelaton Catheter):</h3>
+              </div>
+              
+              <div className="ml-6 overflow-x-auto">
+                <table className="w-full border-collapse border border-gray-300 text-sm">
+                  <thead>
+                    <tr className="bg-gray-50">
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Variant</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Length</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Size (Fr)</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Connector</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Material</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-3 py-2">Male</td>
+                      <td className="border border-gray-300 px-3 py-2">400 mm</td>
+                      <td className="border border-gray-300 px-3 py-2">6–24 Fr</td>
+                      <td className="border border-gray-300 px-3 py-2">Funnel</td>
+                      <td className="border border-gray-300 px-3 py-2">Medical-grade PVC</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-3 py-2">Female</td>
+                      <td className="border border-gray-300 px-3 py-2">180–200 mm</td>
+                      <td className="border border-gray-300 px-3 py-2">6–24 Fr</td>
+                      <td className="border border-gray-300 px-3 py-2">Funnel</td>
+                      <td className="border border-gray-300 px-3 py-2">Medical-grade PVC</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-3 py-2">Pediatric</td>
+                      <td className="border border-gray-300 px-3 py-2">400 mm</td>
+                      <td className="border border-gray-300 px-3 py-2">6–10 Fr</td>
+                      <td className="border border-gray-300 px-3 py-2">Funnel</td>
+                      <td className="border border-gray-300 px-3 py-2">Medical-grade PVC</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                <p className="text-sm text-gray-600 mt-3 italic">
+                  Export-ready notes: individually sterile packed, CE/ISO certified, radio‑opaque line, color‑coded connector, latex‑free
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </DialogContent>
     </Dialog>
