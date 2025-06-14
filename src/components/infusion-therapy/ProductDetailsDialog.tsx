@@ -373,12 +373,29 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
         return {
           name: "EXTENSION LINE WITH NEEDLE-FREE CONNECTORS",
           features: [
-            "Enables safe infusion with closed needle-free access",
-            "Standard lengths: 10 cm, 25 cm, 50 cm",
-            "Male Luer Lock to Needle-Free Y-Site",
-            "High flow rate and low priming volume",
-            "Non-pyrogenic and latex free"
-          ]
+            "Designed for safe fluid transfer and drug administration",
+            "Needle-Free Y-Site connector ensures closed system access and reduces contamination risk",
+            "Standard lengths available: 10 cm, 25 cm, 50 cm",
+            "Pressure-resistant tubing for high flow without kinking",
+            "Soft, kink-resistant, DEHP-free PVC construction",
+            "Ends: Male Luer Lock to Needle-Free Connector",
+            "Minimal dead space and low priming volume",
+            "Sterilized using Ethylene Oxide (EO) gas",
+            "Individually packed, non-toxic, non-pyrogenic",
+            "Suitable for critical care and pressure monitoring environments"
+          ],
+          table: {
+            headers: ["Specification", "Value"],
+            rows: [
+              ["Tube Lengths Available", "10 cm, 25 cm, 50 cm"],
+              ["End Connectors", "Male Luer Lock to Y-Site"],
+              ["Material", "DEHP-free medical-grade PVC"],
+              ["Sterilization", "EO Sterile"],
+              ["Needle-Free Valve", "Integrated, high-flow design"],
+              ["Packaging", "Individually packed"],
+              ["Usage", "Single use, disposable"]
+            ]
+          }
         };
       case "One Way Stopcock":
       case "Two Way Stopcock":
