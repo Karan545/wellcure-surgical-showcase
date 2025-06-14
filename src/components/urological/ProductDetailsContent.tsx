@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ProductDetailContent } from "@/data/urological-product-details";
 
@@ -61,7 +60,7 @@ const ProductDetailsContent = ({ content }: ProductDetailsContentProps) => {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <span className="text-lg">🔹</span>
-            <h3 className="text-lg font-semibold text-gray-800">Additional Features:</h3>
+            <h3 className="text-lg font-semibold text-gray-800">Key Features & Benefits:</h3>
           </div>
           
           <div className="ml-6 space-y-3">
@@ -205,65 +204,157 @@ const ProductDetailsContent = ({ content }: ProductDetailsContentProps) => {
         </div>
       )}
 
-      {/* Kit Contents */}
-      {content.kitContents && (
-        <div>
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-lg">📦</span>
-            <h3 className="text-lg font-semibold text-gray-800">Kit Contents:</h3>
-          </div>
-          <p className="text-base text-gray-700 ml-6">{content.kitContents}</p>
-        </div>
-      )}
-
-      {/* Nelaton Catheter Size Table */}
-      {content.showTable && (
+      {/* Dialysis Single Lumen Specification Table */}
+      {content.showDialysisSingleTable && (
         <div>
           <div className="flex items-center gap-2 mb-4">
             <span className="text-lg">📊</span>
-            <h3 className="text-lg font-semibold text-gray-800">Available Sizes (Nelaton Catheter):</h3>
+            <h3 className="text-lg font-semibold text-gray-800">Specification (Straight Extension):</h3>
           </div>
           
           <div className="ml-6 overflow-x-auto">
             <table className="w-full border-collapse border border-gray-300 text-sm">
               <thead>
                 <tr className="bg-gray-50">
-                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Variant</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Length</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Size (Fr)</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Connector</th>
-                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Material</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Part No.</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Catheter Size & Length</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Dilator</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Guidewire</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Needle</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Syringe</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="border border-gray-300 px-3 py-2">Male</td>
-                  <td className="border border-gray-300 px-3 py-2">400 mm</td>
-                  <td className="border border-gray-300 px-3 py-2">6–24 Fr</td>
-                  <td className="border border-gray-300 px-3 py-2">Funnel</td>
-                  <td className="border border-gray-300 px-3 py-2">Medical-grade PVC</td>
-                </tr>
-                <tr className="bg-gray-50">
-                  <td className="border border-gray-300 px-3 py-2">Female</td>
-                  <td className="border border-gray-300 px-3 py-2">180–200 mm</td>
-                  <td className="border border-gray-300 px-3 py-2">6–24 Fr</td>
-                  <td className="border border-gray-300 px-3 py-2">Funnel</td>
-                  <td className="border border-gray-300 px-3 py-2">Medical-grade PVC</td>
-                </tr>
-                <tr>
-                  <td className="border border-gray-300 px-3 py-2">Pediatric</td>
-                  <td className="border border-gray-300 px-3 py-2">400 mm</td>
-                  <td className="border border-gray-300 px-3 py-2">6–10 Fr</td>
-                  <td className="border border-gray-300 px-3 py-2">Funnel</td>
-                  <td className="border border-gray-300 px-3 py-2">Medical-grade PVC</td>
+                  <td className="border border-gray-300 px-3 py-2">PDC-S10B016R</td>
+                  <td className="border border-gray-300 px-3 py-2">1 lumen 8 Fr × 16 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">9 Fr × 10 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">0.035 × 70 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">18 G 7 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">5 mL</td>
                 </tr>
               </tbody>
             </table>
-            
-            <p className="text-sm text-gray-600 mt-3 italic">
-              Export-ready notes: individually sterile packed, CE/ISO certified, radio‑opaque line, color‑coded connector, latex‑free
-            </p>
           </div>
+        </div>
+      )}
+
+      {/* Dialysis Double Lumen Specification Table */}
+      {content.showDialysisDoubleTable && (
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-lg">📊</span>
+            <h3 className="text-lg font-semibold text-gray-800">Available Sizes (Straight Extension):</h3>
+          </div>
+          
+          <div className="ml-6 overflow-x-auto">
+            <table className="w-full border-collapse border border-gray-300 text-sm">
+              <thead>
+                <tr className="bg-gray-50">
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Part No.</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Catheter Size & Length</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Dilator</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Guidewire</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Needle</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Syringe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 px-3 py-2">PDC-S206511R</td>
+                  <td className="border border-gray-300 px-3 py-2">2 lumen 6.5 Fr × 11 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">7 Fr × 10 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">0.021 × 45 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">18 G 7 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">5 mL</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-300 px-3 py-2">PDC-S208511R</td>
+                  <td className="border border-gray-300 px-3 py-2">2 lumen 8.5 Fr × 11 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">9 Fr × 10 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">0.021 × 45 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">18 G 7 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">5 mL</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 px-3 py-2">PDC-S211513R</td>
+                  <td className="border border-gray-300 px-3 py-2">2 lumen 11.5 Fr × 13 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">11.5 Fr × 20 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">0.035 × 70 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">18 G 7 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">5 mL</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="border border-gray-300 px-3 py-2">PDC-S212016R</td>
+                  <td className="border border-gray-300 px-3 py-2">2 lumen 12 Fr × 16 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">11.5 Fr × 20 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">0.035 × 70 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">18 G 7 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">5 mL</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Dialysis Triple Lumen Specification Table */}
+      {content.showDialysisTripleTable && (
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-lg">📊</span>
+            <h3 className="text-lg font-semibold text-gray-800">Specification (Straight Extension):</h3>
+          </div>
+          
+          <div className="ml-6 overflow-x-auto">
+            <table className="w-full border-collapse border border-gray-300 text-sm">
+              <thead>
+                <tr className="bg-gray-50">
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Part No.</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Catheter Size & Length</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Dilator</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Guidewire</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Needle</th>
+                  <th className="border border-gray-300 px-3 py-2 text-left font-medium">Syringe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 px-3 py-2">PDC-S312016R</td>
+                  <td className="border border-gray-300 px-3 py-2">3 lumen 12 Fr × 16 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">11.5 Fr × 20 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">0.035 × 70 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">18 G 7 cm</td>
+                  <td className="border border-gray-300 px-3 py-2">5 mL</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Kit Contents */}
+      {content.kitContents && (
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-lg">📦</span>
+            <h3 className="text-lg font-semibold text-gray-800">
+              {content.name.includes("LONG-TERM") ? "Standard Kit Includes:" : "Kit Contents:"}
+            </h3>
+          </div>
+          
+          {content.name.includes("LONG-TERM") ? (
+            <div className="text-base text-gray-700 ml-6 space-y-2">
+              {content.kitContents.split(', ').map((item, index) => (
+                <div key={index} className="flex items-start gap-2">
+                  <span className="text-sm text-gray-500 font-medium">{index + 1}.</span>
+                  <span className="capitalize">{item}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-base text-gray-700 ml-6">{content.kitContents}</p>
+          )}
         </div>
       )}
     </div>

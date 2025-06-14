@@ -1,4 +1,3 @@
-
 export interface ProductDetailContent {
   name: string;
   features?: string[];
@@ -9,6 +8,9 @@ export interface ProductDetailContent {
   showCVCTable?: boolean;
   showArterialTable?: boolean;
   showArterialExtensionTable?: boolean;
+  showDialysisSingleTable?: boolean;
+  showDialysisDoubleTable?: boolean;
+  showDialysisTripleTable?: boolean;
   kitContents?: string;
 }
 
@@ -180,6 +182,55 @@ export const productDetails: Record<string, ProductDetailContent> = {
     ],
     showArterialExtensionTable: true,
     kitContents: "catheter with extension, safety needle, safety guidewire, dilator, syringe, clamps"
+  },
+
+  // Dialysis Catheters
+  "Hemodialysis Catheter (Single Lumen)": {
+    name: "HEMODIALYSIS CATHETER — SINGLE LUMEN",
+    features: [
+      "Made of medical-grade polyurethane: stiff during insertion, softens at body temperature",
+      "Soft, conical atraumatic tip minimises vessel trauma",
+      "Clear silicone lumen extension for high visibility and safety",
+      "Radiopaque with graduated depth markings for accurate placement",
+      "Supplied sterile, tray-packed; CE / ISO 13485 certified"
+    ],
+    showDialysisSingleTable: true,
+    kitContents: "catheter, dilator, introducer needle, J-tip guidewire, scalpel, syringe, clamps"
+  },
+  "Hemodialysis Catheter (Double Lumen)": {
+    name: "HEMODIALYSIS CATHETER — DOUBLE LUMEN",
+    features: [
+      "Two independent lumens for simultaneous infusion and dialysis return",
+      "Polyurethane construction; kink-resistant yet flexible in situ",
+      "Radiopaque body with length marks; colour-coded clamps",
+      "Sterile kit supplied 5 kits / box"
+    ],
+    showDialysisDoubleTable: true,
+    kitContents: "catheter, dilator, introducer needle, J-tip guidewire, scalpel, syringe, clamps"
+  },
+  "Hemodialysis Catheter (Triple Lumen)": {
+    name: "HEMODIALYSIS CATHETER — TRIPLE LUMEN",
+    features: [
+      "Three lumens allow drug infusion, blood draw, and dialysis return simultaneously",
+      "Non-kinking PU tube; softens at 37 °C for patient comfort",
+      "Radiopaque with depth marks; colour-coded hubs (red/blue/white)",
+      "Supplied sterile with full accessory set"
+    ],
+    showDialysisTripleTable: true,
+    kitContents: "catheter, dilator, introducer needle, J-tip guidewire, scalpel, syringe, clamps"
+  },
+  "Long Term Hemodialysis Catheter": {
+    name: "LONG-TERM HEMODIALYSIS CATHETER",
+    additionalFeatures: [
+      "Premium silicone catheter for superior biocompatibility",
+      "Soft, geometrically designed conical tip for easy insertion and reduced trauma",
+      "Clear silicone extensions enhance visibility & safety",
+      "Dacron cuff minimises migration and lowers CRBI risk",
+      "Silicone body remains floppy in situ, reducing clot formation",
+      "Available sizes (cuff-to-tip): 19 cm • 21 cm • 23 cm (PDC-S215021R / PDC-S215023R)",
+      "Supplied sterile; suitable for long-term vascular access"
+    ],
+    kitContents: "silicone catheter & lumen extensions, vessel dilator, introducer needle, J-tip guidewire (nickel-titanium), tunneller (trocar), valved peelable introducer, heparin caps, scalpel, syringe"
   }
 };
 
