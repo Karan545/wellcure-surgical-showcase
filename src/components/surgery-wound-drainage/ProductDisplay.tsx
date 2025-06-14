@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -74,8 +73,14 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
       "Yankauer Suction Set"
     ];
 
+    // Products in the surgical-retraction category that have detailed information
+    const retractionProducts = [
+      "Vessel Loops"
+    ];
+
     return (category === "surgical-drainage" && drainageProducts.includes(productTitle)) ||
-           (category === "surgical-suction" && suctionProducts.includes(productTitle));
+           (category === "surgical-suction" && suctionProducts.includes(productTitle)) ||
+           (category === "surgical-retraction" && retractionProducts.includes(productTitle));
   };
 
   const handleProductClick = (product: any) => {

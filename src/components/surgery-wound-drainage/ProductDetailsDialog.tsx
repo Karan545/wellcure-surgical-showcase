@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Dialog,
@@ -193,6 +192,33 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
               ["Length", "210 cm / Customizable"],
               ["Sterile Packaging", "EO Sterilized, Single-use"],
               ["Connector Compatibility", "Universal Adapter"]
+            ]
+          }
+        };
+      case "Vessel Loops":
+        return {
+          name: "VESSEL LOOPS",
+          features: [
+            "Used for temporary occlusion, retraction, and identification of arteries, veins, tendons, and nerves during surgical procedures",
+            "Made from soft, medical-grade silicone that ensures gentle handling and minimizes trauma",
+            "Available in multiple vibrant colors for easy identification during procedures",
+            "Radiopaque strip included for visibility under imaging",
+            "Can be sterilized (EtO) and is latex-free",
+            "Non-adherent and non-toxic",
+            "Available in standard lengths and thicknesses"
+          ],
+          table: {
+            headers: ["Feature", "Description"],
+            rows: [
+              ["Material", "Medical-grade Silicone"],
+              ["Sterilization", "EO Sterile, Ready-to-use"],
+              ["Latex-Free", "Yes"],
+              ["Radiopaque Strip", "Yes"],
+              ["Color Variants", "Red, Blue, Yellow, Green, White"],
+              ["Width Options", "2.5 mm, 4.0 mm"],
+              ["Length", "400 mm (standard)"],
+              ["Application", "Retraction, Isolation, Identification"],
+              ["Packaging", "Individually packed, sterile"]
             ]
           }
         };
