@@ -84,12 +84,15 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
   };
 
   const hasProductDetails = (productTitle: string) => {
-    // Add extension tubes products to the list of products with details
+    // Add extension tubes products and I.V. Infusion Sets to the list of products with details
     return productTitle === "I.V. Flow Regulator Extension Set" || 
            productTitle === "I.V. Infusion Set with Flow Regulator" ||
            productTitle === "High Pressure Extension Line" ||
            productTitle === "Low Pressure Extension Line" ||
-           productTitle === "PVC Free High Pressure Extension Line";
+           productTitle === "PVC Free High Pressure Extension Line" ||
+           productTitle === "I.V. Infusion Set with Airvent" ||
+           productTitle === "I.V. Infusion Set with Micro Drip" ||
+           productTitle === "I.V. Infusion Set without Airvent";
   };
 
   const products = getProducts();

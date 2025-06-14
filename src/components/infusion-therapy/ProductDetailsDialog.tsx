@@ -121,6 +121,78 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
             ]
           }
         };
+      case "I.V. Infusion Set with Airvent":
+        return {
+          name: "I.V. INFUSION SET WITH AIRVENT",
+          features: [
+            "Manufactured from medical-grade, non-toxic PVC",
+            "With airvented spike to allow air entry during infusion",
+            "Transparent drip chamber with sharp spike for easy piercing",
+            "Flow regulator ensures smooth and accurate fluid control",
+            "Flexible and kink-resistant tubing",
+            "Luer lock or luer slip connector at distal end",
+            "Sterile, single-use, and EO sterilized"
+          ],
+          table: {
+            headers: ["Feature", "Specification"],
+            rows: [
+              ["Chamber Type", "Vented"],
+              ["Drop Size", "20 drops/ml (macrodrip)"],
+              ["Tube Length", "150 cm approx."],
+              ["Flow Regulator", "Yes"],
+              ["Injection Port", "Optional (latex/non-latex)"],
+              ["Connector", "Luer lock / Luer slip"]
+            ]
+          }
+        };
+      case "I.V. Infusion Set with Micro Drip":
+        return {
+          name: "I.V. INFUSION SET WITH MICRO DRIP",
+          features: [
+            "Designed for precise volume-controlled infusion, especially for paediatrics",
+            "Microdrip chamber with 60 drops/ml accuracy",
+            "Made from non-toxic, DEHP-free PVC",
+            "Flexible tube with low memory and high kink resistance",
+            "Suitable for neonatal and sensitive medication administration",
+            "Sterile, single-use, individually packed",
+            "Can be provided with optional needle and injection port"
+          ],
+          table: {
+            headers: ["Feature", "Specification"],
+            rows: [
+              ["Chamber Type", "Micro drip"],
+              ["Drop Size", "60 drops/ml"],
+              ["Tube Length", "150 cm approx."],
+              ["Flow Regulator", "Yes"],
+              ["Material", "Medical-grade DEHP-free PVC"],
+              ["Connector Type", "Luer lock / slip"]
+            ]
+          }
+        };
+      case "I.V. Infusion Set without Airvent":
+        return {
+          name: "I.V. INFUSION SET WITHOUT AIRVENT",
+          features: [
+            "Designed for closed infusion systems (e.g., plastic IV bottles)",
+            "No airvent to avoid contamination risk",
+            "Sharp, non-vented spike for easy piercing",
+            "Transparent drip chamber and precise flow regulator",
+            "Manufactured from medical-grade materials ensuring sterility and safety",
+            "Latex or latex-free injection port available as required",
+            "EO sterilized, sterile, and ready to use"
+          ],
+          table: {
+            headers: ["Feature", "Specification"],
+            rows: [
+              ["Chamber Type", "Non-vented"],
+              ["Drop Size", "20 drops/ml"],
+              ["Tube Length", "150 cm approx."],
+              ["Flow Regulator", "Yes"],
+              ["Suitable For", "Collapsible IV fluid bags"],
+              ["Connector Type", "Luer slip / lock"]
+            ]
+          }
+        };
       default:
         return null;
     }
@@ -177,7 +249,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-lg">📏</span>
-                <h3 className="text-lg font-semibold text-gray-800">Available Lengths/Variants:</h3>
+                <h3 className="text-lg font-semibold text-gray-800">Technical Specifications:</h3>
               </div>
               
               <div className="ml-6">
