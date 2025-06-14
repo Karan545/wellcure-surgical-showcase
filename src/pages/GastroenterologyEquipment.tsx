@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import CategoryBanner from "@/components/shared/CategoryBanner";
 import { getProductImage } from "@/utils/imageUtils";
+import ProductDetailsDialog from "@/components/gastroenterology/ProductDetailsDialog";
 
 // Define products with local image path structure
 const IMAGE_BASE = "/placeholder-images/gastroenterology";
@@ -40,6 +41,8 @@ const gastroenterologyProducts = [
 
 const GastroenterologyEquipment = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<{ title: string } | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -50,6 +53,16 @@ const GastroenterologyEquipment = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleGetDetails = (product: { title: string }) => {
+    setSelectedProduct(product);
+    setIsDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+    setSelectedProduct(null);
+  };
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -94,7 +107,12 @@ const GastroenterologyEquipment = () => {
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-3">{product.title}</h3>
                     <p className="text-gray-600 mb-4">{product.description}</p>
-                    <Button className="w-full">Learn More</Button>
+                    <Button 
+                      className="w-full"
+                      onClick={() => handleGetDetails(product)}
+                    >
+                      Get Details
+                    </Button>
                   </div>
                 </motion.div>
               ))}
@@ -103,6 +121,14 @@ const GastroenterologyEquipment = () => {
         </section>
       </main>
       <Footer />
+
+      {selectedProduct && (
+        <ProductDetailsDialog
+          isOpen={isDialogOpen}
+          onClose={handleCloseDialog}
+          product={selectedProduct}
+        />
+      )}
     </div>
   );
 };
