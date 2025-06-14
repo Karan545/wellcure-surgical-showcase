@@ -84,7 +84,7 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
   };
 
   const hasProductDetails = (productTitle: string) => {
-    // Add extension tubes products, I.V. Infusion Sets, and I.V. Cannula products to the list of products with details
+    // Add extension tubes products, I.V. Infusion Sets, I.V. Cannula products, and pressure monitoring products to the list of products with details
     return productTitle === "I.V. Flow Regulator Extension Set" || 
            productTitle === "I.V. Infusion Set with Flow Regulator" ||
            productTitle === "High Pressure Extension Line" ||
@@ -99,7 +99,15 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
            productTitle === "I.V. Cannula-AZneo" ||
            productTitle === "I.V. Cannula-AZpen" ||
            productTitle === "I.V. Cannula-AZwin" ||
-           productTitle === "Safety I.V. Cannula – AZSafe";
+           productTitle === "Safety I.V. Cannula – AZSafe" ||
+           productTitle === "Pressure Monitoring Line" ||
+           productTitle === "Pressure Monitoring Kit (Single)" ||
+           productTitle === "Pressure Monitoring Kit (Double)" ||
+           productTitle === "Pressure Monitoring Kit (Triple)" ||
+           productTitle === "Extension Line with Needle-Free Connectors" ||
+           productTitle === "One Way Stopcock" ||
+           productTitle === "Two Way Stopcock" ||
+           productTitle === "Three Way Stopcock";
   };
 
   const products = getProducts();

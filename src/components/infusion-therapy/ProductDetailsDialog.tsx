@@ -333,6 +333,67 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
             ]
           }
         };
+      case "Pressure Monitoring Line":
+        return {
+          name: "PRESSURE MONITORING LINE",
+          features: [
+            "Designed for pressure monitoring during intensive care and anesthesia",
+            "Tubing is non-DEHP, non-toxic and kink resistant",
+            "Standard tube length: 100 cm, 150 cm, 200 cm",
+            "Color-coded connectors for easy identification",
+            "Male luer lock on one end, female luer lock or stopcock at the other",
+            "Sterile and individually packed"
+          ]
+        };
+      case "Pressure Monitoring Kit (Single)":
+      case "Pressure Monitoring Kit (Double)":
+      case "Pressure Monitoring Kit (Triple)":
+        return {
+          name: "PRESSURE MONITORING KITS",
+          features: [
+            "Complete monitoring solutions for intensive care settings",
+            "Available in single, double, and triple line configurations",
+            "Includes appropriate stopcocks for each configuration",
+            "Universal pressure transducer compatibility",
+            "Latex-free and EO sterilized for safety"
+          ],
+          table: {
+            headers: ["Feature", "Single Kit", "Double Kit", "Triple Kit"],
+            rows: [
+              ["Number of Lines", "1", "2", "3"],
+              ["Stopcock Included", "1-Way", "2-Way", "3-Way"],
+              ["Extension Tube Length", "100 cm", "150 cm", "200 cm"],
+              ["Pressure Transducer Compatibility", "Universal", "Universal", "Universal"],
+              ["Latex Free", "Yes", "Yes", "Yes"],
+              ["Sterile", "EO Sterile", "EO Sterile", "EO Sterile"]
+            ]
+          }
+        };
+      case "Extension Line with Needle-Free Connectors":
+        return {
+          name: "EXTENSION LINE WITH NEEDLE-FREE CONNECTORS",
+          features: [
+            "Enables safe infusion with closed needle-free access",
+            "Standard lengths: 10 cm, 25 cm, 50 cm",
+            "Male Luer Lock to Needle-Free Y-Site",
+            "High flow rate and low priming volume",
+            "Non-pyrogenic and latex free"
+          ]
+        };
+      case "One Way Stopcock":
+      case "Two Way Stopcock":
+      case "Three Way Stopcock":
+        return {
+          name: "ONE WAY / TWO WAY / THREE WAY STOPCOCK",
+          features: [
+            "Suitable for pressure monitoring and infusion therapy",
+            "Rotating male luer lock for secure connection",
+            "Available with color-coded pegs for identification",
+            "Polycarbonate body with PTFE tap",
+            "Pressure withstand: up to 4.5 bar",
+            "360° rotation ensures flexibility in fluid direction"
+          ]
+        };
       default:
         return null;
     }
