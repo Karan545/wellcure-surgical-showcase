@@ -84,7 +84,7 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
   };
 
   const hasProductDetails = (productTitle: string) => {
-    // Add extension tubes products, I.V. Infusion Sets, I.V. Cannula products, and pressure monitoring products to the list of products with details
+    // Add extension tubes products, I.V. Infusion Sets, I.V. Cannula products, pressure monitoring products, and pediatric products to the list of products with details
     return productTitle === "I.V. Flow Regulator Extension Set" || 
            productTitle === "I.V. Infusion Set with Flow Regulator" ||
            productTitle === "High Pressure Extension Line" ||
@@ -107,7 +107,9 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
            productTitle === "Extension Line With Needle-Free Connectors" ||
            productTitle === "One Way Stopcock" ||
            productTitle === "Two Way Stopcock" ||
-           productTitle === "Three Way Stopcock";
+           productTitle === "Three Way Stopcock" ||
+           productTitle === "Pediatric I.V. Set" ||
+           productTitle === "Burette Set";
   };
 
   const products = getProducts();

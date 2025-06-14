@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Dialog,
@@ -412,6 +411,65 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
             "Pressure withstand: up to 4.5 bar",
             "360° rotation ensures flexibility in fluid direction"
           ]
+        };
+      case "Pediatric I.V. Set":
+        return {
+          name: "PEDIATRIC I.V. SET",
+          features: [
+            "Designed for accurate fluid and medication administration in neonates and pediatric patients",
+            "Transparent drip chamber for clear visibility and air bubble detection",
+            "Graduated chamber with optional burette-type reservoir",
+            "Floating shut-off valve to prevent air embolism",
+            "Sharp sterile spike for effortless puncture of IV bottles/bags",
+            "15μm particle filter for protection",
+            "Latex-free injection port for intermittent drug administration",
+            "DEHP-free medical-grade PVC tubing",
+            "Precision roller clamp for consistent flow control",
+            "Sterilized by EO gas; individually blister-packed"
+          ],
+          table: {
+            headers: ["Feature", "Description"],
+            rows: [
+              ["Intended Use", "Neonatal / Pediatric IV Infusion"],
+              ["Burette Option", "100 mL (available on specific model)"],
+              ["Filtration", "15μm Disc Filter"],
+              ["Drip Chamber", "Cylindrical, Transparent"],
+              ["Tubing", "DEHP-Free, Kink-Resistant"],
+              ["Flow Regulator", "Precision Roller Clamp"],
+              ["Injection Site", "Latex-Free"],
+              ["Sterilization", "EO Gas"],
+              ["Packaging", "Individual Blister Pack"]
+            ]
+          }
+        };
+      case "Burette Set":
+        return {
+          name: "BURETTE SET",
+          features: [
+            "Ideal for pediatric applications where accurate infusion volume is essential",
+            "100 mL calibrated burette with clear, easy-to-read graduation",
+            "Automatic shut-off float valve to prevent air embolism",
+            "15μm inline filter for enhanced patient safety",
+            "Kink-resistant DEHP-free PVC tubing",
+            "Precision flow controller for dose accuracy",
+            "Sharp, medical-grade spike compatible with standard IV bottles",
+            "Latex-free Y-site injection port",
+            "EO gas sterilized; individually blister-packed for hygiene"
+          ],
+          table: {
+            headers: ["Feature", "Description"],
+            rows: [
+              ["Burette Capacity", "100 mL with 1 mL graduation"],
+              ["Float Valve", "Auto shut-off to prevent air entry"],
+              ["Filtration", "15μm Disc Filter"],
+              ["Injection Port", "Latex-Free Y-site"],
+              ["Tubing", "Transparent, DEHP-Free PVC"],
+              ["Flow Control", "Precision Roller Clamp"],
+              ["Sterilization", "Ethylene Oxide (EO)"],
+              ["Compatibility", "Standard IV Bottles"],
+              ["Packaging", "Individually Blister Packed"]
+            ]
+          }
         };
       default:
         return null;
