@@ -104,7 +104,7 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
            productTitle === "Pressure Monitoring Kit (Single)" ||
            productTitle === "Pressure Monitoring Kit (Double)" ||
            productTitle === "Pressure Monitoring Kit (Triple)" ||
-           productTitle === "Extension Line with Needle-Free Connectors" ||
+           productTitle === "Extension Line With Needle-Free Connectors" ||
            productTitle === "One Way Stopcock" ||
            productTitle === "Two Way Stopcock" ||
            productTitle === "Three Way Stopcock";
