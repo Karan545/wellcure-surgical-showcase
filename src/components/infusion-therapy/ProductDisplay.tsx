@@ -84,7 +84,7 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
   };
 
   const hasProductDetails = (productTitle: string) => {
-    // Add extension tubes products and I.V. Infusion Sets to the list of products with details
+    // Add extension tubes products, I.V. Infusion Sets, and I.V. Cannula products to the list of products with details
     return productTitle === "I.V. Flow Regulator Extension Set" || 
            productTitle === "I.V. Infusion Set with Flow Regulator" ||
            productTitle === "High Pressure Extension Line" ||
@@ -92,7 +92,14 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
            productTitle === "PVC Free High Pressure Extension Line" ||
            productTitle === "I.V. Infusion Set with Airvent" ||
            productTitle === "I.V. Infusion Set with Micro Drip" ||
-           productTitle === "I.V. Infusion Set without Airvent";
+           productTitle === "I.V. Infusion Set without Airvent" ||
+           productTitle === "I.V. Cannula-AZcan" ||
+           productTitle === "I.V. Cannula-AZcath" ||
+           productTitle === "I.V. Cannula-AZflon" ||
+           productTitle === "I.V. Cannula-AZneo" ||
+           productTitle === "I.V. Cannula-AZpen" ||
+           productTitle === "I.V. Cannula-AZwin" ||
+           productTitle === "Safety I.V. Cannula – AZSafe";
   };
 
   const products = getProducts();

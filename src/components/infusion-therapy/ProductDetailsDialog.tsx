@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Dialog,
@@ -190,6 +189,147 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
               ["Flow Regulator", "Yes"],
               ["Suitable For", "Collapsible IV fluid bags"],
               ["Connector Type", "Luer slip / lock"]
+            ]
+          }
+        };
+      case "I.V. Cannula-AZcan":
+        return {
+          name: "I.V. CANNULA – AZCAN",
+          features: [
+            "PTFE catheter with precision-ground triple-bevel needle",
+            "Injection port with color-coded cap for drug delivery",
+            "Wings for secure fixation",
+            "Luer lock cap included",
+            "Sterile, single-use, EO sterilized"
+          ],
+          table: {
+            headers: ["Feature", "Detail"],
+            rows: [
+              ["Catheter Material", "PTFE"],
+              ["Sizes Available", "14G to 26G"],
+              ["Port Type", "With injection port"],
+              ["Sterilization", "EO Gas"],
+              ["Color Coding", "International Standard"]
+            ]
+          }
+        };
+      case "I.V. Cannula-AZcath":
+        return {
+          name: "I.V. CANNULA – AZCATH",
+          features: [
+            "FEP catheter with ultra-smooth insertion",
+            "Injection port for bolus injection",
+            "Radiopaque stripes for X-ray visibility",
+            "DEHP-free components",
+            "Sterile and ready to use"
+          ],
+          table: {
+            headers: ["Feature", "Detail"],
+            rows: [
+              ["Catheter Material", "FEP"],
+              ["Needle", "Stainless steel"],
+              ["Radiopaque", "Yes"],
+              ["Sizes", "14G–26G"],
+              ["Sterilization", "EO Gas"]
+            ]
+          }
+        };
+      case "I.V. Cannula-AZflon":
+        return {
+          name: "I.V. CANNULA – AZFLON",
+          features: [
+            "Made from polyurethane for minimal vessel trauma",
+            "Luer lock injection port",
+            "Flaps with wide grip area",
+            "High biocompatibility and kink resistance"
+          ],
+          table: {
+            headers: ["Feature", "Detail"],
+            rows: [
+              ["Catheter Material", "Polyurethane (PU)"],
+              ["Port Type", "Yes"],
+              ["Radiopaque", "Yes"],
+              ["Sizes", "14G–26G"],
+              ["Packaging", "Blister, EO sterilized"]
+            ]
+          }
+        };
+      case "I.V. Cannula-AZneo":
+        return {
+          name: "I.V. CANNULA – AZNEO",
+          features: [
+            "Microbore catheter for neonatal and pediatric use",
+            "Soft and flexible PU tubing",
+            "Color-coded hub and injection port",
+            "DEHP and latex-free"
+          ],
+          table: {
+            headers: ["Feature", "Detail"],
+            rows: [
+              ["Patient Use", "Neonatal/Pediatric"],
+              ["Catheter Material", "PU"],
+              ["Sizes", "24G, 26G"],
+              ["Sterile", "Yes, EO sterilized"]
+            ]
+          }
+        };
+      case "I.V. Cannula-AZpen":
+        return {
+          name: "I.V. CANNULA – AZPEN",
+          features: [
+            "Pen-type cannula for faster insertion",
+            "Closed catheter system reduces blood spillage",
+            "Flashback chamber ensures placement",
+            "Smooth grip with streamlined design"
+          ],
+          table: {
+            headers: ["Feature", "Detail"],
+            rows: [
+              ["Style", "Pen type"],
+              ["Port Type", "With injection port"],
+              ["Flashback Chamber", "Yes"],
+              ["Sizes", "18G–26G"],
+              ["Sterilization", "EO Gas"]
+            ]
+          }
+        };
+      case "I.V. Cannula-AZwin":
+        return {
+          name: "I.V. CANNULA – AZWIN",
+          features: [
+            "Winged I.V. cannula with large stabilizing wings",
+            "Ideal for short-term infusion therapy",
+            "Ergonomic grip for ease of insertion",
+            "Transparent flashback chamber"
+          ],
+          table: {
+            headers: ["Feature", "Detail"],
+            rows: [
+              ["Type", "Winged"],
+              ["Flashback Chamber", "Yes"],
+              ["Sizes", "16G–26G"],
+              ["Injection Port", "Available"],
+              ["Sterile", "Yes"]
+            ]
+          }
+        };
+      case "Safety I.V. Cannula – AZSafe":
+        return {
+          name: "SAFETY I.V. CANNULA – AZSAFE",
+          features: [
+            "Safety shield mechanism for needlestick injury prevention",
+            "Needle retracts automatically after use",
+            "Complies with international safety standards",
+            "Injection port and wings for secure handling"
+          ],
+          table: {
+            headers: ["Feature", "Detail"],
+            rows: [
+              ["Safety Mechanism", "Auto needle shielding"],
+              ["Sizes", "14G–26G"],
+              ["Catheter Material", "FEP / PU"],
+              ["Safety Certification", "ISO 23908 compliant"],
+              ["Sterilization", "EO Gas"]
             ]
           }
         };
