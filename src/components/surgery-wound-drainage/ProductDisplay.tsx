@@ -60,13 +60,22 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
 
   const hasProductDetails = (productTitle: string) => {
     // Products in the surgical-drainage category that have detailed information
-    return category === "surgical-drainage" && (
-      productTitle === "Wound Drainage System" ||
-      productTitle === "Thoracic Drainage Catheter (Angled)" ||
-      productTitle === "Thoracic Drainage Catheter (Straight)" ||
-      productTitle === "Thoracic Drainage System" ||
-      productTitle === "Surgical Drain"
-    );
+    const drainageProducts = [
+      "Wound Drainage System",
+      "Thoracic Drainage Catheter (Angled)",
+      "Thoracic Drainage Catheter (Straight)",
+      "Thoracic Drainage System",
+      "Surgical Drain"
+    ];
+
+    // Products in the surgical-suction category that have detailed information
+    const suctionProducts = [
+      "Surgical Suction Set",
+      "Yankauer Suction Set"
+    ];
+
+    return (category === "surgical-drainage" && drainageProducts.includes(productTitle)) ||
+           (category === "surgical-suction" && suctionProducts.includes(productTitle));
   };
 
   const handleProductClick = (product: any) => {

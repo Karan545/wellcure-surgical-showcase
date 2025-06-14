@@ -148,6 +148,54 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
             ]
           }
         };
+      case "Surgical Suction Set":
+        return {
+          name: "SURGICAL SUCTION SET",
+          features: [
+            "Used for removal of fluids during surgical procedures",
+            "Flexible, kink-resistant suction tube made from medical-grade PVC",
+            "Equipped with universal connectors to fit all types of suction equipment",
+            "Available in various lengths (e.g., 210 cm, 250 cm)",
+            "Optionally provided with vented or non-vented options",
+            "Sterile and ready to use"
+          ],
+          table: {
+            headers: ["Feature", "Description"],
+            rows: [
+              ["Tube Length", "210 cm / 250 cm"],
+              ["Tube Material", "Medical-Grade PVC"],
+              ["Kink Resistance", "Yes"],
+              ["Connector Type", "Universal, Vented / Non-Vented"],
+              ["Sterilization", "EO Gas"],
+              ["Usage", "Single-use, sterile"]
+            ]
+          }
+        };
+      case "Yankauer Suction Set":
+        return {
+          name: "YANKAUER SUCTION SET",
+          features: [
+            "Designed for precision suction during surgical or dental procedures",
+            "Set includes Yankauer suction tip and a transparent suction tube",
+            "Rigid suction tip with a bulbous head and smooth edges for atraumatic insertion",
+            "Available with or without a vent hole",
+            "Ergonomic design for controlled suction and operator comfort",
+            "Universal adapter connects to standard suction tubing",
+            "Available in curved or straight variants",
+            "Sterile, single-use"
+          ],
+          table: {
+            headers: ["Feature", "Description"],
+            rows: [
+              ["Tip Style", "Yankauer, Rigid"],
+              ["Tip Type", "Bulbous Head (Vented / Non-Vented)"],
+              ["Tube Material", "Transparent Medical PVC"],
+              ["Length", "210 cm / Customizable"],
+              ["Sterile Packaging", "EO Sterilized, Single-use"],
+              ["Connector Compatibility", "Universal Adapter"]
+            ]
+          }
+        };
       default:
         return null;
     }
