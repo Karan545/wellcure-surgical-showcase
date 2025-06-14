@@ -109,7 +109,7 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                   <CardDescription className="text-base">{product.description}</CardDescription>
                 </CardContent>
                 <CardFooter>
-                  {(category === "urine-bags" || category === "urine-drainage") ? (
+                  {(category === "urine-bags" || category === "urine-drainage" || category === "central-venous") ? (
                     <Button 
                       className="w-full"
                       onClick={() => handleGetDetails(product)}

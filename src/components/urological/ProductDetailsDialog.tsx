@@ -129,6 +129,81 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
           ],
           showTable: true
         };
+
+      // Central Venous Access Devices
+      case "CVC Kit (Single Lumen)":
+        return {
+          name: "CVC KIT — SINGLE LUMEN",
+          features: [
+            "Biocompatible polyurethane catheter: rigid during insertion, softens at body temperature",
+            "Soft, beveled atraumatic tip for smooth entry",
+            "Radiopaque catheter with clear length markings for accurate placement",
+            "Supplied sterile, individually tray-packed, CE / ISO 13485 certified",
+            "Kit components: indwelling catheter, Y-introducer needle with check valve, J-tip nickel-titanium guidewire, vessel dilator, scalpel, catheter holder & clamp, injection cap, extension-line clamp, optional guiding syringe"
+          ]
+        };
+      case "CVC Kit (Double Lumen)":
+        return {
+          name: "CVC KIT — DOUBLE LUMEN",
+          features: [
+            "Twin independent channels for simultaneous infusion/monitoring",
+            "Radiopaque catheter; graduated depth markers ensure precise positioning",
+            "J-tip flexible guidewire reduces vessel perforation risk",
+            "Complete sterile kit with all accessories (see list above)",
+            "Available sizes: 4 Fr – 8 Fr, lengths 15 cm / 20 cm"
+          ]
+        };
+      case "CVC Kit (Triple Lumen)":
+        return {
+          name: "CVC KIT — TRIPLE LUMEN",
+          features: [
+            "Triple lumen for multi-drug delivery and CVP measurement",
+            "Non-kinking PU tube stiff at room temp, soft in vivo",
+            "Color-coded clamps & hubs for easy line identification",
+            "Supplied sterile with full accessory set",
+            "Sizes: 5.5 Fr – 8 Fr, lengths 15 cm / 20 cm"
+          ]
+        };
+      case "CVC Kit (Four Lumen)":
+        return {
+          name: "CVC KIT — FOUR LUMEN",
+          features: [
+            "Four independent lumens for complex critical-care therapies",
+            "Soft, conical tip ensures atraumatic insertion",
+            "Radiopaque body with depth marks; high-flow distal lumen",
+            "Sterile tray-packed kit, export-ready (5 kits / box)",
+            "Sizes: 8.5 Fr, lengths 10 cm / 13 cm / 16 cm / 20 cm"
+          ],
+          showCVCTable: true
+        };
+      case "Arterial Catheter Kit":
+        return {
+          name: "ARTERIAL CATHETER KIT",
+          application: [
+            "Continuous arterial blood-pressure monitoring",
+            "Arterial blood sampling",
+            "Infusion of drugs and solutions"
+          ],
+          characteristics: [
+            "Semi-transparent, X-ray visible, pressure-resistant polyethylene tube",
+            "Seldinger technique; catheter & guidewire protected by sheath",
+            "Naturally echogenic introducer needle; nickel-titanium guidewire",
+            "Sterile, ready-to-use kit (5 kits / box)"
+          ],
+          showArterialTable: true,
+          kitContents: "catheter, safety needle, safety guidewire (straight flexible tip), dilator, syringe, clamps"
+        };
+      case "Arterial Catheter Kit with Extension":
+        return {
+          name: "ARTERIAL CATHETER KIT WITH EXTENSION",
+          additionalFeatures: [
+            "Pre-attached pressure extension line for rapid transducer hookup",
+            "Same biocompatible, X-ray visible catheter as standard kit",
+            "Reduces setup time in critical care and OR environments"
+          ],
+          showArterialExtensionTable: true,
+          kitContents: "catheter with extension, safety needle, safety guidewire, dilator, syringe, clamps"
+        };
       default:
         return null;
     }
@@ -163,22 +238,203 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
             <p className="text-base text-gray-700 ml-6">{productContent.name}</p>
           </div>
 
+          {/* Application Section (for arterial catheters) */}
+          {productContent.application && (
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-lg">🔹</span>
+                <h3 className="text-lg font-semibold text-gray-800">Application:</h3>
+              </div>
+              
+              <div className="ml-6 space-y-3">
+                {productContent.application.map((item, index) => (
+                  <div key={index} className="flex items-start gap-2">
+                    <span className="text-sm text-gray-400 mt-1">•</span>
+                    <p className="text-base text-gray-700">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Characteristics Section (for arterial catheters) */}
+          {productContent.characteristics && (
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-lg">🔹</span>
+                <h3 className="text-lg font-semibold text-gray-800">Characteristics:</h3>
+              </div>
+              
+              <div className="ml-6 space-y-3">
+                {productContent.characteristics.map((characteristic, index) => (
+                  <div key={index} className="flex items-start gap-2">
+                    <span className="text-sm text-gray-400 mt-1">•</span>
+                    <p className="text-base text-gray-700">{characteristic}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Additional Features Section (for arterial catheter with extension) */}
+          {productContent.additionalFeatures && (
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-lg">🔹</span>
+                <h3 className="text-lg font-semibold text-gray-800">Additional Features:</h3>
+              </div>
+              
+              <div className="ml-6 space-y-3">
+                {productContent.additionalFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-start gap-2">
+                    <span className="text-sm text-gray-400 mt-1">•</span>
+                    <p className="text-base text-gray-700">{feature}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Key Features Section */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-lg">🔹</span>
-              <h3 className="text-lg font-semibold text-gray-800">Key Features:</h3>
+          {productContent.features && (
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-lg">🔹</span>
+                <h3 className="text-lg font-semibold text-gray-800">Key Features:</h3>
+              </div>
+              
+              <div className="ml-6 space-y-3">
+                {productContent.features.map((feature, index) => (
+                  <div key={index} className="flex items-start gap-2">
+                    <span className="text-sm text-gray-400 mt-1">•</span>
+                    <p className="text-base text-gray-700">{feature}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-            
-            <div className="ml-6 space-y-3">
-              {productContent.features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-2">
-                  <span className="text-sm text-gray-400 mt-1">•</span>
-                  <p className="text-base text-gray-700">{feature}</p>
-                </div>
-              ))}
+          )}
+
+          {/* CVC Size Reference Table */}
+          {productContent.showCVCTable && (
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-lg">📊</span>
+                <h3 className="text-lg font-semibold text-gray-800">Size Reference (representative ordering range):</h3>
+              </div>
+              
+              <div className="ml-6 overflow-x-auto">
+                <table className="w-full border-collapse border border-gray-300 text-sm">
+                  <thead>
+                    <tr className="bg-gray-50">
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Lumens</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Fr Size</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Length (cm)</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Guidewire (cm)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-3 py-2">1</td>
+                      <td className="border border-gray-300 px-3 py-2">4 – 6 Fr</td>
+                      <td className="border border-gray-300 px-3 py-2">13 / 20</td>
+                      <td className="border border-gray-300 px-3 py-2">50 / 60</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-3 py-2">2</td>
+                      <td className="border border-gray-300 px-3 py-2">4 – 7 Fr</td>
+                      <td className="border border-gray-300 px-3 py-2">16 / 20</td>
+                      <td className="border border-gray-300 px-3 py-2">50 / 60</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-3 py-2">3</td>
+                      <td className="border border-gray-300 px-3 py-2">5.5 – 7 Fr</td>
+                      <td className="border border-gray-300 px-3 py-2">16 / 20</td>
+                      <td className="border border-gray-300 px-3 py-2">50 / 60</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-3 py-2">4</td>
+                      <td className="border border-gray-300 px-3 py-2">8.5 Fr</td>
+                      <td className="border border-gray-300 px-3 py-2">10 / 13 / 16 / 20</td>
+                      <td className="border border-gray-300 px-3 py-2">50 / 60</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* Arterial Catheter Specification Table (without extension) */}
+          {productContent.showArterialTable && (
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-lg">📊</span>
+                <h3 className="text-lg font-semibold text-gray-800">Specification (without extension):</h3>
+              </div>
+              
+              <div className="ml-6 overflow-x-auto">
+                <table className="w-full border-collapse border border-gray-300 text-sm">
+                  <thead>
+                    <tr className="bg-gray-50">
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Gauge</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Length (cm)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-3 py-2">16 GA</td>
+                      <td className="border border-gray-300 px-3 py-2">16, 20</td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="border border-gray-300 px-3 py-2">18 GA</td>
+                      <td className="border border-gray-300 px-3 py-2">10, 20</td>
+                    </tr>
+                    <tr>
+                      <td className="border border-gray-300 px-3 py-2">20 GA</td>
+                      <td className="border border-gray-300 px-3 py-2">06, 08, 10, 20</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* Arterial Catheter Specification Table (with extension) */}
+          {productContent.showArterialExtensionTable && (
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-lg">📊</span>
+                <h3 className="text-lg font-semibold text-gray-800">Specification (with extension):</h3>
+              </div>
+              
+              <div className="ml-6 overflow-x-auto">
+                <table className="w-full border-collapse border border-gray-300 text-sm">
+                  <thead>
+                    <tr className="bg-gray-50">
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Gauge</th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-medium">Length (cm)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border border-gray-300 px-3 py-2">22 GA</td>
+                      <td className="border border-gray-300 px-3 py-2">04, 06, 08, 10, 20</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          {/* Kit Contents */}
+          {productContent.kitContents && (
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-lg">📦</span>
+                <h3 className="text-lg font-semibold text-gray-800">Kit Contents:</h3>
+              </div>
+              <p className="text-base text-gray-700 ml-6">{productContent.kitContents}</p>
+            </div>
+          )}
 
           {/* Nelaton Catheter Size Table */}
           {productContent.showTable && (
