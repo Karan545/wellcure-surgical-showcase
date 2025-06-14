@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -9,12 +9,16 @@ import {
   surgicalSuctionProducts, 
   surgicalRetractionProducts 
 } from "@/data/surgery-wound-drainage-data";
+import ProductDetailsDialog from "./ProductDetailsDialog";
 
 interface ProductDisplayProps {
   category: string;
 }
 
 const ProductDisplay = ({ category }: ProductDisplayProps) => {
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   const getProducts = () => {
     switch (category) {
       case "surgical-drainage":
@@ -52,6 +56,27 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
       default:
         return "";
     }
+  };
+
+  const hasProductDetails = (productTitle: string) => {
+    // Products in the surgical-drainage category that have detailed information
+    return category === "surgical-drainage" && (
+      productTitle === "Wound Drainage System" ||
+      productTitle === "Thoracic Drainage Catheter (Angled)" ||
+      productTitle === "Thoracic Drainage Catheter (Straight)" ||
+      productTitle === "Thoracic Drainage System" ||
+      productTitle === "Surgical Drain"
+    );
+  };
+
+  const handleProductClick = (product: any) => {
+    setSelectedProduct(product);
+    setIsDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+    setSelectedProduct(null);
   };
 
   const products = getProducts();
@@ -92,13 +117,30 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                   <CardDescription className="text-base">{product.description}</CardDescription>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full">Request Quote</Button>
+                  {hasProductDetails(product.title) ? (
+                    <Button 
+                      className="w-full" 
+                      onClick={() => handleProductClick(product)}
+                    >
+                      Get Details
+                    </Button>
+                  ) : (
+                    <Button className="w-full">Request Quote</Button>
+                  )}
                 </CardFooter>
               </Card>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {selectedProduct && (
+        <ProductDetailsDialog
+          isOpen={isDialogOpen}
+          onClose={handleCloseDialog}
+          product={selectedProduct}
+        />
+      )}
     </section>
   );
 };
