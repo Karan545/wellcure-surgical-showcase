@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   Dialog,
@@ -5,6 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogClose,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 import {
@@ -369,7 +371,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
             ]
           }
         };
-      case "Extension Line with Needle-Free Connectors":
+      case "Extension Line With Needle-Free Connectors":
         return {
           name: "EXTENSION LINE WITH NEEDLE-FREE CONNECTORS",
           features: [
@@ -429,6 +431,9 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
           <DialogTitle className="text-xl font-semibold text-gray-800 pr-8">
             Product Details
           </DialogTitle>
+          <DialogDescription className="sr-only">
+            Detailed specifications and features for {productContent.name}
+          </DialogDescription>
           <DialogClose className="absolute right-0 top-0 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
             <X className="h-4 w-4" />
             <span className="sr-only">Close</span>
