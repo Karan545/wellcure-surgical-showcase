@@ -38,12 +38,10 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   // When image loads, update image dimensions
   const handleImgLoad = () => {
     if (imgRef.current) {
-      setImgDims({
-        width: imgRef.current.width,
-        height: imgRef.current.height,
-        naturalWidth: imgRef.current.naturalWidth,
-        naturalHeight: imgRef.current.naturalHeight,
-      });
+      const { width, height, naturalWidth, naturalHeight } = imgRef.current;
+      // Log image size for debugging
+      console.log("[ZoomDialog] img width,height:", width, height, "natural:", naturalWidth, naturalHeight);
+      setImgDims({ width, height, naturalWidth, naturalHeight });
     }
   };
 
@@ -51,25 +49,27 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!imgRef.current) return;
     const bounds = imgRef.current.getBoundingClientRect();
+    // Mouse position relative to image
     const x = e.clientX - bounds.left;
     const y = e.clientY - bounds.top;
-
     // Only show inside image area
     if (x < 0 || y < 0 || x > bounds.width || y > bounds.height) {
       setShowMagnifier(false);
       return;
     }
-
+    // Log position for debugging
+    // console.log("[ZoomDialog] Mouse in image - x:", x, "y:", y);
     setMagnifierPos({ x, y });
     setShowMagnifier(true);
   };
 
   const handleMouseLeave = () => setShowMagnifier(false);
 
-  // Zoom calculations
-  // We want magnifier to show zoomed pixel under mouse
+  // Magnifier calculations
   let backgroundSize = "0px 0px";
   let backgroundPos = "0px 0px";
+  let visibleMagnifier = false;
+
   if (
     imgDims.naturalWidth &&
     imgDims.naturalHeight &&
@@ -77,18 +77,41 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
     imgDims.height &&
     showMagnifier
   ) {
+    visibleMagnifier = true;
+    // Calculate scale for X and Y
     const scaleX = imgDims.naturalWidth / imgDims.width;
     const scaleY = imgDims.naturalHeight / imgDims.height;
-
     backgroundSize = `${imgDims.naturalWidth * ZOOM_LEVEL}px ${imgDims.naturalHeight * ZOOM_LEVEL}px`;
 
-    // The cursor's position on scaled image:
-    const bgX =
-      magnifierPos.x * scaleX * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
-    const bgY =
-      magnifierPos.y * scaleY * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
+    // Calculate where the mouse is on the NATURAL image
+    const natX = magnifierPos.x * scaleX;
+    const natY = magnifierPos.y * scaleY;
+
+    // The background should shift so the cursor shows the pixel under it in the CENTER of the magnifier
+    // So, move the background image, scaled up, so that the magnifierPos on the dialog aligns at its center
+
+    // The shifted point on the scaled image
+    const bgX = natX * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
+    const bgY = natY * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
 
     backgroundPos = `-${bgX}px -${bgY}px`;
+
+    // Debug logs
+    // Remove this in production
+    // eslint-disable-next-line
+    console.log({
+      scaleX,
+      scaleY,
+      backgroundSize,
+      natX,
+      natY,
+      bgX,
+      bgY,
+      "magnifierPos.x": magnifierPos.x,
+      "magnifierPos.y": magnifierPos.y,
+      MAGNIFIER_SIZE,
+      ZOOM_LEVEL,
+    });
   }
 
   return (
@@ -119,10 +142,11 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
               margin: "0 auto",
               background: "#f7fafc",
               cursor: showMagnifier ? "none" : "zoom-in",
+              userSelect: "none",
             }}
             draggable={false}
           />
-          {showMagnifier && imgDims.naturalWidth > 0 && (
+          {visibleMagnifier && imgDims.naturalWidth > 0 && (
             <div
               style={{
                 pointerEvents: "none",
@@ -136,11 +160,13 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
                 border: "2.5px solid #d1fae5",
                 overflow: "hidden",
                 zIndex: 10,
-                background: "#fff",
+                background: "#fff", // fallback color if image fails
                 backgroundImage: `url(${imageUrl})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: backgroundSize,
                 backgroundPosition: backgroundPos,
+                // For debugging, outline the magnifier
+                // outline: "1px solid red"
               }}
             />
           )}
