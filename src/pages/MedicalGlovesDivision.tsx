@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -7,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import CategoryBanner from "@/components/shared/CategoryBanner";
 import { getProductImage, createImagePath } from "@/utils/imageUtils";
+import ProductDisplay from "@/components/medical-gloves/ProductDisplay";
 
 // Define products with local image path structure
 const CATEGORY_PATH = "medical-gloves";
@@ -74,32 +74,7 @@ const MedicalGlovesDivision = () => {
                 Comprehensive range of high-quality latex gloves for examination and surgical procedures
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {productData.map((product, index) => (
-                <motion.div
-                  key={product.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-                >
-                  <div className="aspect-w-16 aspect-h-12">
-                    <img
-                      src={getProductImage(product.image)}
-                      alt={product.imageAlt || product.title}
-                      className="w-full h-48 object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-3">{product.title}</h3>
-                    <p className="text-gray-600 mb-4">{product.description}</p>
-                    <Button className="w-full">Learn More</Button>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <ProductDisplay />
           </div>
         </section>
       </main>
