@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from "react";
 import {
   Dialog,
@@ -5,6 +6,9 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+
+// Use a themed placeholder (medical/surgical)
+const PLACEHOLDER_IMG = "/lovable-uploads/2f2a6aa0-467b-4ee7-8846-9b432b63c699.png"; // Clean, generic, matches export theme
 
 interface ImageZoomDialogProps {
   open: boolean;
@@ -36,7 +40,15 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   const [imgLoaded, setImgLoaded] = useState(false);
   const [imgError, setImgError] = useState(false);
 
-  // Ensure the image dims capture latest render & natural size
+  // If original image fails, always fallback to placeholder (and only allow one retry)
+  const [currentImageUrl, setCurrentImageUrl] = useState(imageUrl);
+
+  React.useEffect(() => {
+    setCurrentImageUrl(imageUrl);
+    setImgError(false);
+    setImgLoaded(false);
+  }, [imageUrl, open]); // reset state on new popup or new image
+
   const handleImgLoad = () => {
     if (imgRef.current) {
       setImgDims({
@@ -49,10 +61,17 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
     }
   };
 
-  // When error occurs loading image
   const handleImgError = () => {
-    setImgError(true);
-    setImgLoaded(false);
+    // If already placeholder, don't infinite loop
+    if (currentImageUrl === PLACEHOLDER_IMG) {
+      setImgError(true);
+      setImgLoaded(false);
+    } else {
+      // Swap to placeholder and clear error for next render
+      setCurrentImageUrl(PLACEHOLDER_IMG);
+      setImgError(false);
+      setImgLoaded(false);
+    }
   };
 
   // Track pointer relative to image, and clamp within bounds
@@ -80,7 +99,12 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const { x, y, isInside } = getPointerCoords(e.clientX, e.clientY);
     setMagnifierPos({ x, y });
-    setShowMagnifier(isInside && imgLoaded && !imgError);
+    setShowMagnifier(
+      isInside &&
+        imgLoaded &&
+        !imgError &&
+        currentImageUrl !== PLACEHOLDER_IMG // No zoom on placeholder
+    );
   };
 
   // Touch event
@@ -89,7 +113,12 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
       const touch = e.touches[0];
       const { x, y, isInside } = getPointerCoords(touch.clientX, touch.clientY);
       setMagnifierPos({ x, y });
-      setShowMagnifier(isInside && imgLoaded && !imgError);
+      setShowMagnifier(
+        isInside &&
+          imgLoaded &&
+          !imgError &&
+          currentImageUrl !== PLACEHOLDER_IMG
+      );
     }
   };
 
@@ -108,7 +137,8 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
     imgDims.height > 0 &&
     showMagnifier &&
     imgLoaded &&
-    !imgError
+    !imgError &&
+    currentImageUrl !== PLACEHOLDER_IMG
   ) {
     visibleMagnifier = true;
     // Ratios for scale
@@ -137,27 +167,11 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
       overflow: "hidden",
       zIndex: 10,
       background: "#fff",
-      backgroundImage: `url('${imageUrl}')`,
+      backgroundImage: `url('${currentImageUrl}')`,
       backgroundRepeat: "no-repeat",
       backgroundSize: backgroundSize,
       backgroundPosition: backgroundPosition,
     };
-
-    // Debug output to ensure correct background setup
-    // @ts-ignore
-    if (typeof window !== "undefined") {
-      // Only log once per movement
-      console.log("MAGNIFIER PROPS:", {
-        backgroundImage: magnifierStyles.backgroundImage,
-        imageUrl,
-        backgroundSize,
-        backgroundPosition,
-        position: magnifierStyles.left + ", " + magnifierStyles.top,
-        imgDims,
-        magnifierPos,
-        visibleMagnifier,
-      });
-    }
   }
 
   return (
@@ -181,29 +195,36 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
         >
           <img
             ref={imgRef}
-            src={imageUrl}
+            src={currentImageUrl}
             alt={alt || "Product"}
             onLoad={handleImgLoad}
             onError={handleImgError}
             draggable={false}
-            className="w-full h-full object-contain select-none bg-gray-50"
+            className={`w-full h-full object-contain select-none ${currentImageUrl === PLACEHOLDER_IMG ? "bg-gray-50 grayscale" : "bg-gray-50"}`}
             style={{
               maxHeight: "80vh",
               display: "block",
               margin: "0 auto",
-              cursor: visibleMagnifier ? "none" : "zoom-in",
+              cursor: visibleMagnifier
+                ? "none"
+                : currentImageUrl === PLACEHOLDER_IMG
+                ? "not-allowed"
+                : "zoom-in",
               userSelect: "none",
               width: "auto",
               height: "auto",
+              opacity: imgError && currentImageUrl !== PLACEHOLDER_IMG ? 0.6 : 1,
             }}
             width={imgDims.width}
             height={imgDims.height}
           />
-          {/* Error state for debugging */}
-          {imgError && (
-            <div className="absolute top-1/2 left-1/2 text-red-600 text-center p-8 bg-white border border-red-400 rounded shadow"
-              style={{ transform: "translate(-50%, -50%)", zIndex: 20 }}>
-              <strong>Image failed to load!</strong>
+          {/* Subtle error info if both primary and fallback fail */}
+          {imgError && currentImageUrl === PLACEHOLDER_IMG && (
+            <div
+              className="absolute top-1/2 left-1/2 text-red-600 text-center p-6 bg-white/90 border border-red-300 rounded shadow"
+              style={{ transform: "translate(-50%, -50%)", zIndex: 20 }}
+            >
+              <strong>Image failed to load. Please try again later.</strong>
               <div className="text-xs mt-1">{imageUrl}</div>
             </div>
           )}
@@ -211,11 +232,16 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
             <div
               style={{
                 ...magnifierStyles,
-                // Set a fallback background for easier debug
-                backgroundColor: "#c2eaffb0", // semi-transparent blue
+                backgroundColor: "#c2eaffb0", // fallback debug background
                 outline: "2px dashed #2dd4bf",
               }}
             />
+          )}
+          {/* Show label when placeholder is displayed */}
+          {currentImageUrl === PLACEHOLDER_IMG && (
+            <div className="absolute bottom-4 left-1/2 px-5 py-1 bg-blue-50 border border-blue-200 text-blue-900 rounded shadow-md text-xs" style={{ transform: "translateX(-50%)", zIndex: 22 }}>
+              Image unavailable – showing sample
+            </div>
           )}
         </div>
       </DialogContent>
@@ -224,3 +250,4 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
 };
 
 export default ImageZoomDialog;
+
