@@ -14,8 +14,9 @@ interface ImageZoomDialogProps {
   alt?: string;
 }
 
-const MAGNIFIER_SIZE = 180; // px, mid-size circle
-const ZOOM_LEVEL = 2.4; // deep zoom
+// Mid zoom and slightly smaller magnifier
+const MAGNIFIER_SIZE = 140; // px, circular
+const ZOOM_LEVEL = 1.7; // mid-range zoom
 
 const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   open,
@@ -27,7 +28,6 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   const [showMagnifier, setShowMagnifier] = useState(false);
   const [magnifierPos, setMagnifierPos] = useState({ x: 0, y: 0 });
 
-  // Get image size and natural size for zoom calculation
   const [imgDims, setImgDims] = useState({
     width: 0,
     height: 0,
@@ -35,37 +35,30 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
     naturalHeight: 0,
   });
 
-  // When image loads, update image dimensions
   const handleImgLoad = () => {
     if (imgRef.current) {
       const { width, height, naturalWidth, naturalHeight } = imgRef.current;
-      // Log image size for debugging
-      console.log("[ZoomDialog] img width,height:", width, height, "natural:", naturalWidth, naturalHeight);
       setImgDims({ width, height, naturalWidth, naturalHeight });
+      // Debug
+      // console.log("[ZoomDialog] img width,height:", width, height, "natural:", naturalWidth, naturalHeight);
     }
   };
 
-  // Mouse movement logic for magnifier
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!imgRef.current) return;
     const bounds = imgRef.current.getBoundingClientRect();
-    // Mouse position relative to image
     const x = e.clientX - bounds.left;
     const y = e.clientY - bounds.top;
-    // Only show inside image area
     if (x < 0 || y < 0 || x > bounds.width || y > bounds.height) {
       setShowMagnifier(false);
       return;
     }
-    // Log position for debugging
-    // console.log("[ZoomDialog] Mouse in image - x:", x, "y:", y);
     setMagnifierPos({ x, y });
     setShowMagnifier(true);
   };
 
   const handleMouseLeave = () => setShowMagnifier(false);
 
-  // Magnifier calculations
   let backgroundSize = "0px 0px";
   let backgroundPos = "0px 0px";
   let visibleMagnifier = false;
@@ -78,40 +71,18 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
     showMagnifier
   ) {
     visibleMagnifier = true;
-    // Calculate scale for X and Y
     const scaleX = imgDims.naturalWidth / imgDims.width;
     const scaleY = imgDims.naturalHeight / imgDims.height;
     backgroundSize = `${imgDims.naturalWidth * ZOOM_LEVEL}px ${imgDims.naturalHeight * ZOOM_LEVEL}px`;
 
-    // Calculate where the mouse is on the NATURAL image
     const natX = magnifierPos.x * scaleX;
     const natY = magnifierPos.y * scaleY;
 
-    // The background should shift so the cursor shows the pixel under it in the CENTER of the magnifier
-    // So, move the background image, scaled up, so that the magnifierPos on the dialog aligns at its center
-
-    // The shifted point on the scaled image
+    // Place the area underneath the cursor at the center of the circle
     const bgX = natX * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
     const bgY = natY * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
 
     backgroundPos = `-${bgX}px -${bgY}px`;
-
-    // Debug logs
-    // Remove this in production
-    // eslint-disable-next-line
-    console.log({
-      scaleX,
-      scaleY,
-      backgroundSize,
-      natX,
-      natY,
-      bgX,
-      bgY,
-      "magnifierPos.x": magnifierPos.x,
-      "magnifierPos.y": magnifierPos.y,
-      MAGNIFIER_SIZE,
-      ZOOM_LEVEL,
-    });
   }
 
   return (
@@ -135,7 +106,7 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
             src={imageUrl}
             alt={alt || "Product"}
             onLoad={handleImgLoad}
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain select-none"
             style={{
               maxHeight: "80vh",
               display: "block",
@@ -156,17 +127,15 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
                 width: MAGNIFIER_SIZE,
                 height: MAGNIFIER_SIZE,
                 borderRadius: "50%",
-                boxShadow: "0 0 9px 2px rgba(0,0,0,0.19)",
-                border: "2.5px solid #d1fae5",
+                boxShadow: "0 4px 16px 1px rgba(0,49,107,0.18)",
+                border: "2.5px solid #38bdf8",
                 overflow: "hidden",
                 zIndex: 10,
-                background: "#fff", // fallback color if image fails
+                background: "transparent",
                 backgroundImage: `url(${imageUrl})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: backgroundSize,
                 backgroundPosition: backgroundPos,
-                // For debugging, outline the magnifier
-                // outline: "1px solid red"
               }}
             />
           )}
