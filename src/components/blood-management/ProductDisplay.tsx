@@ -77,7 +77,7 @@ const ProductDisplay = () => {
                 onClick={() => handleGetDetails(product.title)}
                 aria-label={`Get details about ${product.title}`}
               >
-                🟪 Get Details
+                Get Details
               </Button>
             </div>
           </motion.div>
