@@ -1,19 +1,28 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import HeaderProductDropdown from "@/components/header/HeaderProductDropdown";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const navLinks = [
     { title: "Home", href: "/" },
-    // Remove hardcoded Products (dropdown replaces this)
-    // { title: "Products", href: "#products" },
     { title: "About", href: "#about" },
     { title: "Contact", href: "#contact" }
   ];
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      // Simple logic; can expand as needed
+      alert(`Searching for: ${searchTerm}`);
+    }
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md border-b border-gray-200">
@@ -37,9 +46,8 @@ const Header = () => {
             </a>
           </motion.div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation + Search */}
           <nav className="hidden md:flex items-center space-x-8">
-            {/* Insert products dropdown here */}
             <HeaderProductDropdown />
 
             {navLinks.map((link, index) => (
@@ -55,6 +63,30 @@ const Header = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] group-hover:w-full transition-all duration-300"></span>
               </motion.a>
             ))}
+
+            {/* --- Inserted Search Form for desktop --- */}
+            <form onSubmit={handleSearch} className="ml-6 flex items-center gap-2">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                <Input
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 bg-white border border-gray-200 shadow-sm text-gray-700 placeholder:text-gray-400 rounded-md h-10 w-44 focus:ring-2 focus:ring-[#1f5f5b]"
+                />
+              </div>
+              <Button 
+                type="submit" 
+                size="sm"
+                variant="secondary"
+                className="px-4 h-10 bg-[#1f5f5b] text-white hover:bg-[#003b5c]"
+              >
+                Search
+              </Button>
+            </form>
+            {/* --- End Search Form --- */}
+
             <motion.button
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -99,6 +131,30 @@ const Header = () => {
                     {link.title}
                   </a>
                 ))}
+
+                {/* Search Form for mobile */}
+                <form onSubmit={handleSearch} className="flex gap-2 mt-2">
+                  <div className="relative flex-1">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                    <Input
+                      type="text"
+                      placeholder="Search products..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="pl-10 bg-white border border-gray-200 text-gray-700 placeholder:text-gray-400 rounded-md h-10"
+                    />
+                  </div>
+                  <Button 
+                    type="submit" 
+                    size="sm"
+                    variant="secondary"
+                    className="px-4 h-10 bg-[#1f5f5b] text-white hover:bg-[#003b5c]"
+                  >
+                    Search
+                  </Button>
+                </form>
+                {/* End Search Form */}
+
                 <button
                   className="w-full ocean-to-forest-gradient text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}

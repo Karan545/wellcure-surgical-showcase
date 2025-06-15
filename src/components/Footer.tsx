@@ -1,13 +1,10 @@
-import { Mail, Phone, MapPin, Heart, ShieldCheck, Stethoscope, ArrowUp, Search } from "lucide-react";
+import { Mail, Phone, MapPin, Heart, ShieldCheck, Stethoscope, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
 
   // Handle scroll event to show/hide the "go up" button
   useEffect(() => {
@@ -24,16 +21,6 @@ const Footer = () => {
       top: 0,
       behavior: 'smooth'
     });
-  };
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchTerm.trim()) {
-      // Simple search logic - redirect to products page with search term
-      console.log(`Searching for: ${searchTerm}`);
-      // You can implement more sophisticated search logic here
-      alert(`Searching for: ${searchTerm}`);
-    }
   };
 
   const containerVariants = {
@@ -74,40 +61,6 @@ const Footer = () => {
         whileInView="visible"
         viewport={{ once: true }}
       >
-        {/* Search Section */}
-        <motion.div 
-          className="mb-12 text-center"
-          variants={itemVariants}
-        >
-          <h3 className="text-2xl font-semibold pb-2 mb-6 text-white/90">
-            Find Medical Products
-          </h3>
-          <form onSubmit={handleSearch} className="max-w-md mx-auto">
-            <div className="flex gap-2">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
-                <Input
-                  type="text"
-                  placeholder="Search for medical equipment..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:bg-white/20"
-                />
-              </div>
-              <Button 
-                type="submit" 
-                variant="secondary"
-                className="px-6 bg-white/20 hover:bg-white/30 text-white border-white/20"
-              >
-                Search
-              </Button>
-            </div>
-          </form>
-          <p className="text-white/70 text-sm mt-3">
-            Search across all our medical equipment categories
-          </p>
-        </motion.div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-16 gap-y-14">
           {/* Company Info */}
           <motion.div className="space-y-4" variants={itemVariants}>
