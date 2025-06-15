@@ -2,13 +2,15 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import HeaderProductDropdown from "@/components/header/HeaderProductDropdown";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { title: "Home", href: "/" },
-    { title: "Products", href: "#products" },
+    // Remove hardcoded Products (dropdown replaces this)
+    // { title: "Products", href: "#products" },
     { title: "About", href: "#about" },
     { title: "Contact", href: "#contact" }
   ];
@@ -37,6 +39,9 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
+            {/* Insert products dropdown here */}
+            <HeaderProductDropdown />
+
             {navLinks.map((link, index) => (
               <motion.a
                 key={link.title}
@@ -81,6 +86,9 @@ const Header = () => {
               className="md:hidden bg-white border-t border-gray-200"
             >
               <div className="px-4 py-4 space-y-4">
+                {/* Products Dropdown on mobile; collapsible */}
+                <HeaderProductDropdown />
+
                 {navLinks.map((link) => (
                   <a
                     key={link.title}
