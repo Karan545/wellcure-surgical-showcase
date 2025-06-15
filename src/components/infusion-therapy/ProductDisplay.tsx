@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,6 +6,7 @@ import { getProductImage } from "@/utils/imageUtils";
 import { extensionTubes, ivInfusionSets, ivCannulas } from "@/data/infusion-therapy-data";
 import { pressureMonitoringProducts, flowControlProducts, pediatricProducts } from "@/data/infusion-therapy-extended-data";
 import ProductDetailsDialog from "./ProductDetailsDialog";
+import ImageZoomDialog from "@/components/shared/ImageZoomDialog";
 
 interface ProductDisplayProps {
   category: string;
@@ -15,6 +15,8 @@ interface ProductDisplayProps {
 const ProductDisplay = ({ category }: ProductDisplayProps) => {
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [zoomedProductImage, setZoomedProductImage] = useState<string | null>(null);
+  const [zoomedProductAlt, setZoomedProductAlt] = useState<string | undefined>(undefined);
 
   const getProducts = () => {
     switch (category) {
@@ -123,7 +125,6 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
             {getCategoryDescription()}
           </p>
         </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
             <motion.div
@@ -133,14 +134,24 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
-                <div className="relative h-48 overflow-hidden">
+                <div
+                  className="relative h-48 overflow-hidden cursor-zoom-in"
+                  onClick={() => {
+                    setZoomedProductImage(getProductImage(product.image));
+                    setZoomedProductAlt(product.imageAlt || product.title);
+                  }}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Zoom ${product.title} image`}
+                >
                   <img
                     src={getProductImage(product.image)}
                     alt={product.imageAlt || product.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-150 hover:scale-105"
                     onError={(e) => {
                       e.currentTarget.src = "/placeholder.svg";
                     }}
+                    style={{ cursor: "zoom-in" }}
                   />
                 </div>
                 <CardHeader>
@@ -166,7 +177,12 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
           ))}
         </div>
       </div>
-
+      <ImageZoomDialog
+        open={!!zoomedProductImage}
+        onOpenChange={() => setZoomedProductImage(null)}
+        imageUrl={zoomedProductImage || ""}
+        alt={zoomedProductAlt}
+      />
       {selectedProduct && (
         <ProductDetailsDialog
           isOpen={isDialogOpen}
