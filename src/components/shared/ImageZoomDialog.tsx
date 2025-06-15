@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from "react";
 import {
   Dialog,
@@ -13,9 +14,8 @@ interface ImageZoomDialogProps {
   alt?: string;
 }
 
-// Settings for magnifier
 const MAGNIFIER_SIZE = 140; // px
-const ZOOM_LEVEL = 2.2; // higher = more zoom
+const ZOOM_LEVEL = 2.4;
 
 const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   open,
@@ -27,7 +27,6 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [showMagnifier, setShowMagnifier] = useState(false);
-  // Magnifier center position RELATIVE TO IMAGE box
   const [magnifierPos, setMagnifierPos] = useState({ x: 0, y: 0 });
   const [imgDims, setImgDims] = useState({
     width: 0,
@@ -36,7 +35,7 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
     naturalHeight: 0,
   });
 
-  // On image load, record display and natural sizes
+  // Ensure the image dims capture latest render & natural size
   const handleImgLoad = () => {
     if (imgRef.current) {
       setImgDims({
@@ -48,50 +47,47 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
     }
   };
 
-  // Mouse/touch movement: update magnifier position
-  const handleMove = (
-    clientX: number,
-    clientY: number
-  ) => {
-    if (!imgRef.current || !containerRef.current) return;
-    const bounds = imgRef.current.getBoundingClientRect();
-
-    // Position inside image
-    const x = clientX - bounds.left;
-    const y = clientY - bounds.top;
-
-    // Ensure it is INSIDE the image display area
-    if (
-      x < 0 ||
-      y < 0 ||
-      x > bounds.width ||
-      y > bounds.height
-    ) {
-      setShowMagnifier(false);
-      return;
-    }
-
-    setMagnifierPos({ x, y });
-    setShowMagnifier(true);
+  // Track pointer relative to image, and clamp within bounds
+  const getPointerCoords = (clientX: number, clientY: number) => {
+    if (!imgRef.current) return { x: 0, y: 0, isInside: false };
+    const rect = imgRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    const isInside =
+      x >= 0 &&
+      y >= 0 &&
+      x <= rect.width &&
+      y <= rect.height;
+    // Clamp position to stay within image
+    const clampedX = Math.max(MAGNIFIER_SIZE / 2, Math.min(x, rect.width - MAGNIFIER_SIZE / 2));
+    const clampedY = Math.max(MAGNIFIER_SIZE / 2, Math.min(y, rect.height - MAGNIFIER_SIZE / 2));
+    return {
+      x: clampedX,
+      y: clampedY,
+      isInside,
+    };
   };
 
-  // Mouse event: trigger handleMove
+  // Mouse event: update or hide magnifier
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    handleMove(e.clientX, e.clientY);
+    const { x, y, isInside } = getPointerCoords(e.clientX, e.clientY);
+    setMagnifierPos({ x, y });
+    setShowMagnifier(isInside);
   };
 
-  // Touch event support (for touchscreens)
+  // Touch event
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (e.touches.length > 0) {
       const touch = e.touches[0];
-      handleMove(touch.clientX, touch.clientY);
+      const { x, y, isInside } = getPointerCoords(touch.clientX, touch.clientY);
+      setMagnifierPos({ x, y });
+      setShowMagnifier(isInside);
     }
   };
 
-  // Hide magnifier on leave
   const handleLeave = () => setShowMagnifier(false);
 
-  // Only show if image is loaded and mouse is over img
+  // Calculate magnifier
   let visibleMagnifier = false;
   let backgroundSize = "0px 0px";
   let backgroundPosition = "0px 0px";
@@ -103,18 +99,15 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
     showMagnifier
   ) {
     visibleMagnifier = true;
-    // The ratio between display size and natural size
+    // Ratios for scale
     const ratioX = imgDims.naturalWidth / imgDims.width;
     const ratioY = imgDims.naturalHeight / imgDims.height;
-
-    // Which pixel (on NATURAL image) are we hovering over?
+    // The pixel on high-res
     const natX = magnifierPos.x * ratioX;
     const natY = magnifierPos.y * ratioY;
-
-    // Set zoomed background size
+    // How large the background img is scaled
     backgroundSize = `${imgDims.naturalWidth * ZOOM_LEVEL}px ${imgDims.naturalHeight * ZOOM_LEVEL}px`;
-
-    // Compute the offset so the hovered pixel is at the center of the magnifier
+    // Center "magnified" pixel under mouse
     const bgX = natX * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
     const bgY = natY * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
     backgroundPosition = `-${bgX}px -${bgY}px`;
@@ -151,9 +144,14 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
               display: "block",
               margin: "0 auto",
               background: "#f7fafc",
-              cursor: showMagnifier ? "none" : "zoom-in",
+              cursor: visibleMagnifier ? "none" : "zoom-in",
               userSelect: "none",
+              // Ensures DOM has width/height
+              width: "auto",
+              height: "auto",
             }}
+            width={imgDims.width}
+            height={imgDims.height}
           />
           {visibleMagnifier && (
             <div
@@ -174,7 +172,6 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
                 backgroundRepeat: "no-repeat",
                 backgroundSize: backgroundSize,
                 backgroundPosition: backgroundPosition,
-                // visually fit in the medical theme
               }}
             />
           )}
