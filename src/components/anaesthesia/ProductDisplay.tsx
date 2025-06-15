@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -196,15 +197,15 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
   };
 
   const getButtonText = (productTitle: string) => {
-    // Only oxygen-delivery category products have Get Details functionality
-    if (category === "oxygen-delivery") {
+    // Both oxygen-delivery and suction-airway categories have Get Details functionality
+    if (category === "oxygen-delivery" || category === "suction-airway") {
       return "Get Details";
     }
     return "Request Quote";
   };
 
   const handleButtonClick = (productTitle: string) => {
-    if (category === "oxygen-delivery") {
+    if (category === "oxygen-delivery" || category === "suction-airway") {
       handleGetDetails(productTitle);
     } else {
       // For other categories, keep the existing quote functionality
@@ -256,7 +257,7 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
         </div>
       </div>
 
-      {selectedProduct && category === "oxygen-delivery" && (
+      {selectedProduct && (category === "oxygen-delivery" || category === "suction-airway") && (
         <ProductDetailsDialog
           isOpen={isDialogOpen}
           onClose={handleCloseDialog}

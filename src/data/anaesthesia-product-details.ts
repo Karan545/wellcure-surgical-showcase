@@ -133,5 +133,49 @@ export const anaesthesiaProductDetails: Record<string, AnaesthesiaProductDetail>
         ["Connection", "15mm M/22mm F"]
       ]
     }
+  },
+  "Suction Catheters": {
+    title: "Suction Catheters",
+    description: "Flexible, sterile catheters used to aspirate mucus or other bodily fluids from the airway for patient airway clearance.",
+    features: [
+      "Soft, kink-resistant medical-grade PVC",
+      "Frozen surface finish for smooth insertion",
+      "Color-coded connector for size identification",
+      "Atraumatic, round open tip with two lateral eyes",
+      "Sterile and individually packed"
+    ],
+    specifications: {
+      headers: ["Feature", "Description"],
+      rows: [
+        ["Sizes Available", "FG 6 to FG 18"],
+        ["Length", "53 cm"],
+        ["Sterility", "EO Sterilized"],
+        ["Connector Type", "Color-coded funnel end"],
+        ["Material", "Medical-grade PVC"],
+        ["Packaging", "Individually packed (sterile)"]
+      ]
+    }
+  },
+  "Yankauer Suction Set": {
+    title: "Yankauer Suction Set",
+    description: "Rigid suction instrument used to aspirate oropharyngeal secretions while maintaining airway integrity. Common in surgical and ICU settings.",
+    features: [
+      "Bulbous tip with side eyes to reduce tissue trauma",
+      "Transparent handle and tubing for visibility",
+      "Ergonomic thumb control vent",
+      "2-meter kink-resistant tubing",
+      "Available with or without filter"
+    ],
+    specifications: {
+      headers: ["Feature", "Description"],
+      rows: [
+        ["Tip Type", "Bulbous, open end with eyes"],
+        ["Control Option", "Thumb control vent"],
+        ["Tubing Length", "2.0 meters (standard)"],
+        ["Material", "Rigid PVC / Polypropylene"],
+        ["Packaging", "Individually sterile packed"],
+        ["Variants", "With/without filter"]
+      ]
+    }
   }
 };
