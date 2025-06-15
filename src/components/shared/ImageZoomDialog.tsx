@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from "react";
 import {
   Dialog,
@@ -14,9 +13,9 @@ interface ImageZoomDialogProps {
   alt?: string;
 }
 
-// Mid zoom and slightly smaller magnifier
-const MAGNIFIER_SIZE = 140; // px, circular
-const ZOOM_LEVEL = 1.7; // mid-range zoom
+// Settings for magnifier
+const MAGNIFIER_SIZE = 140; // px
+const ZOOM_LEVEL = 2.2; // higher = more zoom
 
 const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   open,
@@ -25,9 +24,11 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   alt,
 }) => {
   const imgRef = useRef<HTMLImageElement>(null);
-  const [showMagnifier, setShowMagnifier] = useState(false);
-  const [magnifierPos, setMagnifierPos] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
 
+  const [showMagnifier, setShowMagnifier] = useState(false);
+  // Magnifier center position RELATIVE TO IMAGE box
+  const [magnifierPos, setMagnifierPos] = useState({ x: 0, y: 0 });
   const [imgDims, setImgDims] = useState({
     width: 0,
     height: 0,
@@ -35,54 +36,88 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
     naturalHeight: 0,
   });
 
+  // On image load, record display and natural sizes
   const handleImgLoad = () => {
     if (imgRef.current) {
-      const { width, height, naturalWidth, naturalHeight } = imgRef.current;
-      setImgDims({ width, height, naturalWidth, naturalHeight });
-      // Debug
-      // console.log("[ZoomDialog] img width,height:", width, height, "natural:", naturalWidth, naturalHeight);
+      setImgDims({
+        width: imgRef.current.width,
+        height: imgRef.current.height,
+        naturalWidth: imgRef.current.naturalWidth,
+        naturalHeight: imgRef.current.naturalHeight,
+      });
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (!imgRef.current) return;
+  // Mouse/touch movement: update magnifier position
+  const handleMove = (
+    clientX: number,
+    clientY: number
+  ) => {
+    if (!imgRef.current || !containerRef.current) return;
     const bounds = imgRef.current.getBoundingClientRect();
-    const x = e.clientX - bounds.left;
-    const y = e.clientY - bounds.top;
-    if (x < 0 || y < 0 || x > bounds.width || y > bounds.height) {
+
+    // Position inside image
+    const x = clientX - bounds.left;
+    const y = clientY - bounds.top;
+
+    // Ensure it is INSIDE the image display area
+    if (
+      x < 0 ||
+      y < 0 ||
+      x > bounds.width ||
+      y > bounds.height
+    ) {
       setShowMagnifier(false);
       return;
     }
+
     setMagnifierPos({ x, y });
     setShowMagnifier(true);
   };
 
-  const handleMouseLeave = () => setShowMagnifier(false);
+  // Mouse event: trigger handleMove
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    handleMove(e.clientX, e.clientY);
+  };
 
-  let backgroundSize = "0px 0px";
-  let backgroundPos = "0px 0px";
+  // Touch event support (for touchscreens)
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length > 0) {
+      const touch = e.touches[0];
+      handleMove(touch.clientX, touch.clientY);
+    }
+  };
+
+  // Hide magnifier on leave
+  const handleLeave = () => setShowMagnifier(false);
+
+  // Only show if image is loaded and mouse is over img
   let visibleMagnifier = false;
-
+  let backgroundSize = "0px 0px";
+  let backgroundPosition = "0px 0px";
   if (
-    imgDims.naturalWidth &&
-    imgDims.naturalHeight &&
-    imgDims.width &&
-    imgDims.height &&
+    imgDims.naturalWidth > 0 &&
+    imgDims.naturalHeight > 0 &&
+    imgDims.width > 0 &&
+    imgDims.height > 0 &&
     showMagnifier
   ) {
     visibleMagnifier = true;
-    const scaleX = imgDims.naturalWidth / imgDims.width;
-    const scaleY = imgDims.naturalHeight / imgDims.height;
+    // The ratio between display size and natural size
+    const ratioX = imgDims.naturalWidth / imgDims.width;
+    const ratioY = imgDims.naturalHeight / imgDims.height;
+
+    // Which pixel (on NATURAL image) are we hovering over?
+    const natX = magnifierPos.x * ratioX;
+    const natY = magnifierPos.y * ratioY;
+
+    // Set zoomed background size
     backgroundSize = `${imgDims.naturalWidth * ZOOM_LEVEL}px ${imgDims.naturalHeight * ZOOM_LEVEL}px`;
 
-    const natX = magnifierPos.x * scaleX;
-    const natY = magnifierPos.y * scaleY;
-
-    // Place the area underneath the cursor at the center of the circle
+    // Compute the offset so the hovered pixel is at the center of the magnifier
     const bgX = natX * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
     const bgY = natY * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
-
-    backgroundPos = `-${bgX}px -${bgY}px`;
+    backgroundPosition = `-${bgX}px -${bgY}px`;
   }
 
   return (
@@ -96,16 +131,20 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
           Zoomed view of product for detail inspection.
         </DialogDescription>
         <div
+          ref={containerRef}
           className="relative w-full h-full group flex justify-center items-center"
           style={{ minHeight: 360 }}
           onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
+          onMouseLeave={handleLeave}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleLeave}
         >
           <img
             ref={imgRef}
             src={imageUrl}
             alt={alt || "Product"}
             onLoad={handleImgLoad}
+            draggable={false}
             className="w-full h-full object-contain select-none"
             style={{
               maxHeight: "80vh",
@@ -115,27 +154,27 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
               cursor: showMagnifier ? "none" : "zoom-in",
               userSelect: "none",
             }}
-            draggable={false}
           />
-          {visibleMagnifier && imgDims.naturalWidth > 0 && (
+          {visibleMagnifier && (
             <div
               style={{
-                pointerEvents: "none",
                 position: "absolute",
+                pointerEvents: "none",
                 left: magnifierPos.x - MAGNIFIER_SIZE / 2,
                 top: magnifierPos.y - MAGNIFIER_SIZE / 2,
                 width: MAGNIFIER_SIZE,
                 height: MAGNIFIER_SIZE,
                 borderRadius: "50%",
-                boxShadow: "0 4px 16px 1px rgba(0,49,107,0.18)",
                 border: "2.5px solid #38bdf8",
+                boxShadow: "0 4px 16px 1px rgba(0,49,107,0.18)",
                 overflow: "hidden",
                 zIndex: 10,
                 background: "transparent",
                 backgroundImage: `url(${imageUrl})`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: backgroundSize,
-                backgroundPosition: backgroundPos,
+                backgroundPosition: backgroundPosition,
+                // visually fit in the medical theme
               }}
             />
           )}
