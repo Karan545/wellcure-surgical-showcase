@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import ProductDetailsDialog from "./ProductDetailsDialog";
 import ProductGrid from "./ProductGrid";
 import CategoryBanner from "./CategoryBanner";
 import { createImagePath } from "@/utils/imageUtils";
 import { Button } from "@/components/ui/button";
-
-interface ProductDisplayProps {
-  category: string;
-}
+import ProductModal from "./ProductModal";
+import { anaesthesiaProductDetails } from "@/data/anaesthesia-product-details";
 
 const CATEGORY_PATH = "anaesthesia";
 
@@ -143,7 +140,7 @@ const cardiopulmonaryProducts = [
   }
 ];
 
-const ProductDisplay = ({ category }: ProductDisplayProps) => {
+const ProductDisplay = ({ category }: { category: string }) => {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -197,21 +194,29 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
   };
 
   const getButtonText = (productTitle: string) => {
-    if (category === "oxygen-delivery" || category === "suction-airway") {
-      return "Get Details";
-    }
-    return "Request Quote";
+    // For *all* subcategories, show "Get Details" 
+    return "Get Details";
   };
 
   const handleButtonClick = (productTitle: string) => {
-    if (category === "oxygen-delivery" || category === "suction-airway") {
-      handleGetDetails(productTitle);
-    } else {
-      console.log(`Request quote for: ${productTitle}`);
-    }
+    handleGetDetails(productTitle);
   };
 
   const products = getProducts();
+
+  const selectedProductDetail =
+    selectedProduct && anaesthesiaProductDetails[selectedProduct]
+      ? {
+          ...anaesthesiaProductDetails[selectedProduct],
+          // fallback to image from product array (keyed by title)
+          image:
+            products.find((p: any) => p.title === selectedProduct)?.image ||
+            anaesthesiaProductDetails[selectedProduct].image,
+          imageAlt:
+            products.find((p: any) => p.title === selectedProduct)?.imageAlt ||
+            undefined,
+        }
+      : null;
 
   return (
     <section className="py-16 bg-white/80 backdrop-blur-sm relative">
@@ -228,13 +233,12 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
         />
       </div>
 
-      {selectedProduct && (category === "oxygen-delivery" || category === "suction-airway") && (
-        <ProductDetailsDialog
-          isOpen={isDialogOpen}
-          onClose={handleCloseDialog}
-          productTitle={selectedProduct}
-        />
-      )}
+      {/* Use ProductModal for all product categories */}
+      <ProductModal
+        isOpen={isDialogOpen && !!selectedProductDetail}
+        onClose={handleCloseDialog}
+        product={selectedProductDetail}
+      />
     </section>
   );
 };
