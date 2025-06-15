@@ -1,9 +1,9 @@
-
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { getProductImage, createImagePath } from "@/utils/imageUtils";
 import ProductDetailsDialog from "./ProductDetailsDialog";
+import ProductGrid from "./ProductGrid";
+import CategoryBanner from "./CategoryBanner";
+import { createImagePath } from "@/utils/imageUtils";
+import { Button } from "@/components/ui/button";
 
 interface ProductDisplayProps {
   category: string;
@@ -197,7 +197,6 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
   };
 
   const getButtonText = (productTitle: string) => {
-    // Both oxygen-delivery and suction-airway categories have Get Details functionality
     if (category === "oxygen-delivery" || category === "suction-airway") {
       return "Get Details";
     }
@@ -208,7 +207,6 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
     if (category === "oxygen-delivery" || category === "suction-airway") {
       handleGetDetails(productTitle);
     } else {
-      // For other categories, keep the existing quote functionality
       console.log(`Request quote for: ${productTitle}`);
     }
   };
@@ -218,43 +216,16 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
   return (
     <section className="py-16 bg-white/80 backdrop-blur-sm relative">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">{getCategoryTitle()}</h2>
-          <p className="text-gray-700 max-w-4xl mx-auto text-lg leading-relaxed">
-            {getCategoryDescription()}
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-            >
-              <div className="aspect-w-16 aspect-h-12">
-                <img
-                  src={getProductImage(product.image)}
-                  alt={product.imageAlt || product.title}
-                  className="w-full h-48 object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">{product.title}</h3>
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">{product.description}</p>
-                <Button 
-                  className="w-full ocean-to-forest-gradient text-white hover:shadow-lg transition-all"
-                  onClick={() => handleButtonClick(product.title)}
-                >
-                  {getButtonText(product.title)}
-                </Button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <CategoryBanner
+          title={getCategoryTitle()}
+          description={getCategoryDescription()}
+        />
+
+        <ProductGrid
+          products={products}
+          getButtonText={getButtonText}
+          handleButtonClick={handleButtonClick}
+        />
       </div>
 
       {selectedProduct && (category === "oxygen-delivery" || category === "suction-airway") && (
