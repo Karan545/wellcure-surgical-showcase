@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { getProductImage, createImagePath } from "@/utils/imageUtils";
+import ProductDetailsDialog from "./ProductDetailsDialog";
 
 interface ProductDisplayProps {
   category: string;
@@ -142,6 +143,9 @@ const cardiopulmonaryProducts = [
 ];
 
 const ProductDisplay = ({ category }: ProductDisplayProps) => {
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   const getProducts = () => {
     switch (category) {
       case "oxygen-delivery":
@@ -181,6 +185,33 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
     }
   };
 
+  const handleGetDetails = (productTitle: string) => {
+    setSelectedProduct(productTitle);
+    setIsDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+    setSelectedProduct(null);
+  };
+
+  const getButtonText = (productTitle: string) => {
+    // Only oxygen-delivery category products have Get Details functionality
+    if (category === "oxygen-delivery") {
+      return "Get Details";
+    }
+    return "Request Quote";
+  };
+
+  const handleButtonClick = (productTitle: string) => {
+    if (category === "oxygen-delivery") {
+      handleGetDetails(productTitle);
+    } else {
+      // For other categories, keep the existing quote functionality
+      console.log(`Request quote for: ${productTitle}`);
+    }
+  };
+
   const products = getProducts();
 
   return (
@@ -213,14 +244,25 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-3 text-gray-800">{product.title}</h3>
                 <p className="text-gray-600 mb-4 text-sm leading-relaxed">{product.description}</p>
-                <Button className="w-full ocean-to-forest-gradient text-white hover:shadow-lg transition-all">
-                  Request Quote
+                <Button 
+                  className="w-full ocean-to-forest-gradient text-white hover:shadow-lg transition-all"
+                  onClick={() => handleButtonClick(product.title)}
+                >
+                  {getButtonText(product.title)}
                 </Button>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {selectedProduct && category === "oxygen-delivery" && (
+        <ProductDetailsDialog
+          isOpen={isDialogOpen}
+          onClose={handleCloseDialog}
+          productTitle={selectedProduct}
+        />
+      )}
     </section>
   );
 };
