@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from "react";
 import {
   Dialog,
@@ -34,6 +33,8 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
     naturalWidth: 0,
     naturalHeight: 0,
   });
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   // Ensure the image dims capture latest render & natural size
   const handleImgLoad = () => {
@@ -44,7 +45,14 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
         naturalWidth: imgRef.current.naturalWidth,
         naturalHeight: imgRef.current.naturalHeight,
       });
+      setImgLoaded(true);
     }
+  };
+
+  // When error occurs loading image
+  const handleImgError = () => {
+    setImgError(true);
+    setImgLoaded(false);
   };
 
   // Track pointer relative to image, and clamp within bounds
@@ -72,7 +80,7 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const { x, y, isInside } = getPointerCoords(e.clientX, e.clientY);
     setMagnifierPos({ x, y });
-    setShowMagnifier(isInside);
+    setShowMagnifier(isInside && imgLoaded && !imgError);
   };
 
   // Touch event
@@ -81,22 +89,26 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
       const touch = e.touches[0];
       const { x, y, isInside } = getPointerCoords(touch.clientX, touch.clientY);
       setMagnifierPos({ x, y });
-      setShowMagnifier(isInside);
+      setShowMagnifier(isInside && imgLoaded && !imgError);
     }
   };
 
   const handleLeave = () => setShowMagnifier(false);
 
-  // Calculate magnifier
+  // Calculate magnifier styling
   let visibleMagnifier = false;
   let backgroundSize = "0px 0px";
   let backgroundPosition = "0px 0px";
+  let magnifierStyles: React.CSSProperties | undefined = undefined;
+
   if (
     imgDims.naturalWidth > 0 &&
     imgDims.naturalHeight > 0 &&
     imgDims.width > 0 &&
     imgDims.height > 0 &&
-    showMagnifier
+    showMagnifier &&
+    imgLoaded &&
+    !imgError
   ) {
     visibleMagnifier = true;
     // Ratios for scale
@@ -111,6 +123,41 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
     const bgX = natX * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
     const bgY = natY * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
     backgroundPosition = `-${bgX}px -${bgY}px`;
+
+    magnifierStyles = {
+      position: "absolute",
+      pointerEvents: "none",
+      left: magnifierPos.x - MAGNIFIER_SIZE / 2,
+      top: magnifierPos.y - MAGNIFIER_SIZE / 2,
+      width: MAGNIFIER_SIZE,
+      height: MAGNIFIER_SIZE,
+      borderRadius: "50%",
+      border: "2.5px solid #38bdf8",
+      boxShadow: "0 4px 16px 1px rgba(0,49,107,0.18)",
+      overflow: "hidden",
+      zIndex: 10,
+      background: "#fff",
+      backgroundImage: `url('${imageUrl}')`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: backgroundSize,
+      backgroundPosition: backgroundPosition,
+    };
+
+    // Debug output to ensure correct background setup
+    // @ts-ignore
+    if (typeof window !== "undefined") {
+      // Only log once per movement
+      console.log("MAGNIFIER PROPS:", {
+        backgroundImage: magnifierStyles.backgroundImage,
+        imageUrl,
+        backgroundSize,
+        backgroundPosition,
+        position: magnifierStyles.left + ", " + magnifierStyles.top,
+        imgDims,
+        magnifierPos,
+        visibleMagnifier,
+      });
+    }
   }
 
   return (
@@ -137,41 +184,36 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
             src={imageUrl}
             alt={alt || "Product"}
             onLoad={handleImgLoad}
+            onError={handleImgError}
             draggable={false}
-            className="w-full h-full object-contain select-none"
+            className="w-full h-full object-contain select-none bg-gray-50"
             style={{
               maxHeight: "80vh",
               display: "block",
               margin: "0 auto",
-              background: "#f7fafc",
               cursor: visibleMagnifier ? "none" : "zoom-in",
               userSelect: "none",
-              // Ensures DOM has width/height
               width: "auto",
               height: "auto",
             }}
             width={imgDims.width}
             height={imgDims.height}
           />
-          {visibleMagnifier && (
+          {/* Error state for debugging */}
+          {imgError && (
+            <div className="absolute top-1/2 left-1/2 text-red-600 text-center p-8 bg-white border border-red-400 rounded shadow"
+              style={{ transform: "translate(-50%, -50%)", zIndex: 20 }}>
+              <strong>Image failed to load!</strong>
+              <div className="text-xs mt-1">{imageUrl}</div>
+            </div>
+          )}
+          {visibleMagnifier && magnifierStyles && (
             <div
               style={{
-                position: "absolute",
-                pointerEvents: "none",
-                left: magnifierPos.x - MAGNIFIER_SIZE / 2,
-                top: magnifierPos.y - MAGNIFIER_SIZE / 2,
-                width: MAGNIFIER_SIZE,
-                height: MAGNIFIER_SIZE,
-                borderRadius: "50%",
-                border: "2.5px solid #38bdf8",
-                boxShadow: "0 4px 16px 1px rgba(0,49,107,0.18)",
-                overflow: "hidden",
-                zIndex: 10,
-                background: "transparent",
-                backgroundImage: `url(${imageUrl})`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: backgroundSize,
-                backgroundPosition: backgroundPosition,
+                ...magnifierStyles,
+                // Set a fallback background for easier debug
+                backgroundColor: "#c2eaffb0", // semi-transparent blue
+                outline: "2px dashed #2dd4bf",
               }}
             />
           )}
