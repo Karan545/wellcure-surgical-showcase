@@ -1,11 +1,14 @@
 
-import React, { useRef, useState } from "react";
+// Refactored: dialog is now a clean shell with custom logic and extract hooks/components for the zoom/magnifier
+import React from "react";
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import Magnifier from "./Magnifier";
+import { useImageZoom } from "./useImageZoom";
 
 // Use a themed placeholder (medical/surgical)
 const PLACEHOLDER_IMG = "/lovable-uploads/2f2a6aa0-467b-4ee7-8846-9b432b63c699.png"; // Clean, generic, matches export theme
@@ -17,162 +20,45 @@ interface ImageZoomDialogProps {
   alt?: string;
 }
 
-const MAGNIFIER_SIZE = 140; // px
-const ZOOM_LEVEL = 2.4;
-
 const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
   open,
   onOpenChange,
   imageUrl,
   alt,
 }) => {
-  const imgRef = useRef<HTMLImageElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const [showMagnifier, setShowMagnifier] = useState(false);
-  const [magnifierPos, setMagnifierPos] = useState({ x: 0, y: 0 });
-  const [imgDims, setImgDims] = useState({
-    width: 0,
-    height: 0,
-    naturalWidth: 0,
-    naturalHeight: 0,
+  const {
+    imgRef,
+    containerRef,
+    showMagnifier,
+    magnifierPos,
+    imgDims,
+    imgLoaded,
+    imgError,
+    currentImageUrl,
+    setCurrentImageUrl,
+    setImgError,
+    setImgLoaded,
+    handleImgLoad,
+    handleImgError,
+    handleMouseMove,
+    handleTouchMove,
+    handleLeave,
+  } = useImageZoom({
+    open,
+    imageUrl,
+    placeholder: PLACEHOLDER_IMG,
   });
-  const [imgLoaded, setImgLoaded] = useState(false);
-  const [imgError, setImgError] = useState(false);
 
-  // If original image fails, always fallback to placeholder (and only allow one retry)
-  const [currentImageUrl, setCurrentImageUrl] = useState(imageUrl);
-
-  React.useEffect(() => {
-    setCurrentImageUrl(imageUrl);
-    setImgError(false);
-    setImgLoaded(false);
-  }, [imageUrl, open]); // reset state on new popup or new image
-
-  const handleImgLoad = () => {
-    if (imgRef.current) {
-      setImgDims({
-        width: imgRef.current.width,
-        height: imgRef.current.height,
-        naturalWidth: imgRef.current.naturalWidth,
-        naturalHeight: imgRef.current.naturalHeight,
-      });
-      setImgLoaded(true);
-    }
-  };
-
-  const handleImgError = () => {
-    // If already placeholder, don't infinite loop
-    if (currentImageUrl === PLACEHOLDER_IMG) {
-      setImgError(true);
-      setImgLoaded(false);
-    } else {
-      // Swap to placeholder and clear error for next render
-      setCurrentImageUrl(PLACEHOLDER_IMG);
-      setImgError(false);
-      setImgLoaded(false);
-    }
-  };
-
-  // Track pointer relative to image, and clamp within bounds
-  const getPointerCoords = (clientX: number, clientY: number) => {
-    if (!imgRef.current) return { x: 0, y: 0, isInside: false };
-    const rect = imgRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
-    const isInside =
-      x >= 0 &&
-      y >= 0 &&
-      x <= rect.width &&
-      y <= rect.height;
-    // Clamp position to stay within image
-    const clampedX = Math.max(MAGNIFIER_SIZE / 2, Math.min(x, rect.width - MAGNIFIER_SIZE / 2));
-    const clampedY = Math.max(MAGNIFIER_SIZE / 2, Math.min(y, rect.height - MAGNIFIER_SIZE / 2));
-    return {
-      x: clampedX,
-      y: clampedY,
-      isInside,
-    };
-  };
-
-  // Mouse event: update or hide magnifier
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const { x, y, isInside } = getPointerCoords(e.clientX, e.clientY);
-    setMagnifierPos({ x, y });
-    setShowMagnifier(
-      isInside &&
-        imgLoaded &&
-        !imgError &&
-        currentImageUrl !== PLACEHOLDER_IMG // No zoom on placeholder
-    );
-  };
-
-  // Touch event
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (e.touches.length > 0) {
-      const touch = e.touches[0];
-      const { x, y, isInside } = getPointerCoords(touch.clientX, touch.clientY);
-      setMagnifierPos({ x, y });
-      setShowMagnifier(
-        isInside &&
-          imgLoaded &&
-          !imgError &&
-          currentImageUrl !== PLACEHOLDER_IMG
-      );
-    }
-  };
-
-  const handleLeave = () => setShowMagnifier(false);
-
-  // Calculate magnifier styling
-  let visibleMagnifier = false;
-  let backgroundSize = "0px 0px";
-  let backgroundPosition = "0px 0px";
-  let magnifierStyles: React.CSSProperties | undefined = undefined;
-
-  if (
+  // Only show magnifier if fully valid and on real image
+  const isMagnifierVisible =
+    showMagnifier &&
     imgDims.naturalWidth > 0 &&
     imgDims.naturalHeight > 0 &&
     imgDims.width > 0 &&
     imgDims.height > 0 &&
-    showMagnifier &&
     imgLoaded &&
     !imgError &&
-    currentImageUrl !== PLACEHOLDER_IMG
-  ) {
-    visibleMagnifier = true;
-    // Ratios for scale
-    const ratioX = imgDims.naturalWidth / imgDims.width;
-    const ratioY = imgDims.naturalHeight / imgDims.height;
-    // The pixel on high-res
-    const natX = magnifierPos.x * ratioX;
-    const natY = magnifierPos.y * ratioY;
-    // How large the background img is scaled
-    backgroundSize = `${imgDims.naturalWidth * ZOOM_LEVEL}px ${imgDims.naturalHeight * ZOOM_LEVEL}px`;
-    // Center "magnified" pixel under mouse
-    const bgX = natX * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
-    const bgY = natY * ZOOM_LEVEL - MAGNIFIER_SIZE / 2;
-    backgroundPosition = `-${bgX}px -${bgY}px`;
-
-    magnifierStyles = {
-      position: "absolute",
-      pointerEvents: "none",
-      left: magnifierPos.x - MAGNIFIER_SIZE / 2,
-      top: magnifierPos.y - MAGNIFIER_SIZE / 2,
-      width: MAGNIFIER_SIZE,
-      height: MAGNIFIER_SIZE,
-      borderRadius: "50%",
-      border: "2.5px solid #38bdf8",
-      boxShadow: "0 4px 16px 1px rgba(0,49,107,0.18)",
-      overflow: "hidden",
-      zIndex: 10,
-      background: "#fff",
-      backgroundImage: `url('${currentImageUrl}')`,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: backgroundSize,
-      backgroundPosition: backgroundPosition,
-    };
-  }
+    currentImageUrl !== PLACEHOLDER_IMG;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -205,7 +91,7 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
               maxHeight: "80vh",
               display: "block",
               margin: "0 auto",
-              cursor: visibleMagnifier
+              cursor: isMagnifierVisible
                 ? "none"
                 : currentImageUrl === PLACEHOLDER_IMG
                 ? "not-allowed"
@@ -228,13 +114,14 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
               <div className="text-xs mt-1">{imageUrl}</div>
             </div>
           )}
-          {visibleMagnifier && magnifierStyles && (
-            <div
-              style={{
-                ...magnifierStyles,
-                backgroundColor: "#c2eaffb0", // fallback debug background
-                outline: "2px dashed #2dd4bf",
-              }}
+          {isMagnifierVisible && (
+            <Magnifier
+              imageUrl={currentImageUrl}
+              position={magnifierPos}
+              naturalWidth={imgDims.naturalWidth}
+              naturalHeight={imgDims.naturalHeight}
+              displayWidth={imgDims.width}
+              displayHeight={imgDims.height}
             />
           )}
           {/* Show label when placeholder is displayed */}
@@ -250,4 +137,3 @@ const ImageZoomDialog: React.FC<ImageZoomDialogProps> = ({
 };
 
 export default ImageZoomDialog;
-
