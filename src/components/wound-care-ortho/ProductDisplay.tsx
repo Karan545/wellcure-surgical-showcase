@@ -159,16 +159,12 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                   <CardDescription className="text-base">{product.description}</CardDescription>
                 </CardContent>
                 <CardFooter>
-                  {category === "wound-care" ? (
-                    <Button 
-                      className="w-full" 
-                      onClick={() => handleGetDetails(product.title)}
-                    >
-                      Get Details
-                    </Button>
-                  ) : (
-                    <Button className="w-full">Request Quote</Button>
-                  )}
+                  <Button 
+                    className="w-full" 
+                    onClick={() => handleGetDetails(product.title)}
+                  >
+                    Get Details
+                  </Button>
                 </CardFooter>
               </Card>
             </motion.div>
@@ -181,6 +177,7 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
           isOpen={isDialogOpen}
           onClose={handleCloseDialog}
           productTitle={selectedProduct}
+          category={category}
         />
       )}
     </section>

@@ -5,15 +5,23 @@ import ProductNameSection from "@/components/surgery-wound-drainage/ProductNameS
 import ProductFeatures from "@/components/surgery-wound-drainage/ProductFeatures";
 import ProductSpecsTable from "@/components/surgery-wound-drainage/ProductSpecsTable";
 import { woundCareProductDetails, WoundCareProductDetail } from "@/data/wound-care-product-details";
+import { orthoProductDetails, OrthoProductDetail } from "@/data/ortho-product-details";
 
 interface ProductDetailsDialogProps {
   isOpen: boolean;
   onClose: () => void;
   productTitle: string;
+  category: string;
 }
 
-const ProductDetailsDialog = ({ isOpen, onClose, productTitle }: ProductDetailsDialogProps) => {
-  const productDetail: WoundCareProductDetail | undefined = woundCareProductDetails[productTitle];
+const ProductDetailsDialog = ({ isOpen, onClose, productTitle, category }: ProductDetailsDialogProps) => {
+  let productDetail: WoundCareProductDetail | OrthoProductDetail | undefined;
+
+  if (category === "wound-care") {
+    productDetail = woundCareProductDetails[productTitle];
+  } else if (category === "ortho-range") {
+    productDetail = orthoProductDetails[productTitle];
+  }
 
   if (!productDetail) {
     return null;
