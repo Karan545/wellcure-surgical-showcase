@@ -184,6 +184,7 @@ const ProductDisplay = ({ category }: { category: string }) => {
   };
 
   const handleGetDetails = (productTitle: string) => {
+    console.log('[ProductDisplay] Get Details click:', productTitle);
     setSelectedProduct(productTitle);
     setIsDialogOpen(true);
   };
@@ -194,7 +195,6 @@ const ProductDisplay = ({ category }: { category: string }) => {
   };
 
   const getButtonText = (productTitle: string) => {
-    // For *all* subcategories, show "Get Details" 
     return "Get Details";
   };
 
@@ -208,7 +208,6 @@ const ProductDisplay = ({ category }: { category: string }) => {
     selectedProduct && anaesthesiaProductDetails[selectedProduct]
       ? {
           ...anaesthesiaProductDetails[selectedProduct],
-          // fallback to image from product array (keyed by title)
           image:
             products.find((p: any) => p.title === selectedProduct)?.image ||
             anaesthesiaProductDetails[selectedProduct].image,
@@ -217,6 +216,9 @@ const ProductDisplay = ({ category }: { category: string }) => {
             undefined,
         }
       : null;
+
+  // Added debug logs to check if the modal will render and with what product
+  console.log('[ProductDisplay] Dialog open:', isDialogOpen, 'selectedProduct:', selectedProduct, 'selectedProductDetail:', selectedProductDetail);
 
   return (
     <section className="py-16 bg-white/80 backdrop-blur-sm relative">
@@ -233,7 +235,6 @@ const ProductDisplay = ({ category }: { category: string }) => {
         />
       </div>
 
-      {/* Use ProductModal for all product categories */}
       <ProductModal
         isOpen={isDialogOpen && !!selectedProductDetail}
         onClose={handleCloseDialog}

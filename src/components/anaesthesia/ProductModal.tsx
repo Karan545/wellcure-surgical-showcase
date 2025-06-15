@@ -1,6 +1,5 @@
-
 import React from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 interface ProductModalProps {
@@ -39,9 +38,18 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, product })
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-xl w-[95vw] max-h-[80vh] overflow-y-auto p-0 bg-white rounded-lg shadow-2xl relative">
+      <DialogContent
+        className="max-w-xl w-[95vw] max-h-[80vh] overflow-y-auto p-0 bg-white rounded-lg shadow-2xl relative"
+        aria-describedby="product-modal-desc"
+      >
         <DialogHeader className="sticky top-0 z-10 bg-white p-6 border-b">
           <DialogTitle className="text-2xl font-bold text-gray-800">{title}</DialogTitle>
+          {/* Visually hidden description for accessibility */}
+          <DialogDescription asChild>
+            <span id="product-modal-desc" className="sr-only">
+              {description || "Product details dialog"}
+            </span>
+          </DialogDescription>
         </DialogHeader>
         <div className="p-6 space-y-6">
           {image && (
