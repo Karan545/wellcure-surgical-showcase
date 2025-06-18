@@ -12,8 +12,8 @@ const Header = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navLinks = [
     { title: "Home", href: "/" },
-    { title: "About", href: "#about" },
-    { title: "Contact", href: "#contact" }
+    { title: "About Us", href: "#about" },
+    { title: "Contact Us", href: "#contact" }
   ];
 
   // Suggestion hook
@@ -78,25 +78,45 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation + Search */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <HeaderProductDropdown />
+          <nav className="hidden md:flex items-center space-x-6">
+            {/* Home link */}
+            <motion.a
+              href="/"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="font-medium text-gray-700 hover:text-[#003b5c] transition-colors relative group px-2 py-2"
+            >
+              Home
+              <span className="absolute -bottom-1 left-2 w-0 h-0.5 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] group-hover:w-[calc(100%-16px)] transition-all duration-300"></span>
+            </motion.a>
 
-            {navLinks.map((link, index) => (
+            {/* Products dropdown */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <HeaderProductDropdown />
+            </motion.div>
+
+            {/* Other navigation links */}
+            {navLinks.slice(1).map((link, index) => (
               <motion.a
                 key={link.title}
                 href={link.href}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="font-medium text-gray-700 hover:text-[#003b5c] transition-colors relative group"
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                className="font-medium text-gray-700 hover:text-[#003b5c] transition-colors relative group px-2 py-2"
               >
                 {link.title}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-2 w-0 h-0.5 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] group-hover:w-[calc(100%-16px)] transition-all duration-300"></span>
               </motion.a>
             ))}
 
-            {/* --- Inserted Search Form for desktop with suggestions --- */}
-            <div className="relative ml-6 flex items-center gap-2" ref={searchWrapperRef}>
+            {/* Search Form */}
+            <div className="relative ml-8 flex items-center gap-2" ref={searchWrapperRef}>
               <form onSubmit={handleSearch} className="w-full flex items-center gap-2">
                 <div className="relative w-44">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
@@ -143,16 +163,6 @@ const Header = () => {
                 </Button>
               </form>
             </div>
-            {/* --- End Search Form with suggestions --- */}
-
-            <motion.button
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="ocean-to-forest-gradient text-white px-6 py-2 rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 font-medium"
-            >
-              Get Quote
-            </motion.button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -175,15 +185,27 @@ const Header = () => {
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden bg-white border-t border-gray-200"
             >
-              <div className="px-4 py-4 space-y-4">
-                {/* Products Dropdown on mobile; collapsible */}
-                <HeaderProductDropdown />
+              <div className="px-4 py-6 space-y-4">
+                {/* Home link for mobile */}
+                <a
+                  href="/"
+                  className="block text-gray-700 hover:text-[#003b5c] transition-colors font-medium py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Home
+                </a>
 
-                {navLinks.map((link) => (
+                {/* Products Dropdown on mobile */}
+                <div className="py-2">
+                  <HeaderProductDropdown />
+                </div>
+
+                {/* Other navigation links for mobile */}
+                {navLinks.slice(1).map((link) => (
                   <a
                     key={link.title}
                     href={link.href}
-                    className="block text-gray-700 hover:text-[#003b5c] transition-colors font-medium"
+                    className="block text-gray-700 hover:text-[#003b5c] transition-colors font-medium py-2"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.title}
@@ -191,8 +213,8 @@ const Header = () => {
                 ))}
 
                 {/* Mobile Search with suggestions */}
-                <div className="relative flex-1">
-                  <form onSubmit={handleSearch} className="flex gap-2 mt-2">
+                <div className="relative flex-1 pt-4 border-t border-gray-100">
+                  <form onSubmit={handleSearch} className="flex gap-2">
                     <div className="relative flex-1">
                       <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
                       <Input
@@ -238,14 +260,6 @@ const Header = () => {
                     </Button>
                   </form>
                 </div>
-                {/* End Mobile Search with suggestions */}
-
-                <button
-                  className="w-full ocean-to-forest-gradient text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Get Quote
-                </button>
               </div>
             </motion.div>
           )}
