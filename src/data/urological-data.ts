@@ -72,5 +72,48 @@ export const UrineDrainageCatheters = [
     images: ["/lovable-uploads/e618d28f-a528-41e3-be45-e47f1e7e86ba.png"],
     imageAlt: "Complete thoracic drainage kit with multiple components",
     description: "Comprehensive thoracic drainage system including all necessary components for chest drainage procedures."
+  },
+  {
+    title: "Central Venous Catheter Kit",
+    images: ["/lovable-uploads/e10dd4f4-627b-48a4-a1fa-69e3f69685f1.png"],
+    imageAlt: "Complete central venous catheter kit with accessories",
+    description: "Complete central venous catheter kit including guidewire, dilator, and all necessary accessories for safe vascular access."
+  },
+  {
+    title: "Multi-Lumen Central Catheter",
+    images: [
+      "/lovable-uploads/75debe03-9c61-4a76-94cd-afb9132110f0.png",
+      "/lovable-uploads/6c590e85-6f93-4cfc-bdba-fe91cfe9a28e.png",
+      "/lovable-uploads/73b4c12b-7278-4a3a-879a-a5cd48145fbd.png"
+    ],
+    imageAlt: "Multi-lumen central venous catheter with color-coded lumens",
+    description: "Advanced multi-lumen central venous catheter with color-coded lumens for multiple simultaneous therapies and monitoring."
+  },
+  {
+    title: "Single Lumen Central Catheter",
+    images: ["/lovable-uploads/176523b2-eda8-4a72-9c64-f236bcf09dfa.png"],
+    imageAlt: "Single lumen central venous catheter for basic access",
+    description: "Single lumen central venous catheter designed for basic vascular access and medication administration."
+  },
+  {
+    title: "Hemodialysis Catheter",
+    images: [
+      "/lovable-uploads/cfbfe299-1ad6-49be-a600-e5b06adac871.png",
+      "/lovable-uploads/9c3e46f9-554b-4a3a-a466-61e8e4ac6040.png"
+    ],
+    imageAlt: "Hemodialysis catheter for renal replacement therapy",
+    description: "Specialized hemodialysis catheter designed for efficient blood flow during renal replacement therapy procedures."
+  },
+  {
+    title: "Arterial Pressure Monitoring Line",
+    images: ["/lovable-uploads/378b51c2-4049-4188-b7ca-655cfa531c78.png"],
+    imageAlt: "Arterial pressure monitoring line with transducer connection",
+    description: "Precision arterial pressure monitoring line with secure transducer connections for continuous hemodynamic monitoring."
+  },
+  {
+    title: "Catheter Accessories Kit",
+    images: ["/lovable-uploads/afac62a1-117f-4d1a-802a-4b580007da7b.png"],
+    imageAlt: "Various catheter accessories and components",
+    description: "Comprehensive kit of catheter accessories including connectors, clamps, and specialized components for catheter procedures."
   }
 ];

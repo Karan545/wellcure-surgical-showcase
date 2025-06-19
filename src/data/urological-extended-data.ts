@@ -38,6 +38,12 @@ export const CentralVenousDevices = [
     images: ["/lovable-uploads/378b51c2-4049-4188-b7ca-655cfa531c78.png"],
     imageAlt: "Arterial catheter kit for blood pressure monitoring and sampling",
     description: "Arterial catheter kit for continuous blood pressure monitoring and arterial blood gas sampling in critical care environments."
+  },
+  {
+    title: "Arterial Catheter Kit with Extension",
+    images: ["/lovable-uploads/378b51c2-4049-4188-b7ca-655cfa531c78.png"],
+    imageAlt: "Extended arterial catheter kit for enhanced monitoring flexibility",
+    description: "Arterial catheter kit with extension line providing enhanced flexibility for patient positioning and monitoring equipment placement."
   }
 ];
 
@@ -54,5 +60,17 @@ export const DialysisCatheters = [
     images: ["/lovable-uploads/9c3e46f9-554b-4a3a-a466-61e8e4ac6040.png"],
     imageAlt: "Double lumen hemodialysis catheter for efficient dialysis treatment",
     description: "Double lumen hemodialysis catheter providing efficient blood flow for dialysis treatment with separate arterial and venous access."
+  },
+  {
+    title: "Hemodialysis Catheter (Triple Lumen)",
+    images: ["/lovable-uploads/9c3e46f9-554b-4a3a-a466-61e8e4ac6040.png"],
+    imageAlt: "Triple lumen hemodialysis catheter for complex dialysis needs",
+    description: "Triple lumen hemodialysis catheter for complex dialysis scenarios requiring additional access for medication or monitoring."
+  },
+  {
+    title: "Long Term Hemodialysis Catheter",
+    images: ["/lovable-uploads/cfbfe299-1ad6-49be-a600-e5b06adac871.png"],
+    imageAlt: "Long-term hemodialysis catheter for chronic dialysis patients",
+    description: "Long-term hemodialysis catheter designed for chronic dialysis patients requiring extended vascular access with tunneled placement."
   }
 ];
