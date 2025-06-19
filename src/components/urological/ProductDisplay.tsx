@@ -6,7 +6,7 @@ import { getProductImage } from "@/utils/imageUtils";
 import { UrineCollectionBags, UrineDrainageCatheters } from "@/data/urological-data";
 import { CentralVenousDevices, DialysisCatheters } from "@/data/urological-extended-data";
 import ProductDetailsDialog from "./ProductDetailsDialog";
-import ImageZoomDialog from "@/components/shared/ImageZoomDialog";
+import ProductImageSlider from "@/components/shared/ProductImageSlider";
 
 interface ProductDisplayProps {
   category: string;
@@ -15,8 +15,6 @@ interface ProductDisplayProps {
 const ProductDisplay = ({ category }: ProductDisplayProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<{ title: string } | null>(null);
-  const [zoomedProductImage, setZoomedProductImage] = useState<string | null>(null);
-  const [zoomedProductAlt, setZoomedProductAlt] = useState<string | undefined>(undefined);
 
   const getProducts = () => {
     switch (category) {
@@ -86,64 +84,47 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
-                <div
-                  className="relative h-48 overflow-hidden cursor-zoom-in"
-                  onClick={() => {
-                    setZoomedProductImage(getProductImage(product.image));
-                    setZoomedProductAlt(product.imageAlt || product.title);
-                  }}
-                  tabIndex={0}
-                  role="button"
-                  aria-label={`Zoom ${product.title} image`}
-                >
-                  <img
-                    src={getProductImage(product.image)}
-                    alt={product.imageAlt || product.title}
-                    className="w-full h-full object-cover transition-transform duration-150 hover:scale-105"
-                    onError={(e) => {
-                      e.currentTarget.src = "/placeholder.svg";
-                    }}
-                    style={{ cursor: "zoom-in" }}
+          {products.map((product, index) => {
+            // Handle both old format (single image) and new format (images array)
+            const productImages = (product as any).images || [product.image];
+            
+            return (
+              <motion.div
+                key={product.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
+                  <ProductImageSlider
+                    images={productImages}
+                    title={product.title}
+                    imageAlt={product.imageAlt}
                   />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-lg">{product.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">{product.description}</CardDescription>
-                </CardContent>
-                <CardFooter>
-                  {(category === "urine-bags" || category === "urine-drainage" || category === "central-venous" || category === "dialysis") ? (
-                    <Button 
-                      className="w-full"
-                      onClick={() => handleGetDetails(product)}
-                    >
-                      Get Details
-                    </Button>
-                  ) : (
-                    <Button className="w-full">Request Quote</Button>
-                  )}
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
+                  <CardHeader>
+                    <CardTitle className="text-lg">{product.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-base">{product.description}</CardDescription>
+                  </CardContent>
+                  <CardFooter>
+                    {(category === "urine-bags" || category === "urine-drainage" || category === "central-venous" || category === "dialysis") ? (
+                      <Button 
+                        className="w-full"
+                        onClick={() => handleGetDetails(product)}
+                      >
+                        Get Details
+                      </Button>
+                    ) : (
+                      <Button className="w-full">Request Quote</Button>
+                    )}
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
-
-      <ImageZoomDialog
-        open={!!zoomedProductImage}
-        onOpenChange={() => setZoomedProductImage(null)}
-        imageUrl={zoomedProductImage || ""}
-        alt={zoomedProductAlt}
-      />
 
       {selectedProduct && (
         <ProductDetailsDialog
