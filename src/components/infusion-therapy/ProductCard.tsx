@@ -7,7 +7,7 @@ export interface Product {
   title: string;
   image: string;
   description: string;
-  imageAlt?: string; // Added alt text for improved SEO
+  imageAlt?: string;
 }
 
 interface ProductCardProps {
@@ -24,14 +24,15 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
     >
-      <div className="aspect-w-16 aspect-h-12">
+      <div className="product-image-container">
         <img
           src={product.image}
           alt={product.imageAlt || product.title}
-          className="w-full h-48 object-cover"
+          className="product-image"
           loading="lazy"
           onError={(e) => {
             e.currentTarget.src = "/placeholder.svg";
+            e.currentTarget.className = "product-image image-error";
           }}
         />
       </div>

@@ -114,13 +114,14 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
-                <div className="relative h-48 overflow-hidden">
+                <div className="product-image-container">
                   <img
                     src={getProductImage(product.image)}
                     alt={product.imageAlt || product.title}
-                    className="w-full h-full object-cover"
+                    className="product-image"
                     onError={(e) => {
                       e.currentTarget.src = "/placeholder.svg";
+                      e.currentTarget.className = "product-image image-error";
                     }}
                   />
                 </div>

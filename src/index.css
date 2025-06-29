@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -242,6 +241,40 @@
 
   .border-medical-500 {
     border-color: #003b5c;
+  }
+
+  /* Product Image Container - Consistent sizing and aspect ratio */
+  .product-image-container {
+    @apply relative w-full overflow-hidden bg-gray-50;
+    height: 240px; /* Fixed height for consistency */
+  }
+
+  .product-image {
+    @apply w-full h-full transition-transform duration-300 hover:scale-105;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Aspect ratio utilities for different image containers */
+  .aspect-product {
+    aspect-ratio: 4/3;
+  }
+
+  .aspect-product-wide {
+    aspect-ratio: 16/10;
+  }
+
+  .aspect-product-square {
+    aspect-ratio: 1/1;
+  }
+
+  /* Image loading states */
+  .image-loading {
+    @apply bg-gray-200 animate-pulse;
+  }
+
+  .image-error {
+    @apply bg-gray-100 flex items-center justify-center text-gray-400;
   }
 }
 
