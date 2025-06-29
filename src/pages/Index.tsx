@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { Stethoscope, ShieldCheck, Globe, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { getProductImage } from "@/utils/imageUtils";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -51,37 +52,37 @@ const Index = () => {
   const productCategories = [
     {
       title: "Urological Instruments",
-      image: "https://live.staticflickr.com/3873/14377885496_070d90627c_z.jpg?auto=format&fit=crop&q=80",
+      image: getProductImage("https://live.staticflickr.com/3873/14377885496_070d90627c_z.jpg?auto=format&fit=crop&q=80"),
       description: "State-of-the-art urological surgical instruments, diagnostic equipment, and treatment solutions for comprehensive urological care.",
       link: "/urological-instruments"
     },
     {
       title: "Gastroenterology Equipment",
-      image: "https://cdn.pixabay.com/photo/2015/05/17/01/12/hands-770461_1280.jpg?auto=format&fit=crop&q=80",
+      image: getProductImage("https://cdn.pixabay.com/photo/2015/05/17/01/12/hands-770461_1280.jpg?auto=format&fit=crop&q=80"),
       description: "Advanced endoscopic systems and specialized tools for precise gastrointestinal procedures and diagnostics.",
       link: "/gastroenterology"
     },
     {
       title: "Infusion Therapy",
-      image: "https://cdn.pixabay.com/photo/2015/07/07/09/52/hospital-834152_1280.jpg?auto=format&fit=crop&q=80",
+      image: getProductImage("https://cdn.pixabay.com/photo/2015/07/07/09/52/hospital-834152_1280.jpg?auto=format&fit=crop&q=80"),
       description: "Complete range of infusion systems, IV cannulas, and administration sets designed for safe and accurate fluid delivery and medication administration.",
       link: "/infusion-therapy"
     },
     {
       title: "Surgery & Wound Drainage",
-      image: "https://cdn.pixabay.com/photo/2017/12/21/10/52/surgery-3031541_1280.jpg?auto=format&fit=crop&q=80",
+      image: getProductImage("https://cdn.pixabay.com/photo/2017/12/21/10/52/surgery-3031541_1280.jpg?auto=format&fit=crop&q=80"),
       description: "Comprehensive selection of surgical drains, collection systems, and management solutions for effective post-operative wound care.",
       link: "/surgery-wound-drainage"
     },
     {
       title: "Anaesthesia Systems",
-      image: "https://cdn.pixabay.com/photo/2023/08/30/15/42/ai-generated-8223597_1280.jpg?auto=format&fit=crop&q=80",
+      image: getProductImage("https://cdn.pixabay.com/photo/2023/08/30/15/42/ai-generated-8223597_1280.jpg?auto=format&fit=crop&q=80"),
       description: "Modern anaesthesia delivery units, patient monitoring systems, and critical care equipment for surgical procedures.",
       link: "/anaesthesia-systems"
     },
     {
       title: "Blood Management Solutions",
-      image: "https://images.unsplash.com/photo-1579154341184-22069e4614d2?auto=format&fit=crop&q=80",
+      image: getProductImage("https://images.unsplash.com/photo-1579154341184-22069e4614d2?auto=format&fit=crop&q=80"),
       description: "Comprehensive blood collection systems, storage solutions, and transfusion management equipment.",
       link: "/blood-management"
     }

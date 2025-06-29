@@ -4,6 +4,11 @@
 
 // Function to retrieve local product images
 export const getProductImage = (imagePath: string): string => {
+  // Handle external URLs - return as-is
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+    return imagePath;
+  }
+  
   // Handle lovable uploads directory
   if (imagePath.startsWith('lovable-uploads/')) {
     return `/${imagePath}`;
