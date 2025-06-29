@@ -44,27 +44,15 @@ const ImageMagnifier: React.FC<ImageMagnifierProps> = ({
     const xBoundary = width * boundaryPercent;
     const yBoundary = height * boundaryPercent;
 
-    // Extended boundaries for zoom area (2% beyond image edges)
-    const extendedLeft = -xBoundary;
-    const extendedRight = width + xBoundary;
-    const extendedTop = -yBoundary;
-    const extendedBottom = height + yBoundary;
-
-    // Calculate magnifier position with extended boundaries
+    // Keep magnifier within visible bounds but allow background to extend
     const magnifierX = Math.max(magnifierSize / 2, Math.min(x, width - magnifierSize / 2));
     const magnifierY = Math.max(magnifierSize / 2, Math.min(y, height - magnifierSize / 2));
 
-    // Calculate background position for zoomed content
-    // This allows zooming beyond the visible image edges
-    const bgX = Math.max(extendedLeft, Math.min(x, extendedRight));
-    const bgY = Math.max(extendedTop, Math.min(y, extendedBottom));
+    // Background position can extend beyond image boundaries for edge zoom
+    const bgX = x - xBoundary;
+    const bgY = y - yBoundary;
 
-    setMagnifierPosition({ 
-      x: magnifierX, 
-      y: magnifierY,
-      bgX: bgX,
-      bgY: bgY
-    });
+    setMagnifierPosition({ x: magnifierX, y: magnifierY, bgX, bgY });
   }, [magnifierSize]);
 
   const magnifierStyle: React.CSSProperties = {
@@ -80,12 +68,13 @@ const ImageMagnifier: React.FC<ImageMagnifierProps> = ({
     backgroundImage: `url(${src})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: `${imgDimensions.width * zoomLevel}px ${imgDimensions.height * zoomLevel}px`,
-    backgroundPosition: `-${(magnifierPosition.bgX || magnifierPosition.x - magnifierSize / 2) * zoomLevel}px -${(magnifierPosition.bgY || magnifierPosition.y - magnifierSize / 2) * zoomLevel}px`,
-    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 255, 255, 0.8)',
+    backgroundPosition: `-${(magnifierPosition.bgX || magnifierPosition.x) * zoomLevel - magnifierSize / 2}px -${(magnifierPosition.bgY || magnifierPosition.y) * zoomLevel - magnifierSize / 2}px`,
+    boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3), inset 0 0 0 2px rgba(255, 255, 255, 0.9)',
     zIndex: 1000,
     opacity: showMagnifier ? 1 : 0,
     transition: 'opacity 0.2s ease-in-out',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backdropFilter: 'blur(0.5px)',
   };
 
   return (

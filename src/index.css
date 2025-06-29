@@ -200,15 +200,16 @@
     @apply bg-gray-100 flex items-center justify-center text-gray-400;
   }
 
-  /* Enhanced White Magnifier Glass Styling */
+  /* Professional White Magnifier Glass Styling */
   .magnifier-glass-white {
-    background-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(0.5px);
     border: 3px solid #ffffff;
     box-shadow: 
       0 12px 40px rgba(0, 0, 0, 0.25),
       inset 0 0 0 2px rgba(255, 255, 255, 0.9),
       0 0 0 1px rgba(0, 0, 0, 0.1);
+    position: relative;
   }
 
   .magnifier-glass-white::before {
