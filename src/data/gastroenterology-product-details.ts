@@ -1,14 +1,15 @@
-
 export interface GastroProductDetailContent {
   name: string;
   features?: string[];
   showInfantTable?: boolean;
   showUmbilicalTable?: boolean;
+  image?: string;
 }
 
 export const gastroProductDetails: Record<string, GastroProductDetailContent> = {
   "Infant Feeding Tube": {
     name: "INFANT FEEDING TUBE",
+    image: "/Product-images/Gastroenterology-Equipment/Infant-Feeding-Tube.png",
     features: [
       "Medical-grade PVC, latex & DEHP-free",
       "Closed distal end with two smooth lateral eyes for gentle feeding/aspiration",
@@ -20,6 +21,7 @@ export const gastroProductDetails: Record<string, GastroProductDetailContent> = 
   },
   "Levin's Tube": {
     name: "LEVIN'S TUBE",
+    image: "/Product-images/Gastroenterology-Equipment/Levin's-Tube.jpg",
     features: [
       "Single-lumen PVC gastric drainage tube, transparent & non-toxic",
       "Coned distal tip with four large lateral eyes for efficient aspiration",
@@ -29,7 +31,8 @@ export const gastroProductDetails: Record<string, GastroProductDetailContent> = 
     ]
   },
   "Ryle's Tube": {
-    name: "RYLE'S TUBE", 
+    name: "RYLE'S TUBE",
+    image: "/Product-images/Gastroenterology-Equipment/Ryle's-Tube.png",
     features: [
       "Enteral feeding & gastric decompression tube, PVC; latex, DEHP & BPA-free",
       "Radiopaque line + numeric depth marks every 1 cm for accurate placement",
@@ -40,6 +43,7 @@ export const gastroProductDetails: Record<string, GastroProductDetailContent> = 
   },
   "Umbilical Catheter": {
     name: "UMBILICAL CATHETER",
+    image: "/Product-images/Gastroenterology-Equipment/Umbilical-Catheter.jpg",
     features: [
       "Biocompatible polyurethane (PUR) catheter for neonatal arterial/venous access",
       "Low-profile hub with radiopaque markings to 34 cm for tip location",

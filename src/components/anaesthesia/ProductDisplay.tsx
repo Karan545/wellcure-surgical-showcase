@@ -6,49 +6,49 @@ import { Button } from "@/components/ui/button";
 import ProductModal from "./ProductModal";
 import { anaesthesiaProductDetails } from "@/data/anaesthesia-product-details";
 
-const CATEGORY_PATH = "anaesthesia";
+const CATEGORY_PATH = "Anaesthesia-Systems";
 
 // Oxygen Delivery & Respiratory Care Products
 const oxygenDeliveryProducts = [
   {
     title: "Oxygen Mask",
-    image: createImagePath(CATEGORY_PATH, "oxygen-mask.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Oxygen-Delivery-&-Respiratory-Care/Oxygen-Mask.jpeg`,
     imageAlt: "High-quality oxygen mask for reliable oxygen therapy in hospital settings",
     description: "Comfortable and efficient oxygen mask designed for reliable oxygen therapy administration in anaesthesia and emergency care environments."
   },
   {
     title: "Nebulizer Mask",
-    image: createImagePath(CATEGORY_PATH, "nebulizer-mask.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Oxygen-Delivery-&-Respiratory-Care/Nebulizer-Mask.jpg`,
     imageAlt: "Professional nebulizer mask for effective medication delivery",
     description: "High-quality nebulizer mask engineered for effective medication delivery through aerosol inhalation therapy in clinical settings."
   },
   {
     title: "Oxygen Catheter",
-    image: createImagePath(CATEGORY_PATH, "oxygen-catheter.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Oxygen-Delivery-&-Respiratory-Care/Oxygen-Catheter.webp`,
     imageAlt: "Precision oxygen catheter for targeted oxygen delivery",
     description: "Precision-designed oxygen catheter for targeted oxygen delivery in various clinical settings, ensuring optimal patient comfort and safety."
   },
   {
     title: "Twin Bore Nasal Oxygen Cannula",
-    image: createImagePath(CATEGORY_PATH, "twin-bore-nasal-cannula.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Oxygen-Delivery-&-Respiratory-Care/Twin-Bore-Nasal-Oxygen-Cannula.jpg`,
     imageAlt: "Dual-channel nasal oxygen cannula for comfortable oxygen therapy",
     description: "Advanced dual-channel nasal oxygen cannula designed for comfortable and efficient oxygen delivery with enhanced patient mobility."
   },
   {
     title: "Lung Exerciser",
-    image: createImagePath(CATEGORY_PATH, "lung-exerciser.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Oxygen-Delivery-&-Respiratory-Care/Lung-Exerciser.png`,
     imageAlt: "Post-operative breathing device for improving lung capacity",
     description: "Post-operative breathing device that helps improve lung capacity and prevent respiratory complications in surgical recovery environments."
   },
   {
     title: "Respiratory Circuits",
-    image: createImagePath(CATEGORY_PATH, "respiratory-circuits.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Oxygen-Delivery-&-Respiratory-Care/Respiratory-Circuits.png`,
     imageAlt: "Ventilator-compatible breathing circuits for anaesthesia and critical care",
     description: "Ventilator-compatible breathing circuits used in anaesthesia and critical care environments for reliable respiratory support and patient safety."
   },
   {
     title: "Heat Moisture Exchanger with Bacterial Viral Filter (HME-BVF)",
-    image: createImagePath(CATEGORY_PATH, "hme-bvf.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Oxygen-Delivery-&-Respiratory-Care/Heat-Moisture-Exchanger-with-Bacterial-Viral-Filter-(HME-BVF).png`,
     imageAlt: "Heat moisture exchanger with bacterial viral filter for mechanical ventilation",
     description: "Maintains humidity and prevents cross-contamination during mechanical ventilation or anaesthesia procedures, ensuring optimal patient safety."
   }
@@ -58,13 +58,13 @@ const oxygenDeliveryProducts = [
 const suctionAirwayProducts = [
   {
     title: "Suction Catheters",
-    image: createImagePath(CATEGORY_PATH, "suction-catheters.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Suction-&-Airway-Management/Suction-Catheters.png`,
     imageAlt: "High-performance suction catheters for airway management",
     description: "High-performance suction catheters essential for effective airway management and secretion removal during anaesthesia and post-operative care."
   },
   {
     title: "Yankauer Suction Set",
-    image: createImagePath(CATEGORY_PATH, "yankauer-suction-set.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Suction-&-Airway-Management/Yankauer-Suction-Set.png`,
     imageAlt: "Yankauer suction set for oropharyngeal suctioning during surgery",
     description: "Used for oropharyngeal suctioning during surgery or intensive care; ensures a clear airway for optimal patient respiratory function."
   }
@@ -74,67 +74,67 @@ const suctionAirwayProducts = [
 const cardiopulmonaryProducts = [
   {
     title: "Heart Lung Pack",
-    image: createImagePath(CATEGORY_PATH, "heart-lung-pack.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Heart-Lung-Pack.png`,
     imageAlt: "Complete heart-lung pack for cardiac surgery procedures",
     description: "Comprehensive heart-lung pack designed for extracorporeal circulation during cardiac surgery procedures, ensuring optimal perfusion support."
   },
   {
     title: "Heart Lung Pack With Coated Tubing",
-    image: createImagePath(CATEGORY_PATH, "heart-lung-pack-coated.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Heart-Lung-Pack-With-Coated-Tubing.webp`,
     imageAlt: "Advanced heart-lung pack with biocompatible coated tubing",
     description: "Advanced heart-lung pack featuring biocompatible coated tubing for enhanced hemocompatibility and reduced inflammatory response."
   },
   {
     title: "Cardioplegia Delivery Set",
-    image: createImagePath(CATEGORY_PATH, "cardioplegia-set.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Cardioplegia-Delivery-Set.png`,
     imageAlt: "Precision cardioplegia delivery set for cardiac protection",
     description: "Precision cardioplegia delivery set for safe and effective myocardial protection during cardiac surgical procedures."
   },
   {
     title: "Perfusion Accessories",
-    image: createImagePath(CATEGORY_PATH, "perfusion-accessories.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Perfusion-Accessories.png`,
     imageAlt: "Complete range of perfusion accessories for cardiac surgery",
     description: "Comprehensive range of perfusion accessories designed to support various cardiac surgery procedures and extracorporeal circulation requirements."
   },
   {
     title: "Arterial Cannula (Adult & Pediatric)",
-    image: createImagePath(CATEGORY_PATH, "arterial-cannula.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Arterial-Cannula-(Adult & Pediatric).png`,
     imageAlt: "Arterial cannula for adult and pediatric cardiac procedures",
     description: "High-quality arterial cannulas available in adult and pediatric sizes for optimal arterial access during cardiopulmonary bypass procedures."
   },
   {
     title: "Venous Cannula (Plastic & Metal Tip)",
-    image: createImagePath(CATEGORY_PATH, "venous-cannula.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Venous-Cannula-(Plastic & Metal Tip).png`,
     imageAlt: "Venous cannula with plastic and metal tip options",
     description: "Versatile venous cannulas with plastic and metal tip options, designed for efficient venous drainage during cardiac surgery procedures."
   },
   {
     title: "Arterial Filter",
-    image: createImagePath(CATEGORY_PATH, "arterial-filter.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Arterial-Filter.png`,
     imageAlt: "High-efficiency arterial filter for cardiopulmonary bypass",
     description: "High-efficiency arterial filter designed to remove air bubbles and particles from the arterial line during cardiopulmonary bypass procedures."
   },
   {
     title: "Rigid Suction Tubes",
-    image: createImagePath(CATEGORY_PATH, "rigid-suction-tubes.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Rigid-Suction-Tubes.png`,
     imageAlt: "Durable rigid suction tubes for surgical procedures",
     description: "Durable rigid suction tubes designed for effective fluid and debris removal during various surgical and cardiac procedures."
   },
   {
     title: "Coronary Artery Ostial Cannula",
-    image: createImagePath(CATEGORY_PATH, "coronary-ostial-cannula.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Coronary-Artery-Ostial-Cannula.png`,
     imageAlt: "Specialized coronary artery ostial cannula for cardiac surgery",
     description: "Specialized coronary artery ostial cannula designed for precise cardioplegia delivery and coronary perfusion during cardiac surgery."
   },
   {
     title: "Mister/Blower",
-    image: createImagePath(CATEGORY_PATH, "mister-blower.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Mister-blower.png`,
     imageAlt: "Surgical mister and blower for operative field management",
     description: "Professional surgical mister and blower system for maintaining clear operative fields and effective irrigation during cardiac procedures."
   },
   {
     title: "Vessel Loops",
-    image: createImagePath(CATEGORY_PATH, "vessel-loops.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Vessel-Loops.png`,
     imageAlt: "Soft silicone vessel loops for cardio-thoracic surgery",
     description: "Soft silicone loops used in cardio-thoracic surgery to isolate and retract vessels during surgical procedures with precision and safety."
   }

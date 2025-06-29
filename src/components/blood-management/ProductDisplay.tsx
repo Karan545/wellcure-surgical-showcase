@@ -6,18 +6,18 @@ import { bloodManagementProductDetails } from "@/data/blood-management-product-d
 import { motion } from "framer-motion";
 import ImageZoomDialog from "@/components/shared/ImageZoomDialog";
 
-const CATEGORY_PATH = "blood-management";
+const CATEGORY_PATH = "Blood-Management-Solutions";
 
 const products = [
   {
     title: "Blood Administration Set without Air Vent",
-    image: createImagePath(CATEGORY_PATH, "blood-admin-set-no-air-vent.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Blood-Administration-Set-without-Air-Vent.jpg`,
     imageAlt: "High-quality blood administration set for safe transfusions",
     description: "A sterile, single-use blood transfusion set for safe and efficient delivery of blood and blood components."
   },
   {
     title: "Blood Administration Set with Air Vent",
-    image: createImagePath(CATEGORY_PATH, "blood-admin-set-with-air-vent.jpg"),
+    image: `/Product-images/${CATEGORY_PATH}/Blood-Administration-Set-with-Air-Vent.avif`,
     imageAlt: "Premium blood administration set with integrated air vent",
     description: "A sterile blood transfusion set with an air vent for safe and efficient delivery from rigid bottles."
   }

@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -9,31 +8,29 @@ import CategoryBanner from "@/components/shared/CategoryBanner";
 import { getProductImage } from "@/utils/imageUtils";
 import ProductDetailsDialog from "@/components/gastroenterology/ProductDetailsDialog";
 
-// Define products with local image path structure
-const IMAGE_BASE = "/placeholder-images/gastroenterology";
-
+// Define products with uploaded image paths
 const gastroenterologyProducts = [
   {
     title: "Infant Feeding Tube",
-    image: `${IMAGE_BASE}/infant-feeding-tube.jpg`,
+    image: "/Product-images/Gastroenterology-Equipment/Infant-Feeding-Tube.png",
     imageAlt: "Specialized infant feeding tube for gentle nutrition delivery",
     description: "Specially designed feeding tubes for infants, providing gentle and safe delivery of nutrition with optimal comfort."
   },
   {
     title: "Levin's Tube",
-    image: `${IMAGE_BASE}/levins-tube.jpg`,
+    image: "/Product-images/Gastroenterology-Equipment/Levin's-Tube.jpg",
     imageAlt: "Levin's single-lumen nasogastric tube for medical applications",
     description: "Single-lumen nasogastric tube designed for gastric decompression, feeding, and administration of medications."
   },
   {
     title: "Ryle's Tube",
-    image: `${IMAGE_BASE}/ryles-tube.jpg`,
+    image: "/Product-images/Gastroenterology-Equipment/Ryle's-Tube.png",
     imageAlt: "Fine-bore Ryle's feeding tube with radio-opaque line",
     description: "Fine-bore feeding tube with radio-opaque line for accurate placement confirmation and optimal patient comfort."
   },
   {
     title: "Umbilical Catheter",
-    image: `${IMAGE_BASE}/umbilical-catheter.jpg`,
+    image: "/Product-images/Gastroenterology-Equipment/Umbilical-Catheter.jpg",
     imageAlt: "Specialized catheter for umbilical vessel cannulation in neonates",
     description: "Specialized catheter for umbilical vessel cannulation in neonates, featuring smooth tapered tip and precise length markings."
   }
