@@ -1,6 +1,7 @@
 import React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import ImageMagnifier from "@/components/shared/ImageMagnifier";
 
 interface ProductModalProps {
   isOpen: boolean;
@@ -52,19 +53,16 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, product })
         </DialogHeader>
         
         <div className="p-8 space-y-8">
-          {/* Product Image */}
+          {/* Product Image with Magnifier */}
           {image && (
             <div className="flex justify-center mb-6">
               <div className="relative max-w-md w-full">
-                <img
+                <ImageMagnifier
                   src={image}
                   alt={imageAlt || title}
-                  className="w-full h-auto object-contain rounded-lg border shadow-sm bg-gray-50"
-                  style={{ maxHeight: '300px' }}
-                  onError={(e) => {
-                    e.currentTarget.src = "/placeholder.svg";
-                    e.currentTarget.className = "w-full h-auto object-contain rounded-lg border shadow-sm bg-gray-100 flex items-center justify-center text-gray-400";
-                  }}
+                  className="w-full"
+                  magnifierSize={150}
+                  zoomLevel={2.5}
                 />
               </div>
             </div>

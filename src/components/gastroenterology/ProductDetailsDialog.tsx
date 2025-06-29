@@ -9,6 +9,7 @@ import {
 import { X } from "lucide-react";
 import { getGastroProductContent } from "@/data/gastroenterology-product-details";
 import ProductDetailsContent from "./ProductDetailsContent";
+import ImageMagnifier from "@/components/shared/ImageMagnifier";
 
 interface ProductDetailsDialogProps {
   isOpen: boolean;
@@ -39,19 +40,16 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
         </DialogHeader>
         
         <div className="p-8">
-          {/* Product Image */}
+          {/* Product Image with Magnifier */}
           {productContent.image && (
             <div className="flex justify-center mb-8">
               <div className="relative max-w-md w-full">
-                <img
+                <ImageMagnifier
                   src={productContent.image}
                   alt={productContent.name}
-                  className="w-full h-auto object-contain rounded-lg border shadow-sm bg-gray-50"
-                  style={{ maxHeight: '300px' }}
-                  onError={(e) => {
-                    e.currentTarget.src = "/placeholder.svg";
-                    e.currentTarget.className = "w-full h-auto object-contain rounded-lg border shadow-sm bg-gray-100 flex items-center justify-center text-gray-400";
-                  }}
+                  className="w-full"
+                  magnifierSize={150}
+                  zoomLevel={2.5}
                 />
               </div>
             </div>
