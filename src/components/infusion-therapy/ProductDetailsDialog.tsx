@@ -31,6 +31,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "I.V. Flow Regulator Extension Set":
         return {
           name: "I.V. FLOW REGULATOR EXTENSION SET",
+          image: "/Product-images/Infusion-Therapy/Flow-Control-Devices/I.V.-Flow-Regulator-Extension-Set.png",
           features: [
             "Precise flow rate control of IV fluids with range of 5 to 250 ml/hr",
             "With \"Y\" Injection Port (Latex or Latex Free) for intermittent medication",
@@ -44,6 +45,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "I.V. Infusion Set with Flow Regulator":
         return {
           name: "I.V. INFUSION SET WITH FLOW REGULATOR",
+          image: "/Product-images/Infusion-Therapy/I.V.-Infusion-Sets/I.V.-Infusion-Set-with-Flow-Regulator.png",
           features: [
             "Precise flow rate control of IV fluids with range of 5 to 250 ml/hr",
             "With \"Y\" Injection Port (Latex or Latex Free) for intermittent medication",
@@ -57,6 +59,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "High Pressure Extension Line":
         return {
           name: "High Pressure Extension Lines",
+          image: "/Product-images/Infusion-Therapy/Extension-Tubes/High-Pressure-Extension-Line.jpg",
           features: [
             "Constructed from non-toxic medical-grade PVC",
             "Designed for high-pressure infusion applications",
@@ -80,6 +83,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "Low Pressure Extension Line":
         return {
           name: "Low Pressure Extension Lines",
+          image: "/Product-images/Infusion-Therapy/Extension-Tubes/Low-Pressure-Extension-Line.jpg",
           features: [
             "Designed for routine infusion and extension of IV line length",
             "Made of flexible, kink-resistant PVC",
@@ -102,6 +106,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "PVC Free High Pressure Extension Line":
         return {
           name: "PVC-Free High Pressure Extension Lines",
+          image: "/Product-images/Infusion-Therapy/Extension-Tubes/PVC-Free-High-Pressure-Extension-Line.png",
           features: [
             "Manufactured from DEHP-free, PVC-free medical polymer",
             "Suitable for high-pressure contrast media injection",
@@ -124,6 +129,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "I.V. Infusion Set with Airvent":
         return {
           name: "I.V. INFUSION SET WITH AIRVENT",
+          image: "/Product-images/Infusion-Therapy/I.V.-Infusion-Sets/I.V.-Infusion-Set-with-Airvent.jpg",
           features: [
             "Manufactured from medical-grade, non-toxic PVC",
             "With airvented spike to allow air entry during infusion",
@@ -148,6 +154,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "I.V. Infusion Set with Micro Drip":
         return {
           name: "I.V. INFUSION SET WITH MICRO DRIP",
+          image: "/Product-images/Infusion-Therapy/I.V.-Infusion-Sets/I.V.-Infusion-Set-with-Micro-Drip.avif",
           features: [
             "Designed for precise volume-controlled infusion, especially for paediatrics",
             "Microdrip chamber with 60 drops/ml accuracy",
@@ -172,6 +179,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "I.V. Infusion Set without Airvent":
         return {
           name: "I.V. INFUSION SET WITHOUT AIRVENT",
+          image: "/Product-images/Infusion-Therapy/I.V.-Infusion-Sets/I.V.-Infusion-Set-without-Airvent.jpg",
           features: [
             "Designed for closed infusion systems (e.g., plastic IV bottles)",
             "No airvent to avoid contamination risk",
@@ -196,6 +204,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "I.V. Cannula-AZcan":
         return {
           name: "I.V. CANNULA – AZCAN",
+          image: "/Product-images/Infusion-Therapy/I.V.-Cannula/I.V.-Cannula-AZcan.jpg",
           features: [
             "PTFE catheter with precision-ground triple-bevel needle",
             "Injection port with color-coded cap for drug delivery",
@@ -217,6 +226,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "I.V. Cannula-AZcath":
         return {
           name: "I.V. CANNULA – AZCATH",
+          image: "/Product-images/Infusion-Therapy/I.V.-Cannula/I.V.-Cannula-AZcath.png",
           features: [
             "FEP catheter with ultra-smooth insertion",
             "Injection port for bolus injection",
@@ -238,6 +248,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "I.V. Cannula-AZflon":
         return {
           name: "I.V. CANNULA – AZFLON",
+          image: "/Product-images/Infusion-Therapy/I.V.-Cannula/I.V.-Cannula-AZflon.jpg",
           features: [
             "Made from polyurethane for minimal vessel trauma",
             "Luer lock injection port",
@@ -258,6 +269,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "I.V. Cannula-AZneo":
         return {
           name: "I.V. CANNULA – AZNEO",
+          image: "/Product-images/Infusion-Therapy/I.V.-Cannula/I.V.-Cannula-AZneo.jpg",
           features: [
             "Microbore catheter for neonatal and pediatric use",
             "Soft and flexible PU tubing",
@@ -277,6 +289,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "I.V. Cannula-AZpen":
         return {
           name: "I.V. CANNULA – AZPEN",
+          image: "/Product-images/Infusion-Therapy/I.V.-Cannula/I.V.-Cannula-AZpen.jpg",
           features: [
             "Pen-type cannula for faster insertion",
             "Closed catheter system reduces blood spillage",
@@ -297,6 +310,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "I.V. Cannula-AZwin":
         return {
           name: "I.V. CANNULA – AZWIN",
+          image: "/Product-images/Infusion-Therapy/I.V.-Cannula/I.V.-Cannula-AZwin.png",
           features: [
             "Winged I.V. cannula with large stabilizing wings",
             "Ideal for short-term infusion therapy",
@@ -317,6 +331,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "Safety I.V. Cannula – AZSafe":
         return {
           name: "SAFETY I.V. CANNULA – AZSAFE",
+          image: "/Product-images/Infusion-Therapy/I.V.-Cannula/Safety-I.V.-Cannula – AZSafe.jpg",
           features: [
             "Safety shield mechanism for needlestick injury prevention",
             "Needle retracts automatically after use",
@@ -337,6 +352,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "Pressure Monitoring Line":
         return {
           name: "PRESSURE MONITORING LINE",
+          image: "/Product-images/Infusion-Therapy/Pressure-Monitoring-Lines/Pressure-Monitoring-Line.png",
           features: [
             "Designed for pressure monitoring during intensive care and anesthesia",
             "Tubing is non-DEHP, non-toxic and kink resistant",
@@ -351,6 +367,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "Pressure Monitoring Kit (Triple)":
         return {
           name: "PRESSURE MONITORING KITS",
+          image: `/Product-images/Infusion-Therapy/Pressure-Monitoring-Lines/Pressure-Monitoring-Kit-(${product.title.includes('Single') ? 'Single' : product.title.includes('Double') ? 'Double' : 'Triple'}).png`,
           features: [
             "Complete monitoring solutions for intensive care settings",
             "Available in single, double, and triple line configurations",
@@ -373,6 +390,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "Extension Line With Needle-Free Connectors":
         return {
           name: "EXTENSION LINE WITH NEEDLE-FREE CONNECTORS",
+          image: "/Product-images/Infusion-Therapy/Pressure-Monitoring-Lines/Extension-Line-With-Needle-Free-Connectors.jpg",
           features: [
             "Designed for safe fluid transfer and drug administration",
             "Needle-Free Y-Site connector ensures closed system access and reduces contamination risk",
@@ -398,23 +416,10 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
             ]
           }
         };
-      case "One Way Stopcock":
-      case "Two Way Stopcock":
-      case "Three Way Stopcock":
-        return {
-          name: "ONE WAY / TWO WAY / THREE WAY STOPCOCK",
-          features: [
-            "Suitable for pressure monitoring and infusion therapy",
-            "Rotating male luer lock for secure connection",
-            "Available with color-coded pegs for identification",
-            "Polycarbonate body with PTFE tap",
-            "Pressure withstand: up to 4.5 bar",
-            "360° rotation ensures flexibility in fluid direction"
-          ]
-        };
       case "Pediatric I.V. Set":
         return {
           name: "PEDIATRIC I.V. SET",
+          image: "/Product-images/Infusion-Therapy/Pediatric-Infusion-Sets/Pediatric-I.V.-Set.png",
           features: [
             "Designed for accurate fluid and medication administration in neonates and pediatric patients",
             "Transparent drip chamber for clear visibility and air bubble detection",
@@ -445,6 +450,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
       case "Burette Set":
         return {
           name: "BURETTE SET",
+          image: "/Product-images/Infusion-Therapy/Pediatric-Infusion-Sets/Burette-Set.png",
           features: [
             "Ideal for pediatric applications where accurate infusion volume is essential",
             "100 mL calibrated burette with clear, easy-to-read graduation",
@@ -484,42 +490,60 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[600px] max-h-[90vh] overflow-y-auto p-6">
-        <DialogHeader className="relative">
-          <DialogTitle className="text-xl font-semibold text-gray-800 pr-8">
+      <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] overflow-y-auto p-0">
+        <DialogHeader className="relative bg-white p-8 border-b sticky top-0 z-10">
+          <DialogTitle className="text-3xl font-semibold text-gray-800 pr-8">
             Product Details
           </DialogTitle>
           <DialogDescription className="sr-only">
             Detailed specifications and features for {productContent.name}
           </DialogDescription>
-          <DialogClose className="absolute right-0 top-0 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
-            <X className="h-4 w-4" />
+          <DialogClose className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+            <X className="h-6 w-6" />
             <span className="sr-only">Close</span>
           </DialogClose>
         </DialogHeader>
         
-        <div className="mt-6 space-y-6">
-          {/* Product Name Section */}
-          <div className="border-b border-gray-200 pb-4">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-lg">🔗</span>
-              <h3 className="text-lg font-semibold text-gray-800">Product Name:</h3>
+        <div className="p-8 space-y-8">
+          {/* Product Image */}
+          {productContent.image && (
+            <div className="flex justify-center mb-8">
+              <div className="relative max-w-md w-full">
+                <img
+                  src={productContent.image}
+                  alt={productContent.name}
+                  className="w-full h-auto object-contain rounded-lg border shadow-sm bg-gray-50"
+                  style={{ maxHeight: '300px' }}
+                  onError={(e) => {
+                    e.currentTarget.src = "/placeholder.svg";
+                    e.currentTarget.className = "w-full h-auto object-contain rounded-lg border shadow-sm bg-gray-100 flex items-center justify-center text-gray-400";
+                  }}
+                />
+              </div>
             </div>
-            <p className="text-base text-gray-700 ml-6">{productContent.name}</p>
+          )}
+
+          {/* Product Name Section */}
+          <div className="border-b border-gray-200 pb-6">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-2xl">🔗</span>
+              <h3 className="text-2xl font-semibold text-gray-800">Product Name:</h3>
+            </div>
+            <p className="text-xl text-gray-700 ml-10">{productContent.name}</p>
           </div>
 
           {/* Key Features Section */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-lg">🔹</span>
-              <h3 className="text-lg font-semibold text-gray-800">Key Features:</h3>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-2xl">🔹</span>
+              <h3 className="text-2xl font-semibold text-gray-800">Key Features:</h3>
             </div>
             
-            <div className="ml-6 space-y-3">
+            <div className="ml-10 space-y-4">
               {productContent.features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-2">
-                  <span className="text-sm text-gray-400 mt-1">•</span>
-                  <p className="text-base text-gray-700">{feature}</p>
+                <div key={index} className="flex items-start gap-3">
+                  <span className="text-lg text-gray-400 mt-1">•</span>
+                  <p className="text-lg text-gray-700 leading-relaxed">{feature}</p>
                 </div>
               ))}
             </div>
@@ -528,17 +552,17 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
           {/* Table Section (if available) */}
           {productContent.table && (
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-lg">📏</span>
-                <h3 className="text-lg font-semibold text-gray-800">Technical Specifications:</h3>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-2xl">📏</span>
+                <h3 className="text-2xl font-semibold text-gray-800">Technical Specifications:</h3>
               </div>
               
-              <div className="ml-6">
+              <div className="ml-10">
                 <Table className="border border-gray-200">
                   <TableHeader>
                     <TableRow className="bg-gray-50">
                       {productContent.table.headers.map((header, index) => (
-                        <TableHead key={index} className="font-semibold text-gray-700 border-r border-gray-200 last:border-r-0">
+                        <TableHead key={index} className="font-semibold text-gray-800 text-lg border-r border-gray-200 last:border-r-0 p-4">
                           {header}
                         </TableHead>
                       ))}
@@ -548,7 +572,7 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
                     {productContent.table.rows.map((row, rowIndex) => (
                       <TableRow key={rowIndex} className="hover:bg-gray-50">
                         {row.map((cell, cellIndex) => (
-                          <TableCell key={cellIndex} className="border-r border-gray-200 last:border-r-0">
+                          <TableCell key={cellIndex} className="border-r border-gray-200 last:border-r-0 p-4 text-base">
                             {cell}
                           </TableCell>
                         ))}

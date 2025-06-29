@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -41,65 +40,96 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, product })
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
         aria-describedby="product-modal-desc"
-        // Use proven classes for modal placement and appearance -- DO NOT override placement!
-        className="fixed left-1/2 top-1/2 z-[100] max-w-xl w-full translate-x-[-50%] translate-y-[-50%] max-h-[80vh] overflow-y-auto bg-white rounded-xl shadow-2xl p-0 border"
+        className="fixed left-1/2 top-1/2 z-[100] max-w-4xl w-[95vw] translate-x-[-50%] translate-y-[-50%] max-h-[90vh] overflow-y-auto bg-white rounded-xl shadow-2xl p-0 border"
       >
-        <DialogHeader className="sticky top-0 z-10 bg-white p-6 border-b">
-          <DialogTitle className="text-2xl font-bold text-gray-800">{title}</DialogTitle>
+        <DialogHeader className="sticky top-0 z-10 bg-white p-8 border-b">
+          <DialogTitle className="text-3xl font-bold text-gray-800">{title}</DialogTitle>
           <DialogDescription asChild>
             <span id="product-modal-desc" className="sr-only">
               {description || "Product details dialog"}
             </span>
           </DialogDescription>
         </DialogHeader>
-        <div className="p-6 space-y-6">
+        
+        <div className="p-8 space-y-8">
+          {/* Product Image */}
           {image && (
-            <img
-              src={image}
-              alt={imageAlt || title}
-              className="w-full object-contain max-h-60 mb-4 rounded-md border"
-            />
+            <div className="flex justify-center mb-6">
+              <div className="relative max-w-md w-full">
+                <img
+                  src={image}
+                  alt={imageAlt || title}
+                  className="w-full h-auto object-contain rounded-lg border shadow-sm bg-gray-50"
+                  style={{ maxHeight: '300px' }}
+                  onError={(e) => {
+                    e.currentTarget.src = "/placeholder.svg";
+                    e.currentTarget.className = "w-full h-auto object-contain rounded-lg border shadow-sm bg-gray-100 flex items-center justify-center text-gray-400";
+                  }}
+                />
+              </div>
+            </div>
           )}
+
+          {/* Description */}
           <div>
-            <h3 className="text-lg font-semibold mb-2 text-[#003b5c]">Description</h3>
-            <p className="text-base text-gray-700">{description}</p>
+            <h3 className="text-xl font-semibold mb-3 text-[#003b5c] flex items-center">
+              <span className="mr-2">📋</span>
+              Description
+            </h3>
+            <p className="text-lg text-gray-700 leading-relaxed">{description}</p>
           </div>
 
+          {/* Features */}
           {features && features.length > 0 && (
             <div>
-              <h3 className="text-lg font-semibold mb-2 text-[#003b5c]">Features</h3>
-              <ul className="list-disc list-inside text-gray-700 space-y-1">
+              <h3 className="text-xl font-semibold mb-3 text-[#003b5c] flex items-center">
+                <span className="mr-2">🔹</span>
+                Features
+              </h3>
+              <ul className="list-disc list-inside text-gray-700 space-y-2">
                 {features.map((feature, idx) => (
-                  <li key={idx}>{feature}</li>
+                  <li key={idx} className="text-lg leading-relaxed">{feature}</li>
                 ))}
               </ul>
             </div>
           )}
 
+          {/* Usage */}
           {usage && (
             <div>
-              <h3 className="text-lg font-semibold mb-2 text-[#003b5c]">Application / Usage</h3>
-              <p className="text-gray-700">{usage}</p>
+              <h3 className="text-xl font-semibold mb-3 text-[#003b5c] flex items-center">
+                <span className="mr-2">🎯</span>
+                Application / Usage
+              </h3>
+              <p className="text-lg text-gray-700 leading-relaxed">{usage}</p>
             </div>
           )}
 
+          {/* Specifications */}
           {specifications && specifications.headers && (
             <div>
-              <h3 className="text-lg font-semibold mb-2 text-[#003b5c]">Specifications</h3>
+              <h3 className="text-xl font-semibold mb-3 text-[#003b5c] flex items-center">
+                <span className="mr-2">📊</span>
+                Specifications
+              </h3>
               <div className="overflow-x-auto">
-                <Table>
+                <Table className="border border-gray-200">
                   <TableHeader>
-                    <TableRow>
+                    <TableRow className="bg-gray-50">
                       {specifications.headers.map((header, idx) => (
-                        <TableHead key={idx}>{header}</TableHead>
+                        <TableHead key={idx} className="font-semibold text-gray-800 text-base border-r border-gray-200 last:border-r-0 p-4">
+                          {header}
+                        </TableHead>
                       ))}
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {specifications.rows.map((row, rowIdx) => (
-                      <TableRow key={rowIdx}>
+                      <TableRow key={rowIdx} className="hover:bg-gray-50">
                         {row.map((cell, cellIdx) => (
-                          <TableCell key={cellIdx}>{cell}</TableCell>
+                          <TableCell key={cellIdx} className="border-r border-gray-200 last:border-r-0 p-4 text-base">
+                            {cell}
+                          </TableCell>
                         ))}
                       </TableRow>
                     ))}
@@ -109,10 +139,14 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, product })
             </div>
           )}
 
+          {/* Available Sizes */}
           {availableSizes && (
             <div>
-              <h3 className="text-lg font-semibold mb-2 text-[#003b5c]">Available Sizes</h3>
-              <p className="text-gray-700">
+              <h3 className="text-xl font-semibold mb-3 text-[#003b5c] flex items-center">
+                <span className="mr-2">📏</span>
+                Available Sizes
+              </h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
                 {Array.isArray(availableSizes)
                   ? availableSizes.join(", ")
                   : availableSizes}
@@ -120,10 +154,14 @@ const ProductModal: React.FC<ProductModalProps> = ({ isOpen, onClose, product })
             </div>
           )}
 
+          {/* Sterilization */}
           {sterilization && (
             <div>
-              <h3 className="text-lg font-semibold mb-2 text-[#003b5c]">Sterilization</h3>
-              <p className="text-gray-700">{sterilization}</p>
+              <h3 className="text-xl font-semibold mb-3 text-[#003b5c] flex items-center">
+                <span className="mr-2">🧪</span>
+                Sterilization
+              </h3>
+              <p className="text-lg text-gray-700 leading-relaxed">{sterilization}</p>
             </div>
           )}
         </div>
