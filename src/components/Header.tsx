@@ -28,12 +28,7 @@ const Header = () => {
 
   // Handle outside click to close suggestions
   const searchWrapperRef = useRef<HTMLDivElement>(null);
-  // Close suggestion list when clicking outside
-  // (Note: not debounced, only basic UX for now)
-  // Could be improved with a custom hook for outside click
-  // but let's keep it simple.
 
-  // Handles showing/hiding suggestions, also on input focus/blur
   const handleInputFocus = () => {
     if (suggestions.length > 0) setShowSuggestions(true);
   };
@@ -59,33 +54,34 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md border-b border-gray-200">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center gap-3"
+            className="flex items-center gap-2 md:gap-3 flex-shrink-0"
           >
-            <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <a href="/" className="flex items-center gap-2 md:gap-3 hover:opacity-80 transition-opacity">
               <img 
                 src="/lovable-uploads/0b5d674d-912b-485f-8d72-b5340093fb12.png" 
                 alt="Wellcure Surgicals Logo" 
-                className="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover"
+                className="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover flex-shrink-0"
               />
-              <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] bg-clip-text text-transparent">
+              <span className="text-lg md:text-xl lg:text-2xl font-bold bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] bg-clip-text text-transparent leading-tight">
                 Wellcure Surgicals
               </span>
             </a>
           </motion.div>
 
           {/* Desktop Navigation + Search */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-6">
             {/* Home link */}
             <motion.a
               href="/"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-medium text-gray-700 hover:text-[#003b5c] transition-colors relative group px-2 py-2"
+              className="font-medium text-gray-700 hover:text-[#003b5c] transition-colors relative group px-2 py-2 whitespace-nowrap"
             >
               Home
               <span className="absolute -bottom-1 left-2 w-0 h-0.5 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] group-hover:w-[calc(100%-16px)] transition-all duration-300"></span>
@@ -108,7 +104,7 @@ const Header = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className="font-medium text-gray-700 hover:text-[#003b5c] transition-colors relative group px-2 py-2"
+                className="font-medium text-gray-700 hover:text-[#003b5c] transition-colors relative group px-2 py-2 whitespace-nowrap"
               >
                 {link.title}
                 <span className="absolute -bottom-1 left-2 w-0 h-0.5 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] group-hover:w-[calc(100%-16px)] transition-all duration-300"></span>
@@ -116,7 +112,7 @@ const Header = () => {
             ))}
 
             {/* Search Form */}
-            <div className="relative ml-8 flex items-center gap-2" ref={searchWrapperRef}>
+            <div className="relative ml-6 flex items-center gap-2" ref={searchWrapperRef}>
               <form onSubmit={handleSearch} className="w-full flex items-center gap-2">
                 <div className="relative w-44">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
@@ -157,7 +153,7 @@ const Header = () => {
                   type="submit" 
                   size="sm"
                   variant="secondary"
-                  className="px-4 h-10 bg-[#1f5f5b] text-white hover:bg-[#003b5c]"
+                  className="px-4 h-10 bg-[#1f5f5b] text-white hover:bg-[#003b5c] whitespace-nowrap"
                 >
                   Search
                 </Button>
@@ -166,10 +162,11 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-[#003b5c] hover:text-[#1f5f5b] transition-colors"
+              aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -183,20 +180,20 @@ const Header = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t border-gray-200"
+              className="lg:hidden bg-white border-t border-gray-200"
             >
               <div className="px-4 py-6 space-y-4">
                 {/* Home link for mobile */}
                 <a
                   href="/"
-                  className="block text-gray-700 hover:text-[#003b5c] transition-colors font-medium py-2"
+                  className="block text-gray-700 hover:text-[#003b5c] transition-colors font-medium py-3 border-b border-gray-100"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Home
                 </a>
 
                 {/* Products Dropdown on mobile */}
-                <div className="py-2">
+                <div className="py-3 border-b border-gray-100">
                   <HeaderProductDropdown />
                 </div>
 
@@ -205,16 +202,16 @@ const Header = () => {
                   <a
                     key={link.title}
                     href={link.href}
-                    className="block text-gray-700 hover:text-[#003b5c] transition-colors font-medium py-2"
+                    className="block text-gray-700 hover:text-[#003b5c] transition-colors font-medium py-3 border-b border-gray-100"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.title}
                   </a>
                 ))}
 
-                {/* Mobile Search with suggestions */}
-                <div className="relative flex-1 pt-4 border-t border-gray-100">
-                  <form onSubmit={handleSearch} className="flex gap-2">
+                {/* Mobile Search */}
+                <div className="relative pt-4">
+                  <form onSubmit={handleSearch} className="flex gap-3">
                     <div className="relative flex-1">
                       <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
                       <Input
@@ -224,24 +221,24 @@ const Header = () => {
                         onChange={handleInputChange}
                         onFocus={handleInputFocus}
                         onBlur={handleInputBlur}
-                        className="pl-10 bg-white border border-gray-200 text-gray-700 placeholder:text-gray-400 rounded-md h-10"
+                        className="pl-10 bg-white border border-gray-200 text-gray-700 placeholder:text-gray-400 rounded-md h-12 text-base"
                         autoComplete="off"
                       />
-                      {/* Suggestions Dropdown */}
+                      {/* Mobile Suggestions Dropdown */}
                       <AnimatePresence>
                         {showSuggestions && suggestions.length > 0 && (
                           <motion.ul
                             initial={{ opacity: 0, y: -4 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -4 }}
-                            className="absolute left-0 top-12 z-30 w-full bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-auto mt-1"
+                            className="absolute left-0 top-14 z-30 w-full bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-auto"
                           >
                             {suggestions.map((sugg, idx) => (
                               <li
                                 key={sugg}
                                 tabIndex={0}
                                 onMouseDown={() => handleSuggestionClick(sugg)}
-                                className="px-4 py-2 text-gray-900 hover:bg-[#f0f7fa] cursor-pointer transition-colors text-sm"
+                                className="px-4 py-3 text-gray-900 hover:bg-[#f0f7fa] cursor-pointer transition-colors text-base"
                               >
                                 {sugg}
                               </li>
@@ -254,7 +251,7 @@ const Header = () => {
                       type="submit" 
                       size="sm"
                       variant="secondary"
-                      className="px-4 h-10 bg-[#1f5f5b] text-white hover:bg-[#003b5c]"
+                      className="px-6 h-12 bg-[#1f5f5b] text-white hover:bg-[#003b5c] text-base font-medium"
                     >
                       Search
                     </Button>
