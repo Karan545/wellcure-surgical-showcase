@@ -9,7 +9,6 @@ import {
   surgicalRetractionProducts 
 } from "@/data/surgery-wound-drainage-data";
 import ProductDetailsDialog from "./ProductDetailsDialog";
-import ImageZoomDialog from "@/components/shared/ImageZoomDialog";
 
 interface ProductDisplayProps {
   category: string;
@@ -18,8 +17,6 @@ interface ProductDisplayProps {
 const ProductDisplay = ({ category }: ProductDisplayProps) => {
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
-  const [zoomedAlt, setZoomedAlt] = useState<string | undefined>(undefined);
 
   const getProducts = () => {
     switch (category) {
@@ -117,24 +114,14 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
-                <div
-                  className="relative h-48 overflow-hidden cursor-zoom-in"
-                  onClick={() => {
-                    setZoomedImage(getProductImage(product.image));
-                    setZoomedAlt(product.imageAlt || product.title);
-                  }}
-                  tabIndex={0}
-                  role="button"
-                  aria-label={`Zoom ${product.title} image`}
-                >
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={getProductImage(product.image)}
                     alt={product.imageAlt || product.title}
-                    className="w-full h-full object-cover transition-transform duration-150 hover:scale-105"
+                    className="w-full h-full object-cover"
                     onError={(e) => {
                       e.currentTarget.src = "/placeholder.svg";
                     }}
-                    style={{ cursor: "zoom-in" }}
                   />
                 </div>
                 <CardHeader>
@@ -160,13 +147,6 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
           ))}
         </div>
       </div>
-
-      <ImageZoomDialog
-        open={!!zoomedImage}
-        onOpenChange={() => setZoomedImage(null)}
-        imageUrl={zoomedImage || ""}
-        alt={zoomedAlt}
-      />
 
       {selectedProduct && (
         <ProductDetailsDialog

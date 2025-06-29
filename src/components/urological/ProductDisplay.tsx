@@ -96,11 +96,16 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
-                  <ProductImageSlider
-                    images={productImages}
-                    title={product.title}
-                    imageAlt={product.imageAlt}
-                  />
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={getProductImage(productImages[0])}
+                      alt={product.imageAlt || product.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.src = "/placeholder.svg";
+                      }}
+                    />
+                  </div>
                   <CardHeader>
                     <CardTitle className="text-lg">{product.title}</CardTitle>
                   </CardHeader>

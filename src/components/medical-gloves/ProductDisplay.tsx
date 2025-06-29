@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/dialog";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import { createImagePath } from "@/utils/imageUtils";
-import ImageZoomDialog from "@/components/shared/ImageZoomDialog";
 
 const CATEGORY_PATH = "medical-gloves";
 
@@ -82,7 +81,6 @@ const products = [
 
 const ProductDisplay: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
-  const [zoomImageIdx, setZoomImageIdx] = useState<number | null>(null);
 
   const openModal = (index: number) => setSelectedProduct(index);
   const closeModal = () => setSelectedProduct(null);
@@ -97,19 +95,12 @@ const ProductDisplay: React.FC = () => {
             key={product.title}
             className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col"
           >
-            <div
-              className="aspect-w-16 aspect-h-12 cursor-zoom-in"
-              onClick={() => setZoomImageIdx(i)}
-              tabIndex={0}
-              role="button"
-              aria-label={`Zoom ${product.title} image`}
-            >
+            <div className="aspect-w-16 aspect-h-12">
               <img
                 src={product.image}
                 alt={product.imageAlt}
-                className="w-full h-48 object-cover transition-transform duration-150 hover:scale-105"
+                className="w-full h-48 object-cover"
                 loading="lazy"
-                style={{ cursor: "zoom-in" }}
               />
             </div>
             <div className="p-6 flex flex-col flex-1">
@@ -126,12 +117,6 @@ const ProductDisplay: React.FC = () => {
           </div>
         ))}
       </div>
-      <ImageZoomDialog
-        open={zoomImageIdx !== null}
-        onOpenChange={() => setZoomImageIdx(null)}
-        imageUrl={zoomImageIdx === null ? "" : products[zoomImageIdx].image}
-        alt={zoomImageIdx === null ? "" : products[zoomImageIdx].imageAlt}
-      />
       <Dialog open={selectedProduct !== null} onOpenChange={closeModal}>
         <DialogContent
           aria-describedby="modal-product-desc"

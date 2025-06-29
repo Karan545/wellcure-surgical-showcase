@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import ProductModal from "../anaesthesia/ProductModal";
 import { bloodManagementProductDetails } from "@/data/blood-management-product-details";
 import { motion } from "framer-motion";
-import ImageZoomDialog from "@/components/shared/ImageZoomDialog";
 
 const CATEGORY_PATH = "Blood-Management-Solutions";
 
@@ -26,7 +25,6 @@ const products = [
 const ProductDisplay = () => {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [zoomedImageIdx, setZoomedImageIdx] = useState<number | null>(null);
 
   const handleGetDetails = (productTitle: string) => {
     setSelectedProduct(productTitle);
@@ -62,19 +60,12 @@ const ProductDisplay = () => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
           >
-            <div
-              className="aspect-w-16 aspect-h-12 cursor-zoom-in"
-              onClick={() => setZoomedImageIdx(index)}
-              tabIndex={0}
-              role="button"
-              aria-label={`Zoom ${product.title} image`}
-            >
+            <div className="aspect-w-16 aspect-h-12">
               <img
                 src={product.image}
                 alt={product.imageAlt || product.title}
-                className="w-full h-48 object-cover transition-transform duration-150 hover:scale-105"
+                className="w-full h-48 object-cover"
                 loading="lazy"
-                style={{ cursor: "zoom-in" }}
               />
             </div>
             <div className="p-6 flex flex-col h-full">
@@ -91,12 +82,6 @@ const ProductDisplay = () => {
           </motion.div>
         ))}
       </div>
-      <ImageZoomDialog
-        open={zoomedImageIdx !== null}
-        onOpenChange={() => setZoomedImageIdx(null)}
-        imageUrl={zoomedImageIdx !== null ? products[zoomedImageIdx].image : ""}
-        alt={zoomedImageIdx !== null ? products[zoomedImageIdx].imageAlt : ""}
-      />
       <ProductModal
         isOpen={isDialogOpen && !!selectedProductDetail}
         onClose={handleCloseDialog}
