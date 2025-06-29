@@ -25,9 +25,9 @@ const Hero = () => {
 
   return (
     <section className="relative h-[60vh] md:h-[70vh] mt-20 w-full overflow-hidden">
-      {/* Full Width Hero Image with Reduced Gradient Overlay */}
+      {/* Full Width Hero Image with Minimal Gradient Overlay */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#003b5c]/45 to-[#1f5f5b]/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#003b5c]/30 to-[#1f5f5b]/25 z-10" />
         <img
           src="/surgical-operation-theatre.png"
           alt="Professional surgical operation theatre with medical team performing surgery"
