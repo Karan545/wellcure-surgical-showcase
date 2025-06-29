@@ -1,4 +1,3 @@
-
 import { ArrowDownCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -26,12 +25,12 @@ const Hero = () => {
 
   return (
     <section className="relative h-[60vh] md:h-[70vh] mt-20 w-full overflow-hidden">
-      {/* Full Width Hero Image with Gradient Overlay */}
+      {/* Full Width Hero Image with Professional Gradient Overlay */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#003b5c]/90 to-[#1f5f5b]/80 z-10" />
         <img
-          src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80"
-          alt="Medical surgical operating room"
+          src="/surgical-operation-theatre.png"
+          alt="Professional surgical operation theatre with medical team performing surgery"
           className="w-full h-full object-cover"
         />
       </div>
