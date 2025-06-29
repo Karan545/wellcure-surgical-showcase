@@ -74,12 +74,6 @@ const Index = () => {
       link: "/surgery-wound-drainage"
     },
     {
-      title: "Wound Care & Ortho Range",
-      image: "https://cdn.pixabay.com/photo/2018/07/12/01/18/injury-3532338_1280.jpg?auto=format&fit=crop&q=80",
-      description: "Comprehensive solutions for wound management and orthopedic support, including advanced dressings, braces, supports, and rehabilitation equipment.",
-      link: "/wound-care-ortho"
-    },
-    {
       title: "Anaesthesia Systems",
       image: "https://cdn.pixabay.com/photo/2023/08/30/15/42/ai-generated-8223597_1280.jpg?auto=format&fit=crop&q=80",
       description: "Modern anaesthesia delivery units, patient monitoring systems, and critical care equipment for surgical procedures.",
@@ -90,12 +84,6 @@ const Index = () => {
       image: "https://images.unsplash.com/photo-1579154341184-22069e4614d2?auto=format&fit=crop&q=80",
       description: "Comprehensive blood collection systems, storage solutions, and transfusion management equipment.",
       link: "/blood-management"
-    },
-    {
-      title: "Medical Gloves Division",
-      image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&q=80",
-      description: "High-quality surgical, examination, and specialized protective gloves designed for optimal safety and comfort in medical procedures.",
-      link: "/medical-gloves"
     }
   ];
 

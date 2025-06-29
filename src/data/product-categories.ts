@@ -1,4 +1,3 @@
-
 /**
  * Product categories and subcategories for simulation.
  * In a real system, this would be replaced with a database or CMS query.
@@ -14,14 +13,6 @@ export type ProductCategory = {
 }
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
-  {
-    name: "Medical Gloves",
-    slug: "/medical-gloves-division",
-    subcategories: [
-      { name: "Examination Gloves", slug: "/medical-gloves-division#examination" },
-      { name: "Surgical Gloves", slug: "/medical-gloves-division#surgical" },
-    ],
-  },
   {
     name: "Anaesthesia Systems",
     slug: "/anaesthesia-systems",
@@ -57,9 +48,5 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   {
     name: "Gastroenterology Equipment",
     slug: "/gastroenterology-equipment",
-  },
-  {
-    name: "Wound Care & Ortho",
-    slug: "/wound-care-ortho",
   },
 ];

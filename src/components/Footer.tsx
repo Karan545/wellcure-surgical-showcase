@@ -44,10 +44,9 @@ const Footer = () => {
     { name: "Urological Instruments", path: "/urological-instruments" },
     { name: "Gastroenterology Equipment", path: "/gastroenterology" },
     { name: "Infusion Therapy", path: "/infusion-therapy" },
-    { name: "Wound Care & Ortho", path: "/wound-care-ortho" },
     { name: "Blood Management Solutions", path: "/blood-management-solutions" },
     { name: "Anaesthesia Systems", path: "/anaesthesia-systems" },
-    { name: "Medical Gloves Division", path: "/medical-gloves-division" }
+    { name: "Surgery & Wound Drainage", path: "/surgery-wound-drainage" }
   ];
 
   const currentYear = new Date().getFullYear();
