@@ -9,30 +9,6 @@ export const surgicalDrainageProducts = [
     image: `/Product-images/${CATEGORY_PATH}/Drainage-&-Collection-Systems/Wound-Drainage-System.jpg`,
     imageAlt: "Advanced closed wound drainage system for efficient fluid evacuation",
     description: "Advanced closed wound drainage system designed for efficient post-surgical fluid evacuation and infection prevention."
-  },
-  {
-    title: "Thoracic Drainage Catheter (Angled)",
-    image: `/Product-images/${CATEGORY_PATH}/Drainage-&-Collection-Systems/Thoracic-Drainage-Catheter-(Angled).jpg`,
-    imageAlt: "Angled thoracic drainage catheter for pleural cavity management",
-    description: "Angled thoracic drainage catheter designed for optimal positioning in pleural cavity drainage and pneumothorax management."
-  },
-  {
-    title: "Thoracic Drainage Catheter (Straight)",
-    image: `/Product-images/${CATEGORY_PATH}/Drainage-&-Collection-Systems/Thoracic-Drainage-Catheter-(Straight).jpg`,
-    imageAlt: "Straight thoracic drainage catheter for direct pleural access",
-    description: "Straight thoracic drainage catheter providing direct access for pleural fluid evacuation and chest tube drainage procedures."
-  },
-  {
-    title: "Thoracic Drainage System",
-    image: `/Product-images/${CATEGORY_PATH}/Drainage-&-Collection-Systems/Thoracic-Drainage-Kit.webp`,
-    imageAlt: "Specialized thoracic drainage system with three-chamber design",
-    description: "Specialized three-chamber thoracic drainage system for managing air leaks and fluid collection from the pleural cavity."
-  },
-  {
-    title: "Surgical Drain",
-    image: `/Product-images/${CATEGORY_PATH}/Drainage-&-Collection-Systems/Surgical-Drain.jpg`,
-    imageAlt: "Flexible surgical drain with multiple perforations",
-    description: "Flexible surgical drain with multiple perforations for effective fluid evacuation from surgical sites."
   }
 ];
 

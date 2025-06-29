@@ -33,24 +33,6 @@ export const pressureMonitoringProducts: Product[] = [
     image: `/Product-images/${CATEGORY_PATH}/Pressure-Monitoring-Lines/Extension-Line-With-Needle-Free-Connectors.jpg`,
     imageAlt: "Needle-free extension line for safe medication administration",
     description: "Extension line with needle-free connectors providing safe medication administration and reducing needlestick injury risk."
-  },
-  {
-    title: "One Way Stopcock",
-    image: `/Product-images/${CATEGORY_PATH}/Pressure-Monitoring-Lines/One-Way-Stopcock.png`,
-    imageAlt: "Single-port stopcock for controlled fluid flow management",
-    description: "Single-port stopcock providing controlled fluid flow management and secure connection points for infusion systems."
-  },
-  {
-    title: "Two Way Stopcock",
-    image: `/Product-images/${CATEGORY_PATH}/Pressure-Monitoring-Lines/Two-Way-Stopcock.png`,
-    imageAlt: "Dual-port stopcock for versatile infusion control",
-    description: "Dual-port stopcock offering versatile infusion control with multiple connection options for complex medication protocols."
-  },
-  {
-    title: "Three Way Stopcock",
-    image: `/Product-images/${CATEGORY_PATH}/Pressure-Monitoring-Lines/Three-Way-Stopcock.png`,
-    imageAlt: "Triple-port stopcock for advanced infusion management",
-    description: "Triple-port stopcock enabling advanced infusion management with multiple simultaneous connections and flow control options."
   }
 ];
 

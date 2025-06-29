@@ -17,12 +17,6 @@ const oxygenDeliveryProducts = [
     description: "Comfortable and efficient oxygen mask designed for reliable oxygen therapy administration in anaesthesia and emergency care environments."
   },
   {
-    title: "Nebulizer Mask",
-    image: `/Product-images/${CATEGORY_PATH}/Oxygen-Delivery-&-Respiratory-Care/Nebulizer-Mask.jpg`,
-    imageAlt: "Professional nebulizer mask for effective medication delivery",
-    description: "High-quality nebulizer mask engineered for effective medication delivery through aerosol inhalation therapy in clinical settings."
-  },
-  {
     title: "Oxygen Catheter",
     image: `/Product-images/${CATEGORY_PATH}/Oxygen-Delivery-&-Respiratory-Care/Oxygen-Catheter.webp`,
     imageAlt: "Precision oxygen catheter for targeted oxygen delivery",
@@ -131,12 +125,6 @@ const cardiopulmonaryProducts = [
     image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Mister-blower.png`,
     imageAlt: "Surgical mister and blower for operative field management",
     description: "Professional surgical mister and blower system for maintaining clear operative fields and effective irrigation during cardiac procedures."
-  },
-  {
-    title: "Vessel Loops",
-    image: `/Product-images/${CATEGORY_PATH}/Cardiopulmonary-Bypass-&-Surgical-Perfusion/Vessel-Loops.png`,
-    imageAlt: "Soft silicone vessel loops for cardio-thoracic surgery",
-    description: "Soft silicone loops used in cardio-thoracic surgery to isolate and retract vessels during surgical procedures with precision and safety."
   }
 ];
 
@@ -216,9 +204,6 @@ const ProductDisplay = ({ category }: { category: string }) => {
             undefined,
         }
       : null;
-
-  // Added debug logs to check if the modal will render and with what product
-  console.log('[ProductDisplay] Dialog open:', isDialogOpen, 'selectedProduct:', selectedProduct, 'selectedProductDetail:', selectedProductDetail);
 
   return (
     <section className="py-16 bg-white/80 backdrop-blur-sm relative">
