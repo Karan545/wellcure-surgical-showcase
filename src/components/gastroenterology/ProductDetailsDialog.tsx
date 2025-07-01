@@ -5,6 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogClose,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 import { getGastroProductContent } from "@/data/gastroenterology-product-details";
@@ -20,9 +21,13 @@ interface ProductDetailsDialogProps {
 }
 
 const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialogProps) => {
+  console.log('ProductDetailsDialog - Product:', product);
+  
   const productContent = getGastroProductContent(product.title);
+  console.log('ProductDetailsDialog - Content found:', !!productContent);
 
   if (!productContent) {
+    console.error('No product content found for:', product.title);
     return null;
   }
 
@@ -33,6 +38,9 @@ const ProductDetailsDialog = ({ isOpen, onClose, product }: ProductDetailsDialog
           <DialogTitle className="text-3xl font-semibold text-gray-800 pr-8">
             Product Details
           </DialogTitle>
+          <DialogDescription className="sr-only">
+            Detailed specifications and features for {productContent.name}
+          </DialogDescription>
           <DialogClose className="absolute right-6 top-6 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
             <X className="h-6 w-6" />
             <span className="sr-only">Close</span>

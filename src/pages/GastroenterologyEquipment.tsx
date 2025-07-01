@@ -52,11 +52,13 @@ const GastroenterologyEquipment = () => {
   }, []);
 
   const handleGetDetails = (product: { title: string }) => {
+    console.log('handleGetDetails called with:', product);
     setSelectedProduct(product);
     setIsDialogOpen(true);
   };
 
   const handleCloseDialog = () => {
+    console.log('handleCloseDialog called');
     setIsDialogOpen(false);
     setSelectedProduct(null);
   };
@@ -117,8 +119,11 @@ const GastroenterologyEquipment = () => {
                       <h3 className="text-xl font-semibold mb-3 text-gray-800 line-clamp-2">{product.title}</h3>
                       <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3 flex-grow">{product.description}</p>
                       <Button 
-                        className="w-full mt-auto"
-                        onClick={() => handleGetDetails(product)}
+                        className="w-full mt-auto bg-[#003b5c] hover:bg-[#002f4a] text-white transition-all"
+                        onClick={() => {
+                          console.log('Button clicked for:', product.title);
+                          handleGetDetails(product);
+                        }}
                       >
                         Get Details
                       </Button>
