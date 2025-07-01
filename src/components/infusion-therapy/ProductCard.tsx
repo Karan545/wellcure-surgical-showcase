@@ -13,9 +13,11 @@ export interface Product {
 interface ProductCardProps {
   product: Product;
   index: number;
+  onButtonClick?: (product: Product) => void;
+  buttonText?: string;
 }
 
-const ProductCard = ({ product, index }: ProductCardProps) => {
+const ProductCard = ({ product, index, onButtonClick, buttonText = "Learn More" }: ProductCardProps) => {
   // Determine if image should use object-contain for edge details
   const hasEdgeDetails = product.title.includes("Catheter") || 
                         product.title.includes("Cannula") || 
@@ -23,6 +25,12 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
                         product.title.includes("Line") ||
                         product.title.includes("Set") ||
                         product.title.includes("Tube");
+
+  const handleButtonClick = () => {
+    if (onButtonClick) {
+      onButtonClick(product);
+    }
+  };
 
   return (
     <motion.div
@@ -48,7 +56,12 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
       <div className="p-6 flex flex-col h-full">
         <h3 className="text-xl font-semibold mb-3 text-gray-800 line-clamp-2">{product.title}</h3>
         <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3 flex-grow">{product.description}</p>
-        <Button className="w-full mt-auto">Learn More</Button>
+        <Button 
+          className="w-full mt-auto"
+          onClick={handleButtonClick}
+        >
+          {buttonText}
+        </Button>
       </div>
     </motion.div>
   );
