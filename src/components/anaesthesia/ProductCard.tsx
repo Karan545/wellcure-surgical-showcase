@@ -1,3 +1,4 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -21,7 +22,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
   buttonText,
   onButtonClick
 }) => {
-  // Determine if image should use object-contain for edge details
   const hasEdgeDetails = product.title.includes("Catheter") || 
                         product.title.includes("Cannula") || 
                         product.title.includes("Tube") ||
@@ -33,7 +33,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+      style={{ minHeight: '450px' }}
     >
       <div className="product-image-container">
         <img
@@ -48,15 +49,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
           }}
         />
       </div>
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         <h3 className="text-xl font-semibold mb-3 text-gray-800 line-clamp-2">{product.title}</h3>
-        <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">{product.description}</p>
-        <Button 
-          className="w-full ocean-to-forest-gradient text-white hover:shadow-lg transition-all"
-          onClick={() => onButtonClick(product.title)}
-        >
-          {buttonText}
-        </Button>
+        <p className="text-gray-600 mb-4 text-sm leading-relaxed flex-1">{product.description}</p>
+        <div className="mt-auto">
+          <Button 
+            className="w-full ocean-to-forest-gradient text-white hover:shadow-lg transition-all"
+            onClick={() => onButtonClick(product.title)}
+          >
+            {buttonText}
+          </Button>
+        </div>
       </div>
     </motion.div>
   );

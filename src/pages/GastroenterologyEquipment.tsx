@@ -89,7 +89,6 @@ const GastroenterologyEquipment = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {gastroenterologyProducts.map((product, index) => {
-                // Determine if image should use object-contain for edge details
                 const hasEdgeDetails = product.title.includes("Tube") || 
                                       product.title.includes("Catheter") ||
                                       product.title.includes("Feeding") ||
@@ -101,7 +100,8 @@ const GastroenterologyEquipment = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+                    style={{ minHeight: '450px' }}
                   >
                     <div className="product-image-container flex-shrink-0">
                       <img
@@ -116,13 +116,13 @@ const GastroenterologyEquipment = () => {
                         }}
                       />
                     </div>
-                    <div className="p-6 flex flex-col flex-grow">
+                    <div className="p-6 flex flex-col flex-1">
                       <h3 className="text-xl font-semibold mb-3 text-gray-800 line-clamp-2">{product.title}</h3>
-                      <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3 flex-grow">{product.description}</p>
-                      <div className="mt-auto pt-4">
+                      <p className="text-gray-600 mb-4 text-sm leading-relaxed flex-1">{product.description}</p>
+                      <div className="mt-auto">
                         <Button 
                           variant="default"
-                          className="w-full bg-[#003b5c] hover:bg-[#002f4a] text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center"
+                          className="w-full bg-[#003b5c] hover:bg-[#002f4a] text-white font-medium py-2 px-4 rounded-md transition-colors duration-200"
                           onClick={() => {
                             console.log('Button clicked for:', product.title);
                             handleGetDetails(product);

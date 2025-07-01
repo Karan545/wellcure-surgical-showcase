@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -61,9 +62,7 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
   };
 
   const hasProductDetails = (productTitle: string) => {
-    // All urological products have detailed information available
     const productsWithDetails = [
-      // Urine Collection Bags
       "Pediatric Urine Collection Bag",
       "Urine Collection Bag with Measured Volume Meter",
       "Urine Collection Bag with Top Outlet",
@@ -71,20 +70,17 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
       "Urine Collection Bag with Bottom Outlet",
       "Urine Collection Bag with Handle and Top Outlet",
       "Urine Collection Bag with NRV",
-      // Urine Drainage Catheters
       "Female Catheter",
       "Rectal Catheter",
       "Nelaton Catheter",
       "Central Venous Catheter Kit",
       "Multi-Lumen Central Catheter",
-      // Central Venous Access Devices
       "CVC Kit (Single Lumen)",
       "CVC Kit (Double Lumen)",
       "CVC Kit (Triple Lumen)",
       "CVC Kit (Four Lumen)",
       "Arterial Catheter Kit",
       "Arterial Catheter Kit with Extension",
-      // Dialysis Catheters
       "Hemodialysis Catheter (Single Lumen)",
       "Hemodialysis Catheter (Double Lumen)",
       "Hemodialysis Catheter (Triple Lumen)",
@@ -118,10 +114,8 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => {
-            // Handle both old format (single image) and new format (images array)
             const productImages = (product as any).images || [product.image];
             
-            // Determine if image should use object-contain for edge details
             const hasEdgeDetails = product.title.includes("Catheter") || 
                                   product.title.includes("Bag") || 
                                   product.title.includes("Kit") ||
@@ -135,7 +129,7 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
+                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col" style={{ minHeight: '450px' }}>
                   <div className="product-image-container">
                     <img
                       src={getProductImage(productImages[0])}
@@ -151,10 +145,10 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                   <CardHeader>
                     <CardTitle className="text-lg line-clamp-2">{product.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="flex-grow">
+                  <CardContent className="flex-1">
                     <CardDescription className="text-base line-clamp-3">{product.description}</CardDescription>
                   </CardContent>
-                  <CardFooter>
+                  <CardFooter className="mt-auto">
                     {hasProductDetails(product.title) ? (
                       <Button 
                         className="w-full"
