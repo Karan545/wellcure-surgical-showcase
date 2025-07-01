@@ -58,29 +58,19 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
   };
 
   const hasProductDetails = (productTitle: string) => {
-    // Products in the surgical-drainage category that have detailed information
-    const drainageProducts = [
+    // Products that have detailed information available
+    const productsWithDetails = [
       "Wound Drainage System",
       "Thoracic Drainage Catheter (Angled)",
       "Thoracic Drainage Catheter (Straight)",
       "Thoracic Drainage System",
-      "Surgical Drain"
-    ];
-
-    // Products in the surgical-suction category that have detailed information
-    const suctionProducts = [
+      "Surgical Drain",
       "Surgical Suction Set",
-      "Yankauer Suction Set"
-    ];
-
-    // Products in the surgical-retraction category that have detailed information
-    const retractionProducts = [
+      "Yankauer Suction Set",
       "Vessel Loops"
     ];
 
-    return (category === "surgical-drainage" && drainageProducts.includes(productTitle)) ||
-           (category === "surgical-suction" && suctionProducts.includes(productTitle)) ||
-           (category === "surgical-retraction" && retractionProducts.includes(productTitle));
+    return productsWithDetails.includes(productTitle);
   };
 
   const handleProductClick = (product: any) => {
@@ -106,46 +96,56 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
-                <div className="product-image-container">
-                  <img
-                    src={getProductImage(product.image)}
-                    alt={product.imageAlt || product.title}
-                    className="product-image"
-                    onError={(e) => {
-                      e.currentTarget.src = "/placeholder.svg";
-                      e.currentTarget.className = "product-image image-error";
-                    }}
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-lg">{product.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">{product.description}</CardDescription>
-                </CardContent>
-                <CardFooter>
-                  {hasProductDetails(product.title) ? (
-                    <Button 
-                      className="w-full" 
-                      onClick={() => handleProductClick(product)}
-                    >
-                      Get Details
-                    </Button>
-                  ) : (
-                    <Button className="w-full">Request Quote</Button>
-                  )}
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
+          {products.map((product, index) => {
+            // Determine if image should use object-contain for edge details
+            const hasEdgeDetails = product.title.includes("Catheter") || 
+                                  product.title.includes("Tube") || 
+                                  product.title.includes("Loop") ||
+                                  product.title.includes("Set") ||
+                                  product.title.includes("System");
+
+            return (
+              <motion.div
+                key={product.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full">
+                  <div className="product-image-container">
+                    <img
+                      src={getProductImage(product.image)}
+                      alt={product.imageAlt || product.title}
+                      className={hasEdgeDetails ? "product-image-contain" : "product-image"}
+                      onError={(e) => {
+                        e.currentTarget.src = "/placeholder.svg";
+                        e.currentTarget.className = "product-image-error";
+                        e.currentTarget.textContent = "Image not available";
+                      }}
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-lg line-clamp-2">{product.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <CardDescription className="text-base line-clamp-3">{product.description}</CardDescription>
+                  </CardContent>
+                  <CardFooter>
+                    {hasProductDetails(product.title) ? (
+                      <Button 
+                        className="w-full" 
+                        onClick={() => handleProductClick(product)}
+                      >
+                        Get Details
+                      </Button>
+                    ) : (
+                      <Button className="w-full">Request Quote</Button>
+                    )}
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 

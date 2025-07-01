@@ -60,6 +60,40 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
     }
   };
 
+  const hasProductDetails = (productTitle: string) => {
+    // All urological products have detailed information available
+    const productsWithDetails = [
+      // Urine Collection Bags
+      "Pediatric Urine Collection Bag",
+      "Urine Collection Bag with Measured Volume Meter",
+      "Urine Collection Bag with Top Outlet",
+      "Urine Collection Bag with T-type Bottom Outlet & Sampling Port",
+      "Urine Collection Bag with Bottom Outlet",
+      "Urine Collection Bag with Handle and Top Outlet",
+      "Urine Collection Bag with NRV",
+      // Urine Drainage Catheters
+      "Female Catheter",
+      "Rectal Catheter",
+      "Nelaton Catheter",
+      "Central Venous Catheter Kit",
+      "Multi-Lumen Central Catheter",
+      // Central Venous Access Devices
+      "CVC Kit (Single Lumen)",
+      "CVC Kit (Double Lumen)",
+      "CVC Kit (Triple Lumen)",
+      "CVC Kit (Four Lumen)",
+      "Arterial Catheter Kit",
+      "Arterial Catheter Kit with Extension",
+      // Dialysis Catheters
+      "Hemodialysis Catheter (Single Lumen)",
+      "Hemodialysis Catheter (Double Lumen)",
+      "Hemodialysis Catheter (Triple Lumen)",
+      "Long Term Hemodialysis Catheter"
+    ];
+
+    return productsWithDetails.includes(productTitle);
+  };
+
   const handleGetDetails = (product: { title: string }) => {
     setSelectedProduct(product);
     setIsDialogOpen(true);
@@ -87,6 +121,13 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
             // Handle both old format (single image) and new format (images array)
             const productImages = (product as any).images || [product.image];
             
+            // Determine if image should use object-contain for edge details
+            const hasEdgeDetails = product.title.includes("Catheter") || 
+                                  product.title.includes("Bag") || 
+                                  product.title.includes("Kit") ||
+                                  product.title.includes("CVC") ||
+                                  product.title.includes("Dialysis");
+            
             return (
               <motion.div
                 key={product.title}
@@ -99,21 +140,22 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                     <img
                       src={getProductImage(productImages[0])}
                       alt={product.imageAlt || product.title}
-                      className="product-image"
+                      className={hasEdgeDetails ? "product-image-contain" : "product-image"}
                       onError={(e) => {
                         e.currentTarget.src = "/placeholder.svg";
-                        e.currentTarget.className = "product-image image-error";
+                        e.currentTarget.className = "product-image-error";
+                        e.currentTarget.textContent = "Image not available";
                       }}
                     />
                   </div>
                   <CardHeader>
-                    <CardTitle className="text-lg">{product.title}</CardTitle>
+                    <CardTitle className="text-lg line-clamp-2">{product.title}</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-base">{product.description}</CardDescription>
+                  <CardContent className="flex-grow">
+                    <CardDescription className="text-base line-clamp-3">{product.description}</CardDescription>
                   </CardContent>
                   <CardFooter>
-                    {(category === "urine-bags" || category === "urine-drainage" || category === "central-venous" || category === "dialysis") ? (
+                    {hasProductDetails(product.title) ? (
                       <Button 
                         className="w-full"
                         onClick={() => handleGetDetails(product)}
