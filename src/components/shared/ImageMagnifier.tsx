@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useCallback } from 'react';
 
 interface ImageMagnifierProps {
@@ -16,7 +17,12 @@ const ImageMagnifier: React.FC<ImageMagnifierProps> = ({
   zoomLevel = 2.5
 }) => {
   const [showMagnifier, setShowMagnifier] = useState(false);
-  const [magnifierPosition, setMagnifierPosition] = useState({ x: 0, y: 0 });
+  const [magnifierPosition, setMagnifierPosition] = useState({ 
+    x: 0, 
+    y: 0, 
+    bgX: 0, 
+    bgY: 0 
+  });
   const [imgDimensions, setImgDimensions] = useState({ width: 0, height: 0 });
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -68,7 +74,7 @@ const ImageMagnifier: React.FC<ImageMagnifierProps> = ({
     backgroundImage: `url(${src})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: `${imgDimensions.width * zoomLevel}px ${imgDimensions.height * zoomLevel}px`,
-    backgroundPosition: `-${(magnifierPosition.bgX || magnifierPosition.x) * zoomLevel - magnifierSize / 2}px -${(magnifierPosition.bgY || magnifierPosition.y) * zoomLevel - magnifierSize / 2}px`,
+    backgroundPosition: `-${magnifierPosition.bgX * zoomLevel - magnifierSize / 2}px -${magnifierPosition.bgY * zoomLevel - magnifierSize / 2}px`,
     boxShadow: '0 12px 40px rgba(0, 0, 0, 0.3), inset 0 0 0 2px rgba(255, 255, 255, 0.9)',
     zIndex: 1000,
     opacity: showMagnifier ? 1 : 0,
