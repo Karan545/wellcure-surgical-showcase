@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -100,9 +101,9 @@ const GastroenterologyEquipment = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
                   >
-                    <div className="product-image-container">
+                    <div className="product-image-container flex-shrink-0">
                       <img
                         src={getProductImage(product.image)}
                         alt={product.imageAlt || product.title}
@@ -115,18 +116,21 @@ const GastroenterologyEquipment = () => {
                         }}
                       />
                     </div>
-                    <div className="p-6 flex flex-col h-full">
+                    <div className="p-6 flex flex-col flex-grow">
                       <h3 className="text-xl font-semibold mb-3 text-gray-800 line-clamp-2">{product.title}</h3>
                       <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3 flex-grow">{product.description}</p>
-                      <Button 
-                        className="w-full mt-auto bg-[#003b5c] hover:bg-[#002f4a] text-white transition-all"
-                        onClick={() => {
-                          console.log('Button clicked for:', product.title);
-                          handleGetDetails(product);
-                        }}
-                      >
-                        Get Details
-                      </Button>
+                      <div className="mt-auto pt-4">
+                        <Button 
+                          variant="default"
+                          className="w-full bg-[#003b5c] hover:bg-[#002f4a] text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center justify-center"
+                          onClick={() => {
+                            console.log('Button clicked for:', product.title);
+                            handleGetDetails(product);
+                          }}
+                        >
+                          Get Details
+                        </Button>
+                      </div>
                     </div>
                   </motion.div>
                 );
