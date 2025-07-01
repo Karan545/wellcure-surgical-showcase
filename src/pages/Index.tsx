@@ -350,7 +350,7 @@ const Index = () => {
                 >
                   Send Message
                 </Button>
-              </form>
+              </motion.form>
             </div>
           </div>
         </section>
