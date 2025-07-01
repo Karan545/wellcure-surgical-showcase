@@ -166,38 +166,51 @@
     background: linear-gradient(to bottom, #002f4a, #194c49);
   }
 
-  /* Product Image Container - Consistent sizing and aspect ratio */
+  /* Professional Product Image Container System */
   .product-image-container {
-    @apply relative w-full overflow-hidden bg-gray-50 rounded-t-lg;
-    height: 240px; /* Fixed height for consistency */
+    @apply relative w-full overflow-hidden bg-white rounded-xl shadow-sm;
+    height: 250px; /* Fixed height for consistency */
   }
 
   .product-image {
-    @apply w-full h-full transition-transform duration-300 hover:scale-105;
+    @apply w-full h-full transition-all duration-300 ease-out;
     object-fit: cover;
     object-position: center;
   }
 
-  /* Aspect ratio utilities for different image containers */
-  .aspect-product {
-    aspect-ratio: 4/3;
+  /* For images with edge details (labels, scales, etc.) */
+  .product-image-contain {
+    @apply w-full h-full transition-all duration-300 ease-out;
+    object-fit: contain;
+    object-position: center;
   }
 
-  .aspect-product-wide {
-    aspect-ratio: 16/10;
+  /* Hover effects */
+  .product-image-container:hover .product-image,
+  .product-image-container:hover .product-image-contain {
+    @apply scale-105;
   }
 
-  .aspect-product-square {
-    aspect-ratio: 1/1;
+  /* Loading and error states */
+  .product-image-loading {
+    @apply bg-gray-100 animate-pulse flex items-center justify-center;
   }
 
-  /* Image loading states */
-  .image-loading {
-    @apply bg-gray-200 animate-pulse;
+  .product-image-error {
+    @apply bg-gray-50 flex items-center justify-center text-gray-400 text-sm;
   }
 
-  .image-error {
-    @apply bg-gray-100 flex items-center justify-center text-gray-400;
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .product-image-container {
+      height: 220px; /* Slightly smaller on mobile */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-image-container {
+      height: 200px; /* Even smaller on very small screens */
+    }
   }
 
   /* Professional White Magnifier Glass Styling */
@@ -245,13 +258,6 @@
     border-radius: 50%;
     background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
     z-index: -1;
-  }
-
-  /* Mobile-specific optimizations */
-  @media (max-width: 768px) {
-    .product-image-container {
-      height: 200px; /* Slightly smaller on mobile */
-    }
   }
 
   /* Text truncation utilities */

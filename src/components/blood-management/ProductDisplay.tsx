@@ -52,39 +52,48 @@ const ProductDisplay = () => {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {products.map((product, index) => (
-          <motion.div
-            key={product.title}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-          >
-            <div className="product-image-container">
-              <img
-                src={product.image}
-                alt={product.imageAlt || product.title}
-                className="product-image"
-                loading="lazy"
-                onError={(e) => {
-                  e.currentTarget.src = "/placeholder.svg";
-                  e.currentTarget.className = "product-image image-error";
-                }}
-              />
-            </div>
-            <div className="p-6 flex flex-col h-full">
-              <h3 className="text-xl font-semibold mb-3 text-gray-800">{product.title}</h3>
-              <p className="text-gray-600 mb-4 text-sm leading-relaxed">{product.description}</p>
-              <Button
-                className="w-full bg-[#6c63ff] text-white hover:bg-[#5147b2] transition-all font-semibold"
-                onClick={() => handleGetDetails(product.title)}
-                aria-label={`Get details about ${product.title}`}
-              >
-                Get Details
-              </Button>
-            </div>
-          </motion.div>
-        ))}
+        {products.map((product, index) => {
+          // Determine if image should use object-contain for edge details
+          const hasEdgeDetails = product.title.includes("Set") || 
+                                product.title.includes("Administration") ||
+                                product.title.includes("Tube") ||
+                                product.title.includes("Line");
+
+          return (
+            <motion.div
+              key={product.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+            >
+              <div className="product-image-container">
+                <img
+                  src={product.image}
+                  alt={product.imageAlt || product.title}
+                  className={hasEdgeDetails ? "product-image-contain" : "product-image"}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.src = "/placeholder.svg";
+                    e.currentTarget.className = "product-image-error";
+                    e.currentTarget.textContent = "Image not available";
+                  }}
+                />
+              </div>
+              <div className="p-6 flex flex-col h-full">
+                <h3 className="text-xl font-semibold mb-3 text-gray-800 line-clamp-2">{product.title}</h3>
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3 flex-grow">{product.description}</p>
+                <Button
+                  className="w-full bg-[#6c63ff] text-white hover:bg-[#5147b2] transition-all font-semibold mt-auto"
+                  onClick={() => handleGetDetails(product.title)}
+                  aria-label={`Get details about ${product.title}`}
+                >
+                  Get Details
+                </Button>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
       <ProductModal
         isOpen={isDialogOpen && !!selectedProductDetail}
