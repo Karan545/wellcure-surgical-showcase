@@ -1,7 +1,7 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import CategoryBanner from "@/components/shared/CategoryBanner";
@@ -29,6 +29,7 @@ const AnaesthesiaSystems = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <Breadcrumb />
       <main className="flex-grow relative overflow-hidden">
         <CategoryBanner
           title="Anaesthesia Systems"

@@ -1,7 +1,7 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 import { useState, useEffect } from "react";
 import CategoryBanner from "@/components/shared/CategoryBanner";
 import CategoryTabs from "@/components/surgery-wound-drainage/CategoryTabs";
@@ -28,6 +28,7 @@ const SurgeryWoundDrainage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <Breadcrumb />
       <main className="flex-grow relative overflow-hidden">
         <CategoryBanner
           title="Surgery & Wound Drainage"

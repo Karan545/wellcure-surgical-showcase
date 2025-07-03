@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import CategoryBanner from "@/components/shared/CategoryBanner";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 import FloatingIcons from "@/components/urological/FloatingIcons";
 import CategoryTabs from "@/components/urological/CategoryTabs";
 import ProductDisplay from "@/components/urological/ProductDisplay";
@@ -29,6 +29,7 @@ const UrologicalInstruments = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
+      <Breadcrumb />
       <main className="flex-grow relative overflow-hidden">
         <FloatingIcons />
 
