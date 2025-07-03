@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Instagram, Facebook, Linkedin, Twitter, MessageCircle } from "lucide-react";
 
@@ -6,19 +5,19 @@ const SocialMedia = () => {
   const socialLinks = [
     {
       icon: <Instagram size={32} />,
-      href: "https://instagram.com",
+      href: "https://www.instagram.com/wellcure_surgicals?igsh=NXNjajllcGdlcjBh",
       label: "Follow us on Instagram",
       color: "hover:text-pink-600"
     },
     {
       icon: <Facebook size={32} />,
-      href: "https://facebook.com",
+      href: "https://www.facebook.com/share/16ADhDsZ3Z/",
       label: "Connect on Facebook",
       color: "hover:text-blue-600"
     },
     {
       icon: <Linkedin size={32} />,
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/company/wellcure-surgicals/",
       label: "Join us on LinkedIn",
       color: "hover:text-blue-700"
     },

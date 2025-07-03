@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Heart, ShieldCheck, Stethoscope, ArrowUp } from "lucide-react";
+import { Mail, Phone, MapPin, Heart, ShieldCheck, Stethoscope, ArrowUp, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -186,6 +186,24 @@ const Footer = () => {
           </div>
         </motion.div>
       </motion.div>
+
+      {/* WhatsApp Button */}
+      {showScrollButton && (
+        <motion.a
+          href="https://wa.me/+918619327540"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-20 right-6 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg z-50 backdrop-blur-sm border border-green-400/20 transition-all duration-300"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.5 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label="Chat on WhatsApp"
+        >
+          <MessageCircle size={20} />
+        </motion.a>
+      )}
 
       {/* Go Up Button */}
       {showScrollButton && (
