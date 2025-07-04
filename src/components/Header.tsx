@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search } from "lucide-react";
+import { Link } from "react-router-dom";
 import HeaderProductDropdown from "@/components/header/HeaderProductDropdown";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,7 +15,7 @@ const Header = () => {
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const navLinks = [
     { title: "Home", href: "/" },
-    { title: "About Us", href: "#about" },
+    { title: "About Us", href: "/about" },
     { title: "Contact Us", href: "#contact" }
   ];
 
@@ -65,7 +66,7 @@ const Header = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2 flex-shrink-0"
           >
-            <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <img 
                 src="/lovable-uploads/0b5d674d-912b-485f-8d72-b5340093fb12.png" 
                 alt="Wellcure Surgicals Logo" 
@@ -74,22 +75,25 @@ const Header = () => {
               <span className="text-base md:text-lg lg:text-xl xl:text-2xl font-bold bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] bg-clip-text text-transparent leading-tight">
                 Wellcure Surgicals
               </span>
-            </a>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation + Search */}
           <nav className="hidden lg:flex items-center space-x-6">
             {/* Home link */}
-            <motion.a
-              href="/"
+            <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-medium text-gray-700 hover:text-[#003b5c] transition-colors relative group px-2 py-2 whitespace-nowrap"
             >
-              Home
-              <span className="absolute -bottom-1 left-2 w-0 h-0.5 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] group-hover:w-[calc(100%-16px)] transition-all duration-300"></span>
-            </motion.a>
+              <Link
+                to="/"
+                className="font-medium text-gray-700 hover:text-[#003b5c] transition-colors relative group px-2 py-2 whitespace-nowrap"
+              >
+                Home
+                <span className="absolute -bottom-1 left-2 w-0 h-0.5 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] group-hover:w-[calc(100%-16px)] transition-all duration-300"></span>
+              </Link>
+            </motion.div>
 
             {/* Products dropdown */}
             <motion.div
@@ -100,20 +104,35 @@ const Header = () => {
               <HeaderProductDropdown />
             </motion.div>
 
-            {/* Other navigation links */}
-            {navLinks.slice(1).map((link, index) => (
-              <motion.a
-                key={link.title}
-                href={link.href}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+            {/* About Us link */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <Link
+                to="/about"
                 className="font-medium text-gray-700 hover:text-[#003b5c] transition-colors relative group px-2 py-2 whitespace-nowrap"
               >
-                {link.title}
+                About Us
                 <span className="absolute -bottom-1 left-2 w-0 h-0.5 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] group-hover:w-[calc(100%-16px)] transition-all duration-300"></span>
-              </motion.a>
-            ))}
+              </Link>
+            </motion.div>
+
+            {/* Contact Us link */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <a
+                href="#contact"
+                className="font-medium text-gray-700 hover:text-[#003b5c] transition-colors relative group px-2 py-2 whitespace-nowrap"
+              >
+                Contact Us
+                <span className="absolute -bottom-1 left-2 w-0 h-0.5 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] group-hover:w-[calc(100%-16px)] transition-all duration-300"></span>
+              </a>
+            </motion.div>
 
             {/* Search Form */}
             <div className="relative ml-6 flex items-center gap-2" ref={searchWrapperRef}>
@@ -256,30 +275,36 @@ const Header = () => {
             >
               <div className="px-2 py-4 space-y-2">
                 {/* Home link for mobile */}
-                <a
-                  href="/"
+                <Link
+                  to="/"
                   className="block text-gray-700 hover:text-[#003b5c] transition-colors font-medium py-2 px-2 rounded-md hover:bg-gray-50"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Home
-                </a>
+                </Link>
 
                 {/* Products Dropdown on mobile */}
                 <div className="py-2 px-2">
                   <HeaderProductDropdown />
                 </div>
 
-                {/* Other navigation links for mobile */}
-                {navLinks.slice(1).map((link) => (
-                  <a
-                    key={link.title}
-                    href={link.href}
-                    className="block text-gray-700 hover:text-[#003b5c] transition-colors font-medium py-2 px-2 rounded-md hover:bg-gray-50"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.title}
-                  </a>
-                ))}
+                {/* About Us link for mobile */}
+                <Link
+                  to="/about"
+                  className="block text-gray-700 hover:text-[#003b5c] transition-colors font-medium py-2 px-2 rounded-md hover:bg-gray-50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About Us
+                </Link>
+
+                {/* Contact Us link for mobile */}
+                <a
+                  href="#contact"
+                  className="block text-gray-700 hover:text-[#003b5c] transition-colors font-medium py-2 px-2 rounded-md hover:bg-gray-50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Contact Us
+                </a>
               </div>
             </motion.div>
           )}
