@@ -25,6 +25,20 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        // Medical color palette for healthcare theme
+        medical: {
+          50: "#e8f4f8",
+          100: "#d1e9f1",
+          200: "#a3d3e3",
+          300: "#75bdd5",
+          400: "#47a7c7",
+          500: "#003b5c", // Primary medical blue
+          600: "#002f4a",
+          700: "#002338",
+          800: "#001726",
+          900: "#000b14",
+          950: "#000509",
+        },
         // Ocean to forest color palette based on your gradient
         ocean: {
           50: "#e6f0f5",
