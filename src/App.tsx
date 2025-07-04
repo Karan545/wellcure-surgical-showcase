@@ -1,6 +1,4 @@
 
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
@@ -17,22 +15,19 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/urological-instruments" element={<UrologicalInstruments />} />
-          <Route path="/gastroenterology" element={<GastroenterologyEquipment />} />
-          <Route path="/infusion-therapy" element={<InfusionTherapy />} />
-          <Route path="/blood-management-solutions" element={<BloodManagementSolutions />} />
-          <Route path="/anaesthesia-systems" element={<AnaesthesiaSystems />} />
-          <Route path="/surgery-wound-drainage" element={<SurgeryWoundDrainage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/urological-instruments" element={<UrologicalInstruments />} />
+        <Route path="/gastroenterology" element={<GastroenterologyEquipment />} />
+        <Route path="/infusion-therapy" element={<InfusionTherapy />} />
+        <Route path="/blood-management-solutions" element={<BloodManagementSolutions />} />
+        <Route path="/anaesthesia-systems" element={<AnaesthesiaSystems />} />
+        <Route path="/surgery-wound-drainage" element={<SurgeryWoundDrainage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 
