@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import ProductGrid from "./ProductGrid";
 import CategoryBanner from "./CategoryBanner";
@@ -30,7 +31,7 @@ const oxygenDeliveryProducts = [
   },
   {
     title: "Lung Exerciser",
-    image: `/Product-images/${CATEGORY_PATH}/Oxygen-Delivery-&-Respiratory-Care/Lung-Exerciser.png`,
+    image: `/lovable-uploads/c1e3e70e-7fa3-4295-b6e3-6c3b5dfbe25e.png`,
     imageAlt: "Post-operative breathing device for improving lung capacity",
     description: "Post-operative breathing device that helps improve lung capacity and prevent respiratory complications in surgical recovery environments."
   },
@@ -42,7 +43,7 @@ const oxygenDeliveryProducts = [
   },
   {
     title: "Heat Moisture Exchanger with Bacterial Viral Filter (HME-BVF)",
-    image: `/Product-images/${CATEGORY_PATH}/Oxygen-Delivery-&-Respiratory-Care/Heat-Moisture-Exchanger-with-Bacterial-Viral-Filter-(HME-BVF).png`,
+    image: `/lovable-uploads/03537a53-4ff4-4ca6-b271-f6743b9b1c28.png`,
     imageAlt: "Heat moisture exchanger with bacterial viral filter for mechanical ventilation",
     description: "Maintains humidity and prevents cross-contamination during mechanical ventilation or anaesthesia procedures, ensuring optimal patient safety."
   }
