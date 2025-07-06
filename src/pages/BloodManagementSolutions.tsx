@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -52,8 +53,8 @@ const BloodManagementSolutions = () => {
         <CategoryBanner
           title="Blood Management Solutions"
           description="Advanced blood administration equipment designed for efficient and safe transfusions in critical care settings"
-          imageUrl="/lovable-uploads/9763c16d-111e-4536-847a-4d0fcee171aa.png"
-          altText="Medical professionals working with blood administration equipment in a sterile environment"
+          imageUrl="/lovable-uploads/95858c05-9e32-4230-9df2-8e5743eaba30.png"
+          altText="Medical professional preparing blood administration equipment for safe transfusion procedures"
         />
 
         <section className="py-16 bg-white relative">
