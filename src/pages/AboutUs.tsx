@@ -76,7 +76,7 @@ const AboutUs = () => {
               <div className="mb-8">
                 <div className="w-40 h-40 md:w-48 md:h-48 mx-auto bg-white rounded-full flex items-center justify-center shadow-2xl border-2 border-white/30">
                   <img 
-                    src="/wellcure-logo.jpeg" 
+                    src="/WhatsApp_Image_2025-07-04_at_00.27.57-removebg-preview.png" 
                     alt="WellCure Surgicals Logo" 
                     className="w-28 h-28 md:w-32 md:h-32 object-contain"
                   />
