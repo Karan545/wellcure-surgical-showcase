@@ -75,7 +75,7 @@ const Hero = () => {
               transition: { type: "spring", stiffness: 300, damping: 20 }
             }}
           >
-            Revolutionizing Healthcare Excellence
+            Your Partner in Surgical Excellence
           </motion.h1>
           
           <motion.p 
