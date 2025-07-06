@@ -159,7 +159,7 @@ const AboutUs = () => {
                   className="w-40 h-40 md:w-48 md:h-48 mx-auto bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl border-4 border-white/20"
                 >
                   <img 
-                    src="/WhatsApp Image 2025-07-04 at 00.27.57.jpeg" 
+                    src="/wellcure-logo.jpeg" 
                     alt="WellCure Surgicals Logo" 
                     className="w-28 h-28 md:w-32 md:h-32 object-contain rounded-full"
                   />
@@ -193,7 +193,7 @@ const AboutUs = () => {
                 className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed"
               >
                 Delivering reliable and innovative medical equipment solutions to healthcare providers worldwide
-              </p>
+              </motion.p>
             </motion.div>
           </div>
         </section>
