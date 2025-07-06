@@ -232,39 +232,6 @@ const AboutUs = () => {
             </div>
           </div>
         </section>
-
-        {/* Call to Action Section */}
-        <section className="py-20 md:py-24 bg-white">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center max-w-4xl mx-auto"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Ready to Partner with Excellence?
-              </h2>
-              <p className="text-gray-700 text-lg mb-8 leading-relaxed">
-                Join healthcare providers worldwide who trust WellCure Surgicals for their medical equipment needs. 
-                Let's build a healthier future together.
-              </p>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl transition-all duration-300"
-                >
-                  <Heart className="w-5 h-5" />
-                  Get in Touch
-                </a>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>
