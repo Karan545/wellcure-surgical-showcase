@@ -83,7 +83,7 @@ const Index = () => {
     },
     {
       title: "Blood Management Solutions",
-      image: getProductImage("https://images.unsplash.com/photo-1579154341184-22069e4614d2?auto=format&fit=crop&q=80"),
+      image: getProductImage("/lovable-uploads/f3803124-995e-4204-9ae6-c9b684697515.png"),
       description: "Comprehensive blood collection systems, storage solutions, and transfusion management equipment.",
       link: "/blood-management"
     }
