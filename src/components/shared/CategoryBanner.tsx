@@ -20,7 +20,7 @@ const CategoryBanner = ({
   return (
     <section className="px-0 py-0 mt-14 md:mt-16 lg:mt-20 relative">
       <div className="w-full">
-        <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] overflow-hidden">
+        <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] overflow-hidden banner-curved-bottom">
           {/* Hero Image */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.img
@@ -68,27 +68,6 @@ const CategoryBanner = ({
             >
               {description}
             </motion.p>
-          </div>
-
-          {/* Professional Curved Bottom */}
-          <div className="absolute bottom-0 left-0 right-0 z-20">
-            <svg 
-              viewBox="0 0 1200 120" 
-              preserveAspectRatio="none" 
-              className="w-full h-[60px] md:h-[80px] lg:h-[100px]"
-            >
-              <defs>
-                <linearGradient id="curveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="rgba(255,255,255,0.95)" />
-                  <stop offset="100%" stopColor="rgba(255,255,255,1)" />
-                </linearGradient>
-              </defs>
-              <path 
-                d="M0,120 L0,60 Q150,0 300,20 T600,40 Q750,50 900,30 T1200,60 L1200,120 Z" 
-                fill="url(#curveGradient)"
-                className="drop-shadow-lg"
-              />
-            </svg>
           </div>
         </div>
       </div>

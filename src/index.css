@@ -275,35 +275,34 @@
     overflow: hidden;
   }
 
-  /* Professional Category Banner Curves */
-  .category-banner-curve {
+  /* Professional Category Banner with Curved Bottom - Matching Your Design */
+  .banner-curved-bottom {
     position: relative;
   }
 
-  .category-banner-curve::after {
+  .banner-curved-bottom::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 100px;
-    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95));
+    height: 80px;
+    background: #ffffff;
     clip-path: ellipse(100% 100% at 50% 100%);
-    z-index: 10;
+    z-index: 20;
   }
 
-  /* Smooth curve animations */
-  @keyframes wave-flow {
-    0%, 100% {
-      transform: translateX(0px);
-    }
-    50% {
-      transform: translateX(-25px);
+  /* Responsive curve adjustments */
+  @media (max-width: 768px) {
+    .banner-curved-bottom::after {
+      height: 60px;
     }
   }
 
-  .wave-animation {
-    animation: wave-flow 6s ease-in-out infinite;
+  @media (max-width: 480px) {
+    .banner-curved-bottom::after {
+      height: 50px;
+    }
   }
 }
 
