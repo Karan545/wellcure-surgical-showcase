@@ -20,7 +20,7 @@ const CategoryBanner = ({
   return (
     <section className="px-0 py-0 mt-14 md:mt-16 lg:mt-20 relative">
       <div className="w-full">
-        <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] overflow-hidden banner-curved-bottom">
+        <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] overflow-hidden banner-arc-bottom">
           {/* Hero Image */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.img
@@ -68,6 +68,22 @@ const CategoryBanner = ({
             >
               {description}
             </motion.p>
+          </div>
+
+          {/* Arc Bottom Shape */}
+          <div className="absolute bottom-0 left-0 right-0 z-20">
+            <svg 
+              viewBox="0 0 1200 120" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-full h-[60px] md:h-[80px] lg:h-[100px]"
+              preserveAspectRatio="none"
+            >
+              <path 
+                d="M0,0 C300,120 900,120 1200,0 L1200,120 L0,120 Z" 
+                fill="white"
+              />
+            </svg>
           </div>
         </div>
       </div>
