@@ -2,13 +2,14 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HeaderProductDropdown from "@/components/header/HeaderProductDropdown";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useProductSuggestions } from "@/hooks/useProductSuggestions";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -27,7 +28,8 @@ const Header = () => {
     setSearchTerm(suggestion);
     setShowSuggestions(false);
     setIsMobileSearchOpen(false);
-    // Optionally trigger the search here
+    // Navigate to search results
+    navigate(`/search?q=${encodeURIComponent(suggestion)}`);
   };
 
   // Handle outside click to close suggestions
@@ -51,7 +53,7 @@ const Header = () => {
     setShowSuggestions(false);
     setIsMobileSearchOpen(false);
     if (searchTerm.trim()) {
-      alert(`Searching for: ${searchTerm}`);
+      navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
     }
   };
 

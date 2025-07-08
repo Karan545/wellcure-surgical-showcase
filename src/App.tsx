@@ -9,6 +9,7 @@ import BloodManagementSolutions from "./pages/BloodManagementSolutions";
 import AnaesthesiaSystems from "./pages/AnaesthesiaSystems";
 import SurgeryWoundDrainage from "./pages/SurgeryWoundDrainage";
 import AboutUs from "./pages/AboutUs";
+import SearchResults from "./pages/SearchResults";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
         <Route path="/blood-management" element={<Navigate to="/blood-management-solutions" replace />} />
         <Route path="/anaesthesia-systems" element={<AnaesthesiaSystems />} />
         <Route path="/surgery-wound-drainage" element={<SurgeryWoundDrainage />} />
+        <Route path="/search" element={<SearchResults />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
