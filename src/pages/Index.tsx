@@ -1,11 +1,10 @@
-
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LoadingScreen from "@/components/LoadingScreen";
 import SocialMedia from "@/components/SocialMedia";
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import { Stethoscope, ShieldCheck, Globe, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -93,9 +92,124 @@ const Index = () => {
     navigate(link);
   };
 
-  // Split categories into two batches for better mobile layout
-  const firstBatch = productCategories.slice(0, 3);
-  const secondBatch = productCategories.slice(3);
+  // Component for individual product category card with mobile-friendly animations
+  const ProductCategoryCard = ({ category, index }: { category: any, index: number }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+      const checkMobile = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
+      
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    return (
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ 
+          duration: 0.8, 
+          delay: index * 0.2,
+          ease: [0.25, 0.46, 0.45, 0.94]
+        }}
+        className="group relative overflow-hidden rounded-lg md:rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer"
+        onClick={() => handleCategoryClick(category.link)}
+      >
+        <div className="relative">
+          <motion.img
+            src={category.image}
+            alt={category.title}
+            className="object-cover w-full h-[280px] sm:h-[320px] md:h-[280px] lg:h-[320px] transition-transform duration-700"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.7 }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+        </div>
+
+        {/* Content overlay - Always visible on mobile, hover on desktop */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 text-white">
+          <motion.h3 
+            className="text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold mb-3 leading-tight"
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+          >
+            {category.title}
+          </motion.h3>
+          
+          {/* Description - Always visible on mobile with animation, hover on desktop */}
+          <motion.div
+            initial={isMobile ? { opacity: 1, y: 0, height: "auto" } : { opacity: 0, y: 20, height: 0 }}
+            animate={isMobile && isInView ? { 
+              opacity: 1, 
+              y: 0, 
+              height: "auto",
+              transition: { 
+                duration: 0.6, 
+                delay: index * 0.2 + 0.3,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }
+            } : isMobile ? { opacity: 1, y: 0, height: "auto" } : { opacity: 0, y: 20, height: 0 }}
+            className={`${isMobile ? 'block' : 'group-hover:opacity-100 group-hover:translate-y-0 group-hover:h-auto'} transition-all duration-500 overflow-hidden`}
+            style={!isMobile ? {
+              opacity: 0,
+              transform: 'translateY(16px)',
+              height: 0
+            } : {}}
+          >
+            <p className="text-gray-200 text-sm sm:text-base mb-4 leading-relaxed line-clamp-3">
+              {category.description}
+            </p>
+            
+            <motion.div
+              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+              animate={isMobile && isInView ? { 
+                opacity: 1, 
+                y: 0,
+                transition: { 
+                  duration: 0.5, 
+                  delay: index * 0.2 + 0.5,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }
+              } : isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+              className={`${!isMobile ? 'group-hover:opacity-100 group-hover:translate-y-0' : ''} transition-all duration-500`}
+            >
+              <Button 
+                variant="outline" 
+                size="sm"
+                className="bg-white/15 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-gray-900 transition-all duration-300 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-2.5 font-medium rounded-lg"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleCategoryClick(category.link);
+                }}
+              >
+                View Products
+              </Button>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Mobile-specific animated border effect */}
+        {isMobile && (
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+            transition={{ 
+              duration: 0.8, 
+              delay: index * 0.2 + 0.1,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+            className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] origin-left"
+          />
+        )}
+      </motion.div>
+    );
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -160,87 +274,14 @@ const Index = () => {
               </p>
             </motion.div>
 
-            {/* First Batch of Categories */}
-            <div className="mb-6 sm:mb-8 md:mb-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                {firstBatch.map((category, index) => (
-                  <motion.div
-                    key={category.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="group relative overflow-hidden rounded-lg md:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                    onClick={() => handleCategoryClick(category.link)}
-                  >
-                    <div className="relative">
-                      <img
-                        src={category.image}
-                        alt={category.title}
-                        className="object-cover w-full h-[220px] sm:h-[250px] md:h-[280px] lg:h-[320px] transform group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 text-white">
-                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 leading-tight">{category.title}</h3>
-                      <p className="text-gray-200 text-xs sm:text-sm mb-2 sm:mb-3 md:mb-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 line-clamp-3 leading-relaxed">
-                        {category.description}
-                      </p>
-                      <Button 
-                        variant="outline" 
-                        size="sm"
-                        className="bg-white/10 border-white text-white hover:bg-white hover:text-gray-900 transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 font-medium"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleCategoryClick(category.link);
-                        }}
-                      >
-                        View Products
-                      </Button>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Second Batch of Categories */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-              {secondBatch.map((category, index) => (
-                <motion.div
-                  key={category.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="group relative overflow-hidden rounded-lg md:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                  onClick={() => handleCategoryClick(category.link)}
-                >
-                  <div className="relative">
-                    <img
-                      src={category.image}
-                      alt={category.title}
-                      className="object-cover w-full h-[220px] sm:h-[250px] md:h-[280px] lg:h-[320px] transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-6 text-white">
-                    <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3 leading-tight">{category.title}</h3>
-                    <p className="text-gray-200 text-xs sm:text-sm mb-2 sm:mb-3 md:mb-4 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 line-clamp-3 leading-relaxed">
-                      {category.description}
-                    </p>
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="bg-white/10 border-white text-white hover:bg-white hover:text-gray-900 transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 font-medium"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleCategoryClick(category.link);
-                      }}
-                    >
-                      View Products
-                    </Button>
-                  </div>
-                </motion.div>
+            {/* Product Categories Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {productCategories.map((category, index) => (
+                <ProductCategoryCard 
+                  key={category.title} 
+                  category={category} 
+                  index={index} 
+                />
               ))}
             </div>
           </div>
