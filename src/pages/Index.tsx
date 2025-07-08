@@ -9,6 +9,8 @@ import { Stethoscope, ShieldCheck, Globe, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { getProductImage } from "@/utils/imageUtils";
+import ContactForm from "@/components/ContactForm";
+import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -306,93 +308,7 @@ const Index = () => {
             </motion.div>
 
             <div className="max-w-xl sm:max-w-2xl mx-auto">
-              <motion.form
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="space-y-4 sm:space-y-6 bg-white p-4 sm:p-6 md:p-8 lg:p-10 rounded-lg md:rounded-xl shadow-lg"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name*
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      required
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md sm:rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 text-sm sm:text-base transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name*
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      required
-                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md sm:rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 text-sm sm:text-base transition-colors"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address*
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md sm:rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 text-sm sm:text-base transition-colors"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number*
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    required
-                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md sm:rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 text-sm sm:text-base transition-colors"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                    Company/Organization
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md sm:rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 text-sm sm:text-base transition-colors"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message*
-                  </label>
-                  <textarea
-                    id="message"
-                    required
-                    rows={4}
-                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-md sm:rounded-lg focus:ring-2 focus:ring-medical-500 focus:border-medical-500 text-sm sm:text-base transition-colors resize-vertical"
-                    placeholder="Please describe your requirements..."
-                  />
-                </div>
-
-                <Button 
-                  type="submit"
-                  className="w-full bg-medical-500 hover:bg-medical-600 text-white py-2.5 sm:py-3 px-4 sm:px-6 rounded-md sm:rounded-lg transition-colors text-sm sm:text-base font-medium"
-                >
-                  Send Message
-                </Button>
-              </motion.form>
+              <ContactForm />
             </div>
           </div>
         </section>
@@ -400,6 +316,7 @@ const Index = () => {
         <SocialMedia />
       </main>
       <Footer />
+      <Toaster />
     </div>
   );
 };
