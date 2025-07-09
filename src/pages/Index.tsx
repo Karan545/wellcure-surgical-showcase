@@ -55,37 +55,37 @@ const Index = () => {
     {
       title: "Urological Instruments",
       image: getProductImage("https://live.staticflickr.com/3873/14377885496_070d90627c_z.jpg?auto=format&fit=crop&q=80"),
-      description: "State-of-the-art urological surgical instruments, diagnostic equipment, and treatment solutions for comprehensive urological care.",
+      description: "Advanced urological surgical instruments and diagnostic equipment designed for comprehensive patient care and precise medical procedures.",
       link: "/urological-instruments"
     },
     {
       title: "Gastroenterology Equipment",
       image: getProductImage("https://cdn.pixabay.com/photo/2015/05/17/01/12/hands-770461_1280.jpg?auto=format&fit=crop&q=80"),
-      description: "Advanced endoscopic systems and specialized tools for precise gastrointestinal procedures and diagnostics.",
+      description: "Professional endoscopic systems and specialized medical tools for accurate gastrointestinal procedures and patient diagnostics.",
       link: "/gastroenterology"
     },
     {
       title: "Infusion Therapy",
       image: getProductImage("https://cdn.pixabay.com/photo/2015/07/07/09/52/hospital-834152_1280.jpg?auto=format&fit=crop&q=80"),
-      description: "Complete range of infusion systems, IV cannulas, and administration sets designed for safe and accurate fluid delivery and medication administration.",
+      description: "Comprehensive infusion systems, IV cannulas, and administration sets ensuring safe fluid delivery and precise medication management.",
       link: "/infusion-therapy"
     },
     {
       title: "Surgery & Wound Drainage",
       image: getProductImage("https://cdn.pixabay.com/photo/2017/12/21/10/52/surgery-3031541_1280.jpg?auto=format&fit=crop&q=80"),
-      description: "Comprehensive selection of surgical drains, collection systems, and management solutions for effective post-operative wound care.",
+      description: "Professional surgical drains, collection systems, and wound management solutions for effective post-operative patient care.",
       link: "/surgery-wound-drainage"
     },
     {
       title: "Anaesthesia Systems",
       image: getProductImage("https://cdn.pixabay.com/photo/2023/08/30/15/42/ai-generated-8223597_1280.jpg?auto=format&fit=crop&q=80"),
-      description: "Modern anaesthesia delivery units, patient monitoring systems, and critical care equipment for surgical procedures.",
+      description: "Modern anaesthesia delivery units, patient monitoring systems, and critical care equipment for safe surgical procedures.",
       link: "/anaesthesia-systems"
     },
     {
       title: "Blood Management Solutions",
       image: getProductImage("/lovable-uploads/f3803124-995e-4204-9ae6-c9b684697515.png"),
-      description: "Comprehensive blood collection systems, storage solutions, and transfusion management equipment.",
+      description: "Professional blood collection systems, storage solutions, and transfusion management equipment for healthcare facilities.",
       link: "/blood-management"
     }
   ];
@@ -99,6 +99,7 @@ const Index = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
     const [isMobile, setIsMobile] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
       const checkMobile = () => {
@@ -122,66 +123,260 @@ const Index = () => {
         }}
         className="group relative overflow-hidden rounded-lg md:rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer"
         onClick={() => handleCategoryClick(category.link)}
+        onMouseEnter={() => !isMobile && setIsHovered(true)}
+        onMouseLeave={() => !isMobile && setIsHovered(false)}
       >
         <div className="relative">
           <motion.img
             src={category.image}
             alt={category.title}
             className="object-cover w-full h-[280px] sm:h-[320px] md:h-[280px] lg:h-[320px] transition-transform duration-700"
-            whileHover={{ scale: 1.05 }}
+            animate={isHovered ? { scale: 1.05 } : { scale: 1 }}
             transition={{ duration: 0.7 }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"
+            animate={isHovered ? { 
+              background: "linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.5), transparent)" 
+            } : {}}
+            transition={{ duration: 0.3 }}
+          />
         </div>
 
-        {/* Content overlay - Always visible on mobile, hover on desktop */}
+        {/* Content overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 text-white">
+          {/* Title - Always visible */}
           <motion.h3 
             className="text-lg sm:text-xl md:text-xl lg:text-2xl font-semibold mb-3 leading-tight"
-            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-            animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
           >
             {category.title}
           </motion.h3>
           
-          {/* Description - Always visible on mobile with animation, hover on desktop */}
+          {/* Description and Button Container */}
           <motion.div
-            initial={isMobile ? { opacity: 1, y: 0, height: "auto" } : { opacity: 0, y: 20, height: 0 }}
-            animate={isMobile && isInView ? { 
-              opacity: 1, 
-              y: 0, 
-              height: "auto",
-              transition: { 
-                duration: 0.6, 
-                delay: index * 0.2 + 0.3,
-                ease: [0.25, 0.46, 0.45, 0.94]
+            initial={isMobile ? { opacity: 0, y: 20 } : { opacity: 0, y: 20 }}
+            animate={
+              isMobile && isInView ? {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.6,
+                  delay: index * 0.15 + 0.4,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }
+              } : !isMobile && isHovered ? {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.4,
+                  ease: [0.25, 0.46, 0.45, 0.94]
+                }
+              } : {
+                opacity: isMobile ? 1 : 0,
+                y: isMobile ? 0 : 20
               }
-            } : isMobile ? { opacity: 1, y: 0, height: "auto" } : { opacity: 0, y: 20, height: 0 }}
-            className={`${isMobile ? 'block' : 'group-hover:opacity-100 group-hover:translate-y-0 group-hover:h-auto'} transition-all duration-500 overflow-hidden`}
-            style={!isMobile ? {
-              opacity: 0,
-              transform: 'translateY(16px)',
-              height: 0
-            } : {}}
+            }
+            className="overflow-hidden"
           >
+            {/* Description */}
             <p className="text-gray-200 text-sm sm:text-base mb-4 leading-relaxed line-clamp-3">
               {category.description}
             </p>
             
+            {/* Button */}
             <motion.div
-              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-              animate={isMobile && isInView ? { 
-                opacity: 1, 
-                y: 0,
-                transition: { 
-                  duration: 0.5, 
-                  delay: index * 0.2 + 0.5,
-                  ease: [0.25, 0.46, 0.45, 0.94]
+              initial={{ opacity: 0, y: 10 }}
+              animate={
+                isMobile && isInView ? {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.5,
+                    delay: index * 0.15 + 0.6,
+                    ease: [0.25, 0.46, 0.45, 0.94]
+                  }
+                } : !isMobile && isHovered ? {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.3,
+                    delay: 0.1,
+                    ease: [0.25, 0.46, 0.45, 0.94]
+                  }
+                } : {
+                  opacity: isMobile ? 1 : 0,
+                  y: isMobile ? 0 : 10
                 }
-              } : isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-              className={`${!isMobile ? 'group-hover:opacity-100 group-hover:translate-y-0' : ''} transition-all duration-500`}
+              }
             >
-              <Button 
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              >
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="bg-white/15 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-gray-900 transition-all duration-300 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-2.5 font-medium rounded-lg shadow-lg hover:shadow-xl"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleCategoryClick(category.link);
+                  }}
+                >
+                  View Products
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Mobile-specific animated border effect */}
+        {isMobile && (
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+            transition={{ 
+              duration: 0.8, 
+              delay: index * 0.15 + 0.2,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+            className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#003b5c] to-[#1f5f5b] origin-left"
+          />
+        )}
+
+        {/* Desktop hover overlay effect */}
+        {!isMobile && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isHovered ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 bg-gradient-to-t from-[#003b5c]/20 via-transparent to-transparent pointer-events-none"
+          />
+        )}
+      </motion.div>
+    );
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-grow">
+        <Hero />
+        
+        {/* Features Section */}
+        <section className="py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-gray-50">
+          <div className="container mx-auto px-3 sm:px-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
+            >
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                Why Choose Wellcure Surgicals?
+              </h2>
+              <p className="text-gray-600 max-w-2xl lg:max-w-3xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed">
+                Experience excellence in medical equipment with our comprehensive range of products and services
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ 
+                    y: -5,
+                    transition: { type: "spring", stiffness: 300, damping: 20 }
+                  }}
+                  className="bg-white p-4 sm:p-5 md:p-6 lg:p-8 rounded-lg md:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+                >
+                  <motion.div 
+                    className="text-medical-500 mb-3 sm:mb-4 flex justify-center"
+                    whileHover={{ 
+                      scale: 1.1,
+                      transition: { type: "spring", stiffness: 400, damping: 25 }
+                    }}
+                  >
+                    {feature.icon}
+                  </motion.div>
+                  <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3 text-gray-800">{feature.title}</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed">{feature.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Product Categories Section */}
+        <section id="products" className="py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-white">
+          <div className="container mx-auto px-3 sm:px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
+            >
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                Our Product Categories
+              </h2>
+              <p className="text-gray-600 max-w-2xl lg:max-w-3xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed">
+                Discover our comprehensive range of high-quality medical equipment and supplies, designed to meet the diverse needs of healthcare professionals worldwide
+              </p>
+            </motion.div>
+
+            {/* Product Categories Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {productCategories.map((category, index) => (
+                <ProductCategoryCard 
+                  key={category.title} 
+                  category={category} 
+                  index={index} 
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 bg-gray-50">
+          <div className="container mx-auto px-3 sm:px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
+            >
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                Contact Us
+              </h2>
+              <p className="text-gray-600 max-w-2xl lg:max-w-3xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed">
+                Get in touch with our expert team to discuss your medical equipment needs. We're here to provide professional guidance and support for all your requirements.
+              </p>
+            </motion.div>
+
+            <div className="max-w-xl sm:max-w-2xl mx-auto">
+              <ContactForm />
+            </div>
+          </div>
+        </section>
+
+        <SocialMedia />
+      </main>
+      <Footer />
+      <Toaster />
+    </div>
+  );
+};
+
+export default Index;
                 variant="outline" 
                 size="sm"
                 className="bg-white/15 backdrop-blur-sm border-white/30 text-white hover:bg-white hover:text-gray-900 transition-all duration-300 text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-2.5 font-medium rounded-lg"
