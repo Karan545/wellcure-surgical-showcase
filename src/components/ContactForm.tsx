@@ -43,18 +43,8 @@ const ContactForm = () => {
     // Show success toast with theme-matched styling
     toast({
       variant: "success",
-      title: (
-        <div className="flex items-center gap-2">
-          <CheckCircle className="w-5 h-5 text-green-600" />
-          <span className="font-semibold text-green-800">Message Sent Successfully!</span>
-        </div>
-      ),
-      description: (
-        <div className="text-green-700 mt-2">
-          <p className="mb-2">Thank you for contacting Wellcure Surgicals, <strong>{formData.firstName}</strong>!</p>
-          <p className="text-sm">Our medical equipment specialists will review your inquiry and respond within 24 hours. We appreciate your interest in our healthcare solutions.</p>
-        </div>
-      ),
+      title: "Message Sent Successfully!",
+      description: `Thank you for contacting Wellcure Surgicals, ${formData.firstName}! Our medical equipment specialists will review your inquiry and respond within 24 hours. We appreciate your interest in our healthcare solutions.`,
       className: "border-green-200 bg-gradient-to-r from-green-50 to-emerald-50 shadow-lg",
     });
 
