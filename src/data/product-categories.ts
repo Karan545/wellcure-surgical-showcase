@@ -47,6 +47,6 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
   },
   {
     name: "Gastroenterology Equipment",
-    slug: "/gastroenterology-equipment",
+    slug: "/gastroenterology",
   },
 ];
