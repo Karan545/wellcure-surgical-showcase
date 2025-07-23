@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import CategoryBanner from "@/components/shared/CategoryBanner";
 import ProductDisplay from "@/components/blood-management/ProductDisplay";
+import SEOHead from "@/components/SEOHead";
 
 const BloodManagementSolutions = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,6 +27,12 @@ const BloodManagementSolutions = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Blood Management Solutions | Blood Administration Sets & Transfusion Equipment"
+        description="Advanced blood administration equipment for safe transfusions. Blood administration sets with/without air vents for hospitals and critical care facilities."
+        keywords="blood management solutions, blood administration sets, transfusion equipment, blood transfusion sets, air vent systems, hospital blood equipment"
+        canonicalUrl="https://wellcuresurgicals.com/blood-management-solutions"
+      />
       <Header />
       <Breadcrumb />
       <main className="flex-grow relative overflow-hidden">
