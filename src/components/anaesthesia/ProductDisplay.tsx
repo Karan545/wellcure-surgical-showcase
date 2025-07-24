@@ -6,6 +6,7 @@ import { createImagePath } from "@/utils/imageUtils";
 import { Button } from "@/components/ui/button";
 import ProductModal from "./ProductModal";
 import { anaesthesiaProductDetails } from "@/data/anaesthesia-product-details";
+import SEOProductStructure from "@/components/SEOProductStructure";
 
 const CATEGORY_PATH = "Anaesthesia-Systems";
 
@@ -206,8 +207,27 @@ const ProductDisplay = ({ category }: { category: string }) => {
         }
       : null;
 
+  // Prepare products with detailed information for SEO
+  const seoProducts = products.map((product: any) => {
+    const details = anaesthesiaProductDetails[product.title];
+    return {
+      ...product,
+      features: details?.features,
+      specifications: details?.specifications,
+      availableSizes: details?.availableSizes,
+      sterilization: details?.sterilization,
+      usage: details?.usage
+    };
+  });
+
   return (
     <section className="py-16 bg-white/80 backdrop-blur-sm relative">
+      <SEOProductStructure
+        products={seoProducts}
+        category={getCategoryTitle()}
+        categoryDescription={getCategoryDescription()}
+      />
+      
       <div className="container mx-auto px-4">
         <CategoryBanner
           title={getCategoryTitle()}

@@ -9,6 +9,7 @@ import CategoryBanner from "@/components/shared/CategoryBanner";
 import { getProductImage } from "@/utils/imageUtils";
 import ProductDetailsDialog from "@/components/gastroenterology/ProductDetailsDialog";
 import SEOHead from "@/components/SEOHead";
+import SEOProductStructure from "@/components/SEOProductStructure";
 
 // Define products with uploaded image paths
 const gastroenterologyProducts = [
@@ -88,6 +89,12 @@ const GastroenterologyEquipment = () => {
         />
 
         <section className="py-16 bg-white relative">
+          <SEOProductStructure
+            products={gastroenterologyProducts}
+            category="Gastroenterology Equipment"
+            categoryDescription="Advanced gastroenterology equipment including infant feeding tubes, Levin's tubes, Ryle's tubes & umbilical catheters. Precision tools for gastrointestinal procedures."
+          />
+          
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-800">Our Gastroenterology Products</h2>

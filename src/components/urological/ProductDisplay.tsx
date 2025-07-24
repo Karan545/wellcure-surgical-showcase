@@ -7,6 +7,7 @@ import { getProductImage } from "@/utils/imageUtils";
 import { UrineCollectionBags, UrineDrainageCatheters } from "@/data/urological-data";
 import { CentralVenousDevices, DialysisCatheters } from "@/data/urological-extended-data";
 import ProductDetailsDialog from "./ProductDetailsDialog";
+import SEOProductStructure from "@/components/SEOProductStructure";
 
 interface ProductDisplayProps {
   category: string;
@@ -102,8 +103,20 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
 
   const products = getProducts();
 
+  // Convert products to proper format for SEO with image field
+  const seoProducts = products.map((product: any) => ({
+    ...product,
+    image: (product.images && product.images[0]) || product.image
+  }));
+
   return (
     <section className="py-16 bg-white/80 backdrop-blur-sm relative">
+      <SEOProductStructure
+        products={seoProducts}
+        category={getCategoryTitle()}
+        categoryDescription={getCategoryDescription()}
+      />
+      
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">{getCategoryTitle()}</h2>
