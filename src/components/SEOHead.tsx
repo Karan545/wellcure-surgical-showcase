@@ -17,7 +17,15 @@ const SEOHead = ({
   ogImage = "https://wellcuresurgicals.com/og-image.png",
   noindex = false
 }: SEOHeadProps) => {
-  const currentUrl = canonicalUrl || `https://wellcuresurgicals.com${window.location.pathname}`;
+  // Ensure canonical URL is clean and consistent
+  let currentPath = window.location.pathname;
+  
+  // Remove trailing slash except for root
+  if (currentPath.length > 1 && currentPath.endsWith('/')) {
+    currentPath = currentPath.slice(0, -1);
+  }
+  
+  const currentUrl = canonicalUrl || `https://wellcuresurgicals.com${currentPath}`;
   
   return (
     <Helmet>
