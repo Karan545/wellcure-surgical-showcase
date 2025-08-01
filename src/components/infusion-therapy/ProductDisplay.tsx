@@ -6,7 +6,6 @@ import { getProductImage } from "@/utils/imageUtils";
 import { extensionTubes, ivInfusionSets, ivCannulas } from "@/data/infusion-therapy-data";
 import { pressureMonitoringProducts, flowControlProducts, pediatricProducts } from "@/data/infusion-therapy-extended-data";
 import ProductDetailsDialog from "./ProductDetailsDialog";
-import SEOProductStructure from "@/components/SEOProductStructure";
 
 interface ProductDisplayProps {
   category: string;
@@ -116,12 +115,6 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
 
   return (
     <section className="py-16 bg-white/80 backdrop-blur-sm relative">
-      <SEOProductStructure
-        products={products}
-        category={getCategoryTitle()}
-        categoryDescription={getCategoryDescription()}
-      />
-      
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">{getCategoryTitle()}</h2>

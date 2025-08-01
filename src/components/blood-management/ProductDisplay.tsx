@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import ProductModal from "../anaesthesia/ProductModal";
 import { bloodManagementProductDetails } from "@/data/blood-management-product-details";
 import { motion } from "framer-motion";
-import SEOProductStructure from "@/components/SEOProductStructure";
 
 const CATEGORY_PATH = "Blood-Management-Solutions";
 
@@ -51,26 +50,8 @@ const ProductDisplay = () => {
         }
       : null;
 
-  // Prepare products with detailed information for SEO
-  const seoProducts = products.map((product) => {
-    const details = bloodManagementProductDetails[product.title];
-    return {
-      ...product,
-      features: details?.features,
-      specifications: details?.specifications,
-      sterilization: details?.sterilization,
-      usage: details?.usage
-    };
-  });
-
   return (
     <>
-      <SEOProductStructure
-        products={seoProducts}
-        category="Blood Management Solutions"
-        categoryDescription="Advanced blood transfusion sets designed for safe and efficient delivery of blood and blood components. Our comprehensive range includes specialized administration sets with and without air vents, meeting diverse clinical requirements for blood management in hospital environments."
-      />
-      
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {products.map((product, index) => {
           const hasEdgeDetails = product.title.includes("Set") || 
