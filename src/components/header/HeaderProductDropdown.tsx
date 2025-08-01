@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { PRODUCT_CATEGORIES } from "@/data/product-categories";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -92,8 +91,8 @@ const HeaderProductDropdown: React.FC = () => {
           <ul className="max-h-80 overflow-y-auto">
             {PRODUCT_CATEGORIES.map((cat) => (
               <li key={cat.slug}>
-                <Link
-                  to={cat.slug}
+                <a
+                  href={cat.slug}
                   onClick={onCategoryClick}
                   className="block w-full text-left px-4 py-2 text-gray-800 text-base font-medium rounded hover:bg-[#f0f7fa] hover:text-[#1f5f5b] focus:bg-[#e3eef2] transition-colors"
                   tabIndex={0}
@@ -101,7 +100,7 @@ const HeaderProductDropdown: React.FC = () => {
                   aria-label={cat.name}
                 >
                   {cat.name}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

@@ -129,7 +129,7 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col" style={{ minHeight: '450px' }}>
                   <div className="product-image-container">
                     <img
                       src={getProductImage(productImages[0])}
@@ -142,13 +142,13 @@ const ProductDisplay = ({ category }: ProductDisplayProps) => {
                       }}
                     />
                   </div>
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-lg line-clamp-2 min-h-[3.5rem] flex items-center">{product.title}</CardTitle>
+                  <CardHeader>
+                    <CardTitle className="text-lg line-clamp-2">{product.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="flex-1 pb-3">
-                    <CardDescription className="text-base line-clamp-4 min-h-[6rem]">{product.description}</CardDescription>
+                  <CardContent className="flex-1">
+                    <CardDescription className="text-base line-clamp-3">{product.description}</CardDescription>
                   </CardContent>
-                  <CardFooter className="pt-3 mt-auto">
+                  <CardFooter className="mt-auto">
                     {hasProductDetails(product.title) ? (
                       <Button 
                         className="w-full"

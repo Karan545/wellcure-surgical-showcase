@@ -185,7 +185,11 @@
     object-position: center;
   }
 
-  /* Hover effects removed - no zoom on hover */
+  /* Hover effects */
+  .product-image-container:hover .product-image,
+  .product-image-container:hover .product-image-contain {
+    @apply scale-105;
+  }
 
   /* Loading and error states */
   .product-image-loading {

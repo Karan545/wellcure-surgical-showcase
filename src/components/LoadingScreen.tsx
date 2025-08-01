@@ -4,71 +4,60 @@ import { motion } from "framer-motion";
 const LoadingScreen = () => {
   return (
     <div className="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center">
-      {/* Medical Heartbeat Wave Animation */}
+      {/* Simple Heartbeat Animation */}
       <motion.div
-        className="mb-8"
+        className="mb-6"
         animate={{
-          scale: [1, 1.02, 1],
+          scale: [1, 1.1, 1],
         }}
         transition={{
-          duration: 2,
+          duration: 1,
           repeat: Infinity,
           ease: "easeInOut",
         }}
       >
         <svg
           width="120"
-          height="80"
-          viewBox="0 0 120 80"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          height="60"
+          viewBox="0 0 120 60"
           className="text-teal-600"
+          fill="none"
         >
-          {/* Heartbeat Wave Path */}
+          {/* Heartbeat Line with Fade Effect */}
+          <defs>
+            <linearGradient id="heartbeatGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="currentColor" stopOpacity="0.2" />
+              <stop offset="20%" stopColor="currentColor" stopOpacity="1" />
+              <stop offset="80%" stopColor="currentColor" stopOpacity="1" />
+              <stop offset="100%" stopColor="currentColor" stopOpacity="0.2" />
+            </linearGradient>
+          </defs>
+          
           <motion.path
-            d="M10 40 L25 40 L30 20 L35 60 L40 10 L45 70 L50 40 L110 40"
-            stroke="currentColor"
-            strokeWidth="3"
-            fill="none"
+            d="M10 30 L25 30 L35 15 L45 45 L55 10 L65 50 L75 30 L110 30"
+            stroke="url(#heartbeatGradient)"
+            strokeWidth="4"
             strokeLinecap="round"
             strokeLinejoin="round"
-            initial={{ pathLength: 0, opacity: 0 }}
+            initial={{ pathLength: 0 }}
             animate={{ 
-              pathLength: [0, 1, 1, 0],
-              opacity: [0, 1, 1, 0]
+              pathLength: [0, 1, 1, 0] 
             }}
             transition={{
-              duration: 3,
+              duration: 2,
               repeat: Infinity,
               ease: "easeInOut",
               times: [0, 0.3, 0.7, 1]
             }}
           />
-          
-          {/* Animated Pulse Dot */}
-          <motion.circle
-            cx="60"
-            cy="40"
-            r="4"
-            fill="currentColor"
-            animate={{
-              scale: [1, 1.5, 1],
-              opacity: [0.7, 1, 0.7],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
         </svg>
       </motion.div>
 
-      {/* Loading Text with Heartbeat Sync */}
-      <motion.div
-        className="text-center"
+      {/* Simple Loading Text */}
+      <motion.p
+        className="text-2xl font-bold text-teal-600"
         animate={{
-          opacity: [0.8, 1, 0.8],
+          opacity: [0.6, 1, 0.6],
         }}
         transition={{
           duration: 1.5,
@@ -76,34 +65,8 @@ const LoadingScreen = () => {
           ease: "easeInOut",
         }}
       >
-        <h2 className="text-2xl font-bold text-teal-600 mb-2">WellCure Surgicals</h2>
-        <p className="text-lg text-teal-500">Loading medical solutions...</p>
-        
-        {/* Pulse indicator */}
-        <motion.div
-          className="mt-4 flex justify-center space-x-1"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              className="w-2 h-2 bg-teal-400 rounded-full"
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                delay: i * 0.2,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </motion.div>
-      </motion.div>
+        Loading...
+      </motion.p>
     </div>
   );
 };

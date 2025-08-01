@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { getProductImage } from "@/utils/imageUtils";
 import ContactForm from "@/components/ContactForm";
 import { Toaster } from "@/components/ui/toaster";
-import SEOHead from "@/components/SEOHead";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -20,7 +19,7 @@ const Index = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 800);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -261,12 +260,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead 
-        title="Wellcure Surgicals | Premium Surgical Equipment & Medical Instruments"
-        description="Leading exporter of surgical, medical & hospital equipment from India. Urological instruments, gastroenterology equipment, infusion therapy, blood management solutions & more."
-        keywords="surgical equipment, medical instruments, urological instruments, gastroenterology equipment, infusion therapy, blood management solutions, anaesthesia systems, wound drainage, medical supplies India, surgical tools export"
-        canonicalUrl="https://wellcuresurgicals.com/"
-      />
       <Header />
       <main className="flex-grow">
         <Hero />

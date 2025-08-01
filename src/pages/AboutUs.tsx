@@ -5,7 +5,6 @@ import Breadcrumb from "@/components/shared/Breadcrumb";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Heart, Globe, Users, Lightbulb, Award, Target, TrendingUp, Shield } from "lucide-react";
-import SEOHead from "@/components/SEOHead";
 
 const AboutUs = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +14,7 @@ const AboutUs = () => {
     
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 800);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -59,12 +58,6 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead 
-        title="About Wellcure Surgicals | Leading Medical Equipment Exporter from India"
-        description="Learn about Wellcure Surgicals - Founded in 2023 in Jodhpur, Rajasthan. We are dedicated to delivering reliable surgical and medical equipment solutions globally."
-        keywords="about wellcure surgicals, medical equipment company India, surgical instruments manufacturer, healthcare products exporter, Jodhpur medical company"
-        canonicalUrl="https://wellcuresurgicals.com/about"
-      />
       <Header />
       <Breadcrumb />
       <main className="flex-grow">

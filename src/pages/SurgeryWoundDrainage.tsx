@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import CategoryBanner from "@/components/shared/CategoryBanner";
 import CategoryTabs from "@/components/surgery-wound-drainage/CategoryTabs";
 import ProductDisplay from "@/components/surgery-wound-drainage/ProductDisplay";
-import SEOHead from "@/components/SEOHead";
 
 const SurgeryWoundDrainage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +16,7 @@ const SurgeryWoundDrainage = () => {
     
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 800);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -28,12 +27,6 @@ const SurgeryWoundDrainage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead 
-        title="Surgery & Wound Drainage | Surgical Drainage Systems & Suction Equipment"
-        description="Advanced surgical drainage solutions including wound drainage systems, surgical suction sets, Yankauer suction & vessel loops for post-operative care."
-        keywords="surgery wound drainage, surgical drainage systems, wound drainage, surgical suction, Yankauer suction, vessel loops, post-operative drainage"
-        canonicalUrl="https://wellcuresurgicals.com/surgery-wound-drainage"
-      />
       <Header />
       <Breadcrumb />
       <main className="flex-grow relative overflow-hidden">
