@@ -5,6 +5,7 @@ import Breadcrumb from "@/components/shared/Breadcrumb";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Heart, Globe, Users, Lightbulb, Award, Target, TrendingUp, Shield } from "lucide-react";
+import SEOHead from "@/components/SEOHead";
 
 const AboutUs = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -58,6 +59,12 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="About Wellcure Surgicals - Your Partner in Surgical Excellence"
+        description="Founded in 2023 in Jodhpur, Rajasthan, Wellcure Surgicals is a growing name in the Indian healthcare sector, delivering reliable surgical and medical equipment solutions worldwide."
+        canonicalUrl="/about"
+        keywords="about wellcure surgicals, medical equipment company, surgical instruments manufacturer, healthcare solutions, jodhpur rajasthan, medical supplies exporter"
+      />
       <Header />
       <Breadcrumb />
       <main className="flex-grow">

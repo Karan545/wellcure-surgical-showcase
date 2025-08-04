@@ -1,6 +1,7 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import UrologicalInstruments from "./pages/UrologicalInstruments";
 import GastroenterologyEquipment from "./pages/GastroenterologyEquipment";
@@ -16,21 +17,23 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/urological-instruments" element={<UrologicalInstruments />} />
-        <Route path="/gastroenterology" element={<GastroenterologyEquipment />} />
-        <Route path="/infusion-therapy" element={<InfusionTherapy />} />
-        <Route path="/blood-management-solutions" element={<BloodManagementSolutions />} />
-        <Route path="/blood-management" element={<Navigate to="/blood-management-solutions" replace />} />
-        <Route path="/anaesthesia-systems" element={<AnaesthesiaSystems />} />
-        <Route path="/surgery-wound-drainage" element={<SurgeryWoundDrainage />} />
-        <Route path="/search" element={<SearchResults />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/urological-instruments" element={<UrologicalInstruments />} />
+          <Route path="/gastroenterology" element={<GastroenterologyEquipment />} />
+          <Route path="/infusion-therapy" element={<InfusionTherapy />} />
+          <Route path="/blood-management-solutions" element={<BloodManagementSolutions />} />
+          <Route path="/blood-management" element={<Navigate to="/blood-management-solutions" replace />} />
+          <Route path="/anaesthesia-systems" element={<AnaesthesiaSystems />} />
+          <Route path="/surgery-wound-drainage" element={<SurgeryWoundDrainage />} />
+          <Route path="/search" element={<SearchResults />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   </QueryClientProvider>
 );
 

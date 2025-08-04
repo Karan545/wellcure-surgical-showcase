@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import CategoryBanner from "@/components/shared/CategoryBanner";
 import CategoryTabs from "@/components/surgery-wound-drainage/CategoryTabs";
 import ProductDisplay from "@/components/surgery-wound-drainage/ProductDisplay";
+import SEOHead from "@/components/SEOHead";
 
 const SurgeryWoundDrainage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +28,12 @@ const SurgeryWoundDrainage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Surgery & Wound Drainage - Surgical Drainage Systems | Wellcure Surgicals"
+        description="Advanced drainage solutions for effective post-surgical recovery and wound management. Professional surgical suction instruments and retraction tools."
+        canonicalUrl="/surgery-wound-drainage"
+        keywords="surgical drainage, wound drainage systems, surgical suction, retraction tools, post-operative care, surgical instruments, wound management"
+      />
       <Header />
       <Breadcrumb />
       <main className="flex-grow relative overflow-hidden">

@@ -7,6 +7,7 @@ import Breadcrumb from "@/components/shared/Breadcrumb";
 import FloatingIcons from "@/components/urological/FloatingIcons";
 import CategoryTabs from "@/components/urological/CategoryTabs";
 import ProductDisplay from "@/components/urological/ProductDisplay";
+import SEOHead from "@/components/SEOHead";
 
 const UrologicalInstruments = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +29,12 @@ const UrologicalInstruments = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Urological Instruments - Urine Collection Bags & Drainage Catheters | Wellcure Surgicals"
+        description="Premium urological instruments including urine collection bags, drainage catheters, central venous access devices, and dialysis catheters for comprehensive patient care."
+        canonicalUrl="/urological-instruments"
+        keywords="urological instruments, urine collection bags, drainage catheters, central venous catheters, dialysis catheters, urological medical equipment, catheter supplies"
+      />
       <Header />
       <Breadcrumb />
       <main className="flex-grow relative overflow-hidden">

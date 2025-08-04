@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import CategoryBanner from "@/components/shared/CategoryBanner";
 import { getProductImage } from "@/utils/imageUtils";
 import ProductDetailsDialog from "@/components/gastroenterology/ProductDetailsDialog";
+import SEOHead from "@/components/SEOHead";
 
 // Define products with uploaded image paths
 const gastroenterologyProducts = [
@@ -70,6 +71,12 @@ const GastroenterologyEquipment = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Gastroenterology Equipment - Feeding Tubes & Catheters | Wellcure Surgicals"
+        description="Advanced gastroenterology equipment including infant feeding tubes, Levin's tubes, Ryle's tubes, and umbilical catheters for precise gastrointestinal procedures."
+        canonicalUrl="/gastroenterology"
+        keywords="gastroenterology equipment, feeding tubes, infant feeding tube, levin's tube, ryle's tube, umbilical catheter, gastrointestinal instruments"
+      />
       <Header />
       <Breadcrumb />
       <main className="flex-grow relative overflow-hidden">

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 
 const NotFound = () => {
   const location = useLocation();
@@ -32,6 +33,11 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Page Not Found - 404 Error | Wellcure Surgicals"
+        description="The page you're looking for doesn't exist. Browse our medical equipment and surgical instruments catalog instead."
+        noindex={true}
+      />
       <Header />
       <main className="flex-grow flex items-center justify-center bg-gray-100 py-16">
         <div className="text-center max-w-md mx-auto px-4">

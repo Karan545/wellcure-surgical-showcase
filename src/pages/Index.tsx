@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { getProductImage } from "@/utils/imageUtils";
 import ContactForm from "@/components/ContactForm";
 import { Toaster } from "@/components/ui/toaster";
+import SEOHead from "@/components/SEOHead";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -260,6 +261,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Wellcure Surgicals - Premium Medical Equipment & Surgical Instruments"
+        description="Leading exporter of high-quality medical and surgical equipment. Specializing in urological instruments, infusion therapy, anaesthesia systems, and blood management solutions worldwide."
+        canonicalUrl="/"
+        keywords="medical equipment, surgical instruments, urological instruments, infusion therapy, anaesthesia systems, blood management, medical supplies, healthcare equipment, surgical supplies, medical devices, wellcure surgicals"
+      />
       <Header />
       <main className="flex-grow">
         <Hero />

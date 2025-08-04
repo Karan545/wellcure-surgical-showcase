@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import CategoryBanner from "@/components/shared/CategoryBanner";
 import CategoryTabs from "@/components/anaesthesia/CategoryTabs";
 import ProductDisplay from "@/components/anaesthesia/ProductDisplay";
+import SEOHead from "@/components/SEOHead";
 
 const AnaesthesiaSystems = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +29,12 @@ const AnaesthesiaSystems = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title="Anaesthesia Systems - Oxygen Delivery & Respiratory Care | Wellcure Surgicals"
+        description="Comprehensive range of anaesthesia systems including oxygen delivery devices, respiratory care equipment, and cardiopulmonary bypass accessories for safe patient care."
+        canonicalUrl="/anaesthesia-systems"
+        keywords="anaesthesia systems, oxygen delivery, respiratory care, cardiopulmonary bypass, suction catheters, airway management, anaesthesia equipment"
+      />
       <Header />
       <Breadcrumb />
       <main className="flex-grow relative overflow-hidden">

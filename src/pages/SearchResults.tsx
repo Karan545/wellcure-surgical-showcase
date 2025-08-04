@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { getProductImage } from "@/utils/imageUtils";
+import SEOHead from "@/components/SEOHead";
 
 // Import all product data
 import { UrineCollectionBags, UrineDrainageCatheters } from "@/data/urological-data";
@@ -344,6 +345,12 @@ const SearchResults = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead 
+        title={query ? `Search Results for "${query}" | Wellcure Surgicals` : "Search Medical Equipment | Wellcure Surgicals"}
+        description={query ? `Find medical equipment and surgical instruments matching "${query}". Browse our comprehensive catalog of healthcare products.` : "Search our comprehensive catalog of medical equipment and surgical instruments. Find the right healthcare products for your needs."}
+        canonicalUrl="/search"
+        noindex={true}
+      />
       <Header />
       <Breadcrumb />
       <main className="flex-grow relative overflow-hidden">

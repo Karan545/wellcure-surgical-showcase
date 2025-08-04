@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://wellcure-surgicals.com/sitemap.xml
+
+# Disallow search results and admin pages
+Disallow: /search?
+Disallow: /admin/
+Disallow: /api/
+
+# Allow all product pages
+Allow: /urological-instruments
+Allow: /infusion-therapy
+Allow: /blood-management-solutions
+Allow: /anaesthesia-systems
+Allow: /surgery-wound-drainage
+Allow: /gastroenterology
+Allow: /about
+
+# Crawl delay
+Crawl-delay: 1
