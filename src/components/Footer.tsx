@@ -191,7 +191,7 @@ const Footer = () => {
       {/* WhatsApp Button with Original Logo */}
       {showScrollButton && (
         <motion.a
-          href="https://wa.me/+918619327540"
+          href="https://wa.me/+918905327540"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-20 right-6 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg z-50 backdrop-blur-sm border border-green-400/20 transition-all duration-300"
@@ -202,7 +202,7 @@ const Footer = () => {
           whileTap={{ scale: 0.9 }}
           aria-label="Chat on WhatsApp"
         >
-          <img 
+          <img
             src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
             alt="WhatsApp"
             className="w-5 h-5"
