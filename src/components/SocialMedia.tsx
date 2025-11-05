@@ -23,7 +23,7 @@ const SocialMedia = () => {
     },
     {
       icon: <MessageCircle size={32} />,
-      href: "https://wa.me/+918619327540",
+      href: "https://wa.me/+918905327540",
       label: "Chat on WhatsApp",
       color: "hover:text-green-600"
     },
