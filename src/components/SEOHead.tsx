@@ -72,7 +72,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
             "@type": "ContactPoint",
             "telephone": "+91-8619327540",
             "contactType": "customer service",
-            "email": "wellcuresurgicals@gmail.com"
+            "email": "info@wellcuresurgicals.com"
           },
           "sameAs": [
             "https://www.instagram.com/wellcure_surgicals",
